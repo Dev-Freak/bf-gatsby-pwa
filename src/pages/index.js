@@ -1,9 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import Image from "../components/image"
-import SEO from "../components/seo"
+import SEO from "../components/Seo"
+
+import SimpleProgressBar from "../components/SimpleProgressBar/SimpleProgressBar"
 
 const IndexPage = () => (
   <Layout>
@@ -15,7 +17,8 @@ const IndexPage = () => (
       <Image />
     </div>
     <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+    <SimpleProgressBar />
+    {/* <Link to="/using-typescript/">Go to "Using TypeScript"</Link> */}
   </Layout>
 )
 
