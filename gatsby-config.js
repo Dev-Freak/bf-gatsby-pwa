@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Borg Financial`,
+    description: `Borg Financial PWA`,
+    author: `@DevFreak`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -13,7 +13,9 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-plugin-typescript`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-postcss`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
