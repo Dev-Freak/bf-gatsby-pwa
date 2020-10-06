@@ -11,6 +11,10 @@
     appearance: none;
   }
 
+  body {
+    font-family: poppins, sans-serif;
+  }
+
   .innerNode {
     width: 5px;
     height: 5px;

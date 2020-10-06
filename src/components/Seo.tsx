@@ -9,6 +9,7 @@ import React from "react"
 import PropTypes, { string } from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { link } from "fs"
 
 interface SEOProps {
   title: string
@@ -76,7 +77,12 @@ const SEO: React.FC<SEOProps> = ({ title, description, lang, meta }) => {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,700&display=swap"
+        rel="stylesheet"
+      ></link>
+    </Helmet>
   )
 }
 
