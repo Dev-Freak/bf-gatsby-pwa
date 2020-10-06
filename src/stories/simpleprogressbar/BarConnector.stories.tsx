@@ -5,7 +5,7 @@ import BarConnector, {
 } from "../../components/SimpleProgressBar/BarConnector"
 
 export default {
-  title: "Shared/BarConnector",
+  title: "Simple Progress Bar/BarConnector",
   component: BarConnector,
 } as Meta
 

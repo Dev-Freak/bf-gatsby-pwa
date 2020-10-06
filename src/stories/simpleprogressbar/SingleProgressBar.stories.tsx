@@ -5,7 +5,7 @@ import SimpleProgressBar, {
 } from "../../components/SimpleProgressBar/SimpleProgressBar"
 
 export default {
-  title: "Shared/SimpleProgressBar",
+  title: "Simple Progress Bar/SimpleProgressBar",
   component: SimpleProgressBar,
 } as Meta
 

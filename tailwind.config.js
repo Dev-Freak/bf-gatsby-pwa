@@ -6,6 +6,9 @@ module.exports = {
   purge: [],
   theme: {
     extend: {
+      fontSize: {
+        xxs: "10px",
+      },
       padding: {
         7: "1.75rem",
       },
@@ -14,8 +17,8 @@ module.exports = {
         36: "9rem",
       },
       width: {
-        node: "18px",
         fit: "fit-content",
+        node: "18px",
         36: "9rem",
       },
       colors: {
@@ -25,6 +28,8 @@ module.exports = {
         unselected: "#606060",
         idleDark: "#DFE3EA",
         idleLight: "#EFF0F4",
+        brandIdleDark: "#29406F",
+        brandIdleLight: "#344976",
         completedDark: "#00DA86",
         completedLight: "#D8FCD0",
         activeLight: "#B2BACB",

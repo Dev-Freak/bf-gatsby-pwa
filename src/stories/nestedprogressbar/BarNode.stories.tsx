@@ -1,13 +1,17 @@
 import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
-import BarNode, { BarNodeProps } from "../../components/SimpleProgressBar/BarNode"
+import BarNode, { BarNodeProps } from "../../components/NestedProgressBar/BarNode"
 
 export default {
-  title: "Shared/BarNode",
+  title: "Nested Progress Bar/BarNode",
   component: BarNode,
 } as Meta
 
-const Template: Story<BarNodeProps> = args => <BarNode {...args} />
+const Template: Story<BarNodeProps> = args => (
+  <div className="bg-brand w-12 h-12 flex items-center justify-center">
+    <BarNode {...args} />
+  </div>
+)
 
 export const Idle = Template.bind({})
 

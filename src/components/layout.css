@@ -11,6 +11,11 @@
     appearance: none;
   }
 
+  .innerNode {
+    width: 5px;
+    height: 5px;
+  }
+
   .tile-idle {
     filter: invert(6%) sepia(96%) saturate(3923%) hue-rotate(209deg) brightness(94%)
       contrast(106%);
