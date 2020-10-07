@@ -3,15 +3,15 @@ import PropTypes from "prop-types"
 
 import { Check } from "@styled-icons/bootstrap"
 
-export interface BarNodeProps {
+export interface MainNodeProps {
   isActive?: true | false
   isCompleted?: true | false
 }
 
-const BarNode: React.FC<BarNodeProps> = ({
+const MainNode: React.FC<MainNodeProps> = ({
   isActive,
   isCompleted,
-}: BarNodeProps) => {
+}: MainNodeProps) => {
   const outerStyles = isActive
     ? "bg-white"
     : isCompleted
@@ -36,14 +36,14 @@ const BarNode: React.FC<BarNodeProps> = ({
   )
 }
 
-BarNode.propTypes = {
+MainNode.propTypes = {
   isActive: PropTypes.bool,
   isCompleted: PropTypes.bool,
 }
 
-BarNode.defaultProps = {
+MainNode.defaultProps = {
   isActive: false,
   isCompleted: false,
 }
 
-export default BarNode
+export default MainNode

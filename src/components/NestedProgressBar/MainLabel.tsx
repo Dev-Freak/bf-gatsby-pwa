@@ -6,7 +6,7 @@ export interface MainLabelProps {
 
 const MainLabel: React.FC<MainLabelProps> = ({ children }) => {
   return (
-    <span className="flex items-center justify-center px-4 py-2">
+    <span className="absolute flex items-center justify-center top-nodeTop left-0 md:top-0 md:left-nodeLeft">
       <p className="m-0 text-white text-sm font-bold">{children}</p>
     </span>
   )

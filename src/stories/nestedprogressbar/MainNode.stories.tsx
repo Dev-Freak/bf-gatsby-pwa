@@ -1,15 +1,15 @@
 import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
-import BarNode, { BarNodeProps } from "../../components/NestedProgressBar/BarNode"
+import MainNode, { MainNodeProps } from "../../components/NestedProgressBar/MainNode"
 
 export default {
-  title: "Nested Progress Bar/BarNode",
-  component: BarNode,
+  title: "Nested Progress Bar/MainNode",
+  component: MainNode,
 } as Meta
 
-const Template: Story<BarNodeProps> = args => (
+const Template: Story<MainNodeProps> = args => (
   <div className="bg-brand w-12 h-12 flex items-center justify-center">
-    <BarNode {...args} />
+    <MainNode {...args} />
   </div>
 )
 

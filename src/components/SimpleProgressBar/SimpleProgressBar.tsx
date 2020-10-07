@@ -13,7 +13,7 @@ const SimpleProgressBar: React.FC<SimpleProgressBarProps> = ({
   length,
   currentNode,
 }: SimpleProgressBarProps) => {
-  let nodesArray: Array<object> = []
+  let nodesToRender: Array<object> = []
 
   for (let index = 0; index < length; index++) {
     const isNodeActive = index === currentNode
@@ -23,23 +23,23 @@ const SimpleProgressBar: React.FC<SimpleProgressBarProps> = ({
       isActive: isNodeActive,
       isCompleted: isNodeCompleted,
     }
-    nodesArray.push(newNode)
+    nodesToRender.push(newNode)
 
     if (index !== length - 1) {
       const newConnector: BarConnectorProps = {
         isCompleted: newNode.isCompleted,
       }
-      nodesArray.push(newConnector)
+      nodesToRender.push(newConnector)
     }
   }
 
   return (
-    <div className="flex items-center justify-center w-6/12 h-full py-2 px-10">
+    <div className="flex items-center justify-center m-auto h-full py-2 px-4 md:w-10/12 md:px-10 lg:w-8/12">
       <div className="flex flex-1 items-justify flex-no-wrap">
-        {nodesArray.map((node, index) => {
+        {nodesToRender.map((node, index) => {
           return index % 2 === 0
-            ? React.createElement(BarNode, node)
-            : React.createElement(BarConnector, node)
+            ? React.createElement(BarNode, { key: `node-${index}`, ...node })
+            : React.createElement(BarConnector, { key: `node-${index}`, ...node })
         })}
       </div>
     </div>

@@ -1,5 +1,4 @@
 import * as React from "react"
-import PropTypes from "prop-types"
 
 export interface BarConnectorProps {
   isVertical?: true | false
@@ -16,14 +15,6 @@ const BarConnector: React.FC<BarConnectorProps> = ({
       <span style={styles} className={`block bg-brandIdleLight ${classes}`} />
     </div>
   )
-}
-
-BarConnector.propTypes = {
-  isVertical: PropTypes.bool,
-}
-
-BarConnector.defaultProps = {
-  isVertical: false,
 }
 
 export default BarConnector

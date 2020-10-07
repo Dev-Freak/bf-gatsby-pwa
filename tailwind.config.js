@@ -9,6 +9,10 @@ module.exports = {
       poppins: ["Poppins", "sans-serif"],
     },
     extend: {
+      inset: {
+        nodeTop: "20px",
+        nodeLeft: "30px",
+      },
       fontSize: {
         xxs: "10px",
       },
