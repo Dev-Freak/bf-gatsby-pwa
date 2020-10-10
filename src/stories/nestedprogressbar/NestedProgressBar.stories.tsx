@@ -10,7 +10,9 @@ export default {
 } as Meta
 
 const Template: Story<NestedProgressBarProps> = args => (
-  <NestedProgressBar {...args} />
+  <div className="bg-brand w-screen h-24 flex items-center justify-center md:w-6/12 md:h-full md:py-10">
+    <NestedProgressBar {...args} />
+  </div>
 )
 
 export const Default = Template.bind({})
@@ -23,11 +25,16 @@ Default.args = {
     },
     {
       title: "Second",
-      subNodes: ["Second-SubFirst", "Second-SubSecond", "Second-SubThird"],
+      subNodes: [
+        "Second-SubFirst",
+        "Second-SubSecond",
+        "Second-SubThird",
+        "Second-SubFourth",
+      ],
     },
     {
       title: "Third",
       subNodes: ["Third-SubFirst", "Third-SubSecond", "Third-SubThird"],
     },
-  ] /*  as Array<ItemProps> */,
-}
+  ],
+} as NestedProgressBarProps

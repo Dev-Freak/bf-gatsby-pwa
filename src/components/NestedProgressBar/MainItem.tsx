@@ -1,11 +1,19 @@
 import * as React from "react"
 
-export interface MainItemProps {}
+import MainNode from "./MainNode"
+import MainLabel from "./MainLabel"
 
-const MainItem: React.FC<MainItemProps> = ({ children }) => {
+export interface MainItemProps {
+  title: string
+  isActive: true | false
+  isCompleted: true | false
+}
+
+const MainItem: React.FC<MainItemProps> = ({ title, isActive, isCompleted }) => {
   return (
     <div className={`relative flex flex-col items-center justify-start md:flex-row`}>
-      {children}
+      <MainNode isActive={isActive} isCompleted={isCompleted} />
+      <MainLabel>{title}</MainLabel>
     </div>
   )
 }

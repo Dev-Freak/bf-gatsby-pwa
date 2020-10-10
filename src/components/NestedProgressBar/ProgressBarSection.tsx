@@ -6,7 +6,7 @@ import MainLabel from "./MainLabel"
 import NestedItem from "./NestedItem"
 import NestedNode from "./NestedNode"
 import NestedLabel from "./NestedLabel"
-import BarConnector, { BarConnectorProps } from "./BarConnector"
+import BarConnector from "./BarConnector"
 
 export type SectionType = {
   title: string
@@ -15,53 +15,51 @@ export type SectionType = {
 
 export interface ProgressBarSectionProps {
   section: SectionType
+  activeNode?: number
   isActive: true | false
   isCompleted: true | false
 }
 
 const ProgressBarSection: React.FC<ProgressBarSectionProps> = ({
   section,
+  activeNode,
   ...nodeBools
 }: ProgressBarSectionProps) => {
-  const nodesToRender: Array<object> = []
-
-  const createMainComp = (title: string) => {
-    return (
-      <MainItem>
-        <MainNode {...nodeBools}></MainNode>
-        <MainLabel>{title}</MainLabel>
-      </MainItem>
-    )
-  }
-
-  const createSubComp = (title: string, key: number) => {
-    return (
-      <NestedItem key={`main-item-${key}`}>
-        <NestedNode {...nodeBools}></NestedNode>
-        <NestedLabel>{title}</NestedLabel>
-      </NestedItem>
-    )
-  }
+  const { title, subNodes } = section
+  const { isActive, isCompleted } = nodeBools
 
   return (
-    <React.Fragment>
-      {nodeBools.isCompleted ? (
-        createMainComp(section.title)
+    <div className="flex items-center justify-center w-full max-w-xs md:max-w-screen md:flex-col">
+      {isCompleted ? (
+        <React.Fragment>
+          <MainItem title={title} {...nodeBools} />
+          <BarConnector />
+        </React.Fragment>
       ) : (
         <React.Fragment>
-          {createMainComp(section.title)}
+          <MainItem title={title} {...nodeBools} />
           <BarConnector />
-          {section.subNodes.forEach((node, index) => {
-            return (
-              <React.Fragment>
-                {createSubComp(node, index)}
-                <BarConnector />
-              </React.Fragment>
-            )
-          })}
+          {isActive &&
+            subNodes.map((node, index) => {
+              let isSubNodeActive
+              if (activeNode != null) isSubNodeActive = activeNode >= index
+
+              return (
+                <div
+                  key={`frag-${index}`}
+                  className="hidden flex-col items-center justify-center md:flex"
+                >
+                  <NestedItem key={`nested-item-${index}`}>
+                    <NestedNode isActive={isSubNodeActive}></NestedNode>
+                    <NestedLabel>{node}</NestedLabel>
+                  </NestedItem>
+                  <BarConnector />
+                </div>
+              )
+            })}
         </React.Fragment>
       )}
-    </React.Fragment>
+    </div>
   )
 }
 

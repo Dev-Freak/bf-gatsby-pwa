@@ -20,13 +20,20 @@ module.exports = {
         7: "1.75rem",
       },
       height: {
+        connector: "35px",
+        firstConnect: "40px",
+        lastConnector: "6rem",
         node: "18px",
         36: "9rem",
       },
       width: {
+        connector: "2px",
         fit: "fit-content",
         node: "18px",
         36: "9rem",
+      },
+      maxHeight: {
+        connector: "4rem",
       },
       colors: {
         disabled: "#D6D6D6",

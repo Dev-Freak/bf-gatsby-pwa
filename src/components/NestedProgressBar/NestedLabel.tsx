@@ -7,7 +7,7 @@ export interface NestedLabelProps {
 
 const NestedLabel: React.FC<NestedLabelProps> = ({ children }) => {
   return (
-    <span className="absolute hidden items-center justify-center px-6 py-2 md:flex">
+    <span className="absolute hidden items-center justify-center px-8 py-2 md:flex">
       <p className="m-0 text-white text-xxs font-normal">{children}</p>
     </span>
   )

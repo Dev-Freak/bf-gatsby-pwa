@@ -10,10 +10,7 @@ const BarConnector: React.FC<BarConnectorProps> = ({ isCompleted }) => {
 
   return (
     <div className="flex items-center justify-center flex-grow">
-      <span
-        style={{ height: "2px" }}
-        className={`block w-full max-w-xs ${style}`}
-      ></span>
+      <span style={{ height: "2px" }} className={`block w-full max-w-xs ${style}`} />
     </div>
   )
 }

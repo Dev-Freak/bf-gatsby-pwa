@@ -1,11 +1,9 @@
 import * as React from "react"
 
-import MainItem from "./MainItem"
-import MainNode, { MainNodeProps } from "./MainNode"
-import MainLabel, { MainLabelProps } from "./MainLabel"
-import NestedItem from "./NestedItem"
-
-import ProgressBarSection, { SectionType } from "./ProgressBarSection"
+import ProgressBarSection, {
+  ProgressBarSectionProps,
+  SectionType,
+} from "./ProgressBarSection"
 
 export interface NestedProgressBarProps {
   item: Array<SectionType>
@@ -16,35 +14,46 @@ const NestedProgressBar: React.FC<NestedProgressBarProps> = ({
   item,
   currentNode,
 }: NestedProgressBarProps) => {
-  let nodesToRender: Array<object> = []
+  const mainNodes: Array<string> = item.map(node => node.title)
 
-  const mainNodes = item.map(node => node.title)
-  const subNodes = item.map(node => {
+  const subNodes: Array<Array<string>> = item.map(node => {
     const sub = node.subNodes
-    return { ...sub }
+    return [...sub]
   })
+
   const reducedSubNodes = subNodes.reduce(
     (r, n) => (Object.keys(n).map(sub => r.push(n[parseInt(sub)])), r),
     []
   )
-  //const subNodesCount = subNodes.reduce((a, b) => )
 
-  const currentSubNode = subNodes
+  let nodesAccum = 0
+  let nodesToRender: Array<ProgressBarSectionProps> = []
+  for (let index = 0; index < mainNodes.length; index++) {
+    const prevAccum = nodesAccum
+    nodesAccum += subNodes[index].length
 
-  for (let mainIndex = 0; mainIndex < mainNodes.length; mainIndex++) {
-    const main = mainNodes[mainIndex]
+    const activeSubNode = currentNode - prevAccum
 
-    /* const newMainNode: MainItemProps {
-    } */
+    const newSectionProps: ProgressBarSectionProps = {
+      section: {
+        title: mainNodes[index],
+        subNodes: subNodes[index],
+      } as SectionType,
+      isActive: currentNode >= prevAccum && currentNode < nodesAccum,
+      isCompleted: currentNode >= nodesAccum,
+      activeNode: activeSubNode,
+    }
+
+    nodesToRender.push(newSectionProps)
   }
-
-  console.log(mainNodes)
-  console.log(subNodes)
-  console.log(reducedSubNodes)
 
   return (
     <div>
-      <div>{}</div>
+      <div className="flex items-center justify-center md:flex-col">
+        {nodesToRender.map(node => (
+          <ProgressBarSection {...node} />
+        ))}
+      </div>
     </div>
   )
 }

@@ -10,7 +10,7 @@ export default {
 } as Meta
 
 const Template: Story<ProgressBarSectionProps> = args => (
-  <div className="bg-brand w-8 h-8 flex items-center justify-center">
+  <div className="bg-brand w-screen h-24 flex items-center justify-center md:w-6/12 md:h-full md:py-10">
     <ProgressBarSection {...args} />
   </div>
 )
@@ -18,9 +18,10 @@ const Template: Story<ProgressBarSectionProps> = args => (
 export const Default = Template.bind({})
 Default.args = {
   section: {
-    title: "Main",
-    subNodes: ["First", "Second", "Third"],
+    title: "Applicants",
+    subNodes: ["Basic Information", "Contact Information", "Residential Details"],
   },
+  activeNode: 1,
   isActive: true,
   isCompleted: false,
 }
