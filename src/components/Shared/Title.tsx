@@ -1,7 +1,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 
-export interface TitleProps {
+export type TitleProps = {
   children: string
 }
 
