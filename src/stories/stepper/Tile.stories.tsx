@@ -15,12 +15,12 @@ const Template: Story<TileProps> = args => <Tile {...args} />
 export const Default = Template.bind({})
 Default.args = {
   img: Logo,
-  text: "Commercial",
+  children: "Commercial",
 }
 
 export const Selected = Template.bind({})
 Selected.args = {
   isSelected: true,
   img: Logo,
-  text: "Commercial",
+  children: "Commercial",
 }

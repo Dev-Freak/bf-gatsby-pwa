@@ -2,19 +2,19 @@ import * as React from "react"
 import PropTypes from "prop-types"
 
 export interface TileProps {
-  text: string
+  children: string
   img: any
   isSelected?: Boolean
 }
 
-const Tile: React.FC<TileProps> = ({ isSelected, text, img }) => {
+const Tile: React.FC<TileProps> = ({ isSelected, children, img }) => {
   const styles = isSelected ? "bg-brand" : ""
   const svgStyles = isSelected ? "tile-selected" : "tile-idle"
   const textStyles = isSelected ? "text-white" : "text-brand"
 
   return (
     <div
-      className={`w-36 h-36 shadow-md rounded-lg cursor-pointer md:w-40 md:h-40 ${styles}`}
+      className={`w-32 h-32 shadow-md rounded-lg cursor-pointer md:w-40 md:h-40 ${styles}`}
       onClick={() => {}}
     >
       <div
@@ -25,14 +25,14 @@ const Tile: React.FC<TileProps> = ({ isSelected, text, img }) => {
           alt="Logo"
           className={`object-cover w-10 h-10 md:w-12 md:h-12 ${svgStyles}`}
         />
-        <p className={`${textStyles}`}>{text}</p>
+        <p className={`text-center text-sm ${textStyles}`}>{children}</p>
       </div>
     </div>
   )
 }
 
 Tile.propTypes = {
-  text: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   isSelected: PropTypes.bool,
 }

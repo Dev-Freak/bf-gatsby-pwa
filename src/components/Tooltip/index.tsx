@@ -2,7 +2,9 @@ import * as React from "react"
 
 import { InfoCircle } from "@styled-icons/bootstrap/"
 
-export interface TooltipProps {}
+export type TooltipProps = {
+  children: string
+}
 
 const Tooltip: React.FC<TooltipProps> = ({ children }) => {
   return (
