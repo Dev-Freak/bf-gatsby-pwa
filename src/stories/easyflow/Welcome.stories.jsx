@@ -1,13 +1,17 @@
 import * as React from "react"
-import { Story, Meta } from "@storybook/react/types-6-0"
 
 import Welcome from "../../components/EasyFlow/Welcome"
+import StateProvider from "../../store/AppStore"
 
 export default {
   title: "EasyFlow Steps/Welcome",
   component: Welcome,
-} as Meta
+}
 
-const Template: Story = args => <Welcome {...args} />
+const Template = args => (
+  <StateProvider>
+    <Welcome {...args} />
+  </StateProvider>
+)
 
 export const Default = Template.bind({})

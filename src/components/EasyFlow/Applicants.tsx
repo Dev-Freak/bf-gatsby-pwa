@@ -8,33 +8,36 @@ import StepHeader from "../Shared/StepHeader"
 import StepWithBackButtonContainer from "../DynamicStepper/StepWithBackButtonContainer"
 
 import {
-  AssetsFinancialLogo,
-  CommercialLogo,
-  ResidentialLogo,
-  OtherLogo,
+  OneApplicant,
+  TwoApplicant,
+  ThreeApplicant,
+  FourApplicant,
 } from "../../utils/icons"
 
-const Welcome: React.FC = () => {
+const Applicants: React.FC = () => {
   return (
     <StepWithBackButtonContainer>
       <StepHeader>
-        <TitleWithTooltip title="Welcome">Norem ipsum...</TitleWithTooltip>
+        <TitleWithTooltip title="How many applicants?">
+          Norem ipsum...
+        </TitleWithTooltip>
         <Description>
-          Please select the most relevant option to your needs
+          Please select the amount of applicants that will be registered in this
+          application
         </Description>
       </StepHeader>
 
       <TilesContainer stepKeyName="path">
-        <Tile img={AssetsFinancialLogo}>Asset financial</Tile>
+        <Tile img={OneApplicant}>1 Applicant</Tile>
 
-        <Tile img={ResidentialLogo}>Residential</Tile>
+        <Tile img={TwoApplicant}>2 Applicants</Tile>
 
-        <Tile img={OtherLogo}>Other financial enquiries</Tile>
+        <Tile img={ThreeApplicant}>3 Applicants</Tile>
 
-        <Tile img={CommercialLogo}>Commercial</Tile>
+        <Tile img={FourApplicant}>4 Applicants</Tile>
       </TilesContainer>
     </StepWithBackButtonContainer>
   )
 }
 
-export default Welcome
+export default Applicants
