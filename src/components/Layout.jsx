@@ -13,10 +13,10 @@ import Header from "./Header"
 import Footer from "./Footer"
 import "./layout.css"
 
-export interface LayoutProps {}
+import StateProvider from "../store/AppStore"
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const data = useStaticQuery(graphql`
+const Layout = ({ children }) => {
+  /* const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -24,7 +24,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         }
       }
     }
-  `)
+  `) */
 
   return (
     <>
@@ -36,7 +36,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
-        <main>{children}</main>
+        <StateProvider>
+          <main>{children}</main>
+        </StateProvider>
       </div>
       <Footer />
     </>
