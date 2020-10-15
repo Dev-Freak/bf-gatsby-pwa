@@ -4,12 +4,19 @@ import PropTypes from "prop-types"
 export interface SecondaryProps {
   label: string
   className?: string
+  onClick: VoidFunction
 }
 
-const Secondary: React.FC<SecondaryProps> = ({ label, className, children }) => {
+const Secondary: React.FC<SecondaryProps> = ({
+  label,
+  className,
+  children,
+  onClick,
+}) => {
   return (
     <button
       className={`flex items-center justify-center space-x-2 space-around py-2 px-7 ${className}`}
+      onClick={onClick}
     >
       {React.Children.only(
         React.cloneElement(children as React.ReactElement, {

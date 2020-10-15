@@ -8,7 +8,7 @@ export type TooltipProps = {
 
 const Tooltip: React.FC<TooltipProps> = ({ children }) => {
   return (
-    <div className="absolute mx-2 w-4 h-4 group hover:w-10/12">
+    <div className="mx-2 w-4 h-4 group hover:w-10/12">
       <span className="flex w-4 h-4 items-center">
         <InfoCircle className="w-full h-full" />
       </span>

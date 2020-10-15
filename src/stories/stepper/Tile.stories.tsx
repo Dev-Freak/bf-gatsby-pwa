@@ -2,6 +2,7 @@ import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
 
 import Tile, { TileProps } from "../../components/Tile"
+import StateProvider from "../../store/AppStore"
 
 const Logo = require("../../images/icons/Icon1.svg")
 
@@ -10,17 +11,14 @@ export default {
   component: Tile,
 } as Meta
 
-const Template: Story<TileProps> = args => <Tile {...args} />
+const Template: Story<TileProps> = args => (
+  <StateProvider>
+    <Tile {...args} />
+  </StateProvider>
+)
 
 export const Default = Template.bind({})
 Default.args = {
-  img: Logo,
-  children: "Commercial",
-}
-
-export const Selected = Template.bind({})
-Selected.args = {
-  isSelected: true,
   img: Logo,
   children: "Commercial",
 }

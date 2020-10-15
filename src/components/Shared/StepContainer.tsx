@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const StepHeader: React.FC = ({ children }) => {
+const StepContainer: React.FC = ({ children }) => {
   return (
     <div className="max-w-4xl w-fit flex flex-col justify-center items-center space-y-10">
       {children}
@@ -8,4 +8,4 @@ const StepHeader: React.FC = ({ children }) => {
   )
 }
 
-export default StepHeader
+export default StepContainer

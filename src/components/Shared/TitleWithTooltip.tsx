@@ -10,8 +10,9 @@ export interface TitleWithTooltipProps {
 
 const TitleWithTooltip: React.FC<TitleWithTooltipProps> = ({ title, children }) => {
   return (
-    <div className="flex ">
+    <div className="flex">
       <Title>{title}</Title>
+
       <Tooltip>{children}</Tooltip>
     </div>
   )

@@ -3,22 +3,23 @@ import PropTypes from "prop-types"
 
 import CheckBox from "../CheckBox"
 
+const useToggleTile = require("../../hooks/useToggleTile/index").default
+
 export interface TileWithCheckBoxProps {
   img: string
   text: string
-  isSelected?: boolean
+  stepKeyName: string
   isDisabled?: boolean
-  onSelect(text: string): VoidFunction
 }
 
 const TileWithCheckBox: React.FC<TileWithCheckBoxProps> = ({
   img,
   text,
-  isSelected,
+  stepKeyName,
   isDisabled,
-  onSelect,
 }) => {
-  const selectedStyles = isSelected && "border-2 border-brand"
+  const { isTileToggled, boundToggleTile } = useToggleTile(stepKeyName, text)
+  const selectedStyles = isTileToggled && "border-2 border-brand"
   const disabledStyles = isDisabled ? "cursor-not-allowed" : "cursor-pointer"
   const textStyles = isDisabled ? "text-disabled" : "text-brand"
   const svgStyles = isDisabled ? "tile-disabled" : "tile-idle"
@@ -26,11 +27,11 @@ const TileWithCheckBox: React.FC<TileWithCheckBoxProps> = ({
   return (
     <div
       className={`relative h-36 w-36 shadow-md rounded-lg md:w-40 md:h-40 ${selectedStyles} ${disabledStyles}`}
-      onClick={() => !isDisabled && onSelect(text)}
+      onClick={() => !isDisabled && boundToggleTile(text)}
     >
       <CheckBox
         className="absolute right-0 mt-2 mr-2"
-        checked={isSelected}
+        checked={isTileToggled}
         disabled={isDisabled}
       />
       <div
@@ -49,13 +50,10 @@ const TileWithCheckBox: React.FC<TileWithCheckBoxProps> = ({
 
 TileWithCheckBox.propTypes = {
   img: PropTypes.string.isRequired,
-  isSelected: PropTypes.bool,
   isDisabled: PropTypes.bool,
-  onSelect: PropTypes.func.isRequired,
 }
 
 TileWithCheckBox.defaultProps = {
-  isSelected: false,
   isDisabled: false,
 }
 
