@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
 
-import StepHeader from "../../components/Shared/StepHeader"
+import StepHeader from "../../components/DynamicStepper/StepHeader"
 import TitleWithTooltip from "../../components/Shared/TitleWithTooltip"
 import Description from "../../components/Shared/Description"
 

@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import SimpleProgressBar from "../SimpleProgressBar/SimpleProgressBar"
-import StepperContainer from "../Shared/StepperContainer"
+import StepperContainer from "./StepperContainer"
 
 import useDynamicStepper from "../../hooks/useDynamicStepper"
 

@@ -4,7 +4,7 @@ import Tile from "../Tile"
 import TilesContainer from "../Shared/TilesContainer"
 import TitleWithTooltip from "../Shared/TitleWithTooltip"
 import Description from "../Shared/Description"
-import StepHeader from "../Shared/StepHeader"
+import StepHeader from "../DynamicStepper/StepHeader"
 import StepWithBackButtonContainer from "../DynamicStepper/StepWithBackButtonContainer"
 
 import { EstablishedLogo, OffThePlanLogo, ConstructionLogo } from "../../utils/icons"

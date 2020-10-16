@@ -1,6 +1,6 @@
 import * as React from "react"
 
-type TilesContainerType = {
+export type TilesContainerType = {
   stepKeyName: string
 }
 

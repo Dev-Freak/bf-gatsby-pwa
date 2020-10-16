@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
 import TilesContainer, {
-  TilesContainerProps,
+  TilesContainerType,
 } from "../../components/Shared/TilesContainer"
 
 import Tile from "../../components/Tile"
@@ -12,11 +12,11 @@ const ResidentialLogo = require("../../images/icons/Icon8.svg")
 const OtherLogo = require("../../images/icons/Icon5.svg")
 
 export default {
-  title: "Shared/TilesContainer",
+  title: "DynamicStepper/TilesContainer",
   component: TilesContainer,
 } as Meta
 
-const Template: Story<TilesContainerProps> = args => (
+const Template: Story<TilesContainerType> = args => (
   <TilesContainer {...args}>
     <Tile img={AssetsFinancialLogo}>Asset financial</Tile>
 
