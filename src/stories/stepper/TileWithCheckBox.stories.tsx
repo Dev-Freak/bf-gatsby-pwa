@@ -15,14 +15,13 @@ export default {
 
 const Template: Story<TileWithCheckBoxProps> = args => (
   <StateProvider>
-    <TileWithCheckBox {...args} />
+    <TileWithCheckBox {...args}>Commercial</TileWithCheckBox>
   </StateProvider>
 )
 
 export const Default = Template.bind({})
 Default.args = {
   img: Logo,
-  text: "Commercial",
   stepKeyName: "path",
 }
 
@@ -30,6 +29,5 @@ export const Disabled = Template.bind({})
 Disabled.args = {
   img: Logo,
   text: "Commercial",
-  stepKeyName: "path",
   isDisabled: true,
 }

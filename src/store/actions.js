@@ -5,6 +5,7 @@ export const ActionTypes = {
   EASY_FLOW_TOGGLE_TILE: "EASY_FLOW_TOGGLE_TILE",
   EASY_FLOW_GO_NEXT: "EASY_FLOW_GO_NEXT",
   EASY_FLOW_GO_BACK: "EASY_FLOW_GO_BACK",
+  EASY_FLOW_ADD_APPLICANTS: "EASY_FLOW_ADD_APPLICANTS",
 }
 
 // Action Creators
@@ -32,6 +33,13 @@ const goNext = () => {
 const goBack = () => {
   return {
     type: ActionTypes.EASY_FLOW_GO_BACK,
+  }
+}
+
+const addApplicants = qty => {
+  return {
+    type: ActionTypes.EASY_FLOW_ADD_APPLICANTS,
+    payload: qty,
   }
 }
 

@@ -1,5 +1,7 @@
 import * as React from "react"
 
+import TileLabel from "../Shared/TileLabel"
+import TileContent from "../Shared/TileContent"
 const useSelectTile = require("../../hooks/useSelectTile/index").default
 
 export interface TileProps {
@@ -19,16 +21,14 @@ const Tile: React.FC<TileProps> = ({ img, keyName, children }) => {
       className={`w-32 h-32 shadow-md rounded-lg cursor-pointer md:w-40 md:h-40 ${styles}`}
       onClick={() => boundSelectTile()}
     >
-      <div
-        className={`p-2 w-full h-full flex flex-col flex-1 items-center justify-center space-y-4`}
-      >
+      <TileContent>
         <img
           src={img}
           alt="Logo"
           className={`object-cover w-10 h-10 md:w-12 md:h-12 ${svgStyles}`}
         />
-        <p className={`text-center text-sm ${textStyles}`}>{children}</p>
-      </div>
+        <TileLabel className={textStyles}>{children}</TileLabel>
+      </TileContent>
     </div>
   )
 }

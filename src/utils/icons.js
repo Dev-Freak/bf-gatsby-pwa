@@ -25,7 +25,7 @@ export const ConstructionLogo = require("../images/icons/Icon3.svg")
 
 // Applicant Income Type
 export const PayslipLogo = require("../images/icons/Icon20.svg")
-export const PensionCenterLinkLogo = require("../images/icons/Icon16.svg")
+export const PensionCentrelinkLogo = require("../images/icons/Icon16.svg")
 export const SelfEmployedLogo = require("../images/icons/Icon43.svg")
 
 // Applicant Employment Type
