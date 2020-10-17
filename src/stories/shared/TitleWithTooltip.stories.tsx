@@ -11,10 +11,17 @@ export default {
 } as Meta
 
 const Template: Story<TitleWithTooltipProps> = args => (
-  <TitleWithTooltip {...args}>Lorem ipsum...</TitleWithTooltip>
+  <TitleWithTooltip {...args}>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  </TitleWithTooltip>
 )
 
 export const Default = Template.bind({})
 Default.args = {
   title: "Welcome",
+}
+
+export const Long = Template.bind({})
+Long.args = {
+  title: "Type of Applicantion",
 }
