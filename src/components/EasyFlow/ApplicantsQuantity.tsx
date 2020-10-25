@@ -1,5 +1,7 @@
 import * as React from "react"
 
+import useApplicantsQuantity from "../../hooks/useApplicantsQuantity"
+
 import Tile from "../Tile"
 import TilesContainer from "../Shared/TilesContainer"
 import TitleWithTooltip from "../Shared/TitleWithTooltip"
@@ -15,6 +17,8 @@ import {
 } from "../../utils/icons"
 
 const ApplicantsQuantity: React.FC = () => {
+  const { handleSetApplicantsQuantity } = useApplicantsQuantity()
+
   return (
     <StepWithBackButtonContainer>
       <StepHeader>
@@ -27,7 +31,10 @@ const ApplicantsQuantity: React.FC = () => {
         </Description>
       </StepHeader>
 
-      <TilesContainer stepKeyName="applicants_qty">
+      <TilesContainer
+        stepKeyName="applicants_qty"
+        onTileClick={value => handleSetApplicantsQuantity(value)}
+      >
         <Tile img={OneApplicantLogo}>1 Applicant</Tile>
 
         <Tile img={TwoApplicantLogo}>2 Applicants</Tile>
