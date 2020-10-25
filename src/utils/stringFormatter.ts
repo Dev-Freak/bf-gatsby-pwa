@@ -1,6 +1,12 @@
+export const firstCharToUpper = (word: string): string => word.charAt(0).toUpperCase() + word.slice(1)
+
 export const formatKey = (name: string): string => {
+  if (!name.includes('_')) {
+    return firstCharToUpper(name)
+  }
+
   const nameArray = name.split('_');
-  const firstElToUpper = nameArray[0].charAt(0).toUpperCase() + nameArray[0].slice(1);
+  const firstElToUpper = firstCharToUpper(nameArray[0])
 
   return `${firstElToUpper} ${nameArray[1]}`
 }

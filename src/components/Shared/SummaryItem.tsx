@@ -6,52 +6,48 @@ import Value from "./Value"
 import { formatKey } from "../../utils/stringFormatter"
 
 type SelectedValue = {
-  [keyValue: string]: string
+  [key: string]: string | SelectedValue
 }
 
-type SelectedValues = {
-  [keyItem: string]: SelectedValue
-}
-
-export interface SummaryItemProps {
+export type SummaryItemProps = {
   itemTitle: string
-  value: string | SelectedValues
+  value: string | SelectedValue
 }
 
 const SummaryItem: React.FC<SummaryItemProps> = ({
   itemTitle,
   value,
 }: SummaryItemProps) => {
-  const getComponents = (data: SelectedValues) => {
+  const getComponents = (data: SelectedValue) => {
     if (data !== null && typeof data === "object")
       return Object.keys(value).map((key: any) => {
         const item = data[key]
 
         if (item !== null && typeof item === "object") {
           return (
-            <React.Fragment>
+            <div className="pb-5" key={key}>
               <Value>{formatKey(key)}</Value>
-              <div className="px-6 pb-4">
+              <div className="px-6">
                 {Object.keys(item).map((subKey: any, index) => {
                   const subItem = item[subKey]
 
                   return (
-                    <Value key={`value-${index}`}>{`${formatKey(
-                      subKey
-                    )}: ${subItem}`}</Value>
+                    <Value key={`value-${index}`}>
+                      {`${formatKey(subKey)}: ${subItem}`}
+                    </Value>
                   )
                 })}
               </div>
-            </React.Fragment>
+            </div>
           )
         } else
           return (
-            <React.Fragment>
+            <div className="pb-5">
               <Value>{key}</Value>
               <div className="px-6">
-                <Value>{formatKey(item)}</Value>
+                <Value>{formatKey(item.toString())}</Value>
               </div>
-            </React.Fragment>
+            </div>
           )
       })
   }
@@ -60,7 +56,7 @@ const SummaryItem: React.FC<SummaryItemProps> = ({
     typeof value === "string" ? <Value>{value}</Value> : getComponents(value)
 
   return (
-    <div>
+    <div className="pb-4">
       <SubTitle>{itemTitle}</SubTitle>
       {components}
     </div>

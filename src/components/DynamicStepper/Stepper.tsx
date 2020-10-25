@@ -5,11 +5,11 @@ import StepperContainer from "./StepperContainer"
 
 import useDynamicStepper from "../../hooks/useDynamicStepper"
 
-export interface StepperProps {
+export type StepperProps = {
   steps: Array<React.ReactElement>
 }
 
-const Stepper: React.FC<StepperProps> = ({ steps }) => {
+const Stepper: React.FC<StepperProps> = ({ steps }: StepperProps) => {
   const { length, currentStep, currentElement } = useDynamicStepper(steps)
 
   return (

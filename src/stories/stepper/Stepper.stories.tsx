@@ -11,7 +11,7 @@ import ApplicantsIncomeTabs from "../../components/EasyFlow/ApplicantsIncome/App
 import Stepper, { StepperProps } from "../../components/DynamicStepper/Stepper"
 
 export default {
-  title: "Stepper/EasyFlow",
+  title: "Stepper/EasyFlow Stepper",
   componenet: Stepper,
 } as Meta
 

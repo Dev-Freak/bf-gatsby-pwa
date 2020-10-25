@@ -4,7 +4,7 @@ const useDynamicStepper = steps => {
   const { state } = useStore()
 
   const length = steps.length
-  const currentStep = state?.easyFlow?.currentStep
+  const currentStep = state?.currentStep
   const currentElement = steps[currentStep]
 
   return { length, currentStep, currentElement }

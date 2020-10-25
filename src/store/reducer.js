@@ -26,12 +26,12 @@ export const reducer = (state, action) => {
     case ActionTypes.EASY_FLOW_SELECT_TILE:
       return {
         ...state,
-        easyFlow: { ...state.easyFlow, [payload.key]: payload.value },
+        easyFlow: { ...state.easyFlow, [payload.keyName]: payload.value },
       }
 
     case ActionTypes.EASY_FLOW_TOGGLE_TILE:
       easyFlowTemp = { ...state.easyFlow }
-      let keyPropertyValue = easyFlowTemp?.[payload.key]
+      let keyPropertyValue = easyFlowTemp?.[payload.keyName]
 
       if (keyPropertyValue) {
         const indexOfValue = keyPropertyValue.indexOf(payload.value)
@@ -42,12 +42,12 @@ export const reducer = (state, action) => {
 
         easyFlowTemp = {
           ...easyFlowTemp,
-          [payload.key]: [...keyPropertyValue],
+          [payload.keyName]: [...keyPropertyValue],
         }
       } else {
         easyFlowTemp = {
           ...easyFlowTemp,
-          [payload.key]: [payload.value],
+          [payload.keyName]: [payload.value],
         }
       }
 
