@@ -5,6 +5,7 @@ export interface PrimaryProps {
   label: string
   isDisabled?: boolean
   className?: string
+  onClick: CallableFunction
 }
 
 const Primary: React.FC<PrimaryProps> = ({
@@ -12,6 +13,7 @@ const Primary: React.FC<PrimaryProps> = ({
   className,
   children,
   isDisabled,
+  onClick,
 }) => {
   const buttonStyle = isDisabled
     ? "text-disabled border-disabled cursor-not-allowed"
@@ -21,6 +23,7 @@ const Primary: React.FC<PrimaryProps> = ({
   return (
     <button
       className={`flex items-center justify-center space-x-2 space-around py-2 px-7 rounded-full border active:border-0 ${className} ${buttonStyle}`}
+      onClick={() => (isDisabled ? null : onClick())}
     >
       <p className={`font-bold`}>{label}</p>
       {React.Children.only(
