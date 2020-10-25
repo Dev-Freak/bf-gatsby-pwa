@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
-import TabHeader, { TabHeaderProps } from "../../components/TabHeader"
+import TabHeader, { TabHeaderProps } from "../../components/Tab/TabHeader"
 
 export default {
   title: "Shared/TabHeader",

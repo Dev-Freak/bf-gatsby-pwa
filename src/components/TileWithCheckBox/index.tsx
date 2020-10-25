@@ -1,40 +1,44 @@
 import * as React from "react"
-import PropTypes from "prop-types"
+
+import useToggleTile from "../../hooks/useToggleTile"
 
 import CheckBox from "../CheckBox"
 import TileLabel from "../Shared/TileLabel"
 import TileContent from "../Shared/TileContent"
 
-const useToggleTile = require("../../hooks/useToggleTile/index").default
-
 export interface TileWithCheckBoxProps {
   img: string
   children: string
   keyName?: string
-  isDisabled?: boolean
+  isMultiple?: true | false
 }
 
 const TileWithCheckBox: React.FC<TileWithCheckBoxProps> = ({
   img,
   children,
   keyName,
-  isDisabled,
+  isMultiple,
 }) => {
-  const { isTileToggled, boundToggleTile } = useToggleTile(keyName, children)
+  const { isTileToggled, isDisabled, handleToggleTile } = useToggleTile(
+    keyName,
+    children,
+    isMultiple
+  )
   const selectedStyles = isTileToggled && "border-2 border-brand"
-  const disabledStyles = isDisabled ? "cursor-not-allowed" : "cursor-pointer"
-  const textStyles = isDisabled ? "text-disabled" : "text-brand"
-  const svgStyles = isDisabled ? "tile-disabled" : "tile-idle"
+  const disabledStyles =
+    !isMultiple && isDisabled ? "cursor-not-allowed" : "cursor-pointer"
+  const textStyles = !isMultiple && isDisabled ? "text-disabled" : "text-brand"
+  const svgStyles = !isMultiple && isDisabled ? "tile-disabled" : "tile-idle"
 
   return (
     <div
       className={`relative h-36 w-36 shadow-md rounded-lg md:w-40 md:h-40 ${selectedStyles} ${disabledStyles}`}
-      onClick={() => !isDisabled && boundToggleTile(children)}
+      onClick={() => (isMultiple || !isDisabled) && handleToggleTile()}
     >
       <CheckBox
         className="absolute right-0 mt-2 mr-2"
         checked={isTileToggled}
-        disabled={isDisabled}
+        disabled={!isMultiple && isDisabled}
       />
       <TileContent>
         <img
@@ -46,15 +50,6 @@ const TileWithCheckBox: React.FC<TileWithCheckBoxProps> = ({
       </TileContent>
     </div>
   )
-}
-
-TileWithCheckBox.propTypes = {
-  img: PropTypes.string.isRequired,
-  isDisabled: PropTypes.bool,
-}
-
-TileWithCheckBox.defaultProps = {
-  isDisabled: false,
 }
 
 export default TileWithCheckBox

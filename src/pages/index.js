@@ -5,9 +5,6 @@ import Layout from "../components/Layout"
 import Image from "../components/image"
 import SEO from "../components/Seo"
 
-import Welcome from "../components/EasyFlow/Welcome"
-import SimpleProgressBar from "../components/SimpleProgressBar/SimpleProgressBar"
-
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
@@ -18,7 +15,6 @@ const IndexPage = () => (
       <Image />
     </div>
     <Link to="/page-2/">Go to page 2</Link> <br />
-    <Welcome />
     {/* <Link to="/using-typescript/">Go to "Using TypeScript"</Link> */}
   </Layout>
 )
