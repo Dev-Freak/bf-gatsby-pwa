@@ -1,0 +1,38 @@
+.tabs > .menu {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.tabs > .menu > a {
+  display: flex;
+  width: 45%;
+  margin-right: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+.tabs > .menu a:first-child,
+.tabs > .menu a:nth-child(2) {
+  margin-bottom: 5px;
+}
+
+.tabs > .tab {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.tabs > .tab > div.w-full:nth-child(2) {
+  margin-top: 20px;
+}
+
+.tabs > .tab .tile {
+  margin-top: 0;
+}
+
+@media (min-width: 540px) {
+  .tabs > .menu {
+    flex-wrap: nowrap;
+  }
+}

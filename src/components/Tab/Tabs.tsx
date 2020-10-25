@@ -4,6 +4,8 @@ import { Tab } from "semantic-ui-react"
 import useTabs from "../../hooks/useTabs"
 import TabsContainer from "./TabsContainer"
 
+import "./tabs.css"
+
 export type TabProps = {
   label: string
   step: object
@@ -19,11 +21,10 @@ const Tabs: React.FC<TabsProps> = ({ steps }: TabsProps) => {
   return (
     <TabsContainer>
       <Tab
-        menu={{ secondary: true }}
         panes={panes}
         onTabChange={handleTabChange}
         activeIndex={activeTab}
-        className={"tab-header flex-col"}
+        className={"tabs flex-col"}
       />
     </TabsContainer>
   )

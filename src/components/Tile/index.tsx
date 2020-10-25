@@ -24,7 +24,7 @@ const Tile: React.FC<TileProps> = ({ img, keyName, children, onClick }) => {
 
   return (
     <div
-      className={`w-32 h-32 shadow-md rounded-lg cursor-pointer md:w-40 md:h-40 ${styles}`}
+      className={`tile selectable w-32 h-32 shadow-md rounded-lg cursor-pointer md:w-40 md:h-40 my-2 md:my-0 ${styles}`}
       onClick={() => handleSelectTile()}
     >
       <TileContent>

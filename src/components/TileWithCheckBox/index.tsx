@@ -24,7 +24,7 @@ const TileWithCheckBox: React.FC<TileWithCheckBoxProps> = ({
     children,
     isMultiple
   )
-  const selectedStyles = isTileToggled && "border-2 border-brand"
+  const selectedStyles = isTileToggled ? "border-2 border-brand" : ""
   const disabledStyles =
     !isMultiple && isDisabled ? "cursor-not-allowed" : "cursor-pointer"
   const textStyles = !isMultiple && isDisabled ? "text-disabled" : "text-brand"
@@ -32,7 +32,7 @@ const TileWithCheckBox: React.FC<TileWithCheckBoxProps> = ({
 
   return (
     <div
-      className={`relative h-36 w-36 shadow-md rounded-lg md:w-40 md:h-40 ${selectedStyles} ${disabledStyles}`}
+      className={`tile toggleable relative h-36 w-36 shadow-md rounded-lg md:w-40 md:h-40 my-2 md:my-0 ${selectedStyles} ${disabledStyles}`}
       onClick={() => (isMultiple || !isDisabled) && handleToggleTile()}
     >
       <CheckBox
