@@ -1,16 +1,32 @@
-import * as React from "react"
+import _ from "lodash"
+import useStore from "../useStore"
 
-const { Store } = require("../../store/AppStore")
-const actions = require("../../store/actions")
-
-const useToggleTile = (key: string, value: string) => {
-  const { state, dispatch } = React.useContext(Store)
+const useToggleTile = (keyName: string, value: string, isMultiple: true | false) => {
+  const { state, boundToggleTile } = useStore()
 
   const { easyFlow } = state
-  const isTileToggled = easyFlow?.[key]?.includes(value) ?? false
-  const boundToggleTile = () => dispatch(actions.toggleTile({ key, value }))
 
-  return { isTileToggled, boundToggleTile }
+  const trimKeyName = isMultiple ? keyName.replace("[]", "") : null
+  const tileValue = _.get(easyFlow, trimKeyName ?? keyName)
+  const isTileToggled = tileValue?.includes(value) ?? false
+  const tileValueIndex = isTileToggled ? tileValue.indexOf(value) : null
+  const isDisabled =
+    tileValue !== undefined && !isTileToggled && tileValue?.length !== 0
+
+  const handleToggleTile = () =>
+    trimKeyName
+      ? boundToggleTile({
+          keyName: `${trimKeyName}${
+            tileValueIndex !== null ? `[${tileValueIndex}]` : "[]"
+          }`,
+          value,
+        })
+      : boundToggleTile({
+          keyName,
+          value,
+        })
+
+  return { isTileToggled, isDisabled, handleToggleTile }
 }
 
 export default useToggleTile

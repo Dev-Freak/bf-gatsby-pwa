@@ -1,9 +1,7 @@
-import * as React from "react"
-
-import { Store } from "../../store/AppStore"
+import useStore from "../useStore"
 
 const useDynamicStepper = steps => {
-  const { state } = React.useContext(Store)
+  const { state } = useStore()
 
   const length = steps.length
   const currentStep = state?.easyFlow?.currentStep
