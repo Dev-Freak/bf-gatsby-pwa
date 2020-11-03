@@ -8,12 +8,19 @@ export const ActionTypes = {
   EASY_FLOW_GO_BACK: "EASY_FLOW_GO_BACK",
   EASY_FLOW_SET_APPLICANTS_QUANTITY: "EASY_FLOW_SET_APPLICANTS_QUANTITY",
   EASY_FLOW_SET_PATH_VALUE: "EASY_FLOW_SET_PATH_VALUE",
+  EASY_FLOW_FINISH: "EASY_FLOW_FINISH",
 
   // TABS
   TABS_SET_TAB: "TABS_SET_TAB",
 
   // SECTION
   SECTION_SET_INNER_STEP: "SECTION_SET_INNER_STEP",
+
+  // CONTACT_FORM
+  CONTACT_FORM_SET_VALUE: "CONTACT_FORM_SET_VALUE",
+
+  // ENQUIRY_DETAILS
+  ENQUIRY_DETAILS_SET_VALUE: "ENQUIRY_DETAILS_SET_VALUE",
 }
 
 // Action Creators
@@ -51,6 +58,12 @@ const setApplicantsQuantity = qty => {
   }
 }
 
+const finishEasyFlow = () => {
+  return {
+    type: ActionTypes.EASY_FLOW_FINISH,
+  }
+}
+
 const setTab = value => {
   return {
     type: ActionTypes.TABS_SET_TAB,
@@ -72,13 +85,30 @@ const setPathValue = value => {
   }
 }
 
+const setContactValue = value => {
+  return {
+    type: ActionTypes.CONTACT_FORM_SET_VALUE,
+    payload: value,
+  }
+}
+
+const setEnquiryDetailsValue = value => {
+  return {
+    type: ActionTypes.ENQUIRY_DETAILS_SET_VALUE,
+    payload: value,
+  }
+}
+
 export {
   selectTile,
   toggleTile,
   goNext,
   goBack,
   setApplicantsQuantity,
+  finishEasyFlow,
   setTab,
   setInnerStep,
   setPathValue,
+  setContactValue,
+  setEnquiryDetailsValue,
 }

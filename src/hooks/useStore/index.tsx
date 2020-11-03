@@ -25,6 +25,13 @@ const useStore = () => {
   const boundSetInnerStep = value => dispatch(actions.setInnerStep(value))
   const boundSetPathValue = value => dispatch(actions.setPathValue(value))
 
+  const boundSetContactValue = value => dispatch(actions.setContactValue(value))
+
+  const boundSetEnquiryDetailsValue = value =>
+    dispatch(actions.setEnquiryDetailsValue(value))
+
+  const boundFinishEasyFlow = () => dispatch(actions.finishEasyFlow())
+
   return {
     state,
     boundSelectTile,
@@ -32,9 +39,12 @@ const useStore = () => {
     boundGoNext,
     boundGoBack,
     boundSetApplicantsQuantity,
+    boundFinishEasyFlow,
     boundSetTab,
     boundSetInnerStep,
     boundSetPathValue,
+    boundSetContactValue,
+    boundSetEnquiryDetailsValue,
   }
 }
 

@@ -47,6 +47,8 @@ module.exports = {
         completedDark: "#00DA86",
         completedLight: "#D8FCD0",
         activeLight: "#B2BACB",
+        sliderLabel: "#2B2B2B",
+        sliderIdle: "#F1F2F3",
       },
     },
   },

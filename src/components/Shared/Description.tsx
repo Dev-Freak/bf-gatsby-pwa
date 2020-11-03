@@ -1,12 +1,14 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 
-export interface DescriptionProps {
+export type DescriptionProps = {
   children: string
+  isBold?: true | false
 }
 
-const Description: React.FC<DescriptionProps> = ({ children }) => {
-  return <p className="text-base">{children}</p>
+const Description: React.FC<DescriptionProps> = ({ children, isBold = false }) => {
+  const style = isBold ? "font-bold text-sm" : "text-base"
+  return <p className={style}>{children}</p>
 }
 
 Description.propTypes = {

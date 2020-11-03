@@ -6,8 +6,11 @@ const useToggleTile = (keyName: string, value: string, isMultiple: true | false)
 
   const { easyFlow } = state
 
-  const trimKeyName = isMultiple ? keyName.replace("[]", "") : null
+  const trimKeyName =
+    isMultiple && keyName.includes("[]") ? keyName?.replace("[]", "") : null
+
   const tileValue = _.get(easyFlow, trimKeyName ?? keyName)
+
   const isTileToggled = tileValue?.includes(value) ?? false
   const tileValueIndex = isTileToggled ? tileValue.indexOf(value) : null
   const isDisabled =
@@ -16,9 +19,7 @@ const useToggleTile = (keyName: string, value: string, isMultiple: true | false)
   const handleToggleTile = () =>
     trimKeyName
       ? boundToggleTile({
-          keyName: `${trimKeyName}${
-            tileValueIndex !== null ? `[${tileValueIndex}]` : "[]"
-          }`,
+          keyName: `${trimKeyName}${isTileToggled ? `[${tileValueIndex}]` : "[]"}`,
           value,
         })
       : boundToggleTile({

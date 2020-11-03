@@ -14,11 +14,10 @@ const Summary: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col flex-start">
+    <div className="flex flex-col space-y-6">
       <StepHeader>
         <TitleWithTooltip title="Summary">Norem ipsum...</TitleWithTooltip>
       </StepHeader>
-      <br />
       {getEntireSummary(summaryData)}
     </div>
   )

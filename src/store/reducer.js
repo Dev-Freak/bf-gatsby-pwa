@@ -11,8 +11,11 @@ export const initialState = {
   },
   easyFlow: {
     applicants: [{}, {}, {}, {}],
+    isFinished: false,
   },
   factFind: {},
+  contactInfo: {},
+  enquiryDetails: {},
 }
 
 export const reducer = (state, action) => {
@@ -99,22 +102,6 @@ export const reducer = (state, action) => {
 
       return { ...state, easyFlow: { ...easyFlowTemp } }
 
-    case ActionTypes.TABS_SET_TAB:
-      tabs = { ...state.tabs }
-
-      return {
-        ...state,
-        tabs: { section: 0, activeTab: payload },
-      }
-
-    case ActionTypes.SECTION_SET_INNER_STEP:
-      tabs = { ...state.tabs }
-
-      return {
-        ...state,
-        tabs: { ...tabs, section: payload },
-      }
-
     case ActionTypes.EASY_FLOW_SET_PATH_VALUE:
       easyFlowTemp = { ...state.easyFlow }
       let currentValue
@@ -136,6 +123,42 @@ export const reducer = (state, action) => {
       easyFlowTemp = objRemoveEmptyOrNull(easyFlowTemp)
 
       return { ...state, easyFlow: { ...easyFlowTemp } }
+
+    case ActionTypes.EASY_FLOW_FINISH:
+      easyFlowTemp = { ...state.easyFlow }
+
+      return { ...state, easyFlow: { ...easyFlowTemp, isFinished: true } }
+
+    case ActionTypes.TABS_SET_TAB:
+      tabs = { ...state.tabs }
+
+      return {
+        ...state,
+        tabs: { section: 0, activeTab: payload },
+      }
+
+    case ActionTypes.SECTION_SET_INNER_STEP:
+      tabs = { ...state.tabs }
+
+      return {
+        ...state,
+        tabs: { ...tabs, section: payload },
+      }
+
+    case ActionTypes.CONTACT_FORM_SET_VALUE:
+      return {
+        ...state,
+        contactInfo: { ...state.contactInfo, [payload.keyName]: payload.value },
+      }
+
+    case ActionTypes.ENQUIRY_DETAILS_SET_VALUE:
+      return {
+        ...state,
+        enquiryDetails: {
+          ...state.enquiryDetails,
+          [payload.keyName]: payload.value,
+        },
+      }
 
     default:
       return state

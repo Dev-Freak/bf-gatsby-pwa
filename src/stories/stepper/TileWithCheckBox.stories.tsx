@@ -22,12 +22,5 @@ const Template: Story<TileWithCheckBoxProps> = args => (
 export const Default = Template.bind({})
 Default.args = {
   img: Logo,
-  stepKeyName: "path",
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-  img: Logo,
-  text: "Commercial",
-  isDisabled: true,
+  keyName: "path",
 }

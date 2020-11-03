@@ -36,4 +36,11 @@
     filter: invert(100%) sepia(0%) saturate(1381%) hue-rotate(72deg) brightness(87%)
       contrast(84%);
   }
+
+  input.input {
+  }
+
+  input.input::placeholder {
+    color: rgba(18, 18, 18, 0.4);
+  }
 }

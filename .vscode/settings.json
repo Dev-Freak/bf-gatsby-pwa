@@ -3,5 +3,7 @@
     "**.git": true,
     "**/.git": false
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "stories.username": "DevFreak",
+  "stories.flair": "react"
 }

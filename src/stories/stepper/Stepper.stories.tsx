@@ -7,6 +7,7 @@ import ApplicantsQuantity from "../../components/EasyFlow/ApplicantsQuantity"
 import ApplicationType from "../../components/EasyFlow/ApplicationType"
 import ProjectType from "../../components/EasyFlow/ProjectType"
 import ApplicantsIncomeTabs from "../../components/EasyFlow/ApplicantsIncome/ApplicantsIncomeTabs"
+import ApplicationsSummary from "../../components/EasyFlow/ApplicationSummary"
 
 import Stepper, { StepperProps } from "../../components/DynamicStepper/Stepper"
 
@@ -29,5 +30,6 @@ Default.args = {
     <ApplicationType />,
     <ProjectType />,
     <ApplicantsIncomeTabs />,
+    <ApplicationsSummary />,
   ],
 }

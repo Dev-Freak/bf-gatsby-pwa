@@ -2,7 +2,7 @@ import * as React from "react"
 
 import useToggleTile from "../../hooks/useToggleTile"
 
-import CheckBox from "../CheckBox"
+import CheckBox from "../Shared/CheckBox"
 import TileLabel from "../Shared/TileLabel"
 import TileContent from "../Shared/TileContent"
 
@@ -17,7 +17,7 @@ const TileWithCheckBox: React.FC<TileWithCheckBoxProps> = ({
   img,
   children,
   keyName,
-  isMultiple,
+  isMultiple = true,
 }) => {
   const { isTileToggled, isDisabled, handleToggleTile } = useToggleTile(
     keyName,
@@ -37,7 +37,7 @@ const TileWithCheckBox: React.FC<TileWithCheckBoxProps> = ({
     >
       <CheckBox
         className="absolute right-0 mt-2 mr-2"
-        checked={isTileToggled}
+        checked={isTileToggled as boolean}
         disabled={!isMultiple && isDisabled}
       />
       <TileContent>
