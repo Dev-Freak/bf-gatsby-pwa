@@ -10,7 +10,9 @@ const Summary: React.FC = () => {
   const summaryData = useSummary()
 
   const getEntireSummary = data => {
-    return data.map(item => <SummaryItem {...item} />)
+    return data.map((item, index) => (
+      <SummaryItem key={`summaryItem-${index}`} {...item} />
+    ))
   }
 
   return (
