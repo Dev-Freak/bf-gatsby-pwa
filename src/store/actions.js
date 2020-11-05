@@ -8,7 +8,6 @@ export const ActionTypes = {
   EASY_FLOW_GO_BACK: "EASY_FLOW_GO_BACK",
   EASY_FLOW_SET_APPLICANTS_QUANTITY: "EASY_FLOW_SET_APPLICANTS_QUANTITY",
   EASY_FLOW_SET_PATH_VALUE: "EASY_FLOW_SET_PATH_VALUE",
-  EASY_FLOW_FINISH: "EASY_FLOW_FINISH",
 
   // TABS
   TABS_SET_TAB: "TABS_SET_TAB",
@@ -21,6 +20,11 @@ export const ActionTypes = {
 
   // ENQUIRY_DETAILS
   ENQUIRY_DETAILS_SET_VALUE: "ENQUIRY_DETAILS_SET_VALUE",
+
+  // APP_FLOW
+  EASY_FLOW_FINISH: "EASY_FLOW_FINISH",
+  FACT_FIND_FINISH: "FACT_FIND_FINISH",
+  FACT_FIND_INTERESTED: "FACT_FIND_INTERESTED",
 }
 
 // Action Creators
@@ -55,12 +59,6 @@ const setApplicantsQuantity = qty => {
   return {
     type: ActionTypes.EASY_FLOW_SET_APPLICANTS_QUANTITY,
     payload: qty,
-  }
-}
-
-const finishEasyFlow = () => {
-  return {
-    type: ActionTypes.EASY_FLOW_FINISH,
   }
 }
 
@@ -99,16 +97,36 @@ const setEnquiryDetailsValue = value => {
   }
 }
 
+const finishEasyFlow = () => {
+  return {
+    type: ActionTypes.EASY_FLOW_FINISH,
+  }
+}
+
+const startFactFind = () => {
+  return {
+    type: ActionTypes.FACT_FIND_INTERESTED,
+  }
+}
+
+const finishFactFind = () => {
+  return {
+    type: ActionTypes.FACT_FIND_FINISH,
+  }
+}
+
 export {
   selectTile,
   toggleTile,
   goNext,
   goBack,
   setApplicantsQuantity,
-  finishEasyFlow,
   setTab,
   setInnerStep,
   setPathValue,
   setContactValue,
   setEnquiryDetailsValue,
+  finishEasyFlow,
+  startFactFind,
+  finishFactFind,
 }

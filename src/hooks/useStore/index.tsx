@@ -32,6 +32,10 @@ const useStore = () => {
 
   const boundFinishEasyFlow = () => dispatch(actions.finishEasyFlow())
 
+  const boundStartFactFind = () => dispatch(actions.startFactFind())
+
+  const boundFinishFactFind = () => dispatch(actions.finishEasyFlow())
+
   return {
     state,
     boundSelectTile,
@@ -39,12 +43,14 @@ const useStore = () => {
     boundGoNext,
     boundGoBack,
     boundSetApplicantsQuantity,
-    boundFinishEasyFlow,
     boundSetTab,
     boundSetInnerStep,
     boundSetPathValue,
     boundSetContactValue,
     boundSetEnquiryDetailsValue,
+    boundStartFactFind,
+    boundFinishEasyFlow,
+    boundFinishFactFind,
   }
 }
 

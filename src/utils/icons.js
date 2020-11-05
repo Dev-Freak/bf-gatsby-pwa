@@ -63,3 +63,7 @@ export const DANotAppliedLogo = require("../images/icons/Icon42.svg")
 // DUPLICATE NAMESLogo => A better use case must be given to these
 export const Refinance_2Logo = require("../images/icons/Icon25.svg")
 export const VehiclePurchase_2Logo = require("../images/icons/Icon29.svg")
+
+// REPORT ICONS
+export const ReportSVG = require("../images/svgs/report.svg")
+export const ScreenSVG = require("../images/svgs/screen.svg")

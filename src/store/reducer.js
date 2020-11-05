@@ -11,11 +11,13 @@ export const initialState = {
   },
   easyFlow: {
     applicants: [{}, {}, {}, {}],
-    isFinished: false,
   },
   factFind: {},
   contactInfo: {},
   enquiryDetails: {},
+  isEasyFlowFinished: false,
+  isFactFindInterested: false,
+  isFactFindFinished: false,
 }
 
 export const reducer = (state, action) => {
@@ -124,11 +126,6 @@ export const reducer = (state, action) => {
 
       return { ...state, easyFlow: { ...easyFlowTemp } }
 
-    case ActionTypes.EASY_FLOW_FINISH:
-      easyFlowTemp = { ...state.easyFlow }
-
-      return { ...state, easyFlow: { ...easyFlowTemp, isFinished: true } }
-
     case ActionTypes.TABS_SET_TAB:
       tabs = { ...state.tabs }
 
@@ -159,6 +156,15 @@ export const reducer = (state, action) => {
           [payload.keyName]: payload.value,
         },
       }
+
+    case ActionTypes.EASY_FLOW_FINISH:
+      return { ...state, isEasyFlowFinished: true }
+
+    case ActionTypes.FACT_FIND_INTERESTED:
+      return { ...state, isFactFindInterested: true }
+
+    case ActionTypes.FACT_FIND_FINISH:
+      return { ...state, isFactFindFinished: true }
 
     default:
       return state
