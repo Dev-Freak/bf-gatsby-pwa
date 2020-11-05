@@ -16,7 +16,7 @@ const ContactForm: React.FC = () => {
   return (
     <form
       onSubmit={form.handleSubmit(data => console.log(data))}
-      className="flex flex-col space-y-8"
+      className="flex flex-1 flex-col space-y-8"
     >
       <StepHeader>
         <TitleWithTooltip title="Fill the form">Norem ipsum...</TitleWithTooltip>

@@ -60,14 +60,17 @@ const EnquiryDetails: React.FC = () => {
   return (
     <div className="flex flex-col space-y-6">
       <StepHeader>
-        <TitleWithTooltip title="Summary">Norem ipsum...</TitleWithTooltip>
+        <TitleWithTooltip title="Details of enquiry">
+          Norem ipsum...
+        </TitleWithTooltip>
       </StepHeader>
 
-      <div className="flex flex-col my-5">
+      <div className="flex flex-col my-5 space-y-5">
         <Lable>Urgency of finance (In Days)</Lable>
         <Slider
           defaultValue={urgency}
           steps={steps}
+          style={{ minWidth: "500px" }}
           onChange={e =>
             boundSetEnquiryDetailsValue({
               keyName: "urgency",
@@ -77,9 +80,13 @@ const EnquiryDetails: React.FC = () => {
         />
       </div>
 
-      <div className="flex flex-col my-5">
+      <br />
+
+      <div className="flex flex-col my-5 space-y-5">
         <Lable>Notes</Lable>
         <textarea
+          className="border p-4"
+          placeholder="Optional"
           value={notes}
           onChange={e =>
             boundSetEnquiryDetailsValue({

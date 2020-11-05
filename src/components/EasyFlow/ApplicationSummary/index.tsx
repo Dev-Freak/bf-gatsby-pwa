@@ -19,13 +19,20 @@ const ApplicationSummary: React.FC = () => {
 
   return (
     <StepContainer>
-      <div className="flex flex-col flex-no-wrap lg:flex-row lg:flex-wrap">
-        <Summary />
-        <ContactForm />
-        <EnquiryDetails />
+      <div className="flex flex-col flex-no-wrap space-y-10 w-full lg:flex-row lg:flex-wrap">
+        <div className="flex flex-col lg:flex-row items-start justify-center space-x-5 w-full">
+          <Summary />
+          <ContactForm />
+        </div>
+
+        <div className="flex items-center justify-center">
+          <EnquiryDetails />
+        </div>
       </div>
 
       <StepButtons>
+        <BackButton />
+
         <PrimaryButton
           label="Proceed to finish"
           onClick={() => finishEasyFlow()}
@@ -33,8 +40,6 @@ const ApplicationSummary: React.FC = () => {
         >
           <ArrowRightShort />
         </PrimaryButton>
-
-        <BackButton />
       </StepButtons>
     </StepContainer>
   )

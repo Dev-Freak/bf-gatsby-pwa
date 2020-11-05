@@ -10,7 +10,7 @@ const Connector: React.FC<ConnectorProps> = ({ isActive = false }) => {
   return (
     <span
       style={{ height: "3px", minWidth: "30px" }}
-      className={`block ${style}`}
+      className={`block ${style} w-full`}
     ></span>
   )
 }

@@ -35,7 +35,7 @@ const useSlider = ({
       const isNodeSelected = item.value === value
 
       return (
-        <div className="flex items-center justify-center">
+        <div className="flex flex-1 items-center justify-center">
           <div className="flex items-center justify-center">
             <Node
               isActive={isNodeActive}

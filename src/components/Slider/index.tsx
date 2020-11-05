@@ -12,6 +12,7 @@ export type SliderProps = {
   onChange: CallableFunction
   onIndexChange?: CallableFunction
   defaultValue?: any
+  style?: any
 }
 
 const Slider: React.FC<SliderProps> = ({
@@ -19,11 +20,12 @@ const Slider: React.FC<SliderProps> = ({
   onChange,
   onIndexChange,
   defaultValue,
+  style,
 }) => {
   const { nodes } = useSlider({ steps, onChange, onIndexChange, defaultValue })
 
   return (
-    <div className="flex flex-start w-full">
+    <div style={{ ...style }} className="flex flex-start w-full">
       {React.Children.map(nodes, node => node)}
     </div>
   )
