@@ -14,6 +14,7 @@ import Footer from "./Footer"
 import "./layout.css"
 
 import StateProvider from "../store/AppStore"
+import useScreenSize from "../hooks/useScreenSize"
 
 const Layout = ({ children }) => {
   /* const data = useStaticQuery(graphql`
@@ -25,21 +26,23 @@ const Layout = ({ children }) => {
       }
     }
   `) */
+  const { height } = useScreenSize()
 
   return (
     <>
       <Header />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <StateProvider>
-          <main>{children}</main>
-        </StateProvider>
-      </div>
+      <StateProvider>
+        <div
+          style={{
+            maxWidth: 1430,
+            minHeight: height * 0.75,
+            padding: `0 1.0875rem 1.45rem`,
+          }}
+          className="flex mt-10 mx-auto h-full items-center justify-center"
+        >
+          <main className="w-full">{children}</main>
+        </div>
+      </StateProvider>
       <Footer />
     </>
   )
