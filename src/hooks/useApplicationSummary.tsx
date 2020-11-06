@@ -1,4 +1,3 @@
-import EnquiryDetails from "../components/EasyFlow/ApplicationSummary/EnquiryDetails"
 import useStore from "./useStore"
 
 type BodyType = {
@@ -46,7 +45,8 @@ const useApplicationSummary = () => {
 
   const finishEasyFlow = async () => {
     const data = getBodyData()
-    const response = await fetch("http://localhost:9000/.netlify/functions/server", {
+
+    const response = await fetch(`${process.env.NETLIFY_FUNCTIONS_URL}/server`, {
       method: "POST",
       body: JSON.stringify(data),
     })

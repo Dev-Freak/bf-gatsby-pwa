@@ -35,7 +35,7 @@ const Layout = ({ children }) => {
         <div
           style={{
             maxWidth: 1430,
-            minHeight: height * 0.75,
+            minHeight: (height ?? 850) * 0.75,
             padding: `0 1.0875rem 1.45rem`,
           }}
           className="flex mt-10 mx-auto h-full items-center justify-center"
