@@ -61,7 +61,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "start:lambda": "netlify-lambda serve functions",
-    "build:lambda": "netlify-lambda build functions && node -p 'process.env'",
+    "build:lambda": "netlify-lambda build functions",
     "prod": "npm run build; npm run build:lambda"
   },
   "repository": {
