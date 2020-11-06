@@ -46,7 +46,7 @@ const useApplicationSummary = () => {
   const finishEasyFlow = async () => {
     const data = getBodyData()
 
-    const response = await fetch(`${process.env.NETLIFY_FUNCTIONS_URL}/server`, {
+    const response = await fetch("/server", {
       method: "POST",
       body: JSON.stringify(data),
     })
