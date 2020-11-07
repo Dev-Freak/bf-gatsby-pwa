@@ -66,6 +66,6 @@
     "skipLibCheck": true,                     /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": ["src/*.tsx", "functions/*.tsx"],      /* The files TypeScript should type check */
-  "exclude": ["node_modules", "build"]        /* The files to not type check */
+  "include": ["src", "functions"],            /* The files TypeScript should type check */
+  "exclude": ["node_modules", "build", "src/*.js", "src/*.jsx", "functions/*.js", "functions/*.jsx"]        /* The files to not type check */
 }
