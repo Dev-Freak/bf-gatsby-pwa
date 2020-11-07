@@ -1,20 +1,7 @@
 const { SALESTREKKER_API_KEY } = process.env
+const fetch = require("./apolloFetch")
 
-exports.handler = async (event, context) => {
-  //#region Function setup
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" }
-  }
-
-  //#region GraphQL SetUp
-  const { createApolloFetch } = require("apollo-fetch")
-
-  const fetch = createApolloFetch({
-    uri: "https://sfg.salestrekker.com/graphql",
-  })
-  //#endregion
-  //#endregion
-
+const authenticate = async () => {
   console.log("\nAuthenticating.........................\n")
 
   const AUTHENTICATE_MUTATION = `mutation Authenticate($apiKey: String!) {
@@ -34,12 +21,6 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 200,
       body: JSON.stringify(result),
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "POST",
-        "Content-Type": "applicantion/json",
-      },
     }
   } catch (error) {
     return {
@@ -48,3 +29,5 @@ exports.handler = async (event, context) => {
     }
   }
 }
+
+module.exports = authenticate

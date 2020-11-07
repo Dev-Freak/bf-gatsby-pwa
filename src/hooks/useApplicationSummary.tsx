@@ -19,7 +19,9 @@ const useApplicationSummary = () => {
     boundFinishEasyFlow,
   } = useStore()
 
-  const { urgency, notes, overdueCheck } = enquiryDetails
+  const { urgency } = enquiryDetails
+
+  const HOST = window.location.origin
 
   const isSummaryFinished = () => {
     if (!fullName || !emailAddress || !phoneNumber || !authorize || !urgency)
@@ -46,12 +48,12 @@ const useApplicationSummary = () => {
   const finishEasyFlow = async () => {
     const data = getBodyData()
 
-    const response = await fetch("/server", {
+    const response = await fetch(`${HOST}/.netlify/functions/server`, {
       method: "POST",
       body: JSON.stringify(data),
     })
       .then(res => res.json())
-      .then(json => json.data)
+      .then(data => data)
 
     console.log(response)
 
