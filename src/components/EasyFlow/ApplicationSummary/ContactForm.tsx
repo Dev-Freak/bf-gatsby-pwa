@@ -9,6 +9,7 @@ import useContactForm from "../../../hooks/useContactForm"
 import InputContainer from "../../Shared/Inputs/InputContainer"
 import Lable from "../../Shared/Inputs/Lable"
 import Input from "../../Shared/Inputs/Input"
+import InputError from "../../Shared/Inputs/InputError"
 
 const ContactForm: React.FC = () => {
   const { inputs, form, boundSetContactValue } = useContactForm()
@@ -28,6 +29,10 @@ const ContactForm: React.FC = () => {
           {...{
             ref: form.register({
               required: { value: true, message: "This field is required" },
+              pattern: {
+                value: /(^[A-Za-z]{3,16})([ ]{1})([A-Za-z]{3,16})/i,
+                message: "Please use valid firstname and lastname only",
+              },
             }),
             name: "fullName",
             placeholder: "Enter full name",
@@ -39,7 +44,9 @@ const ContactForm: React.FC = () => {
           }}
         />
 
-        {form.errors.fullName ? <p>{form.errors.fullName?.message}</p> : null}
+        {form.errors.fullName ? (
+          <InputError>{form.errors.fullName?.message}</InputError>
+        ) : null}
       </InputContainer>
 
       <InputContainer>
@@ -48,6 +55,10 @@ const ContactForm: React.FC = () => {
           {...{
             ref: form.register({
               required: { value: true, message: "This field is required" },
+              pattern: {
+                value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i,
+                message: "Please use a valid email address",
+              },
             }),
             name: "emailAddress",
             placeholder: "Enter your email",
@@ -60,7 +71,7 @@ const ContactForm: React.FC = () => {
         />
 
         {form.errors.emailAddress ? (
-          <p>{form.errors.emailAddress?.message}</p>
+          <InputError>{form.errors.emailAddress?.message}</InputError>
         ) : null}
       </InputContainer>
 
@@ -70,7 +81,12 @@ const ContactForm: React.FC = () => {
           {...{
             ref: form.register({
               required: { value: true, message: "This field is required" },
+              pattern: {
+                value: /^[0-9]{10}$/i,
+                message: "Please use a valid phone number",
+              },
             }),
+            type: "email",
             name: "phoneNumber",
             placeholder: "Enter your phone",
             onChange: e =>
@@ -81,7 +97,9 @@ const ContactForm: React.FC = () => {
           }}
         />
 
-        {form.errors.phoneNumber ? <p>{form.errors.phoneNumber?.message}</p> : null}
+        {form.errors.phoneNumber ? (
+          <InputError>{form.errors.phoneNumber?.message}</InputError>
+        ) : null}
       </InputContainer>
 
       <CheckBoxWithDescription
