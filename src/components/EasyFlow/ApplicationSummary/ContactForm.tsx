@@ -36,7 +36,7 @@ const ContactForm: React.FC = () => {
             }),
             name: "fullName",
             placeholder: "Enter full name",
-            onChange: e =>
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
               boundSetContactValue({
                 keyName: "fullName",
                 value: e.target.value,
@@ -62,7 +62,7 @@ const ContactForm: React.FC = () => {
             }),
             name: "emailAddress",
             placeholder: "Enter your email",
-            onChange: e =>
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
               boundSetContactValue({
                 keyName: "emailAddress",
                 value: e.target.value,
@@ -89,7 +89,7 @@ const ContactForm: React.FC = () => {
             type: "email",
             name: "phoneNumber",
             placeholder: "Enter your phone",
-            onChange: e =>
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
               boundSetContactValue({
                 keyName: "phoneNumber",
                 value: e.target.value,
@@ -104,7 +104,9 @@ const ContactForm: React.FC = () => {
 
       <CheckBoxWithDescription
         checked={inputs.authorize}
-        onToggleCheck={e => boundSetContactValue({ keyName: "authorize", value: e })}
+        onToggleCheck={(check: boolean) =>
+          boundSetContactValue({ keyName: "authorize", value: check })
+        }
       >
         Do you authorise BorgFinancial to use your information?
       </CheckBoxWithDescription>
