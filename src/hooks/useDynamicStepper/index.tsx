@@ -1,6 +1,7 @@
 import useStore from "../useStore"
+import { StepsType } from "../../components/DynamicStepper/Stepper"
 
-const useDynamicStepper = steps => {
+const useDynamicStepper = (steps: StepsType) => {
   const { state } = useStore()
 
   const length = steps.length

@@ -17,7 +17,7 @@ const useSlider = ({
   const [value, setValue] = React.useState(defaultValue)
   const [valueIndex, setValueIndex] = React.useState(defaultValueIndex)
 
-  const handleChange = (value, index) => {
+  const handleChange = (value: number | string, index: number) => {
     setValue(value)
     setValueIndex(index)
   }

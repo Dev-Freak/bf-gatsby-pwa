@@ -6,7 +6,7 @@ import StepHeader from "../../DynamicStepper/StepHeader"
 import CheckBoxWithDescription from "../../Shared/CheckBoxWithDescription"
 import TitleWithTooltip from "../../Shared/TitleWithTooltip"
 
-import Slider, { Steps } from "../../Slider"
+import Slider, { StepsType, ValueType } from "../../Slider"
 
 import Lable from "../../Shared/Inputs/Lable"
 
@@ -14,39 +14,39 @@ const steps = [
   {
     label: "7",
     value: 1,
-  } as Steps,
+  } as StepsType,
   {
     label: "14",
     value: 2,
-  } as Steps,
+  } as StepsType,
   {
     label: "21",
     value: 3,
-  } as Steps,
+  } as StepsType,
   {
     label: "28",
     value: 4,
-  } as Steps,
+  } as StepsType,
   {
     label: "35",
     value: 5,
-  } as Steps,
+  } as StepsType,
   {
     label: "42",
     value: 6,
-  } as Steps,
+  } as StepsType,
   {
     label: "49",
     value: 7,
-  } as Steps,
+  } as StepsType,
   {
     label: "56",
     value: 8,
-  } as Steps,
+  } as StepsType,
   {
     label: "60+",
     value: 9,
-  } as Steps,
+  } as StepsType,
 ]
 
 const EnquiryDetails: React.FC = () => {
@@ -71,7 +71,7 @@ const EnquiryDetails: React.FC = () => {
           defaultValue={urgency}
           steps={steps}
           style={{ minWidth: "500px" }}
-          onChange={e =>
+          onChange={(e: ValueType) =>
             boundSetEnquiryDetailsValue({
               keyName: "urgency",
               value: e,
@@ -99,7 +99,7 @@ const EnquiryDetails: React.FC = () => {
 
       <CheckBoxWithDescription
         checked={overdueCheck}
-        onToggleCheck={e =>
+        onToggleCheck={(e: boolean) =>
           boundSetEnquiryDetailsValue({ keyName: "overdueCheck", value: e })
         }
       >

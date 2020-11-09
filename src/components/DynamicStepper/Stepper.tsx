@@ -5,12 +5,13 @@ import StepperContainer from "./StepperContainer"
 
 import useDynamicStepper from "../../hooks/useDynamicStepper"
 
+export type StepsType = Array<React.ReactElement>
 export type StepperProps = {
-  steps: Array<React.ReactElement>
+  steps: StepsType
 }
 
-const Stepper: React.FC<StepperProps> = ({ steps }: StepperProps) => {
-  const { length, currentStep, currentElement } = useDynamicStepper(steps)
+const Stepper: React.FC<StepperProps> = props => {
+  const { length, currentStep, currentElement } = useDynamicStepper(props.steps)
 
   return (
     <StepperContainer>

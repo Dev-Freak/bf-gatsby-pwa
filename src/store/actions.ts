@@ -1,5 +1,9 @@
-// Action Types
+export type ActionType = {
+  type: string,
+  payload: any | undefined
+}
 
+// Action Types
 export const ActionTypes = {
   // EASY_FLOW
   EASY_FLOW_SELECT_TILE: "EASY_FLOW_SELECT_TILE",
@@ -29,14 +33,14 @@ export const ActionTypes = {
 
 // Action Creators
 
-const selectTile = value => {
+const selectTile = (value: any) => {
   return {
     type: ActionTypes.EASY_FLOW_SELECT_TILE,
     payload: value,
   }
 }
 
-const toggleTile = value => {
+const toggleTile = (value: any) => {
   return {
     type: ActionTypes.EASY_FLOW_TOGGLE_TILE,
     payload: value,
@@ -55,42 +59,42 @@ const goBack = () => {
   }
 }
 
-const setApplicantsQuantity = qty => {
+const setApplicantsQuantity = (qty: number) => {
   return {
     type: ActionTypes.EASY_FLOW_SET_APPLICANTS_QUANTITY,
     payload: qty,
   }
 }
 
-const setTab = value => {
+const setTab = (value: any) => {
   return {
     type: ActionTypes.TABS_SET_TAB,
     payload: value,
   }
 }
 
-const setInnerStep = value => {
+const setInnerStep = (value: any) => {
   return {
     type: ActionTypes.SECTION_SET_INNER_STEP,
     payload: value,
   }
 }
 
-const setPathValue = value => {
+const setPathValue = (value: any) => {
   return {
     type: ActionTypes.EASY_FLOW_SET_PATH_VALUE,
     payload: value,
   }
 }
 
-const setContactValue = value => {
+const setContactValue = (value: any) => {
   return {
     type: ActionTypes.CONTACT_FORM_SET_VALUE,
     payload: value,
   }
 }
 
-const setEnquiryDetailsValue = value => {
+const setEnquiryDetailsValue = (value: any) => {
   return {
     type: ActionTypes.ENQUIRY_DETAILS_SET_VALUE,
     payload: value,

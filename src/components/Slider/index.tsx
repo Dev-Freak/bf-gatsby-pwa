@@ -2,13 +2,14 @@ import * as React from "react"
 
 import useSlider from "../../hooks/useSlider"
 
-export type Steps = {
-  value: number
+export type ValueType = number | string
+export type StepsType = {
+  value: ValueType
   label: string
 }
 
 export type SliderProps = {
-  steps: Array<Steps>
+  steps: Array<StepsType>
   onChange: CallableFunction
   onIndexChange?: CallableFunction
   defaultValue?: any

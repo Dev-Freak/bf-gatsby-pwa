@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
 
-import Slider, { SliderProps, Steps } from "../../components/Slider"
+import Slider, { SliderProps, StepsType, ValueType } from "../../components/Slider"
 
 export default {
   title: "Slider/Slider",
@@ -20,40 +20,40 @@ Default.args = {
     {
       label: "7",
       value: 1,
-    } as Steps,
+    } as StepsType,
     {
       label: "14",
       value: 2,
-    } as Steps,
+    } as StepsType,
     {
       label: "21",
       value: 3,
-    } as Steps,
+    } as StepsType,
     {
       label: "28",
       value: 4,
-    } as Steps,
+    } as StepsType,
     {
       label: "35",
       value: 5,
-    } as Steps,
+    } as StepsType,
     {
       label: "42",
       value: 6,
-    } as Steps,
+    } as StepsType,
     {
       label: "49",
       value: 7,
-    } as Steps,
+    } as StepsType,
     {
       label: "56",
       value: 8,
-    } as Steps,
+    } as StepsType,
     {
       label: "60+",
       value: 9,
-    } as Steps,
+    } as StepsType,
   ],
-  onChange: e => console.log(e),
-  onIndexChange: e => console.log(e),
+  onChange: (e: ValueType) => console.log(e),
+  onIndexChange: (e: number) => console.log(e),
 } as SliderProps

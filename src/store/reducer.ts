@@ -1,6 +1,6 @@
 import _ from "lodash"
 
-import { ActionTypes } from "./actions"
+import { ActionTypes, ActionType } from "./actions"
 import { objRemoveEmptyOrNull } from "../utils/trimObject"
 
 export const initialState = {
@@ -20,7 +20,7 @@ export const initialState = {
   isFactFindFinished: false,
 }
 
-export const reducer = (state, action) => {
+export const reducer = (state: any, action: ActionType) => {
   const { type, payload } = action
   let easyFlowTemp
   let tabs
