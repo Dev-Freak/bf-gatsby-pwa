@@ -1,41 +1,43 @@
 import * as React from "react"
 
-import * as actions from "../../store/actions"
+import { ActionMethods, ValueType } from "../../store/actions"
 import { Store } from "../../store/AppStore"
 
 const useStore = () => {
   const { state, dispatch }: any = React.useContext(Store)
 
-  const boundSelectTile = (value: any) =>
+  const boundSelectTile = (value: ValueType) =>
     value?.keyName?.includes(".")
-      ? dispatch(actions.setPathValue(value))
-      : dispatch(actions.selectTile(value))
+      ? dispatch(ActionMethods.setPathValue(value))
+      : dispatch(ActionMethods.selectTile(value))
 
-  const boundToggleTile = (value: any) =>
+  const boundToggleTile = (value: ValueType) =>
     value?.keyName?.includes(".")
-      ? dispatch(actions.setPathValue(value))
-      : dispatch(actions.toggleTile(value))
+      ? dispatch(ActionMethods.setPathValue(value))
+      : dispatch(ActionMethods.toggleTile(value))
 
-  const boundGoNext = () => dispatch(actions.goNext())
-  const boundGoBack = () => dispatch(actions.goBack())
-  const boundSetApplicantsQuantity = (value: any) =>
-    dispatch(actions.setApplicantsQuantity(value))
+  const boundGoNext = () => dispatch(ActionMethods.goNext())
+  const boundGoBack = () => dispatch(ActionMethods.goBack())
+  const boundSetApplicantsQuantity = (value: number) =>
+    dispatch(ActionMethods.setApplicantsQuantity(value))
 
-  const boundSetTab = (value: any) => dispatch(actions.setTab(value))
-  const boundSetInnerStep = (value: any) => dispatch(actions.setInnerStep(value))
-  const boundSetPathValue = (value: any) => dispatch(actions.setPathValue(value))
+  const boundSetTab = (value: ValueType) => dispatch(ActionMethods.setTab(value))
+  const boundSetInnerStep = (value: ValueType) =>
+    dispatch(ActionMethods.setInnerStep(value))
+  const boundSetPathValue = (value: ValueType) =>
+    dispatch(ActionMethods.setPathValue(value))
 
-  const boundSetContactValue = (value: any) =>
-    dispatch(actions.setContactValue(value))
+  const boundSetContactValue = (value: ValueType) =>
+    dispatch(ActionMethods.setContactValue(value))
 
-  const boundSetEnquiryDetailsValue = (value: any) =>
-    dispatch(actions.setEnquiryDetailsValue(value))
+  const boundSetEnquiryDetailsValue = (value: ValueType) =>
+    dispatch(ActionMethods.setEnquiryDetailsValue(value))
 
-  const boundFinishEasyFlow = () => dispatch(actions.finishEasyFlow())
+  const boundFinishEasyFlow = () => dispatch(ActionMethods.finishEasyFlow())
 
-  const boundStartFactFind = () => dispatch(actions.startFactFind())
+  const boundStartFactFind = () => dispatch(ActionMethods.startFactFind())
 
-  const boundFinishFactFind = () => dispatch(actions.finishEasyFlow())
+  const boundFinishFactFind = () => dispatch(ActionMethods.finishEasyFlow())
 
   return {
     state,

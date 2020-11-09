@@ -1,6 +1,6 @@
 import _ from "lodash"
 
-import { ActionTypes, ActionType } from "./actions"
+import { Actions, ActionType } from "./actions"
 import { objRemoveEmptyOrNull } from "../utils/trimObject"
 
 export const initialState = {
@@ -28,13 +28,13 @@ export const reducer = (state: any, action: ActionType) => {
   console.log(action)
 
   switch (type) {
-    case ActionTypes.EASY_FLOW_SELECT_TILE:
+    case Actions.EASY_FLOW_SELECT_TILE:
       return {
         ...state,
         easyFlow: { ...state.easyFlow, [payload.keyName]: payload.value },
       }
 
-    case ActionTypes.EASY_FLOW_TOGGLE_TILE:
+    case Actions.EASY_FLOW_TOGGLE_TILE:
       easyFlowTemp = { ...state.easyFlow }
       let keyPropertyValue = easyFlowTemp?.[payload.keyName]
 
@@ -58,19 +58,19 @@ export const reducer = (state: any, action: ActionType) => {
 
       return { ...state, easyFlow: { ...easyFlowTemp } }
 
-    case ActionTypes.EASY_FLOW_GO_NEXT:
+    case Actions.EASY_FLOW_GO_NEXT:
       return {
         ...state,
         currentStep: state.currentStep + 1,
       }
 
-    case ActionTypes.EASY_FLOW_GO_BACK:
+    case Actions.EASY_FLOW_GO_BACK:
       return {
         ...state,
         currentStep: state.currentStep - 1,
       }
 
-    case ActionTypes.EASY_FLOW_SET_APPLICANTS_QUANTITY:
+    case Actions.EASY_FLOW_SET_APPLICANTS_QUANTITY:
       easyFlowTemp = { ...state.easyFlow }
 
       const selectedQty = payload
@@ -104,7 +104,7 @@ export const reducer = (state: any, action: ActionType) => {
 
       return { ...state, easyFlow: { ...easyFlowTemp } }
 
-    case ActionTypes.EASY_FLOW_SET_PATH_VALUE:
+    case Actions.EASY_FLOW_SET_PATH_VALUE:
       easyFlowTemp = { ...state.easyFlow }
       let currentValue
       let path = payload.keyName
@@ -126,7 +126,7 @@ export const reducer = (state: any, action: ActionType) => {
 
       return { ...state, easyFlow: { ...easyFlowTemp } }
 
-    case ActionTypes.TABS_SET_TAB:
+    case Actions.TABS_SET_TAB:
       tabs = { ...state.tabs }
 
       return {
@@ -134,7 +134,7 @@ export const reducer = (state: any, action: ActionType) => {
         tabs: { section: 0, activeTab: payload },
       }
 
-    case ActionTypes.SECTION_SET_INNER_STEP:
+    case Actions.SECTION_SET_INNER_STEP:
       tabs = { ...state.tabs }
 
       return {
@@ -142,13 +142,13 @@ export const reducer = (state: any, action: ActionType) => {
         tabs: { ...tabs, section: payload },
       }
 
-    case ActionTypes.CONTACT_FORM_SET_VALUE:
+    case Actions.CONTACT_FORM_SET_VALUE:
       return {
         ...state,
         contactInfo: { ...state.contactInfo, [payload.keyName]: payload.value },
       }
 
-    case ActionTypes.ENQUIRY_DETAILS_SET_VALUE:
+    case Actions.ENQUIRY_DETAILS_SET_VALUE:
       return {
         ...state,
         enquiryDetails: {
@@ -157,13 +157,13 @@ export const reducer = (state: any, action: ActionType) => {
         },
       }
 
-    case ActionTypes.EASY_FLOW_FINISH:
+    case Actions.EASY_FLOW_FINISH:
       return { ...state, isEasyFlowFinished: true }
 
-    case ActionTypes.FACT_FIND_INTERESTED:
+    case Actions.FACT_FIND_INTERESTED:
       return { ...state, isFactFindInterested: true }
 
-    case ActionTypes.FACT_FIND_FINISH:
+    case Actions.FACT_FIND_FINISH:
       return { ...state, isFactFindFinished: true }
 
     default:

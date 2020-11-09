@@ -1,10 +1,12 @@
+export type ValueType = any;
+
 export type ActionType = {
   type: string,
   payload: any | undefined
 }
 
 // Action Types
-export const ActionTypes = {
+export const Actions = {
   // EASY_FLOW
   EASY_FLOW_SELECT_TILE: "EASY_FLOW_SELECT_TILE",
   EASY_FLOW_TOGGLE_TILE: "EASY_FLOW_TOGGLE_TILE",
@@ -33,93 +35,93 @@ export const ActionTypes = {
 
 // Action Creators
 
-const selectTile = (value: any) => {
+const selectTile = (value: ValueType) => {
   return {
-    type: ActionTypes.EASY_FLOW_SELECT_TILE,
+    type: Actions.EASY_FLOW_SELECT_TILE,
     payload: value,
   }
 }
 
-const toggleTile = (value: any) => {
+const toggleTile = (value: ValueType) => {
   return {
-    type: ActionTypes.EASY_FLOW_TOGGLE_TILE,
+    type: Actions.EASY_FLOW_TOGGLE_TILE,
     payload: value,
   }
 }
 
 const goNext = () => {
   return {
-    type: ActionTypes.EASY_FLOW_GO_NEXT,
+    type: Actions.EASY_FLOW_GO_NEXT,
   }
 }
 
 const goBack = () => {
   return {
-    type: ActionTypes.EASY_FLOW_GO_BACK,
+    type: Actions.EASY_FLOW_GO_BACK,
   }
 }
 
 const setApplicantsQuantity = (qty: number) => {
   return {
-    type: ActionTypes.EASY_FLOW_SET_APPLICANTS_QUANTITY,
+    type: Actions.EASY_FLOW_SET_APPLICANTS_QUANTITY,
     payload: qty,
   }
 }
 
-const setTab = (value: any) => {
+const setTab = (value: ValueType) => {
   return {
-    type: ActionTypes.TABS_SET_TAB,
+    type: Actions.TABS_SET_TAB,
     payload: value,
   }
 }
 
-const setInnerStep = (value: any) => {
+const setInnerStep = (value: ValueType) => {
   return {
-    type: ActionTypes.SECTION_SET_INNER_STEP,
+    type: Actions.SECTION_SET_INNER_STEP,
     payload: value,
   }
 }
 
-const setPathValue = (value: any) => {
+const setPathValue = (value: ValueType) => {
   return {
-    type: ActionTypes.EASY_FLOW_SET_PATH_VALUE,
+    type: Actions.EASY_FLOW_SET_PATH_VALUE,
     payload: value,
   }
 }
 
-const setContactValue = (value: any) => {
+const setContactValue = (value: ValueType) => {
   return {
-    type: ActionTypes.CONTACT_FORM_SET_VALUE,
+    type: Actions.CONTACT_FORM_SET_VALUE,
     payload: value,
   }
 }
 
-const setEnquiryDetailsValue = (value: any) => {
+const setEnquiryDetailsValue = (value: ValueType) => {
   return {
-    type: ActionTypes.ENQUIRY_DETAILS_SET_VALUE,
+    type: Actions.ENQUIRY_DETAILS_SET_VALUE,
     payload: value,
   }
 }
 
 const finishEasyFlow = () => {
   return {
-    type: ActionTypes.EASY_FLOW_FINISH,
+    type: Actions.EASY_FLOW_FINISH,
   }
 }
 
 const startFactFind = () => {
   return {
-    type: ActionTypes.FACT_FIND_INTERESTED,
+    type: Actions.FACT_FIND_INTERESTED,
   }
 }
 
 const finishFactFind = () => {
   return {
-    type: ActionTypes.FACT_FIND_FINISH,
+    type: Actions.FACT_FIND_FINISH,
   }
 }
 
-export {
+export const ActionMethods = {
   selectTile,
   toggleTile,
   goNext,
