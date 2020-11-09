@@ -7,7 +7,7 @@ import EnquiryDetails from "./EnquiryDetails"
 import StepButtons from "../../DynamicStepper/StepButtons"
 import StepContainer from "../../DynamicStepper/StepContainer"
 
-import PrimaryButton from "../../Buttons/Primary"
+import { PrimaryButton } from "../../Buttons"
 import { ArrowRightShort } from "@styled-icons/bootstrap/ArrowRightShort"
 
 import BackButton from "../../DynamicStepper/BackButton"

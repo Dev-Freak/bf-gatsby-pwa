@@ -1,9 +1,8 @@
-export {
-  default as PrimaryButton,
-  PrimaryProps as PrimaryButtonProps,
-} from "./Primary/"
+import Primary, { PrimaryProps } from "./Primary"
+import Secondary, { SecondaryProps } from "./Secondary"
 
-export {
-  default as SecondaryButton,
+export { Primary as PrimaryButton, Secondary as SecondaryButton }
+export type {
+  PrimaryProps as PrimaryButtonProps,
   SecondaryProps as SecondaryButtonProps,
-} from "./Secondary"
+}

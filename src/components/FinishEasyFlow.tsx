@@ -3,8 +3,7 @@ import { ArrowRightShort } from "@styled-icons/bootstrap/ArrowRightShort"
 import { ReportSVG } from "../utils/icons"
 
 import TitleWithTooltip from "./Shared/TitleWithTooltip"
-import PrimaryButton from "./Buttons/Primary"
-import SecondaryButton from "./Buttons/Secondary"
+import { PrimaryButton, SecondaryButton } from "./Buttons"
 import StepButtons from "./DynamicStepper/StepButtons"
 
 import useFinishEasyFlow from "../hooks/useFinishEasyFlow"

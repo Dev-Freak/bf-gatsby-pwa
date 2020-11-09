@@ -1,7 +1,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 
-export interface PrimaryProps {
+export type PrimaryProps = {
   label: string
   isDisabled?: boolean
   className?: string
