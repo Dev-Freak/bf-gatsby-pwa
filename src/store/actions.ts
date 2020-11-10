@@ -9,7 +9,6 @@ export type ActionType = {
 export const Actions = {
   // EASY_FLOW
   EASY_FLOW_SELECT_TILE: "EASY_FLOW_SELECT_TILE",
-  EASY_FLOW_TOGGLE_TILE: "EASY_FLOW_TOGGLE_TILE",
   EASY_FLOW_GO_NEXT: "EASY_FLOW_GO_NEXT",
   EASY_FLOW_GO_BACK: "EASY_FLOW_GO_BACK",
   EASY_FLOW_SET_APPLICANTS_QUANTITY: "EASY_FLOW_SET_APPLICANTS_QUANTITY",
@@ -38,13 +37,6 @@ export const Actions = {
 const selectTile = (value: ValueType) => {
   return {
     type: Actions.EASY_FLOW_SELECT_TILE,
-    payload: value,
-  }
-}
-
-const toggleTile = (value: ValueType) => {
-  return {
-    type: Actions.EASY_FLOW_TOGGLE_TILE,
     payload: value,
   }
 }
@@ -123,7 +115,6 @@ const finishFactFind = () => {
 
 export const ActionMethods = {
   selectTile,
-  toggleTile,
   goNext,
   goBack,
   setApplicantsQuantity,

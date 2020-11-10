@@ -1,15 +1,19 @@
 import _ from "lodash"
 import useStore from "../useStore"
 
-const useToggleTile = (keyName: string, value: string, isMultiple: true | false) => {
+const useToggleTile = (
+  keyName: string | undefined,
+  value: string,
+  isMultiple: true | false
+) => {
   const { state, boundToggleTile } = useStore()
 
   const { easyFlow } = state
 
   const trimKeyName =
-    isMultiple && keyName.includes("[]") ? keyName?.replace("[]", "") : null
+    isMultiple && keyName?.includes("[]") ? keyName?.replace("[]", "") : null
 
-  const tileValue = _.get(easyFlow, trimKeyName ?? keyName)
+  const tileValue = _.get(easyFlow, trimKeyName ?? keyName ?? "")
 
   const isTileToggled = tileValue?.includes(value) ?? false
   const tileValueIndex = isTileToggled ? tileValue.indexOf(value) : null

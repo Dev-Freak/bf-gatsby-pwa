@@ -12,9 +12,7 @@ const useStore = () => {
       : dispatch(ActionMethods.selectTile(value))
 
   const boundToggleTile = (value: ValueType) =>
-    value?.keyName?.includes(".")
-      ? dispatch(ActionMethods.setPathValue(value))
-      : dispatch(ActionMethods.toggleTile(value))
+    dispatch(ActionMethods.setPathValue(value))
 
   const boundGoNext = () => dispatch(ActionMethods.goNext())
   const boundGoBack = () => dispatch(ActionMethods.goBack())
