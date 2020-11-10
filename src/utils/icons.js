@@ -1,5 +1,6 @@
 // EasyFlow Steps' icons
 
+// COMMERCIAL
 // Welcome
 export const CommercialLogo = require("../images/icons/Icon1.svg")
 export const OtherLogo = require("../images/icons/Icon5.svg") // TODO
@@ -38,30 +39,40 @@ export const SoleTraderLogo = require("../images/icons/Icon39.svg")
 export const CompanyLogo = require("../images/icons/Icon2.svg")
 export const TrustEntityLogo = require("../images/icons/Icon26.svg")
 
+// ASSETS FINANCIAL
+// Assets Type
+export const EquipmentPlanLogo = require("../images/icons/Icon6.svg")
+export const VehiclePurchaseLogo = require("../images/icons/Icon17.svg")
+export const CreditCardLogo = require("../images/icons/Icon22.svg")
+export const CashflowLendingLogo = require("../images/icons/Icon21.svg")
+
+// Assets Purchase
+export const ABNLogo = require("../images/icons/Icon18.svg")
+export const PersonalNameLogo = require("../images/icons/Icon35.svg")
+
+// COMMERCIAL
+// Commercial Type
+export const PurchaseLogo = require("../images/icons/Icon28.svg")
+export const Refinance_2Logo = require("../images/icons/Icon25.svg")
+export const DevelopmentLogo = require("../images/icons/Icon15.svg")
+
+// Development Type
+export const DANotAppliedLogo = require("../images/icons/Icon42.svg")
+export const DAPendingLogo = require("../images/icons/Icon41.svg")
+export const DAApprovedLogo = require("../images/icons/Icon40.svg")
+
 // REST
 export const BuiltHomeLogo = require("../images/icons/Icon5.svg")
-export const EquipmentPlanLogo = require("../images/icons/Icon6.svg")
 export const EquityReleaseLogo = require("../images/icons/Icon9.svg")
 export const PropertyPriceBalanceLogo = require("../images/icons/Icon11.svg")
 export const SMSFLogo = require("../images/icons/Icon13.svg")
 export const ConsolidateLogo = require("../images/icons/Icon14.svg")
-export const DevelopmentLogo = require("../images/icons/Icon15.svg")
-export const VehiclePurchaseLogo = require("../images/icons/Icon17.svg")
-export const ABNLogo = require("../images/icons/Icon18.svg")
 export const FactoryLogo = require("../images/icons/Icon19.svg")
-export const CashflowLendingLogo = require("../images/icons/Icon21.svg")
-export const CreditCardLogo = require("../images/icons/Icon22.svg")
 export const LandLogo = require("../images/icons/Icon23.svg")
 export const BetterRateLogo = require("../images/icons/Icon27.svg")
-export const PurchaseLogo = require("../images/icons/Icon28.svg")
 export const ReverseMortgageLogo = require("../images/icons/Icon30.svg")
-export const PersonalNameLogo = require("../images/icons/Icon35.svg")
-export const DAApprovedLogo = require("../images/icons/Icon40.svg")
-export const DAPendingLogo = require("../images/icons/Icon41.svg")
-export const DANotAppliedLogo = require("../images/icons/Icon42.svg")
 
 // DUPLICATE NAMESLogo => A better use case must be given to these
-export const Refinance_2Logo = require("../images/icons/Icon25.svg")
 export const VehiclePurchase_2Logo = require("../images/icons/Icon29.svg")
 
 // REPORT ICONS

@@ -6,6 +6,7 @@ export type TilesContainerType = {
   stepKeyName: string
   isMultiple?: true | false
   onTileClick?: CallableFunction
+  children: JSX.Element
 }
 
 const TilesContainer: React.FC<TilesContainerType> = ({
@@ -18,9 +19,11 @@ const TilesContainer: React.FC<TilesContainerType> = ({
 
   const mappedChildren = React.Children.map(
     children,
-    (child: React.ReactNode, index: number) => {
+    (child: React.ReactChild, index: number) => {
       let props = {}
       const childType = child["type"]["displayName"]
+
+      console.log(childType)
 
       props =
         childType === "Tile"
