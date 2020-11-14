@@ -29,9 +29,9 @@ const Welcome: React.FC = () => {
 
         <Tile img={ResidentialLogo}>Residential</Tile>
 
-        <Tile img={OtherLogo}>Other financial enquiries</Tile>
-
         <Tile img={CommercialLogo}>Commercial</Tile>
+
+        <Tile img={OtherLogo}>Other financial enquiries</Tile>
       </TilesContainer>
     </StepWithBackButtonContainer>
   )

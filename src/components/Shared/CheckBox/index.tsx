@@ -16,12 +16,18 @@ const CheckBox: React.FC<CheckBoxProps> = ({
   onClick,
 }) => {
   const [isChecked, setIsChecked] = React.useState(checked)
+  const firstRender = React.useRef(true)
 
   React.useEffect(() => {
     setIsChecked(checked)
   }, [checked])
 
   React.useEffect(() => {
+    if (firstRender) {
+      firstRender.current = false
+      return
+    }
+
     if (onClick) {
       onClick(isChecked)
     }

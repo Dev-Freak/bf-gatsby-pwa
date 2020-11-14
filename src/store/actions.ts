@@ -13,6 +13,7 @@ export const Actions = {
   EASY_FLOW_GO_BACK: "EASY_FLOW_GO_BACK",
   EASY_FLOW_SET_APPLICANTS_QUANTITY: "EASY_FLOW_SET_APPLICANTS_QUANTITY",
   EASY_FLOW_SET_PATH_VALUE: "EASY_FLOW_SET_PATH_VALUE",
+  EASY_FLOW_MUTATE_STEPS: "EASY_FLOW_MUTATE_STEPS",
 
   // TABS
   TABS_SET_TAB: "TABS_SET_TAB",
@@ -81,6 +82,13 @@ const setPathValue = (value: ValueType) => {
   }
 }
 
+const mutateSteps = (value: ValueType) => {
+  return {
+    type: Actions.EASY_FLOW_MUTATE_STEPS,
+    payload: value,
+  }
+}
+
 const setContactValue = (value: ValueType) => {
   return {
     type: Actions.CONTACT_FORM_SET_VALUE,
@@ -121,6 +129,7 @@ export const ActionMethods = {
   setTab,
   setInnerStep,
   setPathValue,
+  mutateSteps,
   setContactValue,
   setEnquiryDetailsValue,
   finishEasyFlow,

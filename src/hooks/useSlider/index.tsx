@@ -16,6 +16,7 @@ const useSlider = ({
 
   const [value, setValue] = React.useState(defaultValue)
   const [valueIndex, setValueIndex] = React.useState(defaultValueIndex)
+  const firstRender = React.useRef(true)
 
   const handleChange = (value: number | string, index: number) => {
     setValue(value)
@@ -23,6 +24,11 @@ const useSlider = ({
   }
 
   React.useEffect(() => {
+    if (firstRender) {
+      firstRender.current = false
+      return
+    }
+
     if (onChange) onChange(value)
     if (onIndexChange) onIndexChange(valueIndex)
   }, [value, valueIndex])

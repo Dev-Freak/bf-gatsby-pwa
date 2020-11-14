@@ -9,6 +9,8 @@ import ApplicationsSummary from "./ApplicationSummary"
 
 import Stepper, { StepperProps } from "../DynamicStepper/Stepper"
 
+import useStore from "../../hooks/useStore"
+
 const props = {
   steps: [
     <Welcome />,
@@ -21,7 +23,11 @@ const props = {
 } as StepperProps
 
 const EasyFlow: React.FC = () => {
-  return <Stepper {...props} />
+  const {
+    state: { easyFlowSteps },
+  } = useStore()
+
+  return <Stepper {...easyFlowSteps} />
 }
 
 export default EasyFlow

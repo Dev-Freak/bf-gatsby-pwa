@@ -2,6 +2,7 @@ import _ from "lodash"
 
 import { Actions, ActionType } from "./actions"
 import { objRemoveEmptyOrNull } from "../utils/trimObject"
+import { initialStep, mutateSteps } from '../components/EasyFlow/stepsManager';
 
 export const initialState = {
   currentStep: 0,
@@ -11,6 +12,9 @@ export const initialState = {
   },
   easyFlow: {
     applicants: [{}, {}, {}, {}],
+  },
+  easyFlowSteps: {
+    steps: initialStep,
   },
   factFind: {},
   contactInfo: {},
@@ -32,6 +36,7 @@ export const reducer = (state: any, action: ActionType) => {
       return {
         ...state,
         easyFlow: { ...state.easyFlow, [payload.keyName]: payload.value },
+        easyFlowSteps: { steps: mutateSteps(payload.keyName, payload.value, state.easyFlowSteps.steps) }
       }
 
     case Actions.EASY_FLOW_GO_NEXT:
