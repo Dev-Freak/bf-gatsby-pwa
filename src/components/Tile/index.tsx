@@ -11,7 +11,12 @@ export interface TileProps {
   onClick?: CallableFunction
 }
 
-const Tile: React.FC<TileProps> = ({ img, keyName, children, onClick }) => {
+const Tile: React.FC<TileProps> = ({
+  img,
+  keyName = "unknown",
+  children,
+  onClick,
+}) => {
   const { isTileSelected, handleSelectTile } = useSelectTile(
     keyName,
     children,

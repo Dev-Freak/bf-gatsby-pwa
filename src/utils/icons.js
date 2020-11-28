@@ -23,6 +23,8 @@ export const RetirementLogo = require("../images/icons/Icon24.svg")
 export const EstablishedLogo = require("../images/icons/Icon4.svg") // TODO
 export const OffThePlanLogo = require("../images/icons/Icon4.svg")
 export const ConstructionLogo = require("../images/icons/Icon3.svg")
+export const SMSFLogo = require("../images/icons/Icon13.svg")
+export const ReverseMortgageLogo = require("../images/icons/Icon30.svg")
 
 // Applicant Income Type
 export const PayslipLogo = require("../images/icons/Icon20.svg")
@@ -65,12 +67,10 @@ export const DAApprovedLogo = require("../images/icons/Icon40.svg")
 export const BuiltHomeLogo = require("../images/icons/Icon5.svg")
 export const EquityReleaseLogo = require("../images/icons/Icon9.svg")
 export const PropertyPriceBalanceLogo = require("../images/icons/Icon11.svg")
-export const SMSFLogo = require("../images/icons/Icon13.svg")
 export const ConsolidateLogo = require("../images/icons/Icon14.svg")
 export const FactoryLogo = require("../images/icons/Icon19.svg")
 export const LandLogo = require("../images/icons/Icon23.svg")
 export const BetterRateLogo = require("../images/icons/Icon27.svg")
-export const ReverseMortgageLogo = require("../images/icons/Icon30.svg")
 
 // DUPLICATE NAMESLogo => A better use case must be given to these
 export const VehiclePurchase_2Logo = require("../images/icons/Icon29.svg")

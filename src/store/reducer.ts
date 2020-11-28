@@ -107,6 +107,9 @@ export const reducer = (state: any, action: ActionType) => {
 
       return { ...state, easyFlow: { ...easyFlowTemp } }
 
+    case Actions.EASY_FLOW_SELECT_MUTATE_NEXT:
+      return {}
+
     case Actions.TABS_SET_TAB:
       tabs = { ...state.tabs }
 

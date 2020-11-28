@@ -1,3 +1,5 @@
+import { isError } from "lodash"
+import { string } from "prop-types"
 import * as React from "react"
 
 import useScreenSize from "../../hooks/useScreenSize"
@@ -16,10 +18,10 @@ const TilesContainer: React.FC<TilesContainerType> = ({
   onTileClick,
 }) => {
   const { width } = useScreenSize()
+  const isMobile = width <= 540
 
-  const mappedChildren = React.Children.map(
-    children,
-    (child: JSX.Element, index: number) => {
+  const mappedChildren = (items: JSX.Element | Array<JSX.Element>) =>
+    React.Children.map(items, (child: JSX.Element, index: number) => {
       let props = {}
       const childType = child["type"]["displayName"]
 
@@ -37,16 +39,29 @@ const TilesContainer: React.FC<TilesContainerType> = ({
               onClick: onTileClick ?? null,
             }
 
-      return React.cloneElement(child as React.ReactElement, props)
-    }
-  )
+      return React.cloneElement(child as JSX.Element, { ...props })
+    })
 
-  return width > 540 ? (
-    <div className="w-full flex flex-wrap justify-around space-y-1 md:justify-center md:space-x-5">
-      {mappedChildren}
-    </div>
+  let components = null
+  if (React.Children.count(children) === 1) {
+    const child = React.Children.only(children)
+    const childType = child?.type.toString()
+
+    const isFragment = childType.indexOf("fragment") != -1
+
+    components = isFragment
+      ? mappedChildren(child.props.children)
+      : mappedChildren(child)
+  } else {
+    components = mappedChildren(children)
+  }
+
+  return isMobile ? (
+    components
   ) : (
-    <React.Fragment>{mappedChildren}</React.Fragment>
+    <div className="w-full flex flex-wrap justify-around space-y-1 md:justify-center md:space-x-5">
+      {components}
+    </div>
   )
 }
 

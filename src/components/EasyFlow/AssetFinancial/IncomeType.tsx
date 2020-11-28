@@ -37,7 +37,7 @@ const AssetPurchase: React.FC = () => {
       <StepWithBackButtonContainer>
         {header}
 
-        <TilesContainer stepKeyName="income_type">
+        <TilesContainer stepKeyName="asset_income_type">
           <Tile img={PayslipLogo}>PAYG Employed (Payslips)</Tile>
         </TilesContainer>
       </StepWithBackButtonContainer>
@@ -45,7 +45,7 @@ const AssetPurchase: React.FC = () => {
       <StepWithNextAndBackButtonContainer>
         {header}
 
-        <TilesContainer stepKeyName="income_type">
+        <TilesContainer stepKeyName="asset_income_type">
           <TileWithCheckBox img={SoleTraderLogo}>Sole Trader</TileWithCheckBox>
 
           <TileWithCheckBox img={CompanyLogo}>Company</TileWithCheckBox>

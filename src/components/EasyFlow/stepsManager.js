@@ -8,6 +8,7 @@ import ApplicationsSummary from "./ApplicationSummary"
 import ApplicantsQuantity from "./ApplicantsQuantity"
 import ApplicationType from "./ApplicationType"
 import ProjectType from "./ProjectType"
+import SMSFType from "./SMSFType"
 import ApplicantsIncomeTabs from "./ApplicantsIncome/ApplicantsIncomeTabs"
 
 // AssetsFinancial
@@ -35,6 +36,7 @@ const ResidentialSteps = [
   <ApplicantsQuantity />,
   <ApplicationType />,
   <ProjectType />,
+  <SMSFType />,
   <ApplicantsIncomeTabs />,
   <ApplicationsSummary />,
 ]
@@ -62,11 +64,44 @@ const pathSteps = value => {
   }
 }
 
+const projectSteps = value => {
+  let stepsCopy = []
+
+  switch (value) {
+    case "SMSF":
+      return ResidentialSteps
+
+    default:
+      stepsCopy = [...ResidentialSteps]
+      stepsCopy.splice(4, 1)
+      return stepsCopy
+  }
+}
+
+const assetIncomeSteps = value => {
+  let stepsCopy = []
+
+  switch (value) {
+    case "PAYG Employed (Payslips)":
+      return AssetFinancialSteps
+
+    default:
+      stepsCopy = [...AssetFinancialSteps]
+      stepsCopy.splice(3, 1)
+      return stepsCopy
+  }
+}
+
 const mutateSteps = (keyName, value, currentSteps) => {
-  console.log(keyName, value)
   switch (keyName) {
     case "path":
       return pathSteps(value)
+
+    case "project_type":
+      return projectSteps(value)
+
+    case "asset_income_type":
+      return assetIncomeSteps(value)
 
     default:
       return currentSteps

@@ -23,37 +23,31 @@ const ProjectType: React.FC = () => {
     },
   } = useStore()
 
-  const header = (
-    <StepHeader>
-      <TitleWithTooltip title="Type of Project">Norem ipsum...</TitleWithTooltip>
-      <Description>Please select the most relevant option to your needs</Description>
-    </StepHeader>
-  )
-
-  const component =
+  const tiles =
     commercial_type !== "Development" ? (
-      <StepWithBackButtonContainer>
-        {header}
+      <React.Fragment>
+        <Tile img={ResidentialLogo}>Residential Zoned</Tile>
 
-        <TilesContainer stepKeyName="project_type">
-          <Tile img={ResidentialLogo}>Residential Zoned</Tile>
+        <Tile img={CommercialLogo}>Commercial Zoned</Tile>
 
-          <Tile img={CommercialLogo}>Commercial Zoned</Tile>
-
-          <Tile img={PurchaseLogo}>Purchase</Tile>
-        </TilesContainer>
-      </StepWithBackButtonContainer>
+        <Tile img={PurchaseLogo}>Purchase</Tile>
+      </React.Fragment>
     ) : (
-      <StepWithBackButtonContainer>
-        {header}
-
-        <TilesContainer stepKeyName="project_type">
-          <Tile img={ConstructionLogo}>Construction Funding</Tile>
-        </TilesContainer>
-      </StepWithBackButtonContainer>
+      <Tile img={ConstructionLogo}>Construction Funding</Tile>
     )
 
-  return component
+  return (
+    <StepWithBackButtonContainer>
+      <StepHeader>
+        <TitleWithTooltip title="Type of Project">Norem ipsum...</TitleWithTooltip>
+        <Description>
+          Please select the most relevant option to your needs
+        </Description>
+      </StepHeader>
+
+      <TilesContainer stepKeyName="project_type">{tiles}</TilesContainer>
+    </StepWithBackButtonContainer>
+  )
 }
 
 export default ProjectType

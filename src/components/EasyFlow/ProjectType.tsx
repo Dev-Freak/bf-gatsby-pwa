@@ -7,9 +7,48 @@ import Description from "../Shared/Description"
 import StepHeader from "../DynamicStepper/StepHeader"
 import StepWithBackButtonContainer from "../DynamicStepper/StepWithBackButtonContainer"
 
-import { EstablishedLogo, OffThePlanLogo, ConstructionLogo } from "../../utils/icons"
+import {
+  EstablishedLogo,
+  OffThePlanLogo,
+  ConstructionLogo,
+  SMSFLogo,
+  ReverseMortgageLogo,
+} from "../../utils/icons"
 
-const ApplicationType: React.FC = () => {
+import useStore from "../../hooks/useStore"
+
+const ProjectType: React.FC = () => {
+  const {
+    state: {
+      easyFlow: { applicant_type },
+    },
+  } = useStore()
+
+  const tiles =
+    applicant_type === "First home buyer" ? (
+      <React.Fragment>
+        <Tile img={EstablishedLogo}>Established</Tile>
+
+        <Tile img={ConstructionLogo}>Construction</Tile>
+
+        <Tile img={OffThePlanLogo}>Off the plan</Tile>
+      </React.Fragment>
+    ) : applicant_type === "Investor" ? (
+      <React.Fragment>
+        <Tile img={EstablishedLogo}>Established</Tile>
+
+        <Tile img={ConstructionLogo}>Construction</Tile>
+
+        <Tile img={SMSFLogo}>SMSF</Tile>
+      </React.Fragment>
+    ) : (
+      <React.Fragment>
+        <Tile img={ReverseMortgageLogo}>Reverse Mortgage</Tile>
+
+        <Tile img={SMSFLogo}>SMSF</Tile>
+      </React.Fragment>
+    )
+
   return (
     <StepWithBackButtonContainer>
       <StepHeader>
@@ -19,15 +58,9 @@ const ApplicationType: React.FC = () => {
         </Description>
       </StepHeader>
 
-      <TilesContainer stepKeyName="project_type">
-        <Tile img={EstablishedLogo}>Refinance</Tile>
-
-        <Tile img={OffThePlanLogo}>First home buyer</Tile>
-
-        <Tile img={ConstructionLogo}>Investor</Tile>
-      </TilesContainer>
+      <TilesContainer stepKeyName="project_type">{tiles}</TilesContainer>
     </StepWithBackButtonContainer>
   )
 }
 
-export default ApplicationType
+export default ProjectType

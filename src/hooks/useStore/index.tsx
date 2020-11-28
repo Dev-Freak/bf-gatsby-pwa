@@ -14,6 +14,10 @@ const useStore = () => {
   const boundToggleTile = (value: ValueType) =>
     dispatch(ActionMethods.setPathValue(value))
 
+  const boundSelectMutateAndNext = (value: ValueType) => {
+    dispatch(ActionMethods.setValueMutateAndNext(value))
+  }
+
   const boundGoNext = () => dispatch(ActionMethods.goNext())
   const boundGoBack = () => dispatch(ActionMethods.goBack())
   const boundSetApplicantsQuantity = (value: number) =>
@@ -41,6 +45,7 @@ const useStore = () => {
     state,
     boundSelectTile,
     boundToggleTile,
+    boundSelectMutateAndNext,
     boundGoNext,
     boundGoBack,
     boundSetApplicantsQuantity,
