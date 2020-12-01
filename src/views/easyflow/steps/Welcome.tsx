@@ -1,7 +1,5 @@
 import * as React from "react"
 
-import useStore, { DataType } from "../../../hooks/useStore"
-
 import Tile from "../../../components/Tile"
 import TilesContainer from "../../../components/Shared/TilesContainer"
 import TitleWithTooltip from "../../../components/Shared/TitleWithTooltip"
@@ -16,6 +14,8 @@ import {
   OtherLogo,
 } from "../../../utils/icons"
 
+import useStore, { DataType } from "../../../hooks/useStore"
+
 const Welcome: React.FC = () => {
   const {
     state: {
@@ -23,6 +23,26 @@ const Welcome: React.FC = () => {
     },
     boundSelectMutateAndNext,
   } = useStore()
+
+  /* const selectTileCallback = React.useCallback(params => boundSelectTile(params), [])
+  const mutateAndNextCallback = React.useCallback(
+    params => boundMutateAndNext(params),
+    []
+  )
+
+  const [tileSelection, setTileSelection] = React.useState<DataType>(false)
+
+  React.useEffect(() => {
+    //selectTileCallback(tileSelection)
+  }, [tileSelection, selectTileCallback])
+
+  React.useEffect(() => {
+    const timeOut = setTimeout(() => {
+      mutateAndNextCallback(tileSelection)
+    }, 200)
+
+    return () => clearTimeout(timeOut)
+  }, [path, mutateAndNextCallback]) */
 
   return (
     <StepContainer>

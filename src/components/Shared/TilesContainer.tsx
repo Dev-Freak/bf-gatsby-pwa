@@ -20,6 +20,8 @@ const TilesContainer: React.FC<TilesContainerType> = ({
   const { width } = useScreenSize()
   const isMobile = width <= 540
 
+  const testingOnSelect = () => console.log("Testing OnSelect")
+
   const mappedChildren = (items: JSX.Element | Array<JSX.Element>) =>
     React.Children.map(items, (child: JSX.Element, index: number) => {
       let props = {}
@@ -30,14 +32,14 @@ const TilesContainer: React.FC<TilesContainerType> = ({
           ? {
               key: `child-${index}`,
               keyName: stepKeyName,
-              onSelect: onTileSelect ?? null,
+              onSelect: onTileSelect ?? undefined,
               selected: stepValue === child.props.children,
             }
           : {
               key: `child-${index}`,
               keyName: isMultiple ? `${stepKeyName}[]` : stepKeyName,
               isMultiple: isMultiple,
-              onSelect: onTileSelect ?? null,
+              onSelect: onTileSelect ?? undefined,
               selected: stepValue === child.props.children,
             }
 

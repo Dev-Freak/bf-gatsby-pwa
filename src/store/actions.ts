@@ -125,7 +125,7 @@ const selectTileAndNext = (value: ValueType) => {
 
 const selectTileMutateAndNext = (value: ValueType) => {
   return {
-    type: Actions.EASY_FLOW_MUTATE_NEXT,
+    type: Actions.EASY_FLOW_SELECT_MUTATE_NEXT,
     payload: value,
   }
 }

@@ -15,9 +15,9 @@ export interface TileProps {
 const Tile: React.FC<TileProps> = ({
   img,
   children,
+  onSelect,
   keyName = "unknown",
   selected = false,
-  onSelect = undefined,
 }) => {
   const isFirstRender = useFirstRenderDisabledEffect()
   const [isSelected, setIsSelected] = React.useState<boolean>(selected ?? false)
@@ -30,9 +30,10 @@ const Tile: React.FC<TileProps> = ({
 
       return () => clearTimeout(timeOut)
     }
-  }, [isSelected, onSelect])
+  }, [isSelected])
 
   const handleSelect = () => {
+    console.log("Testing Handler")
     if (selected) onSelect?.({ keyName, value: children })
     else setIsSelected(true)
   }
