@@ -13,7 +13,16 @@ import {
   DevelopmentLogo,
 } from "../../../../utils/icons"
 
+import useStore, { DataType } from "../../../../hooks/useStore"
+
 const CommercialType: React.FC = () => {
+  const {
+    state: {
+      easyFlow: { commercial_type },
+    },
+    boundSelectAndNext,
+  } = useStore()
+
   return (
     <StepWithBackButtonContainer>
       <StepHeader>
@@ -25,7 +34,11 @@ const CommercialType: React.FC = () => {
         </Description>
       </StepHeader>
 
-      <TilesContainer stepKeyName="commercial_type">
+      <TilesContainer
+        stepKeyName="commercial_type"
+        stepValue={commercial_type}
+        onTileClick={(data: DataType) => boundSelectAndNext(data)}
+      >
         <Tile img={PurchaseLogo}>Purchase</Tile>
 
         <Tile img={Refinance_2Logo}>Refinance</Tile>

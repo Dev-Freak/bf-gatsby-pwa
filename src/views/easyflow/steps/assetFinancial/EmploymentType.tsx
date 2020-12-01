@@ -9,7 +9,16 @@ import StepWithBackButtonContainer from "../../../../components/DynamicStepper/S
 
 import { CasualLogo, PartTimeLogo, FullTimeLogo } from "../../../../utils/icons"
 
+import useStore, { DataType } from "../../../../hooks/useStore"
+
 const AssetType: React.FC = () => {
+  const {
+    state: {
+      easyFlow: { employment_type },
+    },
+    boundSelectAndNext,
+  } = useStore()
+
   return (
     <StepWithBackButtonContainer>
       <StepHeader>
@@ -21,7 +30,11 @@ const AssetType: React.FC = () => {
         </Description>
       </StepHeader>
 
-      <TilesContainer stepKeyName="employment_type">
+      <TilesContainer
+        stepKeyName="employment_type"
+        stepValue={employment_type}
+        onTileClick={(data: DataType) => boundSelectAndNext(data)}
+      >
         <Tile img={CasualLogo}>Casual</Tile>
 
         <Tile img={PartTimeLogo}>Part-time</Tile>

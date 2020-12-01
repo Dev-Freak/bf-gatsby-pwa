@@ -22,6 +22,9 @@ const useStore = () => {
       ? dispatch(ActionMethods.setPathValueAndNext(value))
       : dispatch(ActionMethods.selectTileAndNext(value))
 
+  const boundMutateAndNext = (value: ValueType) =>
+    ActionMethods.mutateStepsAndNext(value)
+
   const boundSelectMutateAndNext = (value: ValueType) =>
     value?.keyName?.includes(".")
       ? dispatch(ActionMethods.setPathValueMutateAndNext(value))
@@ -56,6 +59,7 @@ const useStore = () => {
     boundToggleTile,
     boundSelectMutateAndNext,
     boundSelectAndNext,
+    boundMutateAndNext,
     boundGoNext,
     boundGoBack,
     boundSetApplicantsQuantity,

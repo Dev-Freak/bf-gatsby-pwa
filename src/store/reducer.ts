@@ -38,7 +38,6 @@ export const reducer = (state: any, action: ActionType) => {
       return {
         ...state,
         easyFlow: { ...state.easyFlow, [payload.keyName]: payload.value },
-        easyFlowSteps: { steps: mutateSteps(payload.keyName, payload.value, state.easyFlowSteps.steps) }
       }
 
     case Actions.EASY_FLOW_GO_NEXT:
@@ -138,6 +137,13 @@ export const reducer = (state: any, action: ActionType) => {
       return {
         ...state,
         easyFlow: { ...state.easyFlow, [payload.keyName]: payload.value },
+        easyFlowSteps: { steps: mutateSteps(payload.keyName, payload.value, state.easyFlowSteps.steps) },
+        currentStep: state.currentStep + 1,
+      }
+
+    case Actions.EASY_FLOW_MUTATE_NEXT:
+      return {
+        ...state,
         easyFlowSteps: { steps: mutateSteps(payload.keyName, payload.value, state.easyFlowSteps.steps) },
         currentStep: state.currentStep + 1,
       }

@@ -9,7 +9,16 @@ import StepWithBackButtonContainer from "../../../../components/DynamicStepper/S
 
 import { ABNLogo, PersonalNameLogo } from "../../../../utils/icons"
 
+import useStore, { DataType } from "../../../../hooks/useStore"
+
 const AssetPurchase: React.FC = () => {
+  const {
+    state: {
+      easyFlow: { asset_purchase },
+    },
+    boundSelectMutateAndNext,
+  } = useStore()
+
   return (
     <StepWithBackButtonContainer>
       <StepHeader>
@@ -17,7 +26,11 @@ const AssetPurchase: React.FC = () => {
         <Description>How are you wanting to purchase the asset?</Description>
       </StepHeader>
 
-      <TilesContainer stepKeyName="asset_purchase">
+      <TilesContainer
+        stepKeyName="asset_purchase"
+        stepValue={asset_purchase}
+        onTileClick={(data: DataType) => boundSelectMutateAndNext(data)}
+      >
         <Tile img={ABNLogo}>ABN/ACN Business</Tile>
 
         <Tile img={PersonalNameLogo}>Personal Name</Tile>

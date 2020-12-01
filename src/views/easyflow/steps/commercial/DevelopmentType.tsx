@@ -13,7 +13,16 @@ import {
   DAApprovedLogo,
 } from "../../../../utils/icons"
 
+import useStore, { DataType } from "../../../../hooks/useStore"
+
 const CommercialType: React.FC = () => {
+  const {
+    state: {
+      easyFlow: { development_type },
+    },
+    boundSelectAndNext,
+  } = useStore()
+
   return (
     <StepWithBackButtonContainer>
       <StepHeader>
@@ -25,7 +34,11 @@ const CommercialType: React.FC = () => {
         </Description>
       </StepHeader>
 
-      <TilesContainer stepKeyName="development_type">
+      <TilesContainer
+        stepKeyName="development_type"
+        stepValue={development_type}
+        onTileClick={(data: DataType) => boundSelectAndNext(data)}
+      >
         <Tile img={DANotAppliedLogo}>DA no applied for</Tile>
 
         <Tile img={DAPendingLogo}>Pending DA approval</Tile>

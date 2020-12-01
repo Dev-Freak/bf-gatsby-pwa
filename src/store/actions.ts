@@ -14,6 +14,7 @@ export const Actions = {
   EASY_FLOW_SET_APPLICANTS_QUANTITY: "EASY_FLOW_SET_APPLICANTS_QUANTITY",
   EASY_FLOW_SET_PATH_VALUE: "EASY_FLOW_SET_PATH_VALUE",
   EASY_FLOW_MUTATE_STEPS: "EASY_FLOW_MUTATE_STEPS",
+  EASY_FLOW_MUTATE_NEXT: "EASY_FLOW_MUTATE_NEXT",
   EASY_FLOW_SELECT_MUTATE_NEXT: "EASY_FLOW_SELECT_MUTATE_NEXT",
   EASY_FLOW_SET_VALUE_MUTATE_NEXT: "EASY_FLOW_SET_VALUE_MUTATE_NEXT",
   EASY_FLOW_SELECT_TILE_NEXT: 'EASY_FLOW_SELECT_TILE_NEXT',
@@ -94,6 +95,13 @@ const mutateSteps = (value: ValueType) => {
   }
 }
 
+const mutateStepsAndNext = (value: ValueType) => {
+  return {
+    type: Actions.EASY_FLOW_MUTATE_NEXT,
+    payload: value,
+  }
+}
+
 const setPathValueAndNext = (value: ValueType) => {
   return {
     type: Actions.EASY_FLOW_SET_PATH_VALUE_NEXT,
@@ -117,7 +125,7 @@ const selectTileAndNext = (value: ValueType) => {
 
 const selectTileMutateAndNext = (value: ValueType) => {
   return {
-    type: Actions.EASY_FLOW_SELECT_MUTATE_NEXT,
+    type: Actions.EASY_FLOW_MUTATE_NEXT,
     payload: value,
   }
 }
@@ -165,6 +173,7 @@ export const ActionMethods = {
   setPathValueAndNext,
   mutateSteps,
   selectTileMutateAndNext,
+  mutateStepsAndNext,
   setPathValueMutateAndNext,
   setApplicantsQuantity,
   setContactValue,

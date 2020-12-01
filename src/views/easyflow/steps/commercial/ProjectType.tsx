@@ -14,27 +14,15 @@ import {
   ConstructionLogo,
 } from "../../../../utils/icons"
 
-import useStore from "../../../../hooks/useStore"
+import useStore, { DataType } from "../../../../hooks/useStore"
 
 const ProjectType: React.FC = () => {
   const {
     state: {
-      easyFlow: { commercial_type },
+      easyFlow: { commercial_type, project_type },
     },
+    boundSelectAndNext,
   } = useStore()
-
-  const tiles =
-    commercial_type !== "Development" ? (
-      <React.Fragment>
-        <Tile img={ResidentialLogo}>Residential Zoned</Tile>
-
-        <Tile img={CommercialLogo}>Commercial Zoned</Tile>
-
-        <Tile img={PurchaseLogo}>Purchase</Tile>
-      </React.Fragment>
-    ) : (
-      <Tile img={ConstructionLogo}>Construction Funding</Tile>
-    )
 
   return (
     <StepWithBackButtonContainer>
@@ -45,7 +33,23 @@ const ProjectType: React.FC = () => {
         </Description>
       </StepHeader>
 
-      <TilesContainer stepKeyName="project_type">{tiles}</TilesContainer>
+      <TilesContainer
+        stepKeyName="project_type"
+        stepValue={project_type}
+        onTileClick={(data: DataType) => boundSelectAndNext(data)}
+      >
+        {commercial_type !== "Development" ? (
+          <>
+            <Tile img={ResidentialLogo}>Residential Zoned</Tile>
+
+            <Tile img={CommercialLogo}>Commercial Zoned</Tile>
+
+            <Tile img={PurchaseLogo}>Purchase</Tile>
+          </>
+        ) : (
+          <Tile img={ConstructionLogo}>Construction Funding</Tile>
+        )}
+      </TilesContainer>
     </StepWithBackButtonContainer>
   )
 }

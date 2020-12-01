@@ -30,12 +30,12 @@ const Tile: React.FC<TileProps> = ({
 
       return () => clearTimeout(timeOut)
     }
-  }, [isSelected])
+  }, [isSelected, onSelect])
 
-  const handleSelect = React.useCallback(() => {
+  const handleSelect = () => {
     if (selected) onSelect?.({ keyName, value: children })
     else setIsSelected(true)
-  }, [onSelect])
+  }
 
   const styles = isSelected ? "bg-brand" : ""
   const svgStyles = isSelected ? "tile-selected" : "tile-idle"

@@ -14,7 +14,16 @@ import {
   CashflowLendingLogo,
 } from "../../../../utils/icons"
 
+import useStore, { DataType } from "../../../../hooks/useStore"
+
 const AssetType: React.FC = () => {
+  const {
+    state: {
+      easyFlow: { asset_type },
+    },
+    boundSelectAndNext,
+  } = useStore()
+
   return (
     <StepWithBackButtonContainer>
       <StepHeader>
@@ -24,7 +33,11 @@ const AssetType: React.FC = () => {
         </Description>
       </StepHeader>
 
-      <TilesContainer stepKeyName="asset_type">
+      <TilesContainer
+        stepKeyName="asset_type"
+        stepValue={asset_type}
+        onTileClick={(data: DataType) => boundSelectAndNext(data)}
+      >
         <Tile img={EquipmentPlanLogo}>Equipment Plan</Tile>
 
         <Tile img={VehiclePurchaseLogo}>Vehicle Purchase</Tile>

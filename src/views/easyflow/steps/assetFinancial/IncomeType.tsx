@@ -16,13 +16,14 @@ import {
   TrustEntityLogo,
 } from "../../../../utils/icons"
 
-import useStore from "../../../../hooks/useStore"
+import useStore, { DataType } from "../../../../hooks/useStore"
 
 const AssetPurchase: React.FC = () => {
   const {
     state: {
-      easyFlow: { asset_purchase },
+      easyFlow: { asset_purchase, asset_income_type },
     },
+    boundSelectAndNext,
   } = useStore()
 
   const header = (
@@ -32,12 +33,21 @@ const AssetPurchase: React.FC = () => {
     </StepHeader>
   )
 
+  /* const wrapperOnContainer = (tiles: JSX.Element | Array<JSX.Element>) => (
+    <TilesContainer stepKeyName="asset_income_type" stepValue={asset_income_type}
+    onTileClick={() =>}>{tiles}</TilesContainer>
+  ) */
+
   const component =
     asset_purchase === "Personal Name" ? (
       <StepWithBackButtonContainer>
         {header}
 
-        <TilesContainer stepKeyName="asset_income_type">
+        <TilesContainer
+          stepKeyName="asset_income_type"
+          stepValue={asset_income_type}
+          onTileClick={(data: DataType) => boundSelectAndNext(data)}
+        >
           <Tile img={PayslipLogo}>PAYG Employed (Payslips)</Tile>
         </TilesContainer>
       </StepWithBackButtonContainer>
@@ -45,7 +55,11 @@ const AssetPurchase: React.FC = () => {
       <StepWithNextAndBackButtonContainer>
         {header}
 
-        <TilesContainer stepKeyName="asset_income_type">
+        <TilesContainer
+          stepKeyName="asset_income_type"
+          stepValue={asset_income_type}
+          onTileClick={() => null}
+        >
           <TileWithCheckBox img={SoleTraderLogo}>Sole Trader</TileWithCheckBox>
 
           <TileWithCheckBox img={CompanyLogo}>Company</TileWithCheckBox>
