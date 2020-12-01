@@ -1,20 +1,20 @@
 import * as React from "react"
 
-import useStore, { DataType } from "../../hooks/useStore"
+import useStore, { DataType } from "../../../hooks/useStore"
 
-import Tile from "../Tile"
-import TilesContainer from "../Shared/TilesContainer"
-import TitleWithTooltip from "../Shared/TitleWithTooltip"
-import Description from "../Shared/Description"
-import StepHeader from "../DynamicStepper/StepHeader"
-import StepContainer from "../DynamicStepper/StepContainer"
+import Tile from "../../../components/Tile"
+import TilesContainer from "../../../components/Shared/TilesContainer"
+import TitleWithTooltip from "../../../components/Shared/TitleWithTooltip"
+import Description from "../../../components/Shared/Description"
+import StepHeader from "../../../components/DynamicStepper/StepHeader"
+import StepContainer from "../../../components/DynamicStepper/StepContainer"
 
 import {
   AssetsFinancialLogo,
   CommercialLogo,
   ResidentialLogo,
   OtherLogo,
-} from "../../utils/icons"
+} from "../../../utils/icons"
 
 const Welcome: React.FC = () => {
   const {

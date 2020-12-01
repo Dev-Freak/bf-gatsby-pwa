@@ -1,10 +1,10 @@
 import * as React from "react"
 
-import StepHeader from "../../DynamicStepper/StepHeader"
-import SummaryItem from "../../Shared/SummaryItem"
-import TitleWithTooltip from "../../Shared/TitleWithTooltip"
+import StepHeader from "../../../../components/DynamicStepper/StepHeader"
+import SummaryItem from "../../../../components/Shared/SummaryItem"
+import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
 
-import useSummary from "../../../hooks/useSummary"
+import useSummary from "../../../../hooks/useSummary"
 
 const Summary: React.FC = () => {
   const summaryData = useSummary()

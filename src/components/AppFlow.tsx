@@ -2,7 +2,7 @@ import * as React from "react"
 
 import useStore from "../hooks/useStore"
 
-import EasyFlow from "./EasyFlow"
+import EasyFlow from "../views/easyflow"
 import FinishEasyFlow from "./FinishEasyFlow"
 
 const AppFlow: React.FC = () => {

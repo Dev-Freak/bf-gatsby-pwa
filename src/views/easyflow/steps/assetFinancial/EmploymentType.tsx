@@ -1,13 +1,13 @@
 import * as React from "react"
 
-import Tile from "../../Tile"
-import TilesContainer from "../../Shared/TilesContainer"
-import TitleWithTooltip from "../../Shared/TitleWithTooltip"
-import Description from "../../Shared/Description"
-import StepHeader from "../../DynamicStepper/StepHeader"
-import StepWithBackButtonContainer from "../../DynamicStepper/StepWithBackButtonContainer"
+import Tile from "../../../../components/Tile"
+import TilesContainer from "../../../../components/Shared/TilesContainer"
+import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
+import Description from "../../../../components/Shared/Description"
+import StepHeader from "../../../../components/DynamicStepper/StepHeader"
+import StepWithBackButtonContainer from "../../../../components/DynamicStepper/StepWithBackButtonContainer"
 
-import { CasualLogo, PartTimeLogo, FullTimeLogo } from "../../../utils/icons"
+import { CasualLogo, PartTimeLogo, FullTimeLogo } from "../../../../utils/icons"
 
 const AssetType: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import Summary from "../../components/EasyFlow/ApplicationSummary/Summary"
+import Summary from "../../views/easyflow/ApplicationSummary/Summary"
 import StateProvider from "../../store/AppStore"
 
 export default {

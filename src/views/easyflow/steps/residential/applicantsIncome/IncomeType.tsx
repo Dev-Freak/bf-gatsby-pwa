@@ -1,13 +1,13 @@
 import * as React from "react"
 
-import TileWithCheckBox from "../../TileWithCheckBox"
-import TilesContainer from "../../Shared/TilesContainer"
+import TileWithCheckBox from "../../../../../components/TileWithCheckBox"
+import TilesContainer from "../../../../../components/Shared/TilesContainer"
 
 import {
   PayslipLogo,
   PensionCentrelinkLogo,
   SelfEmployedLogo,
-} from "../../../utils/icons"
+} from "../../../../../utils/icons"
 
 type IncomeTypeProps = {
   keyName: string

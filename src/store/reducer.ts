@@ -2,7 +2,7 @@ import _ from "lodash"
 
 import { Actions, ActionType } from "./actions"
 import { objRemoveEmptyOrNull } from "../utils/trimObject"
-import { initialStep, mutateSteps } from '../components/EasyFlow/stepsManager';
+import { initialStep, mutateSteps } from '../views/easyflow/stepsManager';
 
 export const initialState = {
   currentStep: 0,
@@ -26,8 +26,10 @@ export const initialState = {
 
 export const reducer = (state: any, action: ActionType) => {
   const { type, payload } = action
-  let easyFlowTemp
-  let tabs
+  let path = payload?.keyName
+  let tabs = null
+  let easyFlowTemp = null
+  let currentValue = null
 
   console.log(action)
 
@@ -83,12 +85,10 @@ export const reducer = (state: any, action: ActionType) => {
         applicants: [...applicantsTemp],
       }
 
-      return { ...state, easyFlow: { ...easyFlowTemp } }
+      return { ...state, easyFlow: { ...easyFlowTemp }, currentStep: state.currentStep + 1, }
 
     case Actions.EASY_FLOW_SET_PATH_VALUE:
       easyFlowTemp = { ...state.easyFlow }
-      let currentValue
-      let path = payload.keyName
 
       if (path.includes("[]")) {
         const shallowerPath = path.split("[]")[0]
@@ -106,6 +106,33 @@ export const reducer = (state: any, action: ActionType) => {
       easyFlowTemp = objRemoveEmptyOrNull(easyFlowTemp)
 
       return { ...state, easyFlow: { ...easyFlowTemp } }
+
+    case Actions.EASY_FLOW_SET_PATH_VALUE_NEXT:
+      easyFlowTemp = { ...state.easyFlow }
+
+      if (path.includes("[]")) {
+        const shallowerPath = path.split("[]")[0]
+        currentValue = _.get(easyFlowTemp, shallowerPath, { length: 0 })
+
+        path = path.replace("[]", `[${currentValue.length}]`)
+      } else {
+        currentValue = _.get(easyFlowTemp, path, { length: 0 })
+      }
+
+      currentValue.length !== 0 && currentValue.includes(payload.value)
+        ? _.unset(easyFlowTemp, path)
+        : _.set(easyFlowTemp, path, payload.value)
+
+      easyFlowTemp = objRemoveEmptyOrNull(easyFlowTemp)
+
+      return { ...state, easyFlow: { ...easyFlowTemp }, currentStep: state.currentStep + 1, }
+
+    case Actions.EASY_FLOW_SELECT_TILE_NEXT:
+      return {
+        ...state,
+        easyFlow: { ...state.easyFlow, [payload.keyName]: payload.value },
+        currentStep: state.currentStep + 1,
+      }
 
     case Actions.EASY_FLOW_SELECT_MUTATE_NEXT:
       return {

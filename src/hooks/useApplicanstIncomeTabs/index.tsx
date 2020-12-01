@@ -3,7 +3,7 @@ import _ from "lodash"
 
 import useStore from "../useStore"
 
-import ApplicantsIncome from "../../components/EasyFlow/ApplicantsIncome/index"
+import ApplicantsIncome from "../../views/easyflow/steps/residential/applicantsIncome/index"
 import { TabProps } from "../../components/Tab/Tabs"
 
 import { POSSIBLE_APPLICANTS } from "../../utils/constants"

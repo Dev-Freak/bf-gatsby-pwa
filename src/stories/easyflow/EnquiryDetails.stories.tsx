@@ -2,7 +2,7 @@ import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
 
 import StateProvider from "../../store/AppStore"
-import EnquiryDetails from "../../components/EasyFlow/ApplicationSummary/EnquiryDetails"
+import EnquiryDetails from "../../views/easyflow/ApplicationSummary/EnquiryDetails"
 
 export default {
   title: "EasyFlow Steps/EnquiryDetails",

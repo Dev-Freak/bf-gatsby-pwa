@@ -1,13 +1,13 @@
 import * as React from "react"
 
-import StepHeader from "../../DynamicStepper/StepHeader"
-import StepWithTabsContainer from "../../DynamicStepper/StepWithTabsContainer"
+import StepHeader from "../../../../../components/DynamicStepper/StepHeader"
+import StepWithTabsContainer from "../../../../../components/DynamicStepper/StepWithTabsContainer"
 
-import Tabs from "../../Tab/Tabs"
-import TitleWithTooltip from "../../Shared/TitleWithTooltip"
-import Description from "../../Shared/Description"
+import Tabs from "../../../../../components/Tab/Tabs"
+import TitleWithTooltip from "../../../../../components/Shared/TitleWithTooltip"
+import Description from "../../../../../components/Shared/Description"
 
-import useApplicantsIncomeTabs from "../../../hooks/useApplicanstIncomeTabs"
+import useApplicantsIncomeTabs from "../../../../../hooks/useApplicanstIncomeTabs"
 
 const ApplicantsIncomeTabs: React.FC = () => {
   const {

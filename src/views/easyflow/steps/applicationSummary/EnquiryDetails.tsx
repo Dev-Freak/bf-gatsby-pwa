@@ -1,14 +1,12 @@
 import * as React from "react"
 
-import useEnquiryDetails from "../../../hooks/useEnquiryDetails"
+import StepHeader from "../../../../components/DynamicStepper/StepHeader"
+import CheckBoxWithDescription from "../../../../components/Shared/CheckBoxWithDescription"
+import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
+import Slider, { StepsType, ValueType } from "../../../../components/Slider"
+import Lable from "../../../../components/Shared/Inputs/Lable"
 
-import StepHeader from "../../DynamicStepper/StepHeader"
-import CheckBoxWithDescription from "../../Shared/CheckBoxWithDescription"
-import TitleWithTooltip from "../../Shared/TitleWithTooltip"
-
-import Slider, { StepsType, ValueType } from "../../Slider"
-
-import Lable from "../../Shared/Inputs/Lable"
+import useEnquiryDetails from "../../../../hooks/useEnquiryDetails"
 
 const steps = [
   {

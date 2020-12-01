@@ -2,7 +2,7 @@ import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
 
 import StateProvider from "../../store/AppStore"
-import ContactForm from "../../components/EasyFlow/ApplicationSummary/ContactForm"
+import ContactForm from "../../views/easyflow/steps/applicationSummary"
 
 export default {
   title: "EasyFlow Steps/ContactForm",

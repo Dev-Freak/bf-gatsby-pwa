@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import Stepper, { StepperProps } from "../DynamicStepper/Stepper"
+import Stepper, { StepperProps } from "../../components/DynamicStepper/Stepper"
 
 import useStore from "../../hooks/useStore"
 

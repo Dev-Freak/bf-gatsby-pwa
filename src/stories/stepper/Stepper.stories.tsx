@@ -2,25 +2,25 @@ import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
 
 import StateProvider from "../../store/AppStore"
-import Welcome from "../../components/EasyFlow/Welcome"
+import Welcome from "../../views/easyflow/steps/Welcome"
 
 // Residential
-import ApplicantsQuantity from "../../components/EasyFlow/ApplicantsQuantity"
-import ApplicationType from "../../components/EasyFlow/ApplicationType"
-import ProjectType from "../../components/EasyFlow/ProjectType"
-import ApplicantsIncomeTabs from "../../components/EasyFlow/ApplicantsIncome/ApplicantsIncomeTabs"
-import ApplicationsSummary from "../../components/EasyFlow/ApplicationSummary"
+import ApplicantsQuantity from "../../views/easyflow/ApplicantsQuantity"
+import ApplicationType from "../../views/easyflow/ApplicationType"
+import ProjectType from "../../views/easyflow/ProjectType"
+import ApplicantsIncomeTabs from "../../views/easyflow/steps/residential/applicantsIncome/ApplicantsIncomeTabs"
+import ApplicationsSummary from "../../views/easyflow/ApplicationSummary"
 
 // AssetsFinancial
-import AssetType from "../../components/EasyFlow/AssetFinancial/AssetType"
-import AssetPurchase from "../../components/EasyFlow/AssetFinancial/AssetPurchase"
-import EmploymentType from "../../components/EasyFlow/AssetFinancial/EmploymentType"
-import IncomeType from "../../components/EasyFlow/AssetFinancial/IncomeType"
+import AssetType from "../../views/easyflow/AssetFinancial/AssetType"
+import AssetPurchase from "../../views/easyflow/AssetFinancial/AssetPurchase"
+import EmploymentType from "../../views/easyflow/AssetFinancial/EmploymentType"
+import IncomeType from "../../views/easyflow/AssetFinancial/IncomeType"
 
 // Commercial
-import CommercialType from "../../components/EasyFlow/Commercial/CommercialType"
-import ComProjectType from "../../components/EasyFlow/Commercial/ProjectType"
-import DevelopmentType from "../../components/EasyFlow/Commercial/DevelopmentType"
+import CommercialType from "../../views/easyflow/Commercial/CommercialType"
+import ComProjectType from "../../views/easyflow/Commercial/ProjectType"
+import DevelopmentType from "../../views/easyflow/Commercial/DevelopmentType"
 
 import Stepper, { StepperProps } from "../../components/DynamicStepper/Stepper"
 

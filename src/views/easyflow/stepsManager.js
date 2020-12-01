@@ -1,26 +1,26 @@
 import * as React from "react"
 
 // EASYFLOW STEPS
-import Welcome from "./Welcome"
-import ApplicationsSummary from "./ApplicationSummary"
+import Welcome from "./steps/Welcome"
+import ApplicationsSummary from "./steps/applicationSummary"
 
 // Residential
-import ApplicantsQuantity from "./ApplicantsQuantity"
-import ApplicationType from "./ApplicationType"
-import ProjectType from "./ProjectType"
-import SMSFType from "./SMSFType"
-import ApplicantsIncomeTabs from "./ApplicantsIncome/ApplicantsIncomeTabs"
+import ApplicantsQuantity from "./steps/residential/ApplicantsQuantity"
+import ApplicationType from "./steps/residential/ApplicationType"
+import ProjectType from "./steps/residential/ProjectType"
+import SMSFType from "./steps/residential/SMSFType"
+import ApplicantsIncomeTabs from "./steps/residential/applicantsIncome/ApplicantsIncomeTabs"
 
 // AssetsFinancial
-import AssetType from "./AssetFinancial/AssetType"
-import AssetPurchase from "./AssetFinancial/AssetPurchase"
-import EmploymentType from "./AssetFinancial/EmploymentType"
-import IncomeType from "./AssetFinancial/IncomeType"
+import AssetType from "./steps/assetFinancial/AssetType"
+import AssetPurchase from "./steps/assetFinancial/AssetPurchase"
+import EmploymentType from "./steps/assetFinancial/EmploymentType"
+import IncomeType from "./steps/assetFinancial/IncomeType"
 
 // Commercial
-import CommercialType from "./Commercial/CommercialType"
-import ComProjectType from "./Commercial/ProjectType"
-import DevelopmentType from "./Commercial/DevelopmentType"
+import CommercialType from "./steps/commercial/CommercialType"
+import ComProjectType from "./steps/commercial/ProjectType"
+import DevelopmentType from "./steps/commercial/DevelopmentType"
 
 const initialStep = [<Welcome />]
 const AssetFinancialSteps = [

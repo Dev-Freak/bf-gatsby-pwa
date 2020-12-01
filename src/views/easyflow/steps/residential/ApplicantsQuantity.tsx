@@ -1,20 +1,20 @@
 import * as React from "react"
 
-import useStore from "../../hooks/useStore"
+import useStore, { DataType } from "../../../../hooks/useStore"
 
-import Tile from "../Tile"
-import TilesContainer from "../Shared/TilesContainer"
-import TitleWithTooltip from "../Shared/TitleWithTooltip"
-import Description from "../Shared/Description"
-import StepHeader from "../DynamicStepper/StepHeader"
-import StepWithBackButtonContainer from "../DynamicStepper/StepWithBackButtonContainer"
+import Tile from "../../../../components/Tile"
+import TilesContainer from "../../../../components/Shared/TilesContainer"
+import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
+import Description from "../../../../components/Shared/Description"
+import StepHeader from "../../../../components/DynamicStepper/StepHeader"
+import StepWithBackButtonContainer from "../../../../components/DynamicStepper/StepWithBackButtonContainer"
 
 import {
   OneApplicantLogo,
   TwoApplicantLogo,
   ThreeApplicantLogo,
   FourApplicantLogo,
-} from "../../utils/icons"
+} from "../../../../utils/icons"
 
 const ApplicantsQuantity: React.FC = () => {
   const {
@@ -39,8 +39,8 @@ const ApplicantsQuantity: React.FC = () => {
       <TilesContainer
         stepKeyName="applicants_qty"
         stepValue={applicants_qty}
-        onTileClick={(value: string) =>
-          boundSetApplicantsQuantity(parseInt(value.split(" ")[0]))
+        onTileClick={(data: DataType) =>
+          boundSetApplicantsQuantity(parseInt(data.value.split(" ")[0]))
         }
       >
         <Tile img={OneApplicantLogo}>1 Applicant</Tile>

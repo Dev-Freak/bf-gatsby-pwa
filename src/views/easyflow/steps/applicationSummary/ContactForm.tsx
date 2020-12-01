@@ -1,15 +1,14 @@
 import * as React from "react"
 
-import StepHeader from "../../DynamicStepper/StepHeader"
+import StepHeader from "../../../../components/DynamicStepper/StepHeader"
+import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
+import CheckBoxWithDescription from "../../../../components/Shared/CheckBoxWithDescription"
+import InputContainer from "../../../../components/Shared/Inputs/InputContainer"
+import Lable from "../../../../components/Shared/Inputs/Lable"
+import Input from "../../../../components/Shared/Inputs/Input"
+import InputError from "../../../../components/Shared/Inputs/InputError"
 
-import TitleWithTooltip from "../../Shared/TitleWithTooltip"
-import CheckBoxWithDescription from "../../Shared/CheckBoxWithDescription"
-
-import useContactForm from "../../../hooks/useContactForm"
-import InputContainer from "../../Shared/Inputs/InputContainer"
-import Lable from "../../Shared/Inputs/Lable"
-import Input from "../../Shared/Inputs/Input"
-import InputError from "../../Shared/Inputs/InputError"
+import useContactForm from "../../../../hooks/useContactForm"
 
 const ContactForm: React.FC = () => {
   const { inputs, form, boundSetContactValue } = useContactForm()

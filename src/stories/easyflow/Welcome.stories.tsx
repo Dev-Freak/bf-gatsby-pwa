@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import Welcome from "../../components/EasyFlow/Welcome"
+import Welcome from "../../views/easyflow/steps/Welcome"
 import StateProvider from "../../store/AppStore"
 
 export default {

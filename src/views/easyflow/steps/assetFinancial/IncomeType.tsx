@@ -1,22 +1,22 @@
 import * as React from "react"
 
-import Tile from "../../Tile"
-import TileWithCheckBox from "../../TileWithCheckBox"
-import TilesContainer from "../../Shared/TilesContainer"
-import TitleWithTooltip from "../../Shared/TitleWithTooltip"
-import Description from "../../Shared/Description"
-import StepHeader from "../../DynamicStepper/StepHeader"
-import StepWithBackButtonContainer from "../../DynamicStepper/StepWithBackButtonContainer"
-import StepWithNextAndBackButtonContainer from "../../DynamicStepper/StepWithNextAndBackButtonContainer"
+import Tile from "../../../../components/Tile"
+import TileWithCheckBox from "../../../../components/TileWithCheckBox"
+import TilesContainer from "../../../../components/Shared/TilesContainer"
+import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
+import Description from "../../../../components/Shared/Description"
+import StepHeader from "../../../../components/DynamicStepper/StepHeader"
+import StepWithBackButtonContainer from "../../../../components/DynamicStepper/StepWithBackButtonContainer"
+import StepWithNextAndBackButtonContainer from "../../../../components/DynamicStepper/StepWithNextAndBackButtonContainer"
 
 import {
   PayslipLogo,
   SoleTraderLogo,
   CompanyLogo,
   TrustEntityLogo,
-} from "../../../utils/icons"
+} from "../../../../utils/icons"
 
-import useStore from "../../../hooks/useStore"
+import useStore from "../../../../hooks/useStore"
 
 const AssetPurchase: React.FC = () => {
   const {

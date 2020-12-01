@@ -4,15 +4,13 @@ import Summary from "./Summary"
 import ContactForm from "./ContactForm"
 import EnquiryDetails from "./EnquiryDetails"
 
-import StepButtons from "../../DynamicStepper/StepButtons"
-import StepContainer from "../../DynamicStepper/StepContainer"
-
-import { PrimaryButton } from "../../Buttons"
+import StepButtons from "../../../../components/DynamicStepper/StepButtons"
+import StepContainer from "../../../../components/DynamicStepper/StepContainer"
+import { PrimaryButton } from "../../../../components/Buttons"
 import { ArrowRightShort } from "@styled-icons/bootstrap/ArrowRightShort"
+import BackButton from "../../../../components/DynamicStepper/BackButton"
 
-import BackButton from "../../DynamicStepper/BackButton"
-
-import useApplicationSummary from "../../../hooks/useApplicationSummary"
+import useApplicationSummary from "../../../../hooks/useApplicationSummary"
 
 const ApplicationSummary: React.FC = () => {
   const { isSummaryFinished, finishEasyFlow } = useApplicationSummary()

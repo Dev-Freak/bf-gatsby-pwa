@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
 
-import ApplicantsIncomeTabs from "../../components/EasyFlow/ApplicantsIncome/ApplicantsIncomeTabs"
+import ApplicantsIncomeTabs from "../../views/easyflow/steps/residential/applicantsIncome/ApplicantsIncomeTabs"
 
 import StateProvider from "../../store/AppStore"
 

@@ -1,9 +1,13 @@
 import * as React from "react"
 
-import TilesContainer from "../../Shared/TilesContainer"
-import TileWithCheckBox from "../../TileWithCheckBox"
+import TilesContainer from "../../../../../components/Shared/TilesContainer"
+import TileWithCheckBox from "../../../../../components/TileWithCheckBox"
 
-import { SoleTraderLogo, CompanyLogo, TrustEntityLogo } from "../../../utils/icons"
+import {
+  SoleTraderLogo,
+  CompanyLogo,
+  TrustEntityLogo,
+} from "../../../../../utils/icons"
 
 type SelfEmploymentTypeProps = {
   keyName: string
