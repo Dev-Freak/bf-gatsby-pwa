@@ -3,6 +3,9 @@ import * as React from "react"
 import { ActionMethods, ValueType } from "../../store/actions"
 import { Store } from "../../store/AppStore"
 
+export type DataType = ValueType
+export type QuantityType = number
+
 const useStore = () => {
   const { state, dispatch }: any = React.useContext(Store)
 
@@ -14,13 +17,19 @@ const useStore = () => {
   const boundToggleTile = (value: ValueType) =>
     dispatch(ActionMethods.setPathValue(value))
 
-  const boundSelectMutateAndNext = (value: ValueType) => {
-    dispatch(ActionMethods.setValueMutateAndNext(value))
-  }
+  const boundSelectAndNext = (value: ValueType) =>
+    value?.keyName?.includes(".")
+      ? dispatch(ActionMethods.setPathValueAndNext(value))
+      : dispatch(ActionMethods.selectTileAndNext(value))
+
+  const boundSelectMutateAndNext = (value: ValueType) =>
+    value?.keyName?.includes(".")
+      ? dispatch(ActionMethods.setPathValueMutateAndNext(value))
+      : dispatch(ActionMethods.selectTileMutateAndNext(value))
 
   const boundGoNext = () => dispatch(ActionMethods.goNext())
   const boundGoBack = () => dispatch(ActionMethods.goBack())
-  const boundSetApplicantsQuantity = (value: number) =>
+  const boundSetApplicantsQuantity = (value: QuantityType) =>
     dispatch(ActionMethods.setApplicantsQuantity(value))
 
   const boundSetTab = (value: ValueType) => dispatch(ActionMethods.setTab(value))
@@ -46,6 +55,7 @@ const useStore = () => {
     boundSelectTile,
     boundToggleTile,
     boundSelectMutateAndNext,
+    boundSelectAndNext,
     boundGoNext,
     boundGoBack,
     boundSetApplicantsQuantity,

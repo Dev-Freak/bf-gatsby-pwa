@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import useApplicantsQuantity from "../../hooks/useApplicantsQuantity"
+import useStore from "../../hooks/useStore"
 
 import Tile from "../Tile"
 import TilesContainer from "../Shared/TilesContainer"
@@ -17,7 +17,12 @@ import {
 } from "../../utils/icons"
 
 const ApplicantsQuantity: React.FC = () => {
-  const { handleSetApplicantsQuantity } = useApplicantsQuantity()
+  const {
+    state: {
+      easyFlow: { applicants_qty },
+    },
+    boundSetApplicantsQuantity,
+  } = useStore()
 
   return (
     <StepWithBackButtonContainer>
@@ -33,7 +38,10 @@ const ApplicantsQuantity: React.FC = () => {
 
       <TilesContainer
         stepKeyName="applicants_qty"
-        onTileClick={value => handleSetApplicantsQuantity(value)}
+        stepValue={applicants_qty}
+        onTileClick={(value: string) =>
+          boundSetApplicantsQuantity(parseInt(value.split(" ")[0]))
+        }
       >
         <Tile img={OneApplicantLogo}>1 Applicant</Tile>
 

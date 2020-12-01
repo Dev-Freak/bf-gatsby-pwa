@@ -1,11 +1,10 @@
-import { isError } from "lodash"
-import { string } from "prop-types"
 import * as React from "react"
 
 import useScreenSize from "../../hooks/useScreenSize"
 
 export type TilesContainerType = {
   stepKeyName: string
+  stepValue: any
   isMultiple?: true | false
   onTileClick?: CallableFunction
   children: JSX.Element | Array<JSX.Element>
@@ -13,9 +12,10 @@ export type TilesContainerType = {
 
 const TilesContainer: React.FC<TilesContainerType> = ({
   stepKeyName,
+  stepValue,
   isMultiple = true,
   children,
-  onTileClick,
+  onTileClick: onTileSelect,
 }) => {
   const { width } = useScreenSize()
   const isMobile = width <= 540
@@ -30,13 +30,15 @@ const TilesContainer: React.FC<TilesContainerType> = ({
           ? {
               key: `child-${index}`,
               keyName: stepKeyName,
-              onClick: onTileClick ?? null,
+              onSelect: onTileSelect ?? null,
+              selected: stepValue === child.props.children,
             }
           : {
               key: `child-${index}`,
               keyName: isMultiple ? `${stepKeyName}[]` : stepKeyName,
               isMultiple: isMultiple,
-              onClick: onTileClick ?? null,
+              onSelect: onTileSelect ?? null,
+              selected: stepValue === child.props.children,
             }
 
       return React.cloneElement(child as JSX.Element, { ...props })

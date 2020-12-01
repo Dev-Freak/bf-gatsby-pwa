@@ -15,6 +15,9 @@ export const Actions = {
   EASY_FLOW_SET_PATH_VALUE: "EASY_FLOW_SET_PATH_VALUE",
   EASY_FLOW_MUTATE_STEPS: "EASY_FLOW_MUTATE_STEPS",
   EASY_FLOW_SELECT_MUTATE_NEXT: "EASY_FLOW_SELECT_MUTATE_NEXT",
+  EASY_FLOW_SET_VALUE_MUTATE_NEXT: "EASY_FLOW_SET_VALUE_MUTATE_NEXT",
+  EASY_FLOW_SELECT_TILE_NEXT: 'EASY_FLOW_SELECT_TILE_NEXT',
+  EASY_FLOW_SET_PATH_VALUE_NEXT: 'EASY_FLOW_SET_PATH_VALUE_NEXT',
 
   // TABS
   TABS_SET_TAB: "TABS_SET_TAB",
@@ -35,13 +38,6 @@ export const Actions = {
 }
 
 // Action Creators
-
-const selectTile = (value: ValueType) => {
-  return {
-    type: Actions.EASY_FLOW_SELECT_TILE,
-    payload: value,
-  }
-}
 
 const goNext = () => {
   return {
@@ -76,6 +72,13 @@ const setInnerStep = (value: ValueType) => {
   }
 }
 
+const selectTile = (value: ValueType) => {
+  return {
+    type: Actions.EASY_FLOW_SELECT_TILE,
+    payload: value,
+  }
+}
+
 const setPathValue = (value: ValueType) => {
   return {
     type: Actions.EASY_FLOW_SET_PATH_VALUE,
@@ -83,16 +86,38 @@ const setPathValue = (value: ValueType) => {
   }
 }
 
-const setValueMutateAndNext = (value: ValueType) => {
-  return {
-    type: Actions.EASY_FLOW_SELECT_MUTATE_NEXT,
-    payload: value,
-  }
-}
 
 const mutateSteps = (value: ValueType) => {
   return {
     type: Actions.EASY_FLOW_MUTATE_STEPS,
+    payload: value,
+  }
+}
+
+const setPathValueAndNext = (value: ValueType) => {
+  return {
+    type: Actions.EASY_FLOW_SET_PATH_VALUE_NEXT,
+    payload: value,
+  }
+}
+
+const setPathValueMutateAndNext = (value: ValueType) => {
+  return {
+    type: Actions.EASY_FLOW_SET_VALUE_MUTATE_NEXT,
+    payload: value,
+  }
+}
+
+const selectTileAndNext = (value: ValueType) => {
+  return {
+    type: Actions.EASY_FLOW_SELECT_TILE_NEXT,
+    payload: value,
+  }
+}
+
+const selectTileMutateAndNext = (value: ValueType) => {
+  return {
+    type: Actions.EASY_FLOW_SELECT_MUTATE_NEXT,
     payload: value,
   }
 }
@@ -130,15 +155,18 @@ const finishFactFind = () => {
 }
 
 export const ActionMethods = {
-  selectTile,
   goNext,
   goBack,
-  setApplicantsQuantity,
   setTab,
   setInnerStep,
+  selectTile,
+  selectTileAndNext,
   setPathValue,
-  setValueMutateAndNext,
+  setPathValueAndNext,
   mutateSteps,
+  selectTileMutateAndNext,
+  setPathValueMutateAndNext,
+  setApplicantsQuantity,
   setContactValue,
   setEnquiryDetailsValue,
   finishEasyFlow,

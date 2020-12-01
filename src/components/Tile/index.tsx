@@ -1,36 +1,50 @@
 import * as React from "react"
-import useSelectTile from "../../hooks/useSelectTile"
-
 import TileLabel from "../Shared/TileLabel"
 import TileContent from "../Shared/TileContent"
 
+import useFirstRenderDisabledEffect from "../../hooks/useFirstRenderDisabledEffect"
+
 export interface TileProps {
   img: any
-  keyName?: string
   children: string
-  onClick?: CallableFunction
+  keyName?: string
+  selected?: true | false
+  onSelect?: CallableFunction
 }
 
 const Tile: React.FC<TileProps> = ({
   img,
-  keyName = "unknown",
   children,
-  onClick,
+  keyName = "unknown",
+  selected = false,
+  onSelect = undefined,
 }) => {
-  const { isTileSelected, handleSelectTile } = useSelectTile(
-    keyName,
-    children,
-    onClick
-  )
+  const isFirstRender = useFirstRenderDisabledEffect()
+  const [isSelected, setIsSelected] = React.useState<boolean>(selected ?? false)
 
-  const styles = isTileSelected ? "bg-brand" : ""
-  const svgStyles = isTileSelected ? "tile-selected" : "tile-idle"
-  const textStyles = isTileSelected ? "text-white" : "text-brand"
+  React.useEffect(() => {
+    if (!isFirstRender && onSelect !== undefined) {
+      const timeOut = setTimeout(() => {
+        onSelect({ keyName, value: children })
+      }, 300)
+
+      return () => clearTimeout(timeOut)
+    }
+  }, [isSelected])
+
+  const handleSelect = React.useCallback(() => {
+    if (selected) onSelect?.({ keyName, value: children })
+    else setIsSelected(true)
+  }, [onSelect])
+
+  const styles = isSelected ? "bg-brand" : ""
+  const svgStyles = isSelected ? "tile-selected" : "tile-idle"
+  const textStyles = isSelected ? "text-white" : "text-brand"
 
   return (
     <div
       className={`tile selectable w-32 h-32 shadow-md rounded-lg cursor-pointer md:w-40 md:h-40 my-2 md:my-0 ${styles}`}
-      onClick={() => handleSelectTile()}
+      onClick={() => handleSelect()}
     >
       <TileContent>
         <img

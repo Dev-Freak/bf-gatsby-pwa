@@ -1,5 +1,7 @@
 import * as React from "react"
 
+import useStore, { DataType } from "../../hooks/useStore"
+
 import Tile from "../Tile"
 import TilesContainer from "../Shared/TilesContainer"
 import TitleWithTooltip from "../Shared/TitleWithTooltip"
@@ -10,6 +12,13 @@ import StepWithBackButtonContainer from "../DynamicStepper/StepWithBackButtonCon
 import { ResidentialLogo, CommercialLogo } from "../../utils/icons"
 
 const SMSFType: React.FC = () => {
+  const {
+    state: {
+      easyFlow: { smsf_type },
+    },
+    boundSelectMutateAndNext,
+  } = useStore()
+
   return (
     <StepWithBackButtonContainer>
       <StepHeader>
@@ -19,7 +28,11 @@ const SMSFType: React.FC = () => {
         </Description>
       </StepHeader>
 
-      <TilesContainer stepKeyName="smsf_type">
+      <TilesContainer
+        stepKeyName="smsf_type"
+        stepValue={smsf_type}
+        onTileClick={(data: DataType) => boundSelectMutateAndNext(data)}
+      >
         <Tile img={ResidentialLogo}>Residential</Tile>
 
         <Tile img={CommercialLogo}>Commercial</Tile>

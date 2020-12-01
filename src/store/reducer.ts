@@ -108,7 +108,12 @@ export const reducer = (state: any, action: ActionType) => {
       return { ...state, easyFlow: { ...easyFlowTemp } }
 
     case Actions.EASY_FLOW_SELECT_MUTATE_NEXT:
-      return {}
+      return {
+        ...state,
+        easyFlow: { ...state.easyFlow, [payload.keyName]: payload.value },
+        easyFlowSteps: { steps: mutateSteps(payload.keyName, payload.value, state.easyFlowSteps.steps) },
+        currentStep: state.currentStep + 1,
+      }
 
     case Actions.TABS_SET_TAB:
       tabs = { ...state.tabs }

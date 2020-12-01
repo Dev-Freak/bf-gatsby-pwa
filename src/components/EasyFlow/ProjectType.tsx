@@ -15,39 +15,15 @@ import {
   ReverseMortgageLogo,
 } from "../../utils/icons"
 
-import useStore from "../../hooks/useStore"
+import useStore, { DataType } from "../../hooks/useStore"
 
 const ProjectType: React.FC = () => {
   const {
     state: {
-      easyFlow: { applicant_type },
+      easyFlow: { applicant_type, project_type },
     },
+    boundSelectAndNext,
   } = useStore()
-
-  const tiles =
-    applicant_type === "First home buyer" ? (
-      <React.Fragment>
-        <Tile img={EstablishedLogo}>Established</Tile>
-
-        <Tile img={ConstructionLogo}>Construction</Tile>
-
-        <Tile img={OffThePlanLogo}>Off the plan</Tile>
-      </React.Fragment>
-    ) : applicant_type === "Investor" ? (
-      <React.Fragment>
-        <Tile img={EstablishedLogo}>Established</Tile>
-
-        <Tile img={ConstructionLogo}>Construction</Tile>
-
-        <Tile img={SMSFLogo}>SMSF</Tile>
-      </React.Fragment>
-    ) : (
-      <React.Fragment>
-        <Tile img={ReverseMortgageLogo}>Reverse Mortgage</Tile>
-
-        <Tile img={SMSFLogo}>SMSF</Tile>
-      </React.Fragment>
-    )
 
   return (
     <StepWithBackButtonContainer>
@@ -58,7 +34,35 @@ const ProjectType: React.FC = () => {
         </Description>
       </StepHeader>
 
-      <TilesContainer stepKeyName="project_type">{tiles}</TilesContainer>
+      <TilesContainer
+        stepKeyName="project_type"
+        stepValue={project_type}
+        onTileClick={(data: DataType) => boundSelectAndNext(data)}
+      >
+        {applicant_type === "First home buyer" ? (
+          <>
+            <Tile img={EstablishedLogo}>Established</Tile>
+
+            <Tile img={ConstructionLogo}>Construction</Tile>
+
+            <Tile img={OffThePlanLogo}>Off the plan</Tile>
+          </>
+        ) : applicant_type === "Investor" ? (
+          <>
+            <Tile img={EstablishedLogo}>Established</Tile>
+
+            <Tile img={ConstructionLogo}>Construction</Tile>
+
+            <Tile img={SMSFLogo}>SMSF</Tile>
+          </>
+        ) : (
+          <>
+            <Tile img={ReverseMortgageLogo}>Reverse Mortgage</Tile>
+
+            <Tile img={SMSFLogo}>SMSF</Tile>
+          </>
+        )}
+      </TilesContainer>
     </StepWithBackButtonContainer>
   )
 }

@@ -1,11 +1,13 @@
 import * as React from "react"
 
+import useStore, { DataType } from "../../hooks/useStore"
+
 import Tile from "../Tile"
 import TilesContainer from "../Shared/TilesContainer"
 import TitleWithTooltip from "../Shared/TitleWithTooltip"
 import Description from "../Shared/Description"
 import StepHeader from "../DynamicStepper/StepHeader"
-import StepWithBackButtonContainer from "../DynamicStepper/StepWithBackButtonContainer"
+import StepContainer from "../DynamicStepper/StepContainer"
 
 import {
   AssetsFinancialLogo,
@@ -15,8 +17,15 @@ import {
 } from "../../utils/icons"
 
 const Welcome: React.FC = () => {
+  const {
+    state: {
+      easyFlow: { path },
+    },
+    boundSelectMutateAndNext,
+  } = useStore()
+
   return (
-    <StepWithBackButtonContainer>
+    <StepContainer>
       <StepHeader>
         <TitleWithTooltip title="Welcome">Norem ipsum...</TitleWithTooltip>
         <Description>
@@ -24,7 +33,11 @@ const Welcome: React.FC = () => {
         </Description>
       </StepHeader>
 
-      <TilesContainer stepKeyName="path">
+      <TilesContainer
+        stepKeyName="path"
+        stepValue={path}
+        onTileClick={(data: DataType) => boundSelectMutateAndNext(data)}
+      >
         <Tile img={AssetsFinancialLogo}>Asset financial</Tile>
 
         <Tile img={ResidentialLogo}>Residential</Tile>
@@ -33,7 +46,7 @@ const Welcome: React.FC = () => {
 
         <Tile img={OtherLogo}>Other financial enquiries</Tile>
       </TilesContainer>
-    </StepWithBackButtonContainer>
+    </StepContainer>
   )
 }
 

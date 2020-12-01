@@ -1,5 +1,7 @@
 import * as React from "react"
 
+import useStore, { DataType } from "../../hooks/useStore"
+
 import Tile from "../Tile"
 import TilesContainer from "../Shared/TilesContainer"
 import TitleWithTooltip from "../Shared/TitleWithTooltip"
@@ -15,6 +17,13 @@ import {
 } from "../../utils/icons"
 
 const ApplicationType: React.FC = () => {
+  const {
+    state: {
+      easyFlow: { applicant_type },
+    },
+    boundSelectAndNext,
+  } = useStore()
+
   return (
     <StepWithBackButtonContainer>
       <StepHeader>
@@ -26,7 +35,11 @@ const ApplicationType: React.FC = () => {
         </Description>
       </StepHeader>
 
-      <TilesContainer stepKeyName="applicant_type">
+      <TilesContainer
+        stepKeyName="applicant_type"
+        stepValue={applicant_type}
+        onTileClick={(data: DataType) => boundSelectAndNext(data)}
+      >
         <Tile img={RefinanceLogo}>Refinance</Tile>
 
         <Tile img={FirstHomeBuyerLogo}>First home buyer</Tile>
