@@ -57,7 +57,7 @@ const SummaryItem: React.FC<SummaryItemProps> = ({
 
   return (
     <div className="pb-4">
-      <SubTitle>{itemTitle}</SubTitle>
+      <SubTitle>{formatKey(itemTitle)}</SubTitle>
       {components}
     </div>
   )

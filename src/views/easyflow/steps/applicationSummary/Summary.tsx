@@ -9,8 +9,8 @@ import useSummary from "../../../../hooks/useSummary"
 const Summary: React.FC = () => {
   const summaryData = useSummary()
 
-  const getEntireSummary = data => {
-    return data.map((item, index) => (
+  const getEntireSummary = (data: any) => {
+    return data.map((item: any, index: number) => (
       <SummaryItem key={`summaryItem-${index}`} {...item} />
     ))
   }
