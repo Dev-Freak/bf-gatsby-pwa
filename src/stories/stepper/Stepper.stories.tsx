@@ -5,22 +5,22 @@ import StateProvider from "../../store/AppStore"
 import Welcome from "../../views/easyflow/steps/Welcome"
 
 // Residential
-import ApplicantsQuantity from "../../views/easyflow/ApplicantsQuantity"
-import ApplicationType from "../../views/easyflow/ApplicationType"
-import ProjectType from "../../views/easyflow/ProjectType"
+import ApplicantsQuantity from "../../views/easyflow/steps/residential/ApplicantsQuantity"
+import ApplicationType from "../../views/easyflow/steps/residential/ApplicationType"
+import ProjectType from "../../views/easyflow/steps/residential/ProjectType"
 import ApplicantsIncomeTabs from "../../views/easyflow/steps/residential/applicantsIncome/ApplicantsIncomeTabs"
-import ApplicationsSummary from "../../views/easyflow/ApplicationSummary"
+import ApplicationsSummary from "../../views/easyflow/steps/applicationSummary"
 
 // AssetsFinancial
-import AssetType from "../../views/easyflow/AssetFinancial/AssetType"
-import AssetPurchase from "../../views/easyflow/AssetFinancial/AssetPurchase"
-import EmploymentType from "../../views/easyflow/AssetFinancial/EmploymentType"
-import IncomeType from "../../views/easyflow/AssetFinancial/IncomeType"
+import AssetType from "../../views/easyflow/steps/assetFinancial/AssetType"
+import AssetPurchase from "../../views/easyflow/steps/assetFinancial/AssetPurchase"
+import EmploymentType from "../../views/easyflow/steps/assetFinancial/EmploymentType"
+import IncomeType from "../../views/easyflow/steps/assetFinancial/IncomeType"
 
 // Commercial
-import CommercialType from "../../views/easyflow/Commercial/CommercialType"
-import ComProjectType from "../../views/easyflow/Commercial/ProjectType"
-import DevelopmentType from "../../views/easyflow/Commercial/DevelopmentType"
+import CommercialType from "../../views/easyflow/steps/commercial/CommercialType"
+import ComProjectType from "../../views/easyflow/steps/commercial/ProjectType"
+import DevelopmentType from "../../views/easyflow/steps/commercial/DevelopmentType"
 
 import Stepper, { StepperProps } from "../../components/DynamicStepper/Stepper"
 

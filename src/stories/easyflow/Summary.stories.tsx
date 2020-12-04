@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import Summary from "../../views/easyflow/ApplicationSummary/Summary"
+import Summary from "../../views/easyflow/steps/applicationSummary/Summary"
 import StateProvider from "../../store/AppStore"
 
 export default {
@@ -8,7 +8,7 @@ export default {
   component: Summary,
 }
 
-const Template = args => (
+const Template = (args: any) => (
   <StateProvider>
     <Summary {...args} />
   </StateProvider>
