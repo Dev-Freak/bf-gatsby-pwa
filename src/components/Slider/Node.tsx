@@ -3,14 +3,9 @@ import * as React from "react"
 export type NodeProps = {
   isActive?: true | false
   isSelected?: true | false
-  onClick: CallableFunction
 }
 
-const Node: React.FC<NodeProps> = ({
-  isActive = false,
-  isSelected = false,
-  onClick,
-}) => {
+const Node: React.FC<NodeProps> = ({ isActive = false, isSelected = false }) => {
   const style = isActive || isSelected ? "bg-idle" : "bg-sliderIdle"
 
   return (
@@ -21,7 +16,6 @@ const Node: React.FC<NodeProps> = ({
           : { height: "6px", width: "6px" }
       }
       className={`flex rounded-lg cursor-pointer ${style}`}
-      onClick={() => onClick()}
     ></span>
   )
 }

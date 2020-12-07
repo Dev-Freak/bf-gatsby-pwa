@@ -1,33 +1,61 @@
 import * as React from "react"
 
-import useSlider from "../../hooks/useSlider"
+import Node from "./Node"
+import Label from "./Label"
+import Connector from "./Connector"
+
+import useFirstRenderDisabledEffect from "../../hooks/useFirstRenderDisabledEffect"
 
 export type ValueType = number | string
-export type StepsType = {
-  value: ValueType
-  label: string
-}
-
+export type Steps = Array<ValueType>
 export type SliderProps = {
-  steps: Array<StepsType>
+  steps: Steps
+  defaultValue?: ValueType
   onChange: CallableFunction
-  onIndexChange?: CallableFunction
-  defaultValue?: any
   style?: any
 }
 
-const Slider: React.FC<SliderProps> = ({
-  steps,
-  onChange,
-  onIndexChange,
-  defaultValue,
-  style,
-}) => {
-  const { nodes } = useSlider({ steps, onChange, onIndexChange, defaultValue })
+const Slider: React.FC<SliderProps> = ({ steps, onChange, defaultValue, style }) => {
+  const findDefaultStep = defaultValue && steps.find(s => s === defaultValue)
+  const defaultValueIndex = findDefaultStep ? steps.indexOf(findDefaultStep) : null
+  const stepsLength = steps.length
+
+  const isFirstRender = useFirstRenderDisabledEffect()
+  const [value, setValue] = React.useState(defaultValue)
+  const [valueIndex, setValueIndex] = React.useState(defaultValueIndex)
+
+  const handleChange = (value: number | string, index: number) => {
+    setValue(value)
+    setValueIndex(index)
+  }
+
+  React.useEffect(() => {
+    if (!isFirstRender && onChange) {
+      onChange(value)
+    }
+  }, [value])
 
   return (
     <div style={{ ...style }} className="flex flex-start w-full">
-      {React.Children.map(nodes, node => node)}
+      {React.Children.map(steps, (item, index) => {
+        const isNodeActive = valueIndex != null && index < valueIndex
+        const isNodeSelected = item === value
+
+        return (
+          <div className="flex flex-1 items-center justify-center">
+            <div
+              className="flex items-center justify-center cursor-pointer"
+              onClick={() => handleChange(item, index)}
+            >
+              <Node isActive={isNodeActive} isSelected={isNodeSelected} />
+              <Label>{item}</Label>
+            </div>
+            {index + 1 < stepsLength && (
+              <Connector isActive={isNodeActive && !isNodeSelected} />
+            )}
+          </div>
+        )
+      })}
     </div>
   )
 }

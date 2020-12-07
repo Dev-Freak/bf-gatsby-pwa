@@ -1,7 +1,7 @@
 import * as React from "react"
 
 export type LabelProps = {
-  children: string
+  children: string | number
 }
 
 const Label: React.FC<LabelProps> = ({ children }) => {
