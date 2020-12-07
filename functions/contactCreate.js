@@ -1,4 +1,5 @@
 const fetch = require("./apolloFetch")
+const FetchException = require("./fetchException")
 
 const contactCreate = async params => {
   fetch.use(({ request, options }, next) => {
@@ -12,7 +13,7 @@ const contactCreate = async params => {
     next()
   })
 
-  console.log("\nCreating contact.........................\n")
+  console.log("\nCreating contact.........................")
 
   const CONTACT_CREATE_MUTATION = `mutation ContactCreate(
     $idOwner: ID!,
@@ -61,15 +62,9 @@ const contactCreate = async params => {
   try {
     const result = await fetch(fetchObject)
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify(result),
-    }
+    return result.data
   } catch (error) {
-    return {
-      statusCode: 500,
-      body: "Sorry, something went wrong.\n" + JSON.stringify(error),
-    }
+    throw FetchException("ContactCreate", error)
   }
 }
 

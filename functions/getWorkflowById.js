@@ -1,4 +1,5 @@
 const fetch = require("./apolloFetch")
+const FetchException = require("./fetchException")
 
 const getWorkflowById = async params => {
   fetch.use(({ request, options }, next) => {
@@ -12,7 +13,7 @@ const getWorkflowById = async params => {
     next()
   })
 
-  console.log("\nGetting workflow.........................\n")
+  console.log("\nGetting workflow.........................")
 
   const WORKFLOW_BY_ID_QUERY = `query GetWorkflowById($id: ID!) {
     workflow (id: $id) {
@@ -42,15 +43,9 @@ const getWorkflowById = async params => {
   try {
     const result = await fetch(fetchObject)
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify(result),
-    }
+    return result.data
   } catch (error) {
-    return {
-      statusCode: 500,
-      body: "Sorry, something went wrong.\n" + JSON.stringify(error),
-    }
+    throw FetchException("GetWorkflowById", error)
   }
 }
 

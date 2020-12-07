@@ -1,51 +1,33 @@
-const fetch = require("node-fetch").default
+// TODO: Rename fetch handlerMethods and files to properly describe their purpose
 
 const auth = async () => {
-  const auth = require("./authenticate")
-
-  const authData = await auth()
-
-  return JSON.parse(authData.body).data
+  const authFetch = require("./authenticate")
+  const authData = await authFetch()
+  return authData
 }
 
 const getWorkflow = async params => {
-  const workflow = require("./getWorkflowById")
-
-  const workflowData = await workflow(params)
-
-  return JSON.parse(workflowData.body).data
+  const workflowFetch = require("./getWorkflowById")
+  const workflowData = await workflowFetch(params)
+  return workflowData
 }
 
 const findClientLabel = async params => {
-  const label = require("./findClientLabel")
-
-  const labelData = await label(params)
-
-  return JSON.parse(labelData.body).data
+  const labelFetch = require("./findClientLabel")
+  const labelData = await labelFetch(params)
+  return labelData
 }
 
 const createContact = async params => {
-  const contact = require("./contactCreate")
-
-  const contactData = await contact(params)
-
-  return JSON.parse(contactData.body).data
+  const contactFetch = require("./contactCreate")
+  const contactData = await contactFetch(params)
+  return contactData
 }
 
 const createTicket = async params => {
-  const ticket = require("./ticketCreate")
-
-  const ticketData = await ticket(params)
-
-  return JSON.parse(ticketData.body).data
-}
-
-const formatTicketDescription = params => {
-  const description = Object.keys(params)
-    .map(key => `${key}: ${params[key]}`)
-    .join("\n")
-
-  return description
+  const ticketFetch = require("./ticketCreate")
+  const ticketData = await ticketFetch(params)
+  return ticketData
 }
 
 exports.handler = async (event, context) => {
@@ -57,8 +39,7 @@ exports.handler = async (event, context) => {
 
   try {
     const { authenticate } = await auth()
-
-    // console.log(authenticate)
+    console.log(authenticate)
 
     const { idWorkflow } = params
 
@@ -67,15 +48,13 @@ exports.handler = async (event, context) => {
       idWorkflow,
     }
     const { workflow } = await getWorkflow(workflowQueryObject)
-
-    // console.log(workflow)
+    console.log(workflow)
 
     const findClientLabelObject = {
       ...authenticate,
     }
     const { clientLabels } = await findClientLabel(findClientLabelObject)
-
-    // console.log(clientLabels)
+    console.log(clientLabels)
 
     const { firstName, familyName, email, primaryCode, primary } = params
     const contactMutationObject = {
@@ -91,8 +70,7 @@ exports.handler = async (event, context) => {
       idLabels: [...clientLabels],
     }
     const contact = await createContact(contactMutationObject)
-
-    // console.log(contact)
+    console.log(contact)
 
     const { description } = params
     const ticketMutationObject = {
@@ -103,11 +81,10 @@ exports.handler = async (event, context) => {
         idStage: workflow.stages[0].id,
       },
       idClients: [contact.contactCreate],
-      description: formatTicketDescription(description),
+      description,
     }
     const ticket = await createTicket(ticketMutationObject)
-
-    // console.log(ticket)
+    console.log(ticket)
 
     return {
       statusCode: 200,
@@ -119,10 +96,11 @@ exports.handler = async (event, context) => {
       },
     }
   } catch (error) {
-    // console.log(error)
+    console.log(error)
+
     return {
       statusCode: 500,
-      body: "Sorry, something went wrong.\n" + JSON.stringify(error),
+      body: "\nSorry, something went wrong.\n" + JSON.stringify(error),
     }
   }
 }

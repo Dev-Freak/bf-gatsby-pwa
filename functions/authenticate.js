@@ -1,8 +1,9 @@
 const { SALESTREKKER_API_KEY } = process.env
 const fetch = require("./apolloFetch")
+const FetchException = require("./fetchException")
 
 const authenticate = async () => {
-  console.log("\nAuthenticating.........................\n")
+  console.log("\nAuthenticating.........................")
 
   const AUTHENTICATE_MUTATION = `mutation Authenticate($apiKey: String!) {
     authenticate(apiKey: $apiKey) {
@@ -18,15 +19,9 @@ const authenticate = async () => {
   try {
     const result = await fetch(fetchObject)
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify(result),
-    }
+    return result.data
   } catch (error) {
-    return {
-      statusCode: 500,
-      body: "Sorry, something went wrong.\n" + JSON.stringify(error),
-    }
+    throw new FetchException("Authenticate", error)
   }
 }
 

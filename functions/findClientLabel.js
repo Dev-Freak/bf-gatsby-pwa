@@ -1,4 +1,5 @@
 const fetch = require("./apolloFetch")
+const FetchException = require("./fetchException")
 
 const findClientLabel = async params => {
   fetch.use(({ request, options }, next) => {
@@ -12,7 +13,7 @@ const findClientLabel = async params => {
     next()
   })
 
-  console.log("\nFinding client label.........................\n")
+  console.log("\nFinding client label.........................")
 
   const FIND_LABELS_QUERY = `query FindContactLabels {
     labels {
@@ -34,20 +35,12 @@ const findClientLabel = async params => {
       .map(label => label.id)
 
     const resultObject = {
-      data: {
-        clientLabels: [...contactLabels],
-      },
+      clientLabels: [...contactLabels],
     }
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify(resultObject),
-    }
+    return resultObject
   } catch (error) {
-    return {
-      statusCode: 500,
-      body: "Sorry, something went wrong.\n" + JSON.stringify(error),
-    }
+    throw FetchException("FindClientLabel", error)
   }
 }
 
