@@ -32,13 +32,12 @@ const EnquiryDetails: React.FC = () => {
           defaultValue={urgency}
           steps={steps}
           style={{ minWidth: "500px" }}
-          onChange={(e: ValueType) => {
-            console.log(e)
+          onChange={(e: ValueType) =>
             boundSetEnquiryDetailsValue({
               keyName: "urgency",
-              value: e,
+              value: `${e} days`,
             })
-          }}
+          }
         />
       </div>
 
