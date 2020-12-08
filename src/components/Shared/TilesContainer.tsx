@@ -1,5 +1,7 @@
 import * as React from "react"
 
+import Tile from "../Tile"
+
 import useScreenSize from "../../hooks/useScreenSize"
 
 export type TilesContainerType = {
@@ -13,22 +15,20 @@ export type TilesContainerType = {
 const TilesContainer: React.FC<TilesContainerType> = ({
   stepKeyName,
   stepValue,
-  isMultiple = true,
   children,
+  isMultiple = false,
   onTileClick: onTileSelect,
 }) => {
   const { width } = useScreenSize()
   const isMobile = width <= 540
 
-  const testingOnSelect = () => console.log("Testing OnSelect")
-
   const mappedChildren = (items: JSX.Element | Array<JSX.Element>) =>
     React.Children.map(items, (child: JSX.Element, index: number) => {
       let props = {}
-      const childType = child["type"]["displayName"]
+      const childType = child.type
 
       props =
-        childType === "Tile"
+        childType === Tile
           ? {
               key: `child-${index}`,
               keyName: stepKeyName,
@@ -40,7 +40,12 @@ const TilesContainer: React.FC<TilesContainerType> = ({
               keyName: isMultiple ? `${stepKeyName}[]` : stepKeyName,
               isMultiple: isMultiple,
               onSelect: onTileSelect ?? undefined,
-              selected: stepValue === child.props.children,
+              selected: stepValue?.includes(child.props.children),
+              selectedIndex: stepValue?.indexOf(child.props.children),
+              disabled:
+                stepValue?.length !== 0 &&
+                !stepValue?.includes(child.props.children) &&
+                !isMultiple,
             }
 
       return React.cloneElement(child as JSX.Element, { ...props })

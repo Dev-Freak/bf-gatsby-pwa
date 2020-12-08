@@ -4,7 +4,6 @@ import { Story, Meta } from "@storybook/react/types-6-0"
 import TileWithCheckBox, {
   TileWithCheckBoxProps,
 } from "../../components/TileWithCheckBox"
-import StateProvider from "../../store/AppStore"
 
 const Logo = require("../../images/icons/Icon1.svg")
 
@@ -14,9 +13,7 @@ export default {
 } as Meta
 
 const Template: Story<TileWithCheckBoxProps> = args => (
-  <StateProvider>
-    <TileWithCheckBox {...args}>Commercial</TileWithCheckBox>
-  </StateProvider>
+  <TileWithCheckBox {...args}>Commercial</TileWithCheckBox>
 )
 
 export const Default = Template.bind({})

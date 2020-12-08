@@ -23,9 +23,9 @@ const Tile: React.FC<TileProps> = ({
   const [isSelected, setIsSelected] = React.useState<boolean>(selected ?? false)
 
   React.useEffect(() => {
-    if (!isFirstRender && onSelect !== undefined) {
+    if (!isFirstRender) {
       const timeOut = setTimeout(() => {
-        onSelect({ keyName, value: children })
+        onSelect?.({ keyName, value: children })
       }, 300)
 
       return () => clearTimeout(timeOut)
@@ -33,7 +33,6 @@ const Tile: React.FC<TileProps> = ({
   }, [isSelected])
 
   const handleSelect = () => {
-    console.log("Testing Handler")
     if (selected) onSelect?.({ keyName, value: children })
     else setIsSelected(true)
   }
