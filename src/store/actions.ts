@@ -19,6 +19,7 @@ export const Actions = {
   EASY_FLOW_SET_VALUE_MUTATE_NEXT: "EASY_FLOW_SET_VALUE_MUTATE_NEXT",
   EASY_FLOW_SELECT_TILE_NEXT: 'EASY_FLOW_SELECT_TILE_NEXT',
   EASY_FLOW_SET_PATH_VALUE_NEXT: 'EASY_FLOW_SET_PATH_VALUE_NEXT',
+  EASY_FLOW_SET_APPLICANT_DATA: 'EASY_FLOW_SET_APPLICANT_DATA',
 
   // TABS
   TABS_SET_TAB: "TABS_SET_TAB",
@@ -40,127 +41,95 @@ export const Actions = {
 
 // Action Creators
 
-const goNext = () => {
-  return {
-    type: Actions.EASY_FLOW_GO_NEXT,
-  }
-}
+const goNext = () => ({
+  type: Actions.EASY_FLOW_GO_NEXT,
+})
 
-const goBack = () => {
-  return {
-    type: Actions.EASY_FLOW_GO_BACK,
-  }
-}
+const goBack = () => ({
+  type: Actions.EASY_FLOW_GO_BACK,
+})
 
-const setApplicantsQuantity = (qty: number) => {
-  return {
-    type: Actions.EASY_FLOW_SET_APPLICANTS_QUANTITY,
-    payload: qty,
-  }
-}
+const setApplicantsQuantity = (qty: number) => ({
+  type: Actions.EASY_FLOW_SET_APPLICANTS_QUANTITY,
+  payload: qty,
+})
 
-const setTab = (value: ValueType) => {
-  return {
-    type: Actions.TABS_SET_TAB,
-    payload: value,
-  }
-}
+const setApplicantData = (value: ValueType) => ({
+  type: Actions.EASY_FLOW_SET_APPLICANT_DATA,
+  payload: value
+})
 
-const setInnerStep = (value: ValueType) => {
-  return {
-    type: Actions.SECTION_SET_INNER_STEP,
-    payload: value,
-  }
-}
+const setTab = (value: ValueType) => ({
+  type: Actions.TABS_SET_TAB,
+  payload: value,
+})
 
-const selectTile = (value: ValueType) => {
-  return {
-    type: Actions.EASY_FLOW_SELECT_TILE,
-    payload: value,
-  }
-}
+const setInnerStep = (value: ValueType) => ({
+  type: Actions.SECTION_SET_INNER_STEP,
+  payload: value,
+})
 
-const setPathValue = (value: ValueType) => {
-  return {
-    type: Actions.EASY_FLOW_SET_PATH_VALUE,
-    payload: value,
-  }
-}
+const selectTile = (value: ValueType) => ({
+  type: Actions.EASY_FLOW_SELECT_TILE,
+  payload: value,
+})
 
+const setPathValue = (value: ValueType) => ({
+  type: Actions.EASY_FLOW_SET_PATH_VALUE,
+  payload: value,
+})
 
-const mutateSteps = (value: ValueType) => {
-  return {
-    type: Actions.EASY_FLOW_MUTATE_STEPS,
-    payload: value,
-  }
-}
+const mutateSteps = (value: ValueType) => ({
+  type: Actions.EASY_FLOW_MUTATE_STEPS,
+  payload: value,
+})
 
-const mutateStepsAndNext = (value: ValueType) => {
-  return {
-    type: Actions.EASY_FLOW_MUTATE_NEXT,
-    payload: value,
-  }
-}
+const mutateStepsAndNext = (value: ValueType) => ({
+  type: Actions.EASY_FLOW_MUTATE_NEXT,
+  payload: value,
+})
 
-const setPathValueAndNext = (value: ValueType) => {
-  return {
-    type: Actions.EASY_FLOW_SET_PATH_VALUE_NEXT,
-    payload: value,
-  }
-}
+const setPathValueAndNext = (value: ValueType) => ({
+  type: Actions.EASY_FLOW_SET_PATH_VALUE_NEXT,
+  payload: value,
+})
 
-const setPathValueMutateAndNext = (value: ValueType) => {
-  return {
-    type: Actions.EASY_FLOW_SET_VALUE_MUTATE_NEXT,
-    payload: value,
-  }
-}
+const setPathValueMutateAndNext = (value: ValueType) => ({
+  type: Actions.EASY_FLOW_SET_VALUE_MUTATE_NEXT,
+  payload: value,
+})
 
-const selectTileAndNext = (value: ValueType) => {
-  return {
-    type: Actions.EASY_FLOW_SELECT_TILE_NEXT,
-    payload: value,
-  }
-}
+const selectTileAndNext = (value: ValueType) => ({
+  type: Actions.EASY_FLOW_SELECT_TILE_NEXT,
+  payload: value,
+})
 
-const selectTileMutateAndNext = (value: ValueType) => {
-  return {
-    type: Actions.EASY_FLOW_SELECT_MUTATE_NEXT,
-    payload: value,
-  }
-}
+const selectTileMutateAndNext = (value: ValueType) => ({
+  type: Actions.EASY_FLOW_SELECT_MUTATE_NEXT,
+  payload: value,
+})
 
-const setContactValue = (value: ValueType) => {
-  return {
-    type: Actions.CONTACT_FORM_SET_VALUE,
-    payload: value,
-  }
-}
+const setContactValue = (value: ValueType) => ({
+  type: Actions.CONTACT_FORM_SET_VALUE,
+  payload: value,
+})
 
-const setEnquiryDetailsValue = (value: ValueType) => {
-  return {
-    type: Actions.ENQUIRY_DETAILS_SET_VALUE,
-    payload: value,
-  }
-}
+const setEnquiryDetailsValue = (value: ValueType) => ({
+  type: Actions.ENQUIRY_DETAILS_SET_VALUE,
+  payload: value,
+})
 
-const finishEasyFlow = () => {
-  return {
-    type: Actions.EASY_FLOW_FINISH,
-  }
-}
+const finishEasyFlow = () => ({
+  type: Actions.EASY_FLOW_FINISH,
+})
 
-const startFactFind = () => {
-  return {
-    type: Actions.FACT_FIND_INTERESTED,
-  }
-}
+const startFactFind = () => ({
+  type: Actions.FACT_FIND_INTERESTED,
+})
 
-const finishFactFind = () => {
-  return {
-    type: Actions.FACT_FIND_FINISH,
-  }
-}
+const finishFactFind = () => ({
+  type: Actions.FACT_FIND_FINISH,
+})
 
 export const ActionMethods = {
   goNext,
@@ -176,6 +145,7 @@ export const ActionMethods = {
   mutateStepsAndNext,
   setPathValueMutateAndNext,
   setApplicantsQuantity,
+  setApplicantData,
   setContactValue,
   setEnquiryDetailsValue,
   finishEasyFlow,

@@ -32,14 +32,16 @@ const useStore = () => {
 
   const boundGoNext = () => dispatch(ActionMethods.goNext())
   const boundGoBack = () => dispatch(ActionMethods.goBack())
+
   const boundSetApplicantsQuantity = (value: QuantityType) =>
     dispatch(ActionMethods.setApplicantsQuantity(value))
+
+  const boundSetApplicantData = (value: QuantityType) =>
+    dispatch(ActionMethods.setApplicantData(value))
 
   const boundSetTab = (value: ValueType) => dispatch(ActionMethods.setTab(value))
   const boundSetInnerStep = (value: ValueType) =>
     dispatch(ActionMethods.setInnerStep(value))
-  const boundSetPathValue = (value: ValueType) =>
-    dispatch(ActionMethods.setPathValue(value))
 
   const boundSetContactValue = (value: ValueType) =>
     dispatch(ActionMethods.setContactValue(value))
@@ -63,9 +65,9 @@ const useStore = () => {
     boundGoNext,
     boundGoBack,
     boundSetApplicantsQuantity,
+    boundSetApplicantData,
     boundSetTab,
     boundSetInnerStep,
-    boundSetPathValue,
     boundSetContactValue,
     boundSetEnquiryDetailsValue,
     boundStartFactFind,

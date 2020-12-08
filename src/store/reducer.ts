@@ -11,7 +11,6 @@ export const initialState = {
     section: 0,
   },
   easyFlow: {
-    applicants: [{}, {}, {}, {}],
   },
   easyFlowSteps: {
     steps: initialStep,
@@ -26,10 +25,13 @@ export const initialState = {
 
 export const reducer = (state: any, action: ActionType) => {
   const { type, payload } = action
-  let path = payload?.keyName
   let tabs = null
   let easyFlowTemp = null
   let currentValue = null
+  let applicantsTemp = null;
+
+  const path = payload?.keyName
+  const shallowerPath = path?.split("[]")[0]
 
   console.log(action)
 
@@ -57,7 +59,7 @@ export const reducer = (state: any, action: ActionType) => {
 
       const selectedQty = payload
       const applicantsQty = easyFlowTemp.applicants?.length ?? 0
-      let applicantsTemp = easyFlowTemp.applicants
+      applicantsTemp = easyFlowTemp.applicants
         ? [...easyFlowTemp.applicants]
         : []
 
@@ -86,42 +88,53 @@ export const reducer = (state: any, action: ActionType) => {
 
       return { ...state, easyFlow: { ...easyFlowTemp }, currentStep: state.currentStep + 1, }
 
-    case Actions.EASY_FLOW_SET_PATH_VALUE:
+    case Actions.EASY_FLOW_SET_APPLICANT_DATA:
+      const semiPath = path.split(".")[0]
+      const applicantIndex = semiPath.split("[")[1].split("]")[0]
+      const updatedProp = path.split(".")[1].replace('[]', '')
+
       easyFlowTemp = { ...state.easyFlow }
+      applicantsTemp = [...state.easyFlow.applicants]
+      currentValue = _.get(easyFlowTemp, shallowerPath) ?? []
 
-      if (path.includes("[]")) {
-        const shallowerPath = path.split("[]")[0]
-        currentValue = _.get(easyFlowTemp, shallowerPath, { length: 0 })
-
-        path = path.replace("[]", `[${currentValue.length}]`)
+      if (currentValue.includes(payload.value)) {
+        currentValue = currentValue.filter((f: string) => f !== payload.value)
       } else {
-        currentValue = _.get(easyFlowTemp, path, { length: 0 })
+        currentValue.push(payload.value)
       }
 
-      currentValue.length !== 0 && currentValue.includes(payload.value)
-        ? _.unset(easyFlowTemp, path)
-        : _.set(easyFlowTemp, path, payload.value)
+      let applicantTemp = { ..._.get(easyFlowTemp, semiPath) }
+      applicantTemp[updatedProp] = currentValue
+      applicantsTemp[applicantIndex] = applicantTemp
 
+      return { ...state, easyFlow: { ...easyFlowTemp, applicants: [...applicantsTemp] } }
+
+    case Actions.EASY_FLOW_SET_PATH_VALUE:
+      easyFlowTemp = { ...state.easyFlow }
+      currentValue = _.get(easyFlowTemp, shallowerPath) ?? []
+
+      if (currentValue.includes(payload.value)) {
+        currentValue = currentValue.filter((f: string) => f !== payload.value)
+      } else {
+        currentValue.push(payload.value)
+      }
+
+      _.set(easyFlowTemp, shallowerPath, currentValue)
       easyFlowTemp = objRemoveEmptyOrNull(easyFlowTemp)
 
       return { ...state, easyFlow: { ...easyFlowTemp } }
 
     case Actions.EASY_FLOW_SET_PATH_VALUE_NEXT:
       easyFlowTemp = { ...state.easyFlow }
+      currentValue = _.get(easyFlowTemp, shallowerPath) ?? []
 
-      if (path.includes("[]")) {
-        const shallowerPath = path.split("[]")[0]
-        currentValue = _.get(easyFlowTemp, shallowerPath, { length: 0 })
-
-        path = path.replace("[]", `[${currentValue.length}]`)
+      if (currentValue.includes(payload.value)) {
+        currentValue = currentValue.filter((f: string) => f !== payload.value)
       } else {
-        currentValue = _.get(easyFlowTemp, path, { length: 0 })
+        currentValue.push(payload.value)
       }
 
-      currentValue.length !== 0 && currentValue.includes(payload.value)
-        ? _.unset(easyFlowTemp, path)
-        : _.set(easyFlowTemp, path, payload.value)
-
+      _.set(easyFlowTemp, shallowerPath, currentValue)
       easyFlowTemp = objRemoveEmptyOrNull(easyFlowTemp)
 
       return { ...state, easyFlow: { ...easyFlowTemp }, currentStep: state.currentStep + 1, }
