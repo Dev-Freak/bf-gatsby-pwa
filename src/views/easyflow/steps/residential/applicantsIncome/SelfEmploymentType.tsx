@@ -9,13 +9,27 @@ import {
   TrustEntityLogo,
 } from "../../../../../utils/icons"
 
+import useStore, { DataType } from "../../../../../hooks/useStore"
+
 type SelfEmploymentTypeProps = {
   keyName: string
 }
 
 const SelfEmploymentType: React.FC<SelfEmploymentTypeProps> = ({ keyName }) => {
+  const {
+    state: { easyFlow },
+    boundToggleTile,
+  } = useStore()
+
+  const value = _.get(easyFlow, `${keyName}.self_employment_type`) ?? null
+
   return (
-    <TilesContainer stepKeyName={`${keyName}.self_employment_type`}>
+    <TilesContainer
+      isMultiple
+      stepValue={value}
+      stepKeyName={`${keyName}.self_employment_type`}
+      onTileClick={(data: DataType) => boundToggleTile(data)}
+    >
       <TileWithCheckBox img={SoleTraderLogo}>Sole trader</TileWithCheckBox>
 
       <TileWithCheckBox img={CompanyLogo}>Company</TileWithCheckBox>

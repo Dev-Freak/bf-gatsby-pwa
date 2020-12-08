@@ -15,7 +15,7 @@ const ApplicantsIncome: React.FC<ApplicantsIncomeProps> = ({
   section,
   incomeValue,
 }) => {
-  const validate = (value, prop) => {
+  const validate = (value: any, prop: string) => {
     if (value && value?.length !== 0) {
       for (let item of value) {
         if (item.includes(prop)) return true

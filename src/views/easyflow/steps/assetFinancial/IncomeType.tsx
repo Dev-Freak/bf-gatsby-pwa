@@ -24,6 +24,7 @@ const AssetPurchase: React.FC = () => {
       easyFlow: { asset_purchase, asset_income_type },
     },
     boundSelectAndNext,
+    boundToggleTile,
   } = useStore()
 
   const header = (
@@ -32,11 +33,6 @@ const AssetPurchase: React.FC = () => {
       <Description>Please select your streams of income</Description>
     </StepHeader>
   )
-
-  /* const wrapperOnContainer = (tiles: JSX.Element | Array<JSX.Element>) => (
-    <TilesContainer stepKeyName="asset_income_type" stepValue={asset_income_type}
-    onTileClick={() =>}>{tiles}</TilesContainer>
-  ) */
 
   const component =
     asset_purchase === "Personal Name" ? (
@@ -56,9 +52,10 @@ const AssetPurchase: React.FC = () => {
         {header}
 
         <TilesContainer
+          isMultiple
           stepKeyName="asset_income_type"
           stepValue={asset_income_type}
-          onTileClick={() => null}
+          onTileClick={(data: DataType) => boundToggleTile(data)}
         >
           <TileWithCheckBox img={SoleTraderLogo}>Sole Trader</TileWithCheckBox>
 

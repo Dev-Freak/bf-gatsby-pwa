@@ -21,7 +21,7 @@ const useApplicanstIncomeTabs = () => {
       const employment = _.get(applicant, "employment_type", false)
       const selfEmployment = _.get(applicant, "self_employment_type", false)
 
-      if (income.length > 0) {
+      if (income?.length > 0) {
         if (income.find(i => i.includes("PAYG"))) isValid = employment ? true : false
         if (income.find(i => i.includes("Self")))
           isValid = selfEmployment ? true : false
@@ -38,7 +38,7 @@ const useApplicanstIncomeTabs = () => {
   }
 
   const tabs = applicants?.map(
-    (applicant, index) =>
+    (applicant: object, index: number) =>
       ({
         label: POSSIBLE_APPLICANTS[index],
         step: (
