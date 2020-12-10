@@ -25,10 +25,10 @@ export const initialState = {
 
 export const reducer = (state: any, action: ActionType) => {
   const { type, payload } = action
-  let tabs = null
-  let easyFlowTemp = null
+  let tabsTemp = null
   let currentValue = null
   let applicantsTemp = null;
+  let easyFlowTemp = _.cloneDeep(state.easyFlow)
 
   const path = payload?.keyName
   const shallowerPath = path?.split("[]")[0]
@@ -55,8 +55,6 @@ export const reducer = (state: any, action: ActionType) => {
       }
 
     case Actions.EASY_FLOW_SET_APPLICANTS_QUANTITY:
-      easyFlowTemp = { ...state.easyFlow }
-
       const selectedQty = payload
       const applicantsQty = easyFlowTemp.applicants?.length ?? 0
       applicantsTemp = easyFlowTemp.applicants
@@ -93,7 +91,6 @@ export const reducer = (state: any, action: ActionType) => {
       const applicantIndex = semiPath.split("[")[1].split("]")[0]
       const updatedProp = path.split(".")[1].replace('[]', '')
 
-      easyFlowTemp = { ...state.easyFlow }
       applicantsTemp = [...state.easyFlow.applicants]
       currentValue = _.get(easyFlowTemp, shallowerPath) ?? []
 
@@ -110,7 +107,6 @@ export const reducer = (state: any, action: ActionType) => {
       return { ...state, easyFlow: { ...easyFlowTemp, applicants: [...applicantsTemp] } }
 
     case Actions.EASY_FLOW_SET_PATH_VALUE:
-      easyFlowTemp = { ...state.easyFlow }
       currentValue = _.get(easyFlowTemp, shallowerPath) ?? []
 
       if (currentValue.includes(payload.value)) {
@@ -125,7 +121,6 @@ export const reducer = (state: any, action: ActionType) => {
       return { ...state, easyFlow: { ...easyFlowTemp } }
 
     case Actions.EASY_FLOW_SET_PATH_VALUE_NEXT:
-      easyFlowTemp = { ...state.easyFlow }
       currentValue = _.get(easyFlowTemp, shallowerPath) ?? []
 
       if (currentValue.includes(payload.value)) {
@@ -162,19 +157,15 @@ export const reducer = (state: any, action: ActionType) => {
       }
 
     case Actions.TABS_SET_TAB:
-      tabs = { ...state.tabs }
-
       return {
         ...state,
         tabs: { section: 0, activeTab: payload },
       }
 
     case Actions.SECTION_SET_INNER_STEP:
-      tabs = { ...state.tabs }
-
       return {
         ...state,
-        tabs: { ...tabs, section: payload },
+        tabs: { ...state.tabs, section: payload },
       }
 
     case Actions.CONTACT_FORM_SET_VALUE:
