@@ -8,7 +8,7 @@ export default {
   component: Welcome,
 }
 
-const Template = args => (
+const Template = (args: any) => (
   <StateProvider>
     <Welcome {...args} />
   </StateProvider>

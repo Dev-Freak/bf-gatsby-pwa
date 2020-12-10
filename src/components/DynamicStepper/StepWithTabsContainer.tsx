@@ -7,8 +7,8 @@ import NextButton from "./NextButton"
 
 export type PureProps = {
   isNextDisabled?: true | false
-  onBack: CallableFunction
-  onNext: CallableFunction
+  onBack?: CallableFunction
+  onNext?: CallableFunction
 }
 
 const StepWithTabsContainer: React.FC<PureProps> = ({
