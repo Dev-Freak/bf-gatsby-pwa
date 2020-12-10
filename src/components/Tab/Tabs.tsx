@@ -1,10 +1,9 @@
 import * as React from "react"
-import { Tab } from "semantic-ui-react"
-
-import useTabs from "../../hooks/useTabs"
-import TabsContainer from "./TabsContainer"
-
+import { Tab, Menu } from "semantic-ui-react"
 import "./tabs.css"
+
+import TabHeader from "./TabHeader"
+import TabsContainer from "./TabsContainer"
 
 export type TabProps = {
   label: string
@@ -13,17 +12,30 @@ export type TabProps = {
 
 export type TabsProps = {
   steps: Array<TabProps>
+  onTabChange: CallableFunction
+  defaultActiveIndex?: string | number
 }
 
-const Tabs: React.FC<TabsProps> = ({ steps }: TabsProps) => {
-  const { activeTab, panes, handleTabChange } = useTabs({ steps })
+const Tabs: React.FC<TabsProps> = ({ steps, defaultActiveIndex, onTabChange }) => {
+  const getPanes = () => {
+    return steps.map((step, index) => ({
+      menuItem: (
+        <Menu.Item key={index}>
+          <TabHeader isActive={defaultActiveIndex === index}>{step.label}</TabHeader>
+        </Menu.Item>
+      ),
+      render: () => <Tab.Pane>{step.step}</Tab.Pane>,
+    }))
+  }
 
   return (
     <TabsContainer>
       <Tab
-        panes={panes}
-        onTabChange={handleTabChange}
-        activeIndex={activeTab}
+        panes={getPanes()}
+        onTabChange={(
+          e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+          { activeIndex }
+        ) => onTabChange(activeIndex)}
         className={"tabs flex-col"}
       />
     </TabsContainer>

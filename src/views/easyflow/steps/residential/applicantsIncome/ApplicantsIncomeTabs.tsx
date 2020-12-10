@@ -12,16 +12,18 @@ import useApplicantsIncomeTabs from "../../../../../hooks/useApplicanstIncomeTab
 const ApplicantsIncomeTabs: React.FC = () => {
   const {
     tabs,
+    activeTab,
     canStepBack,
     canStepNext,
     isNextStepDisabled,
+    boundSetTab,
     boundSetInnerStep,
   } = useApplicantsIncomeTabs()
 
   return (
     <StepWithTabsContainer
-      onBack={canStepBack ? null : () => boundSetInnerStep(0)}
-      onNext={canStepNext ? null : () => boundSetInnerStep(1)}
+      onBack={canStepBack ? undefined : () => boundSetInnerStep(0)}
+      onNext={canStepNext ? undefined : () => boundSetInnerStep(1)}
       isNextDisabled={isNextStepDisabled}
     >
       <StepHeader>
@@ -31,7 +33,7 @@ const ApplicantsIncomeTabs: React.FC = () => {
         </Description>
       </StepHeader>
 
-      <Tabs steps={tabs} />
+      <Tabs steps={tabs} defaultActiveIndex={activeTab} onTabChange={boundSetTab} />
     </StepWithTabsContainer>
   )
 }

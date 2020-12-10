@@ -9,7 +9,7 @@ import { TabProps } from "../../components/Tab/Tabs"
 import { POSSIBLE_APPLICANTS } from "../../utils/constants"
 
 const useApplicanstIncomeTabs = () => {
-  const { state, boundSetInnerStep } = useStore()
+  const { state, boundSetTab, boundSetInnerStep } = useStore()
   const { applicants } = state?.easyFlow
   const { activeTab, section } = state?.tabs
 
@@ -70,7 +70,15 @@ const useApplicanstIncomeTabs = () => {
   const canStepNext = isSectionsValid()
   const isNextStepDisabled = isNextButtonDisabled() && !isSectionsValid()
 
-  return { tabs, canStepBack, canStepNext, isNextStepDisabled, boundSetInnerStep }
+  return {
+    tabs,
+    activeTab,
+    canStepBack,
+    canStepNext,
+    isNextStepDisabled,
+    boundSetTab,
+    boundSetInnerStep,
+  }
 }
 
 export default useApplicanstIncomeTabs
