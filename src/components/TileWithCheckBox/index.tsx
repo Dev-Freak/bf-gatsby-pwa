@@ -13,7 +13,6 @@ export interface TileWithCheckBoxProps {
   selectedIndex?: number
   selected?: true | false
   disabled?: true | false
-  isMultiple?: true | false
   onSelect?: CallableFunction
 }
 
@@ -21,7 +20,6 @@ const TileWithCheckBox: React.FC<TileWithCheckBoxProps> = ({
   img,
   children,
   keyName = "unknown",
-  isMultiple = true,
   selected = false,
   disabled = false,
   onSelect,
@@ -30,26 +28,30 @@ const TileWithCheckBox: React.FC<TileWithCheckBoxProps> = ({
   const [isSelected, setIsSelected] = React.useState(selected ?? false)
 
   React.useEffect(() => {
-    if (!isFirstRender) onSelect?.({ keyName, value: children })
+    if (!isFirstRender && selected !== isSelected)
+      onSelect?.({ keyName, value: children })
   }, [isSelected])
+
+  React.useEffect(() => {
+    if (!isFirstRender && selected !== isSelected) setIsSelected(selected)
+  }, [selected])
 
   const handleToggleTile = () => setIsSelected(prev => !prev)
 
   const selectedStyles = isSelected ? "border-2 border-brand" : ""
-  const disabledStyles =
-    !isMultiple && disabled ? "cursor-not-allowed" : "cursor-pointer"
-  const textStyles = !isMultiple && disabled ? "text-disabled" : "text-brand"
-  const svgStyles = !isMultiple && disabled ? "tile-disabled" : "tile-idle"
+  const disabledStyles = disabled ? "cursor-not-allowed" : "cursor-pointer"
+  const textStyles = disabled ? "text-disabled" : "text-brand"
+  const svgStyles = disabled ? "tile-disabled" : "tile-idle"
 
   return (
     <div
       className={`tile toggleable relative h-36 w-36 shadow-md rounded-lg md:w-40 md:h-40 my-2 md:my-0 ${selectedStyles} ${disabledStyles}`}
-      onClick={() => (isMultiple || !disabled) && handleToggleTile()}
+      onClick={() => !disabled && handleToggleTile()}
     >
       <CheckBox
         className="absolute right-0 mt-2 mr-2"
         checked={isSelected as boolean}
-        disabled={!isMultiple && disabled}
+        disabled={disabled}
       />
       <TileContent>
         <img

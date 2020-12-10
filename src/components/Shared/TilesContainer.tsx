@@ -43,9 +43,11 @@ const TilesContainer: React.FC<TilesContainerType> = ({
               selected: stepValue?.includes(child.props.children),
               selectedIndex: stepValue?.indexOf(child.props.children),
               disabled:
-                stepValue?.length !== 0 &&
-                !stepValue?.includes(child.props.children) &&
-                !isMultiple,
+                !isMultiple &&
+                stepValue !== null &&
+                stepValue !== undefined &&
+                stepValue.length !== 0 &&
+                !stepValue.includes(child.props.children),
             }
 
       return React.cloneElement(child as JSX.Element, { ...props })
