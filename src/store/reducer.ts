@@ -2,7 +2,7 @@ import _ from "lodash"
 
 import { Actions, ActionType } from "./actions"
 import { objRemoveEmptyOrNull } from "../utils/trimObject"
-import { initialStep, mutateSteps } from '../views/easyflow/stepsManager';
+import { initialStep, mutateSteps } from "../views/easyflow/stepsManager"
 
 export const initialState = {
   currentStep: 0,
@@ -10,8 +10,7 @@ export const initialState = {
     activeTab: 0,
     section: 0,
   },
-  easyFlow: {
-  },
+  easyFlow: {},
   easyFlowSteps: {
     steps: initialStep,
   },
@@ -27,7 +26,7 @@ export const reducer = (state: any, action: ActionType) => {
   const { type, payload } = action
   let tabsTemp = null
   let currentValue = null
-  let applicantsTemp = null;
+  let applicantsTemp = null
   let easyFlowTemp = _.cloneDeep(state.easyFlow)
 
   const path = payload?.keyName
@@ -57,9 +56,7 @@ export const reducer = (state: any, action: ActionType) => {
     case Actions.EASY_FLOW_SET_APPLICANTS_QUANTITY:
       const selectedQty = payload
       const applicantsQty = easyFlowTemp.applicants?.length ?? 0
-      applicantsTemp = easyFlowTemp.applicants
-        ? [...easyFlowTemp.applicants]
-        : []
+      applicantsTemp = easyFlowTemp.applicants ? [...easyFlowTemp.applicants] : []
 
       const newApplicant = {
         income_type: null,
@@ -84,12 +81,16 @@ export const reducer = (state: any, action: ActionType) => {
         applicants: [...applicantsTemp],
       }
 
-      return { ...state, easyFlow: { ...easyFlowTemp }, currentStep: state.currentStep + 1, }
+      return {
+        ...state,
+        easyFlow: { ...easyFlowTemp },
+        currentStep: state.currentStep + 1,
+      }
 
     case Actions.EASY_FLOW_SET_APPLICANT_DATA:
       const semiPath = path.split(".")[0]
       const applicantIndex = semiPath.split("[")[1].split("]")[0]
-      const updatedProp = path.split(".")[1].replace('[]', '')
+      const updatedProp = path.split(".")[1].replace("[]", "")
 
       applicantsTemp = [...state.easyFlow.applicants]
       currentValue = _.get(easyFlowTemp, shallowerPath) ?? []
@@ -104,7 +105,10 @@ export const reducer = (state: any, action: ActionType) => {
       applicantTemp[updatedProp] = currentValue
       applicantsTemp[applicantIndex] = applicantTemp
 
-      return { ...state, easyFlow: { ...easyFlowTemp, applicants: [...applicantsTemp] } }
+      return {
+        ...state,
+        easyFlow: { ...easyFlowTemp, applicants: [...applicantsTemp] },
+      }
 
     case Actions.EASY_FLOW_SET_PATH_VALUE:
       currentValue = _.get(easyFlowTemp, shallowerPath) ?? []
@@ -132,7 +136,11 @@ export const reducer = (state: any, action: ActionType) => {
       _.set(easyFlowTemp, shallowerPath, currentValue)
       easyFlowTemp = objRemoveEmptyOrNull(easyFlowTemp)
 
-      return { ...state, easyFlow: { ...easyFlowTemp }, currentStep: state.currentStep + 1, }
+      return {
+        ...state,
+        easyFlow: { ...easyFlowTemp },
+        currentStep: state.currentStep + 1,
+      }
 
     case Actions.EASY_FLOW_SELECT_TILE_NEXT:
       return {
@@ -145,14 +153,26 @@ export const reducer = (state: any, action: ActionType) => {
       return {
         ...state,
         easyFlow: { ...state.easyFlow, [payload.keyName]: payload.value },
-        easyFlowSteps: { steps: mutateSteps(payload.keyName, payload.value, state.easyFlowSteps.steps) },
+        easyFlowSteps: {
+          steps: mutateSteps(
+            payload.keyName,
+            payload.value,
+            state.easyFlowSteps.steps
+          ),
+        },
         currentStep: state.currentStep + 1,
       }
 
     case Actions.EASY_FLOW_MUTATE_NEXT:
       return {
         ...state,
-        easyFlowSteps: { steps: mutateSteps(payload.keyName, payload.value, state.easyFlowSteps.steps) },
+        easyFlowSteps: {
+          steps: mutateSteps(
+            payload.keyName,
+            payload.value,
+            state.easyFlowSteps.steps
+          ),
+        },
         currentStep: state.currentStep + 1,
       }
 

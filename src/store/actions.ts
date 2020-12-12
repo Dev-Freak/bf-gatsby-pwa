@@ -1,7 +1,7 @@
-export type ValueType = any;
+export type ValueType = any
 
 export type ActionType = {
-  type: string,
+  type: string
   payload: any | undefined
 }
 
@@ -17,9 +17,9 @@ export const Actions = {
   EASY_FLOW_MUTATE_NEXT: "EASY_FLOW_MUTATE_NEXT",
   EASY_FLOW_SELECT_MUTATE_NEXT: "EASY_FLOW_SELECT_MUTATE_NEXT",
   EASY_FLOW_SET_VALUE_MUTATE_NEXT: "EASY_FLOW_SET_VALUE_MUTATE_NEXT",
-  EASY_FLOW_SELECT_TILE_NEXT: 'EASY_FLOW_SELECT_TILE_NEXT',
-  EASY_FLOW_SET_PATH_VALUE_NEXT: 'EASY_FLOW_SET_PATH_VALUE_NEXT',
-  EASY_FLOW_SET_APPLICANT_DATA: 'EASY_FLOW_SET_APPLICANT_DATA',
+  EASY_FLOW_SELECT_TILE_NEXT: "EASY_FLOW_SELECT_TILE_NEXT",
+  EASY_FLOW_SET_PATH_VALUE_NEXT: "EASY_FLOW_SET_PATH_VALUE_NEXT",
+  EASY_FLOW_SET_APPLICANT_DATA: "EASY_FLOW_SET_APPLICANT_DATA",
 
   // TABS
   TABS_SET_TAB: "TABS_SET_TAB",
@@ -56,7 +56,7 @@ const setApplicantsQuantity = (qty: number) => ({
 
 const setApplicantData = (value: ValueType) => ({
   type: Actions.EASY_FLOW_SET_APPLICANT_DATA,
-  payload: value
+  payload: value,
 })
 
 const setTab = (value: ValueType) => ({

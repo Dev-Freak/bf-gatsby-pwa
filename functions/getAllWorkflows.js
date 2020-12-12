@@ -1,59 +1,59 @@
-const fetch = require("node-fetch").default;
+const fetch = require("node-fetch").default
 
-const authenticateFunction = `http://localhost:9000/.netlify/functions/authenticate`;
+const authenticateFunction = `http://localhost:9000/.netlify/functions/authenticate`
 
 const auth = async () => {
   const authData = await fetch(authenticateFunction, {
     method: "POST",
   })
-    .then((res) => res.json())
-    .then((json) => json.data);
+    .then(res => res.json())
+    .then(json => json.data)
 
-  return authData;
-};
+  return authData
+}
 
 exports.handler = async (event, context) => {
-  const { authenticate } = await auth();
+  const { authenticate } = await auth()
 
   //#region Function setup
   if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
+    return { statusCode: 405, body: "Method Not Allowed" }
   }
 
   //#region GraphQL SetUp
-  const { createApolloFetch } = require("apollo-fetch");
+  const { createApolloFetch } = require("apollo-fetch")
 
   const fetch = createApolloFetch({
     uri: "https://sfg.salestrekker.com/graphql",
-  });
+  })
 
   fetch.use(({ request, options }, next) => {
     if (!options.headers) {
-      options.headers = {}; // Create the headers object if needed.
+      options.headers = {} // Create the headers object if needed.
     }
 
-    const { token } = authenticate;
-    options.headers["Authorization"] = `Bearer ${token}`;
+    const { token } = authenticate
+    options.headers["Authorization"] = `Bearer ${token}`
 
-    next();
-  });
+    next()
+  })
   //#endregion
   //#endregion
 
-  console.log("Authenticating.........................");
+  console.log("Authenticating.........................")
   const WORKFLOWS_QUERY = `query GetAllWorkflows {
     workflows {
       id
       name
     }
-  }`;
+  }`
 
   const fetchObject = {
     query: WORKFLOWS_QUERY,
-  };
+  }
 
   try {
-    const result = await fetch(fetchObject);
+    const result = await fetch(fetchObject)
 
     return {
       statusCode: 200,
@@ -63,11 +63,11 @@ exports.handler = async (event, context) => {
         "Access-Control-Allow-Methods": "POST",
         "Content-Type": "applicantion/json",
       },
-    };
+    }
   } catch (error) {
     return {
       statusCode: 500,
       body: "Sorry, something went wrong.\n" + JSON.stringify(error),
-    };
+    }
   }
-};
+}
