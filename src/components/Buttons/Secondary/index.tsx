@@ -4,14 +4,14 @@ import PropTypes from "prop-types"
 export type SecondaryProps = {
   label: string
   className?: string
-  onClick: CallableFunction
+  onClick?: CallableFunction
 }
 
 const Secondary: React.FC<SecondaryProps> = ({
   label,
   className,
   children,
-  onClick,
+  onClick = () => {},
 }) => {
   return (
     <button

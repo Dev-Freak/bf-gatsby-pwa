@@ -2,15 +2,10 @@ import * as React from "react"
 
 import useStore from "../../hooks/useStore"
 
-import { PrimaryButton } from "../Buttons"
+import { PrimaryButton, ButtonsPropsType } from "../Buttons"
 import { ArrowRightShort } from "@styled-icons/bootstrap/ArrowRightShort"
 
-type PureProps = {
-  isDisabled?: true | false
-  onClick?: CallableFunction
-}
-
-function NextButton({ isDisabled, onClick }: PureProps): JSX.Element {
+const NextButton: React.FC<ButtonsPropsType> = ({ isDisabled, onClick }) => {
   const { boundGoNext } = useStore()
 
   return (

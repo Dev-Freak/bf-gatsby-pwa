@@ -2,14 +2,10 @@ import * as React from "react"
 
 import useStore from "../../hooks/useStore"
 
-import { SecondaryButton } from "../Buttons"
+import { SecondaryButton, ButtonsPropsType } from "../Buttons"
 import { ArrowLeftShort } from "@styled-icons/bootstrap/ArrowLeftShort"
 
-type BackButtonType = {
-  onClick?: CallableFunction
-}
-
-const BackButton: React.FC<BackButtonType> = ({ onClick }) => {
+const BackButton: React.FC<ButtonsPropsType> = ({ onClick }) => {
   const { boundGoBack } = useStore()
 
   return (

@@ -5,7 +5,7 @@ export type PrimaryProps = {
   label: string
   isDisabled?: boolean
   className?: string
-  onClick: CallableFunction
+  onClick?: CallableFunction
 }
 
 const Primary: React.FC<PrimaryProps> = ({
@@ -13,7 +13,7 @@ const Primary: React.FC<PrimaryProps> = ({
   className,
   children,
   isDisabled,
-  onClick,
+  onClick = () => {},
 }) => {
   const buttonStyle = isDisabled
     ? "text-disabled border-disabled cursor-not-allowed"

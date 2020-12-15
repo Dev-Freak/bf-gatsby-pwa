@@ -6,3 +6,8 @@ export type {
   PrimaryProps as PrimaryButtonProps,
   SecondaryProps as SecondaryButtonProps,
 }
+
+export type ButtonsPropsType = {
+  isDisabled?: true | false
+  onClick?: CallableFunction
+}
