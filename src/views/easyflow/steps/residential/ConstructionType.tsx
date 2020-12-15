@@ -7,38 +7,44 @@ import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
 import StepWithBackButtonContainer from "../../../../components/DynamicStepper/StepWithBackButtonContainer"
 
-import { ResidentialLogo, CommercialLogo } from "../../../../utils/icons"
+import {
+  PurchaseLogo,
+  Refinance_2Logo,
+  DevelopmentLogo,
+  SMSFLogo,
+} from "../../../../utils/icons"
 
 import useStore, { DataType } from "../../../../hooks/useStore"
 
-const SMSFType: React.FC = () => {
+const CommercialType: React.FC = () => {
   const {
     state: {
-      easyFlow: { smsf_type },
+      easyFlow: { construction_type },
     },
-    boundSelectMutateAndNext,
+    boundSelectAndNext,
   } = useStore()
 
   return (
     <StepWithBackButtonContainer>
       <StepHeader>
-        <TitleWithTooltip title="Type of SMSF">Norem ipsum...</TitleWithTooltip>
+        <TitleWithTooltip title="Type of Construction">
+          Norem ipsum...
+        </TitleWithTooltip>
         <Description>
           Please select the most relevant option to your needs
         </Description>
       </StepHeader>
 
       <TilesContainer
-        stepKeyName="smsf_type"
-        stepValue={smsf_type}
-        onTileClick={(data: DataType) => boundSelectMutateAndNext(data)}
+        stepKeyName="construction_type"
+        stepValue={construction_type}
+        onTileClick={(data: DataType) => boundSelectAndNext(data)}
       >
-        <Tile img={ResidentialLogo}>Residential</Tile>
-
-        <Tile img={CommercialLogo}>Commercial</Tile>
+        <Tile img={PurchaseLogo}>Knock Down Rebuild/House Only</Tile>
+        <Tile img={Refinance_2Logo}>House and Land</Tile>
       </TilesContainer>
     </StepWithBackButtonContainer>
   )
 }
 
-export default SMSFType
+export default CommercialType

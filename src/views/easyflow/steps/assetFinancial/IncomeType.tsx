@@ -23,50 +23,36 @@ const AssetPurchase: React.FC = () => {
     state: {
       easyFlow: { asset_purchase, asset_income_type },
     },
-    boundSelectAndNext,
-    boundToggleTile,
+    boundSelectMutateAndNext,
   } = useStore()
 
-  const header = (
-    <StepHeader>
-      <TitleWithTooltip title="Type of income">Norem ipsum...</TitleWithTooltip>
-      <Description>Please select your streams of income</Description>
-    </StepHeader>
+  return (
+    <StepWithBackButtonContainer>
+      <StepHeader>
+        <TitleWithTooltip title="Type of income">Norem ipsum...</TitleWithTooltip>
+        <Description>Please select your streams of income</Description>
+      </StepHeader>
+
+      <TilesContainer
+        stepKeyName="asset_income_type"
+        stepValue={asset_income_type}
+        onTileClick={(data: DataType) => boundSelectMutateAndNext(data)}
+      >
+        {asset_purchase === "Personal Name" ? (
+          <>
+            <Tile img={PayslipLogo}>PAYG Employed (Payslips)</Tile>
+            <Tile img={SoleTraderLogo}>Sole Trader</Tile>
+          </>
+        ) : (
+          <>
+            <Tile img={SoleTraderLogo}>Sole Trader</Tile>
+            <Tile img={CompanyLogo}>Company</Tile>
+            <Tile img={TrustEntityLogo}>Trust</Tile>
+          </>
+        )}
+      </TilesContainer>
+    </StepWithBackButtonContainer>
   )
-
-  const component =
-    asset_purchase === "Personal Name" ? (
-      <StepWithBackButtonContainer>
-        {header}
-
-        <TilesContainer
-          stepKeyName="asset_income_type"
-          stepValue={asset_income_type}
-          onTileClick={(data: DataType) => boundSelectAndNext(data)}
-        >
-          <Tile img={PayslipLogo}>PAYG Employed (Payslips)</Tile>
-        </TilesContainer>
-      </StepWithBackButtonContainer>
-    ) : (
-      <StepWithNextAndBackButtonContainer>
-        {header}
-
-        <TilesContainer
-          isMultiple
-          stepKeyName="asset_income_type"
-          stepValue={asset_income_type}
-          onTileClick={(data: DataType) => boundToggleTile(data)}
-        >
-          <TileWithCheckBox img={SoleTraderLogo}>Sole Trader</TileWithCheckBox>
-
-          <TileWithCheckBox img={CompanyLogo}>Company</TileWithCheckBox>
-
-          <TileWithCheckBox img={TrustEntityLogo}>Trust</TileWithCheckBox>
-        </TilesContainer>
-      </StepWithNextAndBackButtonContainer>
-    )
-
-  return component
 }
 
 export default AssetPurchase

@@ -8,7 +8,6 @@ import ApplicationsSummary from "./steps/applicationSummary"
 import ApplicantsQuantity from "./steps/residential/ApplicantsQuantity"
 import ApplicationType from "./steps/residential/ApplicationType"
 import ProjectType from "./steps/residential/ProjectType"
-import SMSFType from "./steps/residential/SMSFType"
 import ApplicantsIncomeTabs from "./steps/residential/applicantsIncome/ApplicantsIncomeTabs"
 
 // AssetsFinancial
@@ -19,8 +18,9 @@ import IncomeType from "./steps/assetFinancial/IncomeType"
 
 // Commercial
 import CommercialType from "./steps/commercial/CommercialType"
-import ComProjectType from "./steps/commercial/ProjectType"
-import DevelopmentType from "./steps/commercial/DevelopmentType"
+
+// Other Financial Enquiries
+import OtherFinancialType from "./steps/otherFinancialEnquiries/OtherFinancialType"
 
 const initialStep = [<Welcome />]
 const AssetFinancialSteps = [
@@ -36,31 +36,24 @@ const ResidentialSteps = [
   <ApplicantsQuantity />,
   <ApplicationType />,
   <ProjectType />,
-  <SMSFType />,
   <ApplicantsIncomeTabs />,
   <ApplicationsSummary />,
 ]
-const CommercialSteps = [
-  <Welcome />,
-  <CommercialType />,
-  <ComProjectType />,
-  <DevelopmentType />,
-  <ApplicationsSummary />,
-]
+const CommercialSteps = [<Welcome />, <CommercialType />, <ApplicationsSummary />]
 
 const pathSteps = value => {
   switch (value) {
+    case "Asset financial":
+      return AssetFinancialSteps
+
     case "Residential":
       return ResidentialSteps
 
     case "Commercial":
       return CommercialSteps
 
-    case "Asset financial":
-      return AssetFinancialSteps
-
     default:
-      return [<Welcome />, <ApplicationsSummary />]
+      return [<Welcome />, <OtherFinancialType />, <ApplicationsSummary />]
   }
 }
 
@@ -93,6 +86,8 @@ const assetIncomeSteps = value => {
 }
 
 const mutateSteps = (keyName, value, currentSteps) => {
+  console.log("Mutating")
+
   switch (keyName) {
     case "path":
       return pathSteps(value)

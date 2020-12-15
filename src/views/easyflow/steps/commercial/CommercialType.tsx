@@ -11,6 +11,7 @@ import {
   PurchaseLogo,
   Refinance_2Logo,
   DevelopmentLogo,
+  SMSFLogo,
 } from "../../../../utils/icons"
 
 import useStore, { DataType } from "../../../../hooks/useStore"
@@ -40,10 +41,9 @@ const CommercialType: React.FC = () => {
         onTileClick={(data: DataType) => boundSelectAndNext(data)}
       >
         <Tile img={PurchaseLogo}>Purchase</Tile>
-
         <Tile img={Refinance_2Logo}>Refinance</Tile>
-
         <Tile img={DevelopmentLogo}>Development</Tile>
+        <Tile img={SMSFLogo}>SMSF</Tile>
       </TilesContainer>
     </StepWithBackButtonContainer>
   )
