@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import StepHeader from "../../../../../components/DynamicStepper/StepHeader"
-import StepWithTabsContainer from "../../../../../components/DynamicStepper/StepWithTabsContainer"
+import StepWithNextAndBackButtonContainer from "../../../../../components/DynamicStepper/StepWithNextAndBackButtonContainer"
 
 import Tabs from "../../../../../components/Tab/Tabs"
 import TitleWithTooltip from "../../../../../components/Shared/TitleWithTooltip"
@@ -21,10 +21,18 @@ const ApplicantsIncomeTabs: React.FC = () => {
   } = useApplicantsIncomeTabs()
 
   return (
-    <StepWithTabsContainer
-      onBack={canStepBack ? undefined : () => boundSetInnerStep(0)}
-      onNext={canStepNext ? undefined : () => boundSetInnerStep(1)}
-      isNextDisabled={isNextStepDisabled}
+    /*
+      canStepBack and canStepNext work as a boolean to set default behaviour
+      if any of them is true, the default button's onClick function will take place
+      otherwise, the onClick event will be binded to the Store action
+    */
+
+    <StepWithNextAndBackButtonContainer
+      back={{ onClick: canStepBack ? undefined : () => boundSetInnerStep(0) }}
+      next={{
+        onClick: canStepNext ? undefined : () => boundSetInnerStep(1),
+        isDisabled: isNextStepDisabled,
+      }}
     >
       <StepHeader>
         <TitleWithTooltip title="income type">Norem ipsum...</TitleWithTooltip>
@@ -34,7 +42,7 @@ const ApplicantsIncomeTabs: React.FC = () => {
       </StepHeader>
 
       <Tabs steps={tabs} defaultActiveIndex={activeTab} onTabChange={boundSetTab} />
-    </StepWithTabsContainer>
+    </StepWithNextAndBackButtonContainer>
   )
 }
 
