@@ -7,7 +7,7 @@ export const formatKey = (name: string): string => {
   }
 
   const nameArray = name.split("_")
-  const firstElToUpper = firstCharToUpper(nameArray[0])
+  nameArray[0] = firstCharToUpper(nameArray[0])
 
-  return `${firstElToUpper} ${nameArray[1]}`
+  return `${[...nameArray].join(' ')}`
 }
