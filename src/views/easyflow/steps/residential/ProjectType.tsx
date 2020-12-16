@@ -22,7 +22,7 @@ const ProjectType: React.FC = () => {
     state: {
       easyFlow: { applicant_type, project_type },
     },
-    boundSelectAndNext,
+    boundSelectMutateAndNext,
   } = useStore()
 
   return (
@@ -37,28 +37,23 @@ const ProjectType: React.FC = () => {
       <TilesContainer
         stepKeyName="project_type"
         stepValue={project_type}
-        onTileClick={(data: DataType) => boundSelectAndNext(data)}
+        onTileClick={(data: DataType) => boundSelectMutateAndNext(data)}
       >
         {applicant_type === "First home buyer" ? (
           <>
             <Tile img={EstablishedLogo}>Established</Tile>
-
             <Tile img={ConstructionLogo}>Construction</Tile>
-
             <Tile img={OffThePlanLogo}>Off the plan</Tile>
           </>
         ) : applicant_type === "Investor" ? (
           <>
             <Tile img={EstablishedLogo}>Established</Tile>
-
             <Tile img={ConstructionLogo}>Construction</Tile>
-
             <Tile img={SMSFLogo}>SMSF</Tile>
           </>
         ) : (
           <>
             <Tile img={ReverseMortgageLogo}>Reverse Mortgage</Tile>
-
             <Tile img={SMSFLogo}>SMSF</Tile>
           </>
         )}

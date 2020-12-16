@@ -11,7 +11,7 @@ import { CasualLogo, PartTimeLogo, FullTimeLogo } from "../../../../utils/icons"
 
 import useStore, { DataType } from "../../../../hooks/useStore"
 
-const AssetType: React.FC = () => {
+const EmploymentType: React.FC = () => {
   const {
     state: {
       easyFlow: { employment_type },
@@ -45,4 +45,4 @@ const AssetType: React.FC = () => {
   )
 }
 
-export default AssetType
+export default EmploymentType

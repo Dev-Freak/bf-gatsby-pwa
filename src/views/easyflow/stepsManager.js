@@ -8,6 +8,7 @@ import ApplicationsSummary from "./steps/applicationSummary"
 import ApplicantsQuantity from "./steps/residential/ApplicantsQuantity"
 import ApplicationType from "./steps/residential/ApplicationType"
 import ProjectType from "./steps/residential/ProjectType"
+import ConstructionType from "./steps/residential/ConstructionType"
 import ApplicantsIncomeTabs from "./steps/residential/applicantsIncome/ApplicantsIncomeTabs"
 
 // AssetsFinancial
@@ -28,7 +29,6 @@ const AssetFinancialSteps = [
   <AssetType />,
   <AssetPurchase />,
   <IncomeType />,
-  <EmploymentType />,
   <ApplicationsSummary />,
 ]
 const ResidentialSteps = [
@@ -58,36 +58,28 @@ const pathSteps = value => {
 }
 
 const projectSteps = value => {
-  let stepsCopy = []
-
   switch (value) {
-    case "SMSF":
-      return ResidentialSteps
+    case "Construction":
+      let stepsCopy = [...ResidentialSteps]
+      return [...stepsCopy.slice(0, 4), <ConstructionType />, ...stepsCopy.slice(4)]
 
     default:
-      stepsCopy = [...ResidentialSteps]
-      stepsCopy.splice(4, 1)
-      return stepsCopy
+      return ResidentialSteps
   }
 }
 
 const assetIncomeSteps = value => {
-  let stepsCopy = []
-
   switch (value) {
     case "PAYG Employed (Payslips)":
-      return AssetFinancialSteps
+      let stepsCopy = [...AssetFinancialSteps]
+      return [...stepsCopy.slice(0, 4), <EmploymentType />, stepsCopy.reverse()[0]]
 
     default:
-      stepsCopy = [...AssetFinancialSteps]
-      stepsCopy.splice(3, 1)
-      return stepsCopy
+      return AssetFinancialSteps
   }
 }
 
 const mutateSteps = (keyName, value, currentSteps) => {
-  console.log("Mutating")
-
   switch (keyName) {
     case "path":
       return pathSteps(value)

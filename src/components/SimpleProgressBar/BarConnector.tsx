@@ -9,7 +9,10 @@ const BarConnector: React.FC<BarConnectorProps> = ({ isCompleted }) => {
   const style = isCompleted ? "bg-completedDark" : "bg-idleLight"
 
   return (
-    <div className="flex items-center justify-center flex-grow">
+    <div
+      className="flex items-center justify-center flex-grow"
+      style={{ maxWidth: "300px" }}
+    >
       <span style={{ height: "2px" }} className={`block w-full max-w-xs ${style}`} />
     </div>
   )

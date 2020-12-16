@@ -18,7 +18,7 @@ import {
 
 import useStore, { DataType } from "../../../../hooks/useStore"
 
-const AssetPurchase: React.FC = () => {
+const IncomeType: React.FC = () => {
   const {
     state: {
       easyFlow: { asset_purchase, asset_income_type },
@@ -55,4 +55,4 @@ const AssetPurchase: React.FC = () => {
   )
 }
 
-export default AssetPurchase
+export default IncomeType
