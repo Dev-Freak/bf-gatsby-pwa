@@ -17,6 +17,14 @@ import {
 
 import useStore, { DataType } from "../../../../hooks/useStore"
 
+export enum ProjectOptions {
+  Established,
+  Construction,
+  Off_The_Plan,
+  SMSF,
+  Reverse_Mortgage,
+}
+
 const ProjectType: React.FC = () => {
   const {
     state: {
@@ -41,20 +49,21 @@ const ProjectType: React.FC = () => {
       >
         {applicant_type === "First home buyer" ? (
           <>
-            <Tile img={EstablishedLogo}>Established</Tile>
-            <Tile img={ConstructionLogo}>Construction</Tile>
-            <Tile img={OffThePlanLogo}>Off the plan</Tile>
+            <Tile img={EstablishedLogo}>{ProjectOptions[0]}</Tile>
+            <Tile img={ConstructionLogo}>{ProjectOptions[1]}</Tile>
+            <Tile img={OffThePlanLogo}>{ProjectOptions[2]}</Tile>
           </>
         ) : applicant_type === "Investor" ? (
           <>
-            <Tile img={EstablishedLogo}>Established</Tile>
-            <Tile img={ConstructionLogo}>Construction</Tile>
-            <Tile img={SMSFLogo}>SMSF</Tile>
+            <Tile img={EstablishedLogo}>{ProjectOptions[0]}</Tile>
+            <Tile img={ConstructionLogo}>{ProjectOptions[1]}</Tile>
+            <Tile img={OffThePlanLogo}>{ProjectOptions[2]}</Tile>
+            <Tile img={SMSFLogo}>{ProjectOptions[3]}</Tile>
           </>
         ) : (
           <>
-            <Tile img={ReverseMortgageLogo}>Reverse Mortgage</Tile>
-            <Tile img={SMSFLogo}>SMSF</Tile>
+            <Tile img={ReverseMortgageLogo}>{ProjectOptions[4]}</Tile>
+            <Tile img={SMSFLogo}>{ProjectOptions[3]}</Tile>
           </>
         )}
       </TilesContainer>

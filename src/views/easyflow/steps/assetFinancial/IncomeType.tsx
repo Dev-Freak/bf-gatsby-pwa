@@ -18,6 +18,13 @@ import {
 
 import useStore, { DataType } from "../../../../hooks/useStore"
 
+export enum IncomeOptions {
+  PAYG_Employed,
+  Sole_Trader,
+  Company,
+  Trust,
+}
+
 const IncomeType: React.FC = () => {
   const {
     state: {
@@ -40,14 +47,14 @@ const IncomeType: React.FC = () => {
       >
         {asset_purchase === "Personal Name" ? (
           <>
-            <Tile img={PayslipLogo}>PAYG Employed (Payslips)</Tile>
-            <Tile img={SoleTraderLogo}>Sole Trader</Tile>
+            <Tile img={PayslipLogo}>{IncomeOptions[0]}</Tile>
+            <Tile img={SoleTraderLogo}>{IncomeOptions[1]}</Tile>
           </>
         ) : (
           <>
-            <Tile img={SoleTraderLogo}>Sole Trader</Tile>
-            <Tile img={CompanyLogo}>Company</Tile>
-            <Tile img={TrustEntityLogo}>Trust</Tile>
+            <Tile img={SoleTraderLogo}>{IncomeOptions[1]}</Tile>
+            <Tile img={CompanyLogo}>{IncomeOptions[2]}</Tile>
+            <Tile img={TrustEntityLogo}>{IncomeOptions[3]}</Tile>
           </>
         )}
       </TilesContainer>

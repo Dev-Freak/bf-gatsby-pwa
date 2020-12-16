@@ -1,13 +1,13 @@
 import * as React from "react"
 
 // EASYFLOW STEPS
-import Welcome from "./steps/Welcome"
+import Welcome, { PathOptions } from "./steps/Welcome"
 import ApplicationsSummary from "./steps/applicationSummary"
 
 // Residential
 import ApplicantsQuantity from "./steps/residential/ApplicantsQuantity"
 import ApplicationType from "./steps/residential/ApplicationType"
-import ProjectType from "./steps/residential/ProjectType"
+import ProjectType, { ProjectOptions } from "./steps/residential/ProjectType"
 import ConstructionType from "./steps/residential/ConstructionType"
 import ApplicantsIncomeTabs from "./steps/residential/applicantsIncome/ApplicantsIncomeTabs"
 
@@ -15,7 +15,7 @@ import ApplicantsIncomeTabs from "./steps/residential/applicantsIncome/Applicant
 import AssetType from "./steps/assetFinancial/AssetType"
 import AssetPurchase from "./steps/assetFinancial/AssetPurchase"
 import EmploymentType from "./steps/assetFinancial/EmploymentType"
-import IncomeType from "./steps/assetFinancial/IncomeType"
+import IncomeType, { IncomeOptions } from "./steps/assetFinancial/IncomeType"
 
 // Commercial
 import CommercialType from "./steps/commercial/CommercialType"
@@ -43,13 +43,13 @@ const CommercialSteps = [<Welcome />, <CommercialType />, <ApplicationsSummary /
 
 const pathSteps = value => {
   switch (value) {
-    case "Asset financial":
+    case PathOptions[0]:
       return AssetFinancialSteps
 
-    case "Residential":
+    case PathOptions[1]:
       return ResidentialSteps
 
-    case "Commercial":
+    case PathOptions[2]:
       return CommercialSteps
 
     default:
@@ -59,7 +59,7 @@ const pathSteps = value => {
 
 const projectSteps = value => {
   switch (value) {
-    case "Construction":
+    case ProjectOptions[1]:
       let stepsCopy = [...ResidentialSteps]
       return [...stepsCopy.slice(0, 4), <ConstructionType />, ...stepsCopy.slice(4)]
 
@@ -70,7 +70,7 @@ const projectSteps = value => {
 
 const assetIncomeSteps = value => {
   switch (value) {
-    case "PAYG Employed (Payslips)":
+    case IncomeOptions[0]:
       let stepsCopy = [...AssetFinancialSteps]
       return [...stepsCopy.slice(0, 4), <EmploymentType />, stepsCopy.reverse()[0]]
 

@@ -16,33 +16,36 @@ import {
 
 import useStore, { DataType } from "../../../hooks/useStore"
 
+export enum PathOptions {
+  Asset_Financial,
+  Residential,
+  Commercial,
+  Other_Financial_Enquiries,
+}
+
 const Welcome: React.FC = () => {
   const {
     state: {
       easyFlow: { path },
     },
+    //boundSelectTile,
+    //boundMutateAndNext,
     boundSelectMutateAndNext,
   } = useStore()
 
-  /* const selectTileCallback = React.useCallback(params => boundSelectTile(params), [])
-  const mutateAndNextCallback = React.useCallback(
-    params => boundMutateAndNext(params),
-    []
-  )
-
-  const [tileSelection, setTileSelection] = React.useState<DataType>(false)
+  /* const [tileSelection, setTileSelection] = React.useState<DataType>(false)
 
   React.useEffect(() => {
-    //selectTileCallback(tileSelection)
-  }, [tileSelection, selectTileCallback])
+    //boundSelectTile(tileSelection)
+  }, [tileSelection])
 
   React.useEffect(() => {
     const timeOut = setTimeout(() => {
-      mutateAndNextCallback(tileSelection)
+      boundSelectMutateAndNext(tileSelection)
     }, 200)
 
     return () => clearTimeout(timeOut)
-  }, [path, mutateAndNextCallback]) */
+  }, [path]) */
 
   return (
     <StepContainer>
@@ -58,13 +61,10 @@ const Welcome: React.FC = () => {
         stepValue={path}
         onTileClick={(data: DataType) => boundSelectMutateAndNext(data)}
       >
-        <Tile img={AssetsFinancialLogo}>Asset financial</Tile>
-
-        <Tile img={ResidentialLogo}>Residential</Tile>
-
-        <Tile img={CommercialLogo}>Commercial</Tile>
-
-        <Tile img={OtherLogo}>Other financial enquiries</Tile>
+        <Tile img={AssetsFinancialLogo}>{PathOptions[0]}</Tile>
+        <Tile img={ResidentialLogo}>{PathOptions[1]}</Tile>
+        <Tile img={CommercialLogo}>{PathOptions[2]}</Tile>
+        <Tile img={OtherLogo}>{PathOptions[3]}</Tile>
       </TilesContainer>
     </StepContainer>
   )
