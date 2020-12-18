@@ -7,12 +7,7 @@ import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
 import StepWithBackButtonContainer from "../../../../components/DynamicStepper/StepWithBackButtonContainer"
 
-import {
-  PurchaseLogo,
-  Refinance_2Logo,
-  DevelopmentLogo,
-  SMSFLogo,
-} from "../../../../utils/icons"
+import { PurchaseLogo, LandLogo } from "../../../../utils/icons"
 
 import useStore, { DataType } from "../../../../hooks/useStore"
 
@@ -40,8 +35,9 @@ const CommercialType: React.FC = () => {
         stepValue={construction_type}
         onTileClick={(data: DataType) => boundSelectAndNext(data)}
       >
+        <Tile img={PurchaseLogo}>Dual Occupancy</Tile>
         <Tile img={PurchaseLogo}>Knock Down Rebuild/House Only</Tile>
-        <Tile img={Refinance_2Logo}>House and Land</Tile>
+        <Tile img={LandLogo}>House and Land</Tile>
       </TilesContainer>
     </StepWithBackButtonContainer>
   )

@@ -3,7 +3,7 @@
 // COMMERCIAL
 // Welcome
 import CommercialLogo from "../images/icons/Icon1.svg"
-import OtherLogo from "../images/icons/Icon5.svg" // TODO
+import OtherLogo from "../images/icons/Icon42.svg"
 import ResidentialLogo from "../images/icons/Icon8.svg"
 import AssetsFinancialLogo from "../images/icons/Icon39.svg"
 
@@ -14,17 +14,25 @@ import ThreeApplicantLogo from "../images/icons/Icon33.svg"
 import FourApplicantLogo from "../images/icons/Icon32.svg"
 
 // Application Type
-import RefinanceLogo from "../images/icons/Icon7.svg"
-import FirstHomeBuyerLogo from "../images/icons/Icon10.svg"
-import InvestorLogo from "../images/icons/Icon12.svg"
+import RefinanceLogo from "../images/icons/Icon12.svg"
+import FirstHomeBuyerLogo from "../images/icons/Icon7.svg"
+import InvestorLogo from "../images/icons/Icon10.svg"
 import RetirementLogo from "../images/icons/Icon24.svg"
 
+// Refinance Reason
+import BetterRateLogo from "../images/icons/Icon27.svg"
+import ConsolidateLogo from "../images/icons/Icon14.svg"
+import EquityReleaseLogo from "../images/icons/Icon9.svg"
+
 // Project Type
-import EstablishedLogo from "../images/icons/Icon4.svg" // TODO
+import EstablishedLogo from "../images/icons/Icon5.svg"
 import OffThePlanLogo from "../images/icons/Icon4.svg"
 import ConstructionLogo from "../images/icons/Icon3.svg"
 import SMSFLogo from "../images/icons/Icon13.svg"
 import ReverseMortgageLogo from "../images/icons/Icon30.svg"
+
+// Construction Type
+import LandLogo from "../images/icons/Icon23.svg"
 
 // Applicant Income Type
 import PayslipLogo from "../images/icons/Icon20.svg"
@@ -64,13 +72,8 @@ import DAPendingLogo from "../images/icons/Icon41.svg"
 import DAApprovedLogo from "../images/icons/Icon40.svg"
 
 // REST
-import BuiltHomeLogo from "../images/icons/Icon5.svg"
-import EquityReleaseLogo from "../images/icons/Icon9.svg"
 import PropertyPriceBalanceLogo from "../images/icons/Icon11.svg"
-import ConsolidateLogo from "../images/icons/Icon14.svg"
 import FactoryLogo from "../images/icons/Icon19.svg"
-import LandLogo from "../images/icons/Icon23.svg"
-import BetterRateLogo from "../images/icons/Icon27.svg"
 
 // DUPLICATE NAMESLogo => A better use case must be given to these
 import VehiclePurchase_2Logo from "../images/icons/Icon29.svg"
@@ -118,7 +121,6 @@ export {
   DANotAppliedLogo,
   DAPendingLogo,
   DAApprovedLogo,
-  BuiltHomeLogo,
   EquityReleaseLogo,
   PropertyPriceBalanceLogo,
   ConsolidateLogo,
