@@ -20,6 +20,12 @@ const StepWithNextAndBackButtonContainer: React.FC<Props> = ({
   back,
   next,
 }) => {
+  /*  TODO
+      <StepWithNextAndBackButtonContainer> SHOULD be refactored to be the only step container
+      Buttons rendered conditionally based on props: { next, back }
+      { next: {}, back: {} } holds the props to be passed down to each button
+  */
+
   return (
     <StepContainer>
       {children}

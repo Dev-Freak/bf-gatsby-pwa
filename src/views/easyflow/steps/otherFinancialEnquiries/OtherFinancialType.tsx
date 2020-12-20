@@ -19,7 +19,7 @@ import useStore, { DataType } from "../../../../hooks/useStore"
 const OtherFinancialType: React.FC = () => {
   const {
     state: {
-      easyFlow: { other_financial_type },
+      easyFlow: { additional_services },
     },
     boundToggleTile,
   } = useStore()
@@ -27,20 +27,18 @@ const OtherFinancialType: React.FC = () => {
   return (
     <StepWithNextAndBackButtonContainer
       next={{
-        isDisabled: !other_financial_type || other_financial_type?.length === 0,
+        isDisabled: false,
       }}
     >
       <StepHeader>
-        <TitleWithTooltip title="Type of Enquiry">Norem ipsum...</TitleWithTooltip>
-        <Description>
-          Please select the most relevant option to your needs
-        </Description>
+        <TitleWithTooltip title="Additional">Optional</TitleWithTooltip>
+        <Description>Do you require any additional services?</Description>
       </StepHeader>
 
       <TilesContainer
         isMultiple
-        stepKeyName="other_financial_type"
-        stepValue={other_financial_type}
+        stepKeyName="additional_services"
+        stepValue={additional_services}
         onTileClick={(data: DataType) => boundToggleTile(data)}
       >
         <TileWithCheckBox img={PurchaseLogo}>Financial Planning</TileWithCheckBox>

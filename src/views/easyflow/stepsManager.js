@@ -24,22 +24,23 @@ import CommercialType from "./steps/commercial/CommercialType"
 import OtherFinancialType from "./steps/otherFinancialEnquiries/OtherFinancialType"
 
 const initialStep = [<Welcome />]
+const finalSteps = [<OtherFinancialType />, <ApplicationsSummary />]
 const AssetFinancialSteps = [
-  <Welcome />,
+  ...initialStep,
   <AssetType />,
   <AssetPurchase />,
   <IncomeType />,
-  <ApplicationsSummary />,
+  ...finalSteps,
 ]
 const ResidentialSteps = [
-  <Welcome />,
+  ...initialStep,
   <ApplicantsQuantity />,
   <ApplicationType />,
   <ProjectType />,
   <ApplicantsIncomeTabs />,
-  <ApplicationsSummary />,
+  ...finalSteps,
 ]
-const CommercialSteps = [<Welcome />, <CommercialType />, <ApplicationsSummary />]
+const CommercialSteps = [...initialStep, <CommercialType />, ...finalSteps]
 
 const pathSteps = value => {
   switch (value) {
@@ -53,7 +54,7 @@ const pathSteps = value => {
       return CommercialSteps
 
     default:
-      return [<Welcome />, <OtherFinancialType />, <ApplicationsSummary />]
+      return [...initialStep, ...finalSteps]
   }
 }
 
@@ -72,7 +73,7 @@ const assetIncomeSteps = value => {
   switch (value) {
     case IncomeOptions[0]:
       let stepsCopy = [...AssetFinancialSteps]
-      return [...stepsCopy.slice(0, 4), <EmploymentType />, stepsCopy.reverse()[0]]
+      return [...stepsCopy.slice(0, 4), <EmploymentType />, ...stepsCopy.slice(4)]
 
     default:
       return AssetFinancialSteps
