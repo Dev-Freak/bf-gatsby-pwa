@@ -2,7 +2,7 @@ import * as React from "react"
 
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
 import CheckBoxWithDescription from "../../../../components/Shared/CheckBoxWithDescription"
-import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
+import Title from "../../../../components/Shared/Title"
 import Slider, { Steps, ValueType } from "../../../../components/Slider"
 import Lable from "../../../../components/Shared/Inputs/Lable"
 
@@ -21,15 +21,13 @@ const EnquiryDetails: React.FC = () => {
   return (
     <div className="flex flex-col space-y-6">
       <StepHeader>
-        <TitleWithTooltip title="Details of enquiry">
-          Norem ipsum...
-        </TitleWithTooltip>
+        <Title>Details of enquiry</Title>
       </StepHeader>
 
       <div className="flex flex-col my-5 space-y-5">
         <Lable>Urgency of finance (In Days)</Lable>
         <Slider
-          defaultValue={urgency}
+          defaultValue={urgency ?? "7"}
           steps={steps}
           style={{ minWidth: "500px" }}
           onChange={(e: ValueType) =>
@@ -64,8 +62,7 @@ const EnquiryDetails: React.FC = () => {
           boundSetEnquiryDetailsValue({ keyName: "overdueCheck", value: e })
         }
       >
-        Have you ever been overdue in the payment of your goods and/or
-        responsibilities?
+        Have you ever had any issues with your credit?
       </CheckBoxWithDescription>
     </div>
   )

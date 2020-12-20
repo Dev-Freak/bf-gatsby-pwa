@@ -1,8 +1,8 @@
 import * as React from "react"
 
-import StepHeader from "../../../../components/DynamicStepper/StepHeader"
+import Title from "../../../../components/Shared/Title"
 import SummaryItem from "../../../../components/Shared/SummaryItem"
-import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
+import StepHeader from "../../../../components/DynamicStepper/StepHeader"
 
 import useSummary from "../../../../hooks/useSummary"
 
@@ -18,7 +18,7 @@ const Summary: React.FC = () => {
   return (
     <div className="flex flex-1 flex-col space-y-6">
       <StepHeader>
-        <TitleWithTooltip title="Summary">Norem ipsum...</TitleWithTooltip>
+        <Title>Summary</Title>
       </StepHeader>
       {getEntireSummary(summaryData)}
     </div>

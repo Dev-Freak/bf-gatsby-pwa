@@ -5,24 +5,23 @@ type FormTypes = {
   fullName: string
   emailAddress: string
   phoneNumber: number
-  authorize: true | false
 }
 
 const useContactForm = () => {
   const {
     state: {
-      contactInfo: { fullName, emailAddress, phoneNumber, authorize },
+      contactInfo: { fullName, emailAddress, phoneNumber },
     },
     boundSetContactValue,
   } = useStore()
 
   const { register, handleSubmit, errors, formState } = useForm<FormTypes>({
     mode: "onBlur",
-    defaultValues: { fullName, emailAddress, phoneNumber, authorize },
+    defaultValues: { fullName, emailAddress, phoneNumber },
   })
 
   return {
-    inputs: { fullName, emailAddress, phoneNumber, authorize },
+    inputs: { fullName, emailAddress, phoneNumber },
     form: { register, handleSubmit, errors, formState },
     boundSetContactValue,
   }

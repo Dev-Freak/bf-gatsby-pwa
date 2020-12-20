@@ -1,8 +1,7 @@
 import * as React from "react"
 
+import Title from "../../../../components/Shared/Title"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
-import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
-import CheckBoxWithDescription from "../../../../components/Shared/CheckBoxWithDescription"
 import InputContainer from "../../../../components/Shared/Inputs/InputContainer"
 import Lable from "../../../../components/Shared/Inputs/Lable"
 import Input from "../../../../components/Shared/Inputs/Input"
@@ -11,7 +10,10 @@ import InputError from "../../../../components/Shared/Inputs/InputError"
 import useContactForm from "../../../../hooks/useContactForm"
 
 const ContactForm: React.FC = () => {
-  const { inputs, form, boundSetContactValue } = useContactForm()
+  // TODO: Fields validation to trigger onChange rather than onBlur
+  // TODO: Fields error validation to act as parameters to disable "Proceed to next" button
+
+  const { form, boundSetContactValue } = useContactForm()
 
   return (
     <form
@@ -19,7 +21,7 @@ const ContactForm: React.FC = () => {
       className="flex flex-1 flex-col space-y-8"
     >
       <StepHeader>
-        <TitleWithTooltip title="Fill the form">Norem ipsum...</TitleWithTooltip>
+        <Title>Fill the form</Title>
       </StepHeader>
 
       <InputContainer>
@@ -100,15 +102,6 @@ const ContactForm: React.FC = () => {
           <InputError>{form.errors.phoneNumber?.message}</InputError>
         ) : null}
       </InputContainer>
-
-      <CheckBoxWithDescription
-        checked={inputs.authorize}
-        onToggleCheck={(check: boolean) =>
-          boundSetContactValue({ keyName: "authorize", value: check })
-        }
-      >
-        Do you authorise BorgFinancial to use your information?
-      </CheckBoxWithDescription>
     </form>
   )
 }
