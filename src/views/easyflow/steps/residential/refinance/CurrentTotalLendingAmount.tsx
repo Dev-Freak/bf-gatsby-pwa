@@ -1,39 +1,30 @@
 import * as React from "react"
 
 import useStore, { DataType } from "../../../../../hooks/useStore"
-import useFirstRenderDisabledEffect from "../../../../../hooks/useFirstRenderDisabledEffect"
 
 import TitleWithTooltip from "../../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../../components/Shared/Description"
 import StepHeader from "../../../../../components/DynamicStepper/StepHeader"
-import StepWithBackButtonContainer from "../../../../../components/DynamicStepper/StepWithBackButtonContainer"
+import StepWithNextAndBackButtonContainer from "../../../../../components/DynamicStepper/StepWithNextAndBackButtonContainer"
+
+import { formatCurrency } from "../../../../../utils/stringFormatter"
 
 const CurrentTotalLendingAmount: React.FC = () => {
   const {
     state: {
       easyFlow: { current_total_lending_amount },
     },
-    boundSelectAndNext,
+    boundSelectTile,
   } = useStore()
 
-  const isFirstRender = useFirstRenderDisabledEffect()
-  const [amount, setAmount] = React.useState(current_total_lending_amount ?? null)
+  const [amount, setAmount] = React.useState(current_total_lending_amount ?? "")
 
-  React.useEffect(() => {
-    if (!isFirstRender && amount !== current_total_lending_amount)
-      boundSelectAndNext({
-        key: "current_total_lending_amount",
-        value: amount,
-      } as DataType)
-  }, [amount])
-
-  React.useEffect(() => {
-    if (!isFirstRender && current_total_lending_amount !== amount)
-      setAmount(current_total_lending_amount)
-  }, [current_total_lending_amount])
-
+  /*
+    TODO:
+    Use react-number-format to better display the amounts and its inputs: https://www.npmjs.com/package/react-number-format
+  */
   return (
-    <StepWithBackButtonContainer>
+    <StepWithNextAndBackButtonContainer>
       <StepHeader>
         <TitleWithTooltip title="Total Lending Amount">
           Norem ipsum...
@@ -49,9 +40,15 @@ const CurrentTotalLendingAmount: React.FC = () => {
           step="0.01"
           value={amount}
           onChange={e => setAmount(e.target.value)}
+          onBlur={() =>
+            boundSelectTile({
+              keyName: "current_total_lending_amount",
+              value: formatCurrency(amount),
+            } as DataType)
+          }
         />
       </div>
-    </StepWithBackButtonContainer>
+    </StepWithNextAndBackButtonContainer>
   )
 }
 

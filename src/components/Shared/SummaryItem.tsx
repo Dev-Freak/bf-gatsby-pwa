@@ -3,7 +3,8 @@ import * as React from "react"
 import SubTitle from "./SubTitle"
 import Value from "./Value"
 
-import { formatKey } from "../../utils/stringFormatter"
+import { formatKey, formatCurrency } from "../../utils/stringFormatter"
+import { isNumber, isString } from "lodash"
 
 type SelectedValue = {
   [key: string]: string
@@ -20,8 +21,10 @@ const SummaryItem: React.FC<SummaryItemProps> = ({
 }: SummaryItemProps) => {
   const getComponents = (item: SelectedValue) => {
     if (item !== null && typeof item === "object")
-      return Object.keys(value).map((itemKey: any) => {
+      return Object.keys(item).map((itemKey: any) => {
         const subItemFirstLevel = item[itemKey]
+
+        console.log(`Key: ${itemKey} - Value: ${JSON.stringify(subItemFirstLevel)}`)
 
         if (subItemFirstLevel !== null && typeof subItemFirstLevel === "object") {
           return (
@@ -32,6 +35,10 @@ const SummaryItem: React.FC<SummaryItemProps> = ({
                   (subItemFirstLevelKey: any, index) => {
                     const subItemSecondLevel =
                       subItemFirstLevel[subItemFirstLevelKey]
+
+                    console.log(
+                      `Key: ${subItemFirstLevelKey} - Value: ${subItemSecondLevel}`
+                    )
 
                     // Use of backtick characters (``) automatically adds the comma WITHOUT space (,) between each selected item
                     return (
@@ -47,9 +54,9 @@ const SummaryItem: React.FC<SummaryItemProps> = ({
         } else {
           return (
             <div className="pb-5">
-              <Value>{itemKey}</Value>
+              <Value>{formatKey(itemKey)}</Value>
               <div className="px-6">
-                <Value>{formatKey(subItemFirstLevel.toString())}</Value>
+                <Value>{`${formatKey(subItemFirstLevel)}`}</Value>
               </div>
             </div>
           )
@@ -58,7 +65,11 @@ const SummaryItem: React.FC<SummaryItemProps> = ({
   }
 
   const components =
-    typeof value === "string" ? <Value>{value}</Value> : getComponents(value)
+    typeof value === "string" ? (
+      <Value>{formatKey(value)}</Value>
+    ) : (
+      getComponents(value)
+    )
 
   return (
     <div className="pb-4">

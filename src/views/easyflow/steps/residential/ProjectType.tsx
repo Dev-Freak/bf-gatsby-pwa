@@ -28,7 +28,7 @@ export enum ProjectOptions {
 const ProjectType: React.FC = () => {
   const {
     state: {
-      easyFlow: { applicant_type, project_type },
+      easyFlow: { application_type, project_type },
     },
     boundSelectMutateAndNext,
   } = useStore()
@@ -47,13 +47,13 @@ const ProjectType: React.FC = () => {
         stepValue={project_type}
         onTileClick={(data: DataType) => boundSelectMutateAndNext(data)}
       >
-        {applicant_type === "First home buyer" ? (
+        {application_type === "First home buyer" ? (
           <>
             <Tile img={EstablishedLogo}>{ProjectOptions[0]}</Tile>
             <Tile img={ConstructionLogo}>{ProjectOptions[1]}</Tile>
             <Tile img={OffThePlanLogo}>{ProjectOptions[2]}</Tile>
           </>
-        ) : applicant_type === "Investor" ? (
+        ) : application_type === "Investor" ? (
           <>
             <Tile img={EstablishedLogo}>{ProjectOptions[0]}</Tile>
             <Tile img={ConstructionLogo}>{ProjectOptions[1]}</Tile>

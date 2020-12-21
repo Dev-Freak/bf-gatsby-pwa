@@ -1,4 +1,4 @@
-import { firstCharToUpper, formatKey } from "../stringFormatter"
+import { firstCharToUpper, formatKey, formatCurrency } from "../stringFormatter"
 
 describe("StringFormatter", () => {
   it("Capitalize the first letter of a given word", () => {
@@ -15,5 +15,13 @@ describe("StringFormatter", () => {
 
     expect(formattedFirstKey).toEqual("This is a key")
     expect(formattedSecondKey).toEqual("This is a test")
+  })
+
+  it("Formats a number to a currency value. (Ej: '5213548' ==> '$5,213,548.00')", () => {
+    const formattedFirstValue = formatCurrency("321654")
+    const formattedSecondValue = formatCurrency("1321")
+
+    expect(formattedFirstValue).toEqual("A$321,654.00")
+    expect(formattedSecondValue).toEqual("A$1,321.00")
   })
 })

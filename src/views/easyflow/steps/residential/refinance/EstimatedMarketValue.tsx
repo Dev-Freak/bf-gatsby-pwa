@@ -1,39 +1,30 @@
 import * as React from "react"
 
 import useStore, { DataType } from "../../../../../hooks/useStore"
-import useFirstRenderDisabledEffect from "../../../../../hooks/useFirstRenderDisabledEffect"
 
 import TitleWithTooltip from "../../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../../components/Shared/Description"
 import StepHeader from "../../../../../components/DynamicStepper/StepHeader"
-import StepWithBackButtonContainer from "../../../../../components/DynamicStepper/StepWithBackButtonContainer"
+import StepWithNextAndBackButtonContainer from "../../../../../components/DynamicStepper/StepWithNextAndBackButtonContainer"
+
+import { formatCurrency } from "../../../../../utils/stringFormatter"
 
 const EstimatedMarketValue: React.FC = () => {
   const {
     state: {
       easyFlow: { estimated_market_value },
     },
-    boundSelectAndNext,
+    boundSelectTile,
   } = useStore()
 
-  const isFirstRender = useFirstRenderDisabledEffect()
-  const [amount, setAmount] = React.useState(estimated_market_value ?? null)
+  const [amount, setAmount] = React.useState(estimated_market_value ?? "")
 
-  React.useEffect(() => {
-    if (!isFirstRender && amount !== estimated_market_value)
-      boundSelectAndNext({
-        key: "estimated_market_value",
-        value: amount,
-      } as DataType)
-  }, [amount])
-
-  React.useEffect(() => {
-    if (!isFirstRender && estimated_market_value !== amount)
-      setAmount(estimated_market_value)
-  }, [estimated_market_value])
-
+  /*
+    TODO:
+    Use react-number-format to better display the amounts and its inputs: https://www.npmjs.com/package/react-number-format
+  */
   return (
-    <StepWithBackButtonContainer>
+    <StepWithNextAndBackButtonContainer>
       <StepHeader>
         <TitleWithTooltip title="Estimated Market Value">
           Norem ipsum...
@@ -51,9 +42,15 @@ const EstimatedMarketValue: React.FC = () => {
           step="0.01"
           value={amount}
           onChange={e => setAmount(e.target.value)}
+          onBlur={() =>
+            boundSelectTile({
+              keyName: "estimated_market_value",
+              value: formatCurrency(amount),
+            } as DataType)
+          }
         />
       </div>
-    </StepWithBackButtonContainer>
+    </StepWithNextAndBackButtonContainer>
   )
 }
 

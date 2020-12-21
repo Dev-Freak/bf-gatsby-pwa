@@ -9,7 +9,7 @@ const EasyFlow: React.FC = () => {
     state: { easyFlowSteps },
   } = useStore()
 
-  return <Stepper {...easyFlowSteps} />
+  return <Stepper {...(easyFlowSteps as StepperProps)} />
 }
 
 export default EasyFlow

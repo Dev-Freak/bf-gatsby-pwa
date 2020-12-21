@@ -6,23 +6,23 @@ import useFirstRenderDisabledEffect from "../../../../../hooks/useFirstRenderDis
 import TitleWithTooltip from "../../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../../components/Shared/Description"
 import StepHeader from "../../../../../components/DynamicStepper/StepHeader"
-import StepWithBackButtonContainer from "../../../../../components/DynamicStepper/StepWithBackButtonContainer"
+import StepWithNextAndBackButtonContainer from "../../../../../components/DynamicStepper/StepWithNextAndBackButtonContainer"
 
 const CurrentRate: React.FC = () => {
   const {
     state: {
       easyFlow: { current_rate },
     },
-    boundSelectAndNext,
+    boundSelectTile,
   } = useStore()
 
   const isFirstRender = useFirstRenderDisabledEffect()
-  const [amount, setAmount] = React.useState(current_rate ?? null)
+  const [amount, setAmount] = React.useState(current_rate ?? "")
 
   React.useEffect(() => {
     if (!isFirstRender && amount !== current_rate)
-      boundSelectAndNext({
-        key: "current_rate",
+      boundSelectTile({
+        keyName: "current_rate",
         value: amount,
       } as DataType)
   }, [amount])
@@ -31,8 +31,12 @@ const CurrentRate: React.FC = () => {
     if (!isFirstRender && current_rate !== amount) setAmount(current_rate)
   }, [current_rate])
 
+  /*
+    TODO:
+    Use react-number-format to better display the amounts and its inputs: https://www.npmjs.com/package/react-number-format
+  */
   return (
-    <StepWithBackButtonContainer>
+    <StepWithNextAndBackButtonContainer>
       <StepHeader>
         <TitleWithTooltip title="Current Rate">Norem ipsum...</TitleWithTooltip>
         <Description>What is your current rate?</Description>
@@ -48,7 +52,7 @@ const CurrentRate: React.FC = () => {
           onChange={e => setAmount(e.target.value)}
         />
       </div>
-    </StepWithBackButtonContainer>
+    </StepWithNextAndBackButtonContainer>
   )
 }
 

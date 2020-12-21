@@ -16,12 +16,19 @@ import {
   RetirementLogo,
 } from "../../../../utils/icons"
 
+export enum ApplicationOptions {
+  Refinance,
+  First_Home_Buyer,
+  Investor,
+  Retirement,
+}
+
 const ApplicationType: React.FC = () => {
   const {
     state: {
-      easyFlow: { applicant_type },
+      easyFlow: { application_type },
     },
-    boundSelectAndNext,
+    boundSelectMutateAndNext,
   } = useStore()
 
   return (
@@ -36,17 +43,14 @@ const ApplicationType: React.FC = () => {
       </StepHeader>
 
       <TilesContainer
-        stepKeyName="applicant_type"
-        stepValue={applicant_type}
-        onTileClick={(data: DataType) => boundSelectAndNext(data)}
+        stepKeyName="application_type"
+        stepValue={application_type}
+        onTileClick={(data: DataType) => boundSelectMutateAndNext(data)}
       >
-        <Tile img={RefinanceLogo}>Refinance</Tile>
-
-        <Tile img={FirstHomeBuyerLogo}>First home buyer</Tile>
-
-        <Tile img={InvestorLogo}>Investor</Tile>
-
-        <Tile img={RetirementLogo}>Retirement</Tile>
+        <Tile img={RefinanceLogo}>{ApplicationOptions[0]}</Tile>
+        <Tile img={FirstHomeBuyerLogo}>{ApplicationOptions[1]}</Tile>
+        <Tile img={InvestorLogo}>{ApplicationOptions[2]}</Tile>
+        <Tile img={RetirementLogo}>{ApplicationOptions[3]}</Tile>
       </TilesContainer>
     </StepWithBackButtonContainer>
   )

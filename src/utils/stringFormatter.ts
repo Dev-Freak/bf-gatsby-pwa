@@ -11,3 +11,15 @@ export const formatKey = (name: string): string => {
 
   return `${[...nameArray].join(' ')}`
 }
+
+const formatter = new Intl.NumberFormat('en-AU', {
+  style: 'currency',
+  currency: 'AUD',
+  minimumFractionDigits: 2,
+})
+
+export const formatCurrency = (value: number): string => {
+  let valueText: string = formatter.format(value);
+
+  return valueText
+}

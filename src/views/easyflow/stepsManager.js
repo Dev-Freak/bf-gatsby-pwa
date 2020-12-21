@@ -6,10 +6,17 @@ import ApplicationsSummary from "./steps/applicationSummary"
 
 // Residential
 import ApplicantsQuantity from "./steps/residential/ApplicantsQuantity"
-import ApplicationType from "./steps/residential/ApplicationType"
+import ApplicationType, {
+  ApplicationOptions,
+} from "./steps/residential/ApplicationType"
 import ProjectType, { ProjectOptions } from "./steps/residential/ProjectType"
 import ConstructionType from "./steps/residential/ConstructionType"
 import ApplicantsIncomeTabs from "./steps/residential/applicantsIncome/ApplicantsIncomeTabs"
+import PropertiesQuantity from "./steps/residential/refinance/PropertiesQuantity"
+import RefinanceReasons from "./steps/residential/refinance/RefinanceReasons"
+import CurrentTotalLendingAmount from "./steps/residential/refinance/CurrentTotalLendingAmount"
+import EstimatedMarketValue from "./steps/residential/refinance/EstimatedMarketValue"
+import CurrentRate from "./steps/residential/refinance/CurrentRate"
 
 // AssetsFinancial
 import AssetType from "./steps/assetFinancial/AssetType"
@@ -25,6 +32,14 @@ import OtherFinancialType from "./steps/otherFinancialEnquiries/OtherFinancialTy
 
 const initialStep = [<Welcome />]
 const finalSteps = [<OtherFinancialType />, <ApplicationsSummary />]
+const refinanceSteps = [
+  <PropertiesQuantity />,
+  <RefinanceReasons />,
+  <CurrentTotalLendingAmount />,
+  <EstimatedMarketValue />,
+  <CurrentRate />,
+]
+
 const AssetFinancialSteps = [
   ...initialStep,
   <AssetType />,
@@ -54,15 +69,26 @@ const pathSteps = value => {
       return CommercialSteps
 
     default:
-      const pathCopy = [...finalSteps]
-      return [...initialStep, ...pathCopy.reverse().slice(0, 1)]
+      const stepsCopy = [...finalSteps]
+      return [...initialStep, ...stepsCopy.reverse().slice(0, 1)]
+  }
+}
+
+const applicationSteps = value => {
+  switch (value) {
+    case ApplicationOptions[0]:
+      const stepsCopy = [...ResidentialSteps]
+      return [...stepsCopy.slice(0, 3), ...refinanceSteps, ...stepsCopy.slice(4)]
+
+    default:
+      return ResidentialSteps
   }
 }
 
 const projectSteps = value => {
   switch (value) {
     case ProjectOptions[1]:
-      let stepsCopy = [...ResidentialSteps]
+      const stepsCopy = [...ResidentialSteps]
       return [...stepsCopy.slice(0, 4), <ConstructionType />, ...stepsCopy.slice(4)]
 
     default:
@@ -73,7 +99,7 @@ const projectSteps = value => {
 const assetIncomeSteps = value => {
   switch (value) {
     case IncomeOptions[0]:
-      let stepsCopy = [...AssetFinancialSteps]
+      const stepsCopy = [...AssetFinancialSteps]
       return [...stepsCopy.slice(0, 4), <EmploymentType />, ...stepsCopy.slice(4)]
 
     default:
@@ -85,6 +111,9 @@ const mutateSteps = (keyName, value, currentSteps) => {
   switch (keyName) {
     case "path":
       return pathSteps(value)
+
+    case "application_type":
+      return applicationSteps(value)
 
     case "project_type":
       return projectSteps(value)
