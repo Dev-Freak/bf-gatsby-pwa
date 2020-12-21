@@ -9,10 +9,10 @@ const useSummary = () => {
   const components = Object.keys(easyFlow).map(key => {
     const data = easyFlow[key]
 
-    const formatArray = value => {
+    const formatArray = (value: any) => {
       let objFromArr = {}
 
-      value.forEach((item, index) => {
+      value.forEach((item: any, index: number) => {
         objFromArr[POSSIBLE_APPLICANTS[index]] = { ...item }
       })
 

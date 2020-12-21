@@ -4,13 +4,65 @@ import { Actions, ActionType } from "./actions"
 import { objRemoveEmptyOrNull } from "../utils/trimObject"
 import { initialStep, mutateSteps } from "../views/easyflow/stepsManager"
 
-export const initialState = {
+export interface Tabs {
+  activeTab: number,
+  section: number
+}
+
+export interface Applicant {
+
+}
+
+export interface EasyFlow {
+  applicants: Array<Applicant>
+}
+
+export interface EasyFlowSteps {
+  steps: Array<JSX.Element>
+}
+
+export interface FactFind {
+
+}
+
+export interface ContactInfo {
+
+}
+
+export interface EnquiryDetails {
+
+}
+
+/*
+    !!!IMPORTANT!!!
+    TODO
+    
+    currentStep MUST be moved into easyFlowSteps interface.
+    Remember... This will break the actions that modify its value and also the components that consume it
+*/
+export type State = {
+  currentStep: number,
+  tabs: Tabs,
+  easyFlow: EasyFlow,
+  easyFlowSteps: EasyFlowSteps,
+  factFind: FactFind,
+  contactInfo: ContactInfo,
+  enquiryDetails: EnquiryDetails,
+  isEasyFlowFinished: true | false,
+  isFactFindInterested: true | false,
+  isFactFindFinished: true | false,
+}
+
+
+export const initialState: State = {
   currentStep: 0,
   tabs: {
     activeTab: 0,
     section: 0,
   },
-  easyFlow: {},
+  easyFlow: {
+    applicants: []
+  },
   easyFlowSteps: {
     steps: initialStep,
   },
@@ -22,9 +74,8 @@ export const initialState = {
   isFactFindFinished: false,
 }
 
-export const reducer = (state: any, action: ActionType) => {
+export const reducer = (state: State, action: ActionType) => {
   const { type, payload } = action
-  let tabsTemp = null
   let currentValue = null
   let applicantsTemp = null
   let easyFlowTemp = _.cloneDeep(state.easyFlow)
