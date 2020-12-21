@@ -14,7 +14,7 @@ const useApplicationSummary = () => {
     state: {
       easyFlow,
       enquiryDetails,
-      contactInfo: { fullName, emailAddress, phoneNumber, authorize },
+      contactInfo: { fullName, emailAddress, phoneNumber },
     },
     boundFinishEasyFlow,
   } = useStore()
@@ -24,8 +24,7 @@ const useApplicationSummary = () => {
   const HOST = window.location.origin
 
   const isSummaryFinished = () => {
-    if (!fullName || !emailAddress || !phoneNumber || !authorize || !urgency)
-      return false
+    if (!fullName || !emailAddress || !phoneNumber || !urgency) return false
 
     return true
   }
@@ -48,6 +47,8 @@ const useApplicationSummary = () => {
   const finishEasyFlow = async () => {
     const data = getBodyData()
 
+    //console.log(JSON.stringify(data))
+
     const response = await fetch(`${HOST}/.netlify/functions/server`, {
       method: "POST",
       body: JSON.stringify(data),
@@ -55,12 +56,13 @@ const useApplicationSummary = () => {
       .then(res => res.json())
       .then(data => data)
 
-    console.log(response)
+    //console.log(response)
 
     boundFinishEasyFlow()
   }
 
   return {
+    path: easyFlow?.path,
     isSummaryFinished: isSummaryFinished(),
     finishEasyFlow,
   }
