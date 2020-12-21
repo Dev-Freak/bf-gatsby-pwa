@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useForm } from "react-hook-form"
 
 import Title from "../../../../components/Shared/Title"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
@@ -6,19 +7,40 @@ import InputContainer from "../../../../components/Shared/Inputs/InputContainer"
 import Lable from "../../../../components/Shared/Inputs/Lable"
 import Input from "../../../../components/Shared/Inputs/Input"
 import InputError from "../../../../components/Shared/Inputs/InputError"
+import Slider, { Steps, ValueType } from "../../../../components/Slider"
 
-import useContactForm from "../../../../hooks/useContactForm"
+import useStore from "../../../../hooks/useStore"
+
+type FormTypes = {
+  fullName: string
+  emailAddress: string
+  phoneNumber: number
+}
+
+const steps = ["7", "14", "21", "28", "35", "42", "49", "56", "60+"] as Steps
 
 const ContactForm: React.FC = () => {
   // TODO: Fields validation to trigger onChange rather than onBlur
   // TODO: Fields error validation to act as parameters to disable "Proceed to next" button
 
-  const { form, boundSetContactValue } = useContactForm()
+  const {
+    state: {
+      contactInfo: { fullName, emailAddress, phoneNumber },
+      enquiryDetails: { urgency },
+    },
+    boundSetContactValue,
+    boundSetEnquiryDetailsValue,
+  } = useStore()
+
+  const { register, handleSubmit, errors, formState } = useForm<FormTypes>({
+    mode: "onBlur",
+    defaultValues: { fullName, emailAddress, phoneNumber },
+  })
 
   return (
     <form
-      onSubmit={form.handleSubmit(data => console.log(data))}
-      className="flex flex-1 flex-col space-y-8"
+      onSubmit={handleSubmit(data => console.log(data))}
+      className="flex flex-col w-6/12 space-y-8 justify-center"
     >
       <StepHeader>
         <Title>Fill the form</Title>
@@ -28,7 +50,7 @@ const ContactForm: React.FC = () => {
         <Lable isRequired={true}>Full name</Lable>
         <Input
           {...{
-            ref: form.register({
+            ref: register({
               required: { value: true, message: "This field is required" },
               pattern: {
                 value: /(^[A-Za-z]{3,16})([ ]{1})([A-Za-z]{3,16})/i,
@@ -45,8 +67,8 @@ const ContactForm: React.FC = () => {
           }}
         />
 
-        {form.errors.fullName ? (
-          <InputError>{form.errors.fullName?.message}</InputError>
+        {errors.fullName ? (
+          <InputError>{errors.fullName?.message}</InputError>
         ) : null}
       </InputContainer>
 
@@ -54,7 +76,7 @@ const ContactForm: React.FC = () => {
         <Lable isRequired={true}>Email address</Lable>
         <Input
           {...{
-            ref: form.register({
+            ref: register({
               required: { value: true, message: "This field is required" },
               pattern: {
                 value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i,
@@ -71,8 +93,8 @@ const ContactForm: React.FC = () => {
           }}
         />
 
-        {form.errors.emailAddress ? (
-          <InputError>{form.errors.emailAddress?.message}</InputError>
+        {errors.emailAddress ? (
+          <InputError>{errors.emailAddress?.message}</InputError>
         ) : null}
       </InputContainer>
 
@@ -80,7 +102,7 @@ const ContactForm: React.FC = () => {
         <Lable isRequired={true}>Phone number</Lable>
         <Input
           {...{
-            ref: form.register({
+            ref: register({
               required: { value: true, message: "This field is required" },
               pattern: {
                 value: /^[0-9]{10}$/i,
@@ -98,10 +120,27 @@ const ContactForm: React.FC = () => {
           }}
         />
 
-        {form.errors.phoneNumber ? (
-          <InputError>{form.errors.phoneNumber?.message}</InputError>
+        {errors.phoneNumber ? (
+          <InputError>{errors.phoneNumber?.message}</InputError>
         ) : null}
       </InputContainer>
+
+      <div className="flex flex-col my-5 space-y-5 max-w-lg">
+        <Lable>Urgency of finance (In Days)</Lable>
+        <Slider
+          defaultValue={urgency ?? "7"}
+          steps={steps}
+          style={{ minWidth: "500px" }}
+          onChange={(e: ValueType) =>
+            boundSetEnquiryDetailsValue({
+              keyName: "urgency",
+              value: `${e} days`,
+            })
+          }
+        />
+      </div>
+
+      <br />
     </form>
   )
 }

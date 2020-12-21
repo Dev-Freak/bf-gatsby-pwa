@@ -13,17 +13,17 @@ import BackButton from "../../../../components/DynamicStepper/BackButton"
 import useApplicationSummary from "../../../../hooks/useApplicationSummary"
 
 const ApplicationSummary: React.FC = () => {
-  const { isSummaryFinished, finishEasyFlow } = useApplicationSummary()
+  const { path, isSummaryFinished, finishEasyFlow } = useApplicationSummary()
 
   return (
     <StepContainer>
-      <div className="flex flex-col flex-no-wrap space-y-10 w-full lg:flex-row lg:flex-wrap">
+      <div className="flex flex-col flex-no-wrap space-y-10 w-full lg:flex-row lg:flex-wrap justify-center">
         <div className="flex flex-col lg:flex-row items-start justify-center space-x-5 w-full">
-          <Summary />
+          {path && path !== "Other_Financial_Enquiries" && <Summary />}
           <ContactForm />
         </div>
 
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center w-full">
           <EnquiryDetails />
         </div>
       </div>

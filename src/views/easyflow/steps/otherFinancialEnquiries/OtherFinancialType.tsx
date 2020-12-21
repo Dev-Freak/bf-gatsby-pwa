@@ -42,11 +42,8 @@ const OtherFinancialType: React.FC = () => {
         onTileClick={(data: DataType) => boundToggleTile(data)}
       >
         <TileWithCheckBox img={PurchaseLogo}>Financial Planning</TileWithCheckBox>
-
         <TileWithCheckBox img={Refinance_2Logo}>Accounting</TileWithCheckBox>
-
         <TileWithCheckBox img={DevelopmentLogo}>Conveyancing</TileWithCheckBox>
-
         <TileWithCheckBox img={SMSFLogo}>Insurances</TileWithCheckBox>
       </TilesContainer>
     </StepWithNextAndBackButtonContainer>

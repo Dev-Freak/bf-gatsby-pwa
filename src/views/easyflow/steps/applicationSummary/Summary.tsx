@@ -16,7 +16,7 @@ const Summary: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-1 flex-col space-y-6">
+    <div className="flex w-6/12 flex-col space-y-6">
       <StepHeader>
         <Title>Summary</Title>
       </StepHeader>

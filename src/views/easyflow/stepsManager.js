@@ -54,7 +54,8 @@ const pathSteps = value => {
       return CommercialSteps
 
     default:
-      return [...initialStep, ...finalSteps]
+      const pathCopy = [...finalSteps]
+      return [...initialStep, ...pathCopy.reverse().slice(0, 1)]
   }
 }
 
