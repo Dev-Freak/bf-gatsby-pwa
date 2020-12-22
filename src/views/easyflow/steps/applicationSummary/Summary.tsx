@@ -3,24 +3,48 @@ import * as React from "react"
 import Title from "../../../../components/Shared/Title"
 import SummaryItem from "../../../../components/Shared/SummaryItem"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
+import { POSSIBLE_APPLICANTS } from "../../../../utils/constants"
 
-import useSummary from "../../../../hooks/useSummary"
+import useStore from "../../../../hooks/useStore"
 
 const Summary: React.FC = () => {
-  const summaryData = useSummary()
+  const {
+    state: { easyFlow },
+  } = useStore()
 
-  const getEntireSummary = (data: any) => {
-    return data.map((item: any, index: number) => (
-      <SummaryItem key={`summaryItem-${index}`} {...item} />
-    ))
-  }
+  const components = Object.keys(easyFlow).map(key => {
+    const data = easyFlow[key]
+
+    const formatArray = (value: Array<any>) => {
+      if (key === "applicants") {
+        let objFromArr: any = {}
+
+        value.forEach((item: any, index: number) => {
+          objFromArr[POSSIBLE_APPLICANTS[index]] = { ...item }
+        })
+
+        return objFromArr
+      } else {
+        return value.join(", ")
+      }
+    }
+
+    const trueValue = Array.isArray(data) ? formatArray(data) : easyFlow[key]
+
+    return {
+      itemTitle: key,
+      value: trueValue,
+    }
+  })
 
   return (
     <div className="flex w-6/12 flex-col space-y-6">
       <StepHeader>
         <Title>Summary</Title>
       </StepHeader>
-      {getEntireSummary(summaryData)}
+      {components.map((item: any, index: number) => (
+        <SummaryItem key={`summaryItem-${index}`} {...item} />
+      ))}
     </div>
   )
 }
