@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useForm } from "react-hook-form"
+import { FieldError, useForm } from "react-hook-form"
 
 import Title from "../../../../components/Shared/Title"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
@@ -9,39 +9,60 @@ import Input from "../../../../components/Shared/Inputs/Input"
 import InputError from "../../../../components/Shared/Inputs/InputError"
 import Slider, { Steps, ValueType } from "../../../../components/Slider"
 
-import useStore from "../../../../hooks/useStore"
+type Props = {
+  stateProps: {
+    fullName: string
+    emailAddress: string
+    phoneNumber: string
+    urgency: string
+  }
+  methods: {
+    onValid: CallableFunction
+    setContactValue: CallableFunction
+    setEnquiryDetailsValue: CallableFunction
+  }
+}
 
 type FormTypes = {
   fullName: string
   emailAddress: string
-  phoneNumber: number
+  phoneNumber: string
 }
 
 const steps = ["7", "14", "21", "28", "35", "42", "49", "56", "60+"] as Steps
 
-const ContactForm: React.FC = () => {
-  // TODO: Fields validation to trigger onChange rather than onBlur
-  // TODO: Fields error validation to act as parameters to disable "Proceed to next" button
+const ContactForm: React.FC<Props> = ({ stateProps, methods }) => {
+  const { fullName, emailAddress, phoneNumber, urgency } = stateProps
+  const { onValid, setContactValue, setEnquiryDetailsValue } = methods
 
-  const {
-    state: {
-      contactInfo: { fullName, emailAddress, phoneNumber },
-      enquiryDetails: { urgency },
-    },
-    boundSetContactValue,
-    boundSetEnquiryDetailsValue,
-  } = useStore()
+  const [fullNameState, setFullName] = React.useState(fullName ?? "")
+  const [emailAddressState, setEmailAddress] = React.useState(emailAddress ?? "")
+  const [phoneNumberState, setPhoneNumber] = React.useState(phoneNumber ?? "")
 
-  const { register, handleSubmit, errors, formState } = useForm<FormTypes>({
-    mode: "onBlur",
+  const { register, errors, formState } = useForm<FormTypes>({
+    mode: "onChange",
     defaultValues: { fullName, emailAddress, phoneNumber },
   })
 
+  const handleChange = (
+    keyName: string,
+    value: string,
+    error: FieldError | undefined
+  ) => {
+    if (!error) {
+      setContactValue({
+        keyName,
+        value,
+      })
+    }
+  }
+
+  React.useEffect(() => {
+    onValid(formState.isValid)
+  }, [formState.isValid])
+
   return (
-    <form
-      onSubmit={handleSubmit(data => console.log(data))}
-      className="flex flex-col w-6/12 space-y-8 justify-center"
-    >
+    <form className="flex flex-col w-6/12 space-y-8 justify-center">
       <StepHeader>
         <Title>Fill the form</Title>
       </StepHeader>
@@ -60,16 +81,12 @@ const ContactForm: React.FC = () => {
             name: "fullName",
             placeholder: "Enter full name",
             onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-              boundSetContactValue({
-                keyName: "fullName",
-                value: e.target.value,
-              }),
+              setFullName(e.target.value),
+            onBlur: () => handleChange("fullName", fullNameState, errors.fullName),
           }}
         />
 
-        {errors.fullName ? (
-          <InputError>{errors.fullName?.message}</InputError>
-        ) : null}
+        {errors.fullName && <InputError>{errors.fullName?.message}</InputError>}
       </InputContainer>
 
       <InputContainer>
@@ -83,19 +100,19 @@ const ContactForm: React.FC = () => {
                 message: "Please use a valid email address",
               },
             }),
+            type: "email",
             name: "emailAddress",
             placeholder: "Enter your email",
             onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-              boundSetContactValue({
-                keyName: "emailAddress",
-                value: e.target.value,
-              }),
+              setEmailAddress(e.target.value),
+            onBlur: () =>
+              handleChange("emailAddress", emailAddressState, errors.emailAddress),
           }}
         />
 
-        {errors.emailAddress ? (
+        {errors.emailAddress && (
           <InputError>{errors.emailAddress?.message}</InputError>
-        ) : null}
+        )}
       </InputContainer>
 
       <InputContainer>
@@ -109,38 +126,35 @@ const ContactForm: React.FC = () => {
                 message: "Please use a valid phone number",
               },
             }),
-            type: "email",
+            type: "phone",
             name: "phoneNumber",
             placeholder: "Enter your phone",
             onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-              boundSetContactValue({
-                keyName: "phoneNumber",
-                value: e.target.value,
-              }),
+              setPhoneNumber(e.target.value),
+            onBlur: () =>
+              handleChange("phoneNumber", phoneNumberState, errors.phoneNumber),
           }}
         />
 
-        {errors.phoneNumber ? (
+        {errors.phoneNumber && (
           <InputError>{errors.phoneNumber?.message}</InputError>
-        ) : null}
+        )}
       </InputContainer>
 
       <div className="flex flex-col my-5 space-y-5 max-w-lg">
-        <Lable>Urgency of finance (In Days)</Lable>
+        <Lable isRequired={true}>Urgency of finance (In Days)</Lable>
         <Slider
-          defaultValue={urgency ?? "7"}
+          defaultValue={urgency?.split(" ")[0] ?? "7"}
           steps={steps}
           style={{ minWidth: "500px" }}
           onChange={(e: ValueType) =>
-            boundSetEnquiryDetailsValue({
+            setEnquiryDetailsValue({
               keyName: "urgency",
               value: `${e} days`,
             })
           }
         />
       </div>
-
-      <br />
     </form>
   )
 }
