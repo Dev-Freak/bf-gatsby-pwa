@@ -1,13 +1,11 @@
 import * as React from "react"
 
 import Tile from "../../../../components/Tile"
-import TileWithCheckBox from "../../../../components/TileWithCheckBox"
 import TilesContainer from "../../../../components/Shared/TilesContainer"
 import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
-import StepWithBackButtonContainer from "../../../../components/DynamicStepper/StepWithBackButtonContainer"
-import StepWithNextAndBackButtonContainer from "../../../../components/DynamicStepper/StepWithNextAndBackButtonContainer"
+import StepContainer from "../../../../components/DynamicStepper/StepContainer"
 
 import {
   PayslipLogo,
@@ -34,7 +32,7 @@ const IncomeType: React.FC = () => {
   } = useStore()
 
   return (
-    <StepWithBackButtonContainer>
+    <StepContainer back>
       <StepHeader>
         <TitleWithTooltip title="Type of income">Norem ipsum...</TitleWithTooltip>
         <Description>Please select your streams of income</Description>
@@ -58,7 +56,7 @@ const IncomeType: React.FC = () => {
           </>
         )}
       </TilesContainer>
-    </StepWithBackButtonContainer>
+    </StepContainer>
   )
 }
 

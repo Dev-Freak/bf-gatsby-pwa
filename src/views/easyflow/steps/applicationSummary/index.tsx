@@ -4,11 +4,7 @@ import Summary from "./Summary"
 import ContactForm from "./ContactForm"
 import EnquiryDetails from "./EnquiryDetails"
 
-import StepButtons from "../../../../components/DynamicStepper/StepButtons"
 import StepContainer from "../../../../components/DynamicStepper/StepContainer"
-import { PrimaryButton } from "../../../../components/Buttons"
-import { ArrowRightShort } from "@styled-icons/bootstrap/ArrowRightShort"
-import BackButton from "../../../../components/DynamicStepper/BackButton"
 
 import { fetchAPI } from "../../../../utils/fetchUtils"
 
@@ -67,7 +63,14 @@ const ApplicationSummary: React.FC = () => {
   }
 
   return (
-    <StepContainer>
+    <StepContainer
+      back
+      next={{
+        label: "Proceed to finish",
+        onClick: finishEasyFlow,
+        isDisabled: !(isFormValid && urgency),
+      }}
+    >
       <div className="flex flex-col flex-no-wrap space-y-10 w-full lg:flex-row lg:flex-wrap justify-center">
         <div className="flex flex-col lg:flex-row items-start justify-center space-x-5 w-full">
           {path && path !== "Other_Financial_Enquiries" && <Summary />}
@@ -85,18 +88,6 @@ const ApplicationSummary: React.FC = () => {
           <EnquiryDetails />
         </div>
       </div>
-
-      <StepButtons>
-        <BackButton />
-
-        <PrimaryButton
-          label="Proceed to finish"
-          onClick={() => finishEasyFlow()}
-          isDisabled={!(isFormValid && urgency)}
-        >
-          <ArrowRightShort />
-        </PrimaryButton>
-      </StepButtons>
     </StepContainer>
   )
 }

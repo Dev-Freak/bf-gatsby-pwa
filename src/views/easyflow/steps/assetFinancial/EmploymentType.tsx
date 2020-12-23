@@ -5,7 +5,7 @@ import TilesContainer from "../../../../components/Shared/TilesContainer"
 import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
-import StepWithBackButtonContainer from "../../../../components/DynamicStepper/StepWithBackButtonContainer"
+import StepContainer from "../../../../components/DynamicStepper/StepContainer"
 
 import { CasualLogo, PartTimeLogo, FullTimeLogo } from "../../../../utils/icons"
 
@@ -20,7 +20,7 @@ const EmploymentType: React.FC = () => {
   } = useStore()
 
   return (
-    <StepWithBackButtonContainer>
+    <StepContainer back>
       <StepHeader>
         <TitleWithTooltip title="Type of employment">
           Norem ipsum...
@@ -41,7 +41,7 @@ const EmploymentType: React.FC = () => {
 
         <Tile img={FullTimeLogo}>Full-time</Tile>
       </TilesContainer>
-    </StepWithBackButtonContainer>
+    </StepContainer>
   )
 }
 

@@ -5,7 +5,7 @@ import TilesContainer from "../../../../components/Shared/TilesContainer"
 import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
-import StepWithBackButtonContainer from "../../../../components/DynamicStepper/StepWithBackButtonContainer"
+import StepContainer from "../../../../components/DynamicStepper/StepContainer"
 
 import { ABNLogo, PersonalNameLogo } from "../../../../utils/icons"
 
@@ -20,7 +20,7 @@ const AssetPurchase: React.FC = () => {
   } = useStore()
 
   return (
-    <StepWithBackButtonContainer>
+    <StepContainer back>
       <StepHeader>
         <TitleWithTooltip title="Asset Purchase">Norem ipsum...</TitleWithTooltip>
         <Description>How are you wanting to purchase the asset?</Description>
@@ -35,7 +35,7 @@ const AssetPurchase: React.FC = () => {
 
         <Tile img={PersonalNameLogo}>Personal Name</Tile>
       </TilesContainer>
-    </StepWithBackButtonContainer>
+    </StepContainer>
   )
 }
 

@@ -5,7 +5,7 @@ import TilesContainer from "../../../../components/Shared/TilesContainer"
 import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
-import StepWithBackButtonContainer from "../../../../components/DynamicStepper/StepWithBackButtonContainer"
+import StepContainer from "../../../../components/DynamicStepper/StepContainer"
 
 import { PurchaseLogo, LandLogo } from "../../../../utils/icons"
 
@@ -20,7 +20,7 @@ const CommercialType: React.FC = () => {
   } = useStore()
 
   return (
-    <StepWithBackButtonContainer>
+    <StepContainer back>
       <StepHeader>
         <TitleWithTooltip title="Type of Construction">
           Norem ipsum...
@@ -39,7 +39,7 @@ const CommercialType: React.FC = () => {
         <Tile img={PurchaseLogo}>Knock Down Rebuild/House Only</Tile>
         <Tile img={LandLogo}>House and Land</Tile>
       </TilesContainer>
-    </StepWithBackButtonContainer>
+    </StepContainer>
   )
 }
 

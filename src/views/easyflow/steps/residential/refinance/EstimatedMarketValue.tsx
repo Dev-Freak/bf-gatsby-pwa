@@ -5,7 +5,7 @@ import useStore, { DataType } from "../../../../../hooks/useStore"
 import TitleWithTooltip from "../../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../../components/Shared/Description"
 import StepHeader from "../../../../../components/DynamicStepper/StepHeader"
-import StepWithNextAndBackButtonContainer from "../../../../../components/DynamicStepper/StepWithNextAndBackButtonContainer"
+import StepContainer from "../../../../../components/DynamicStepper/StepContainer"
 
 import { formatCurrency } from "../../../../../utils/stringFormatter"
 
@@ -24,7 +24,7 @@ const EstimatedMarketValue: React.FC = () => {
     Use react-number-format to better display the amounts and its inputs: https://www.npmjs.com/package/react-number-format
   */
   return (
-    <StepWithNextAndBackButtonContainer>
+    <StepContainer back next>
       <StepHeader>
         <TitleWithTooltip title="Estimated Market Value">
           Norem ipsum...
@@ -50,7 +50,7 @@ const EstimatedMarketValue: React.FC = () => {
           }
         />
       </div>
-    </StepWithNextAndBackButtonContainer>
+    </StepContainer>
   )
 }
 

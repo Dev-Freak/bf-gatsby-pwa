@@ -7,7 +7,7 @@ import TilesContainer from "../../../../components/Shared/TilesContainer"
 import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
-import StepWithBackButtonContainer from "../../../../components/DynamicStepper/StepWithBackButtonContainer"
+import StepContainer from "../../../../components/DynamicStepper/StepContainer"
 
 import {
   RefinanceLogo,
@@ -32,7 +32,7 @@ const ApplicationType: React.FC = () => {
   } = useStore()
 
   return (
-    <StepWithBackButtonContainer>
+    <StepContainer back>
       <StepHeader>
         <TitleWithTooltip title="Type of Application">
           Norem ipsum...
@@ -52,7 +52,7 @@ const ApplicationType: React.FC = () => {
         <Tile img={InvestorLogo}>{ApplicationOptions[2]}</Tile>
         <Tile img={RetirementLogo}>{ApplicationOptions[3]}</Tile>
       </TilesContainer>
-    </StepWithBackButtonContainer>
+    </StepContainer>
   )
 }
 

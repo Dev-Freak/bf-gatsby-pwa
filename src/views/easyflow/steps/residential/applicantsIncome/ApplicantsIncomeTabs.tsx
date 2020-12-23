@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import StepHeader from "../../../../../components/DynamicStepper/StepHeader"
-import StepWithNextAndBackButtonContainer from "../../../../../components/DynamicStepper/StepWithNextAndBackButtonContainer"
+import StepContainer from "../../../../../components/DynamicStepper/StepContainer"
 
 import Tabs from "../../../../../components/Tab/Tabs"
 import TitleWithTooltip from "../../../../../components/Shared/TitleWithTooltip"
@@ -27,7 +27,7 @@ const ApplicantsIncomeTabs: React.FC = () => {
       otherwise, the onClick event will be binded to the Store action
     */
 
-    <StepWithNextAndBackButtonContainer
+    <StepContainer
       back={{ onClick: canStepBack ? undefined : () => boundSetInnerStep(0) }}
       next={{
         onClick: canStepNext ? undefined : () => boundSetInnerStep(1),
@@ -42,7 +42,7 @@ const ApplicantsIncomeTabs: React.FC = () => {
       </StepHeader>
 
       <Tabs steps={tabs} defaultActiveIndex={activeTab} onTabChange={boundSetTab} />
-    </StepWithNextAndBackButtonContainer>
+    </StepContainer>
   )
 }
 

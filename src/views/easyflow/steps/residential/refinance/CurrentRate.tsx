@@ -6,7 +6,7 @@ import useFirstRenderDisabledEffect from "../../../../../hooks/useFirstRenderDis
 import TitleWithTooltip from "../../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../../components/Shared/Description"
 import StepHeader from "../../../../../components/DynamicStepper/StepHeader"
-import StepWithNextAndBackButtonContainer from "../../../../../components/DynamicStepper/StepWithNextAndBackButtonContainer"
+import StepContainer from "../../../../../components/DynamicStepper/StepContainer"
 
 const CurrentRate: React.FC = () => {
   const {
@@ -36,7 +36,7 @@ const CurrentRate: React.FC = () => {
     Use react-number-format to better display the amounts and its inputs: https://www.npmjs.com/package/react-number-format
   */
   return (
-    <StepWithNextAndBackButtonContainer>
+    <StepContainer back next>
       <StepHeader>
         <TitleWithTooltip title="Current Rate">Norem ipsum...</TitleWithTooltip>
         <Description>What is your current rate?</Description>
@@ -52,7 +52,7 @@ const CurrentRate: React.FC = () => {
           onChange={e => setAmount(e.target.value)}
         />
       </div>
-    </StepWithNextAndBackButtonContainer>
+    </StepContainer>
   )
 }
 

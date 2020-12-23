@@ -7,7 +7,7 @@ import TilesContainer from "../../../../components/Shared/TilesContainer"
 import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
-import StepWithBackButtonContainer from "../../../../components/DynamicStepper/StepWithBackButtonContainer"
+import StepContainer from "../../../../components/DynamicStepper/StepContainer"
 
 import {
   OneApplicantLogo,
@@ -25,7 +25,7 @@ const ApplicantsQuantity: React.FC = () => {
   } = useStore()
 
   return (
-    <StepWithBackButtonContainer>
+    <StepContainer back>
       <StepHeader>
         <TitleWithTooltip title="How many applicants?">
           Norem ipsum...
@@ -51,7 +51,7 @@ const ApplicantsQuantity: React.FC = () => {
 
         <Tile img={FourApplicantLogo}>4 Applicants</Tile>
       </TilesContainer>
-    </StepWithBackButtonContainer>
+    </StepContainer>
   )
 }
 

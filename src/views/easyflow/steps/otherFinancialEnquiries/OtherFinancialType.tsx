@@ -5,7 +5,7 @@ import TilesContainer from "../../../../components/Shared/TilesContainer"
 import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
-import StepWithNextAndBackButtonContainer from "../../../../components/DynamicStepper/StepWithNextAndBackButtonContainer"
+import StepContainer from "../../../../components/DynamicStepper/StepContainer"
 
 import {
   PurchaseLogo,
@@ -25,11 +25,7 @@ const OtherFinancialType: React.FC = () => {
   } = useStore()
 
   return (
-    <StepWithNextAndBackButtonContainer
-      next={{
-        isDisabled: false,
-      }}
-    >
+    <StepContainer back next>
       <StepHeader>
         <TitleWithTooltip title="Additional">Optional</TitleWithTooltip>
         <Description>Do you require any additional services?</Description>
@@ -46,7 +42,7 @@ const OtherFinancialType: React.FC = () => {
         <TileWithCheckBox img={DevelopmentLogo}>Conveyancing</TileWithCheckBox>
         <TileWithCheckBox img={SMSFLogo}>Insurances</TileWithCheckBox>
       </TilesContainer>
-    </StepWithNextAndBackButtonContainer>
+    </StepContainer>
   )
 }
 
