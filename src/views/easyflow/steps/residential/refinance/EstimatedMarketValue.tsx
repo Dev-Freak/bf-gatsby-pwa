@@ -1,13 +1,14 @@
 import * as React from "react"
+import NumberFormat from "react-number-format"
 
-import useStore, { DataType } from "../../../../../hooks/useStore"
-
+import Input from "../../../../../components/Shared/Inputs/Input"
 import TitleWithTooltip from "../../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../../components/Shared/Description"
 import StepHeader from "../../../../../components/DynamicStepper/StepHeader"
 import StepContainer from "../../../../../components/DynamicStepper/StepContainer"
 
-import { formatCurrency } from "../../../../../utils/stringFormatter"
+import useFocusInput from "../../../../../hooks/useFocusInput"
+import useStore, { DataType } from "../../../../../hooks/useStore"
 
 const EstimatedMarketValue: React.FC = () => {
   const {
@@ -17,14 +18,18 @@ const EstimatedMarketValue: React.FC = () => {
     boundSelectTile,
   } = useStore()
 
-  const [amount, setAmount] = React.useState(estimated_market_value ?? "")
+  const inputRef = useFocusInput()
+  const [amount, setAmount] = React.useState<string>(estimated_market_value ?? "")
 
-  /*
-    TODO:
-    Use react-number-format to better display the amounts and its inputs: https://www.npmjs.com/package/react-number-format
-  */
+  const handleOnBlur = () =>
+    amount !== "" &&
+    boundSelectTile({
+      keyName: "estimated_market_value",
+      value: amount,
+    } as DataType)
+
   return (
-    <StepContainer back next>
+    <StepContainer back next={{ isDisabled: amount === "" }}>
       <StepHeader>
         <TitleWithTooltip title="Estimated Market Value">
           Norem ipsum...
@@ -35,19 +40,16 @@ const EstimatedMarketValue: React.FC = () => {
       </StepHeader>
 
       <div className="flex items-center justify-center">
-        <input
-          type="number"
-          min="0.00"
-          max="1000000.00"
-          step="0.01"
+        <NumberFormat
+          prefix={"$"}
           value={amount}
+          customInput={Input}
+          inputMode="numeric"
+          getInputRef={inputRef}
+          thousandSeparator={"."}
+          decimalSeparator={","}
           onChange={e => setAmount(e.target.value)}
-          onBlur={() =>
-            boundSelectTile({
-              keyName: "estimated_market_value",
-              value: formatCurrency(amount),
-            } as DataType)
-          }
+          onBlur={handleOnBlur}
         />
       </div>
     </StepContainer>

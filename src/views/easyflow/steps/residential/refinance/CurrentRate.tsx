@@ -1,12 +1,15 @@
 import * as React from "react"
+import NumberFormat from "react-number-format"
 
-import useStore, { DataType } from "../../../../../hooks/useStore"
-import useFirstRenderDisabledEffect from "../../../../../hooks/useFirstRenderDisabledEffect"
-
+import Input from "../../../../../components/Shared/Inputs/Input"
 import TitleWithTooltip from "../../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../../components/Shared/Description"
 import StepHeader from "../../../../../components/DynamicStepper/StepHeader"
 import StepContainer from "../../../../../components/DynamicStepper/StepContainer"
+import Alert from "../../../../../components/Shared/alert/Alert"
+
+import useFocusInput from "../../../../../hooks/useFocusInput"
+import useStore, { DataType } from "../../../../../hooks/useStore"
 
 const CurrentRate: React.FC = () => {
   const {
@@ -16,40 +19,45 @@ const CurrentRate: React.FC = () => {
     boundSelectTile,
   } = useStore()
 
-  const isFirstRender = useFirstRenderDisabledEffect()
-  const [amount, setAmount] = React.useState(current_rate ?? "")
+  const inputRef = useFocusInput()
+  const [amount, setAmount] = React.useState<string>(current_rate ?? "")
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
 
   React.useEffect(() => {
-    if (!isFirstRender && amount !== current_rate)
-      boundSelectTile({
-        keyName: "current_rate",
-        value: amount,
-      } as DataType)
+    if (parseFloat(amount) > 2.19) setIsModalOpen(true)
+    else setIsModalOpen(false)
   }, [amount])
 
-  React.useEffect(() => {
-    if (!isFirstRender && current_rate !== amount) setAmount(current_rate)
-  }, [current_rate])
+  const handleOnBlur = () =>
+    amount !== "" &&
+    boundSelectTile({
+      keyName: "current_rate",
+      value: amount,
+    } as DataType)
 
-  /*
-    TODO:
-    Use react-number-format to better display the amounts and its inputs: https://www.npmjs.com/package/react-number-format
-  */
   return (
-    <StepContainer back next>
+    <StepContainer back next={{ isDisabled: amount === "" }}>
       <StepHeader>
         <TitleWithTooltip title="Current Rate">Norem ipsum...</TitleWithTooltip>
         <Description>What is your current rate?</Description>
       </StepHeader>
 
       <div className="flex items-center justify-center">
-        <input
-          type="number"
-          min="0.00"
-          max="1000000.00"
-          step="0.01"
+        <NumberFormat
+          suffix={"%"}
           value={amount}
+          customInput={Input}
+          inputMode="numeric"
+          getInputRef={inputRef}
           onChange={e => setAmount(e.target.value)}
+          onBlur={handleOnBlur}
+        />
+
+        <Alert
+          title="Congratulations!"
+          content="We have identified a potential better rate option"
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
         />
       </div>
     </StepContainer>
