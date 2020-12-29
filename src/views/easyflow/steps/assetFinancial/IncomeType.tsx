@@ -6,6 +6,7 @@ import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
 import StepContainer from "../../../../components/DynamicStepper/StepContainer"
+import { IncomeOptions } from "../../stepsOptions"
 
 import {
   PayslipLogo,
@@ -15,13 +16,6 @@ import {
 } from "../../../../utils/icons"
 
 import useStore, { DataType } from "../../../../hooks/useStore"
-
-export enum IncomeOptions {
-  PAYG_Employed,
-  Sole_Trader,
-  Company,
-  Trust,
-}
 
 const IncomeType: React.FC = () => {
   const {

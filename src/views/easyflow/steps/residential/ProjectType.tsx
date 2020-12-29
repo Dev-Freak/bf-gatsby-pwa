@@ -6,6 +6,7 @@ import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
 import StepContainer from "../../../../components/DynamicStepper/StepContainer"
+import { ProjectOptions, ApplicationOptions } from "../../stepsOptions"
 
 import {
   EstablishedLogo,
@@ -16,14 +17,6 @@ import {
 } from "../../../../utils/icons"
 
 import useStore, { DataType } from "../../../../hooks/useStore"
-
-export enum ProjectOptions {
-  Established,
-  Construction,
-  Off_The_Plan,
-  SMSF,
-  Reverse_Mortgage,
-}
 
 const ProjectType: React.FC = () => {
   const {
@@ -47,13 +40,13 @@ const ProjectType: React.FC = () => {
         stepValue={project_type}
         onTileClick={(data: DataType) => boundSelectMutateAndNext(data)}
       >
-        {application_type === "First home buyer" ? (
+        {application_type === ApplicationOptions[1] ? (
           <>
             <Tile img={EstablishedLogo}>{ProjectOptions[0]}</Tile>
             <Tile img={ConstructionLogo}>{ProjectOptions[1]}</Tile>
             <Tile img={OffThePlanLogo}>{ProjectOptions[2]}</Tile>
           </>
-        ) : application_type === "Investor" ? (
+        ) : application_type === ApplicationOptions[2] ? (
           <>
             <Tile img={EstablishedLogo}>{ProjectOptions[0]}</Tile>
             <Tile img={ConstructionLogo}>{ProjectOptions[1]}</Tile>

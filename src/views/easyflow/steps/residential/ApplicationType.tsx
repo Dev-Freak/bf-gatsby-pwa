@@ -8,6 +8,7 @@ import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
 import StepContainer from "../../../../components/DynamicStepper/StepContainer"
+import { ApplicationOptions } from "../../stepsOptions"
 
 import {
   RefinanceLogo,
@@ -15,13 +16,6 @@ import {
   InvestorLogo,
   RetirementLogo,
 } from "../../../../utils/icons"
-
-export enum ApplicationOptions {
-  Refinance,
-  First_Home_Buyer,
-  Investor,
-  Retirement,
-}
 
 const ApplicationType: React.FC = () => {
   const {

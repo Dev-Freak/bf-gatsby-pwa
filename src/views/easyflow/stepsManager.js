@@ -1,15 +1,13 @@
 import * as React from "react"
 
 // EASYFLOW STEPS
-import Welcome, { PathOptions } from "./steps/Welcome"
+import Welcome from "./steps/Welcome"
 import ApplicationsSummary from "./steps/applicationSummary"
 
 // Residential
 import ApplicantsQuantity from "./steps/residential/ApplicantsQuantity"
-import ApplicationType, {
-  ApplicationOptions,
-} from "./steps/residential/ApplicationType"
-import ProjectType, { ProjectOptions } from "./steps/residential/ProjectType"
+import ApplicationType from "./steps/residential/ApplicationType"
+import ProjectType from "./steps/residential/ProjectType"
 import ConstructionType from "./steps/residential/ConstructionType"
 import ApplicantsIncomeTabs from "./steps/residential/applicantsIncome/ApplicantsIncomeTabs"
 import PropertiesQuantity from "./steps/residential/refinance/PropertiesQuantity"
@@ -22,13 +20,20 @@ import CurrentRate from "./steps/residential/refinance/CurrentRate"
 import AssetType from "./steps/assetFinancial/AssetType"
 import AssetPurchase from "./steps/assetFinancial/AssetPurchase"
 import EmploymentType from "./steps/assetFinancial/EmploymentType"
-import IncomeType, { IncomeOptions } from "./steps/assetFinancial/IncomeType"
+import IncomeType from "./steps/assetFinancial/IncomeType"
 
 // Commercial
 import CommercialType from "./steps/commercial/CommercialType"
 
 // Other Financial Enquiries
 import OtherFinancialType from "./steps/otherFinancialEnquiries/OtherFinancialType"
+
+import {
+  PathOptions,
+  ApplicationOptions,
+  ProjectOptions,
+  IncomeOptions,
+} from "./stepsOptions"
 
 const initialStep = [<Welcome />]
 const finalSteps = [<OtherFinancialType />, <ApplicationsSummary />]

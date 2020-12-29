@@ -6,6 +6,7 @@ import TitleWithTooltip from "../../../components/Shared/TitleWithTooltip"
 import Description from "../../../components/Shared/Description"
 import StepHeader from "../../../components/DynamicStepper/StepHeader"
 import StepContainer from "../../../components/DynamicStepper/StepContainer"
+import { PathOptions } from "../stepsOptions"
 
 import {
   AssetsFinancialLogo,
@@ -15,13 +16,6 @@ import {
 } from "../../../utils/icons"
 
 import useStore, { DataType } from "../../../hooks/useStore"
-
-export enum PathOptions {
-  Asset_Financial,
-  Residential,
-  Commercial,
-  Other_Financial_Enquiries,
-}
 
 const Welcome: React.FC = () => {
   const {
