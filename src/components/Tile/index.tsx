@@ -23,7 +23,8 @@ const Tile: React.FC<TileProps> = ({
   const [isSelected, setIsSelected] = React.useState<boolean>(selected ?? false)
 
   React.useEffect(() => {
-    if (!isFirstRender) {
+    if (!isFirstRender && isSelected !== selected) {
+      console.log({ keyName, value: children })
       const timeOut = setTimeout(() => {
         onSelect?.({ keyName, value: children })
       }, 300)
