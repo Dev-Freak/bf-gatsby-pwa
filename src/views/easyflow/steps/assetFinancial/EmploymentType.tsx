@@ -22,7 +22,7 @@ const EmploymentType: React.FC = () => {
   return (
     <StepContainer back>
       <StepHeader>
-        <TitleWithTooltip title="Type of employment">
+        <TitleWithTooltip title="Type of Employment">
           Norem ipsum...
         </TitleWithTooltip>
         <Description>

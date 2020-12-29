@@ -26,7 +26,7 @@ const RefinanceReasons: React.FC = () => {
   return (
     <StepContainer back>
       <StepHeader>
-        <TitleWithTooltip title="What is the reason for refinancing?">
+        <TitleWithTooltip title="Reason for Refinancing?">
           Norem ipsum...
         </TitleWithTooltip>
         <Description>

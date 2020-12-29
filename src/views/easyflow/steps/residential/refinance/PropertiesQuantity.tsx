@@ -27,7 +27,7 @@ const PropertiesQuantity: React.FC = () => {
   return (
     <StepContainer back>
       <StepHeader>
-        <TitleWithTooltip title="How many properties?">
+        <TitleWithTooltip title="How Many Properties?">
           Norem ipsum...
         </TitleWithTooltip>
         <Description>

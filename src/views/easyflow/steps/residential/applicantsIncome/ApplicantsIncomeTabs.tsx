@@ -35,7 +35,7 @@ const ApplicantsIncomeTabs: React.FC = () => {
       }}
     >
       <StepHeader>
-        <TitleWithTooltip title="income type">Norem ipsum...</TitleWithTooltip>
+        <TitleWithTooltip title="Type of Income">Norem ipsum...</TitleWithTooltip>
         <Description>
           Please select the most relevant option to your needs
         </Description>

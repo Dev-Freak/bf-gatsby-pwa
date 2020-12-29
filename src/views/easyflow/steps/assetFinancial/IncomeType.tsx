@@ -28,7 +28,7 @@ const IncomeType: React.FC = () => {
   return (
     <StepContainer back>
       <StepHeader>
-        <TitleWithTooltip title="Type of income">Norem ipsum...</TitleWithTooltip>
+        <TitleWithTooltip title="Type of Income">Norem ipsum...</TitleWithTooltip>
         <Description>Please select your streams of income</Description>
       </StepHeader>
 

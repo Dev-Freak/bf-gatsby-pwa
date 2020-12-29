@@ -27,7 +27,7 @@ const ApplicantsQuantity: React.FC = () => {
   return (
     <StepContainer back>
       <StepHeader>
-        <TitleWithTooltip title="How many applicants?">
+        <TitleWithTooltip title="How Many Applicants?">
           Norem ipsum...
         </TitleWithTooltip>
         <Description>

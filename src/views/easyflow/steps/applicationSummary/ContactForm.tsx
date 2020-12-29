@@ -64,7 +64,7 @@ const ContactForm: React.FC<Props> = ({ stateProps, methods }) => {
   return (
     <form className="flex flex-col w-6/12 space-y-8 justify-center">
       <StepHeader>
-        <Title>Fill the form</Title>
+        <Title>Fill The Form</Title>
       </StepHeader>
 
       <InputContainer>
