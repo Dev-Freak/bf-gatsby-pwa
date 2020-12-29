@@ -9,7 +9,6 @@ export type TilesContainerType = {
   stepValue: any
   isMultiple?: true | false
   onTileClick?: CallableFunction
-  children: JSX.Element | Array<JSX.Element>
 }
 
 const TilesContainer: React.FC<TilesContainerType> = ({
@@ -19,8 +18,7 @@ const TilesContainer: React.FC<TilesContainerType> = ({
   isMultiple = false,
   onTileClick: onTileSelect,
 }) => {
-  const { width } = useScreenSize()
-  const isMobile = width <= 540
+  const { isMobile } = useScreenSize()
 
   const mappedChildren = (items: JSX.Element | Array<JSX.Element>) =>
     React.Children.map(items, (child: JSX.Element, index: number) => {
@@ -53,18 +51,18 @@ const TilesContainer: React.FC<TilesContainerType> = ({
       return React.cloneElement(child as JSX.Element, { ...props })
     })
 
-  let components = null
+  let components: JSX.Element | React.FunctionComponentElement<any>[]
   if (React.Children.count(children) === 1) {
-    const child = React.Children.only(children)
+    const child = React.Children.only(children) as JSX.Element
     const childType = child?.type.toString()
 
     const isFragment = childType.indexOf("fragment") != -1
 
     components = isFragment
-      ? mappedChildren(child.props.children)
+      ? mappedChildren(child?.props?.children)
       : mappedChildren(child)
   } else {
-    components = mappedChildren(children)
+    components = mappedChildren(children as JSX.Element | JSX.Element[])
   }
 
   return isMobile ? (

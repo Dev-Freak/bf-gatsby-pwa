@@ -25,7 +25,11 @@ const useScreenSize = () => {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  return windowSize
+  return {
+    width: windowSize.width,
+    height: windowSize.height,
+    isMobile: windowSize.width <= 540,
+  }
 }
 
 export default useScreenSize
