@@ -7,7 +7,7 @@ import InputContainer from "../../../../components/Shared/Inputs/InputContainer"
 import Lable from "../../../../components/Shared/Inputs/Lable"
 import Input from "../../../../components/Shared/Inputs/Input"
 import InputError from "../../../../components/Shared/Inputs/InputError"
-import Slider, { Steps, ValueType } from "../../../../components/Slider"
+import CustomSlider from "../../../../components/Slider/CustomSlider"
 
 type Props = {
   stateProps: {
@@ -29,8 +29,6 @@ type FormTypes = {
   phoneNumber: string
 }
 
-const steps = ["7", "14", "21", "28", "35", "42", "49", "56", "60+"] as Steps
-
 const ContactForm: React.FC<Props> = ({ stateProps, methods }) => {
   const { fullName, emailAddress, phoneNumber, urgency } = stateProps
   const { onValid, setContactValue, setEnquiryDetailsValue } = methods
@@ -38,6 +36,7 @@ const ContactForm: React.FC<Props> = ({ stateProps, methods }) => {
   const [fullNameState, setFullName] = React.useState(fullName ?? "")
   const [emailAddressState, setEmailAddress] = React.useState(emailAddress ?? "")
   const [phoneNumberState, setPhoneNumber] = React.useState(phoneNumber ?? "")
+  const urgencyFormatted = parseInt(urgency?.split(" ")[0])
 
   const { register, errors, formState } = useForm<FormTypes>({
     mode: "onChange",
@@ -55,6 +54,14 @@ const ContactForm: React.FC<Props> = ({ stateProps, methods }) => {
         value,
       })
     }
+  }
+
+  const handleUrgencyChange = (e: ReadonlyArray<Number>) => {
+    const urgency = e[0]
+    setEnquiryDetailsValue({
+      keyName: "urgency",
+      value: `${urgency} days`,
+    })
   }
 
   React.useEffect(() => {
@@ -143,17 +150,14 @@ const ContactForm: React.FC<Props> = ({ stateProps, methods }) => {
 
       <div className="flex flex-col my-5 space-y-5 max-w-lg">
         <Lable isRequired={true}>Urgency of finance (In Days)</Lable>
-        <Slider
-          defaultValue={urgency?.split(" ")[0] ?? "7"}
-          steps={steps}
-          style={{ minWidth: "500px" }}
-          onChange={(e: ValueType) =>
-            setEnquiryDetailsValue({
-              keyName: "urgency",
-              value: `${e} days`,
-            })
-          }
-        />
+        <div className="flex max-w-lg">
+          <CustomSlider
+            defaultValue={isNaN(urgencyFormatted) ? undefined : urgencyFormatted}
+            onSliderChange={(values: ReadonlyArray<number>) =>
+              handleUrgencyChange(values)
+            }
+          />
+        </div>
       </div>
     </form>
   )
