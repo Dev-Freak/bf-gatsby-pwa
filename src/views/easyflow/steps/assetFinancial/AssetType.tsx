@@ -2,13 +2,13 @@ import * as React from "react"
 
 import Tile from "../../../../components/Tile"
 import TilesContainer from "../../../../components/Shared/TilesContainer"
-import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
+import Title from "../../../../components/Shared/Title"
 import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
 import StepContainer from "../../../../components/DynamicStepper/StepContainer"
 
 import {
-  EquipmentPlanLogo,
+  EquipmentPlantLogo,
   VehiclePurchaseLogo,
   CreditCardLogo,
   CashflowLendingLogo,
@@ -27,7 +27,7 @@ const AssetType: React.FC = () => {
   return (
     <StepContainer back>
       <StepHeader>
-        <TitleWithTooltip title="Type of Asset">Norem ipsum...</TitleWithTooltip>
+        <Title>Type of Asset</Title>
         <Description>
           Please select the most relevant option to your needs
         </Description>
@@ -38,13 +38,15 @@ const AssetType: React.FC = () => {
         stepValue={asset_type}
         onTileClick={(data: DataType) => boundSelectAndNext(data)}
       >
-        <Tile img={EquipmentPlanLogo}>Equipment Plan</Tile>
+        <Tile img={EquipmentPlantLogo}>Equipment / Plant</Tile>
 
         <Tile img={VehiclePurchaseLogo}>Vehicle Purchase</Tile>
 
         <Tile img={CreditCardLogo}>Personal Loan / Credit Cards</Tile>
 
-        <Tile img={CashflowLendingLogo}>Cashflow Lending</Tile>
+        <Tile img={CashflowLendingLogo} tooltip="Struggling for business cash flow?">
+          Cashflow Lending
+        </Tile>
       </TilesContainer>
     </StepContainer>
   )

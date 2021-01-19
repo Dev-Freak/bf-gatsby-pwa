@@ -41,13 +41,14 @@ const CurrentTotalLendingAmount: React.FC = () => {
 
       <div className="flex items-center justify-center">
         <NumberFormat
-          prefix={"$"}
-          value={amount}
+          prefix="$"
+          placeholder="$0"
           inputMode="numeric"
+          decimalSeparator="."
+          thousandSeparator=","
+          value={amount}
           customInput={Input}
           getInputRef={inputRef}
-          thousandSeparator={"."}
-          decimalSeparator={","}
           onChange={e => setAmount(e.target.value)}
           onBlur={handleOnBlur}
         />

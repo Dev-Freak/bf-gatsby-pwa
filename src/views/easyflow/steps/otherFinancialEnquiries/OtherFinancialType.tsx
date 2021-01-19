@@ -2,7 +2,7 @@ import * as React from "react"
 
 import TileWithCheckBox from "../../../../components/TileWithCheckBox"
 import TilesContainer from "../../../../components/Shared/TilesContainer"
-import TitleWithTooltip from "../../../../components/Shared/TitleWithTooltip"
+import Title from "../../../../components/Shared/Title"
 import Description from "../../../../components/Shared/Description"
 import StepHeader from "../../../../components/DynamicStepper/StepHeader"
 import StepContainer from "../../../../components/DynamicStepper/StepContainer"
@@ -27,7 +27,7 @@ const OtherFinancialType: React.FC = () => {
   return (
     <StepContainer back next>
       <StepHeader>
-        <TitleWithTooltip title="Additional">Optional</TitleWithTooltip>
+        <Title>Additional</Title>
         <Description>Do you require any additional services?</Description>
       </StepHeader>
 

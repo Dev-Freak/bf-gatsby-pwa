@@ -28,6 +28,23 @@ const CurrentRate: React.FC = () => {
     else setIsModalOpen(false)
   }, [amount])
 
+  const isValidPercentage = (value: string) => {
+    const numericValue = parseFloat(value)
+    if (numericValue >= 0 && numericValue <= 100) return true
+
+    return false
+  }
+
+  const handleOnChange = (value: string) => {
+    if (isValidPercentage(value)) setAmount(value)
+  }
+
+  const handleFormat = (value: string) => {
+    console.log(value)
+    if (isValidPercentage(value)) return `${value}%`
+    else return `${value.substring(0, 2)}%`
+  }
+
   const handleOnBlur = () =>
     amount !== "" &&
     boundSelectTile({
@@ -44,12 +61,16 @@ const CurrentRate: React.FC = () => {
 
       <div className="flex items-center justify-center">
         <NumberFormat
-          suffix={"%"}
+          suffix="%"
+          placeholder="0%"
+          inputMode="numeric"
+          decimalSeparator="."
           value={amount}
           customInput={Input}
-          inputMode="numeric"
           getInputRef={inputRef}
-          onChange={e => setAmount(e.target.value)}
+          //format={handleFormat}
+          //isNumericString={true}
+          onChange={e => handleOnChange(e.target.value)}
           onBlur={handleOnBlur}
         />
 

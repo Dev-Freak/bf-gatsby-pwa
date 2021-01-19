@@ -2,7 +2,7 @@ import * as React from "react"
 
 import Tile from "../../../components/Tile"
 import TilesContainer from "../../../components/Shared/TilesContainer"
-import TitleWithTooltip from "../../../components/Shared/TitleWithTooltip"
+import Title from "../../../components/Shared/Title"
 import Description from "../../../components/Shared/Description"
 import StepHeader from "../../../components/DynamicStepper/StepHeader"
 import StepContainer from "../../../components/DynamicStepper/StepContainer"
@@ -44,7 +44,7 @@ const Welcome: React.FC = () => {
   return (
     <StepContainer>
       <StepHeader>
-        <TitleWithTooltip title="Welcome">Norem ipsum...</TitleWithTooltip>
+        <Title>Welcome</Title>
         <Description>
           Please select the most relevant option to your needs
         </Description>

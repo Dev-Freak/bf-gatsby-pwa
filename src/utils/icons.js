@@ -51,7 +51,7 @@ import TrustEntityLogo from "../images/icons/Icon26.svg"
 
 // ASSETS FINANCIAL
 // Assets Type
-import EquipmentPlanLogo from "../images/icons/Icon6.svg"
+import EquipmentPlantLogo from "../images/icons/Icon6.svg"
 import VehiclePurchaseLogo from "../images/icons/Icon17.svg"
 import CreditCardLogo from "../images/icons/Icon22.svg"
 import CashflowLendingLogo from "../images/icons/Icon21.svg"
@@ -109,7 +109,7 @@ export {
   SoleTraderLogo,
   CompanyLogo,
   TrustEntityLogo,
-  EquipmentPlanLogo,
+  EquipmentPlantLogo,
   VehiclePurchaseLogo,
   CreditCardLogo,
   CashflowLendingLogo,

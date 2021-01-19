@@ -1,6 +1,7 @@
 import * as React from "react"
 import TileLabel from "../Shared/TileLabel"
 import TileContent from "../Shared/TileContent"
+import Tooltip from "../Tooltip"
 
 import useFirstRenderDisabledEffect from "../../hooks/useFirstRenderDisabledEffect"
 
@@ -10,6 +11,7 @@ export interface TileProps {
   keyName?: string
   selected?: true | false
   onSelect?: CallableFunction
+  tooltip?: string
 }
 
 const Tile: React.FC<TileProps> = ({
@@ -18,6 +20,7 @@ const Tile: React.FC<TileProps> = ({
   onSelect,
   keyName = "unknown",
   selected = false,
+  tooltip = "",
 }) => {
   const isFirstRender = useFirstRenderDisabledEffect()
   const [isSelected, setIsSelected] = React.useState<boolean>(selected ?? false)
@@ -47,6 +50,7 @@ const Tile: React.FC<TileProps> = ({
       className={`tile selectable w-32 h-32 shadow-md rounded-lg cursor-pointer md:w-40 md:h-40 my-2 md:my-0 ${styles}`}
       onClick={() => handleSelect()}
     >
+      {tooltip && <Tooltip>{tooltip}</Tooltip>}
       <TileContent>
         <img
           src={img}

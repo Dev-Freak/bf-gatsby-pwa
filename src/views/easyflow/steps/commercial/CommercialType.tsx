@@ -43,7 +43,9 @@ const CommercialType: React.FC = () => {
         <Tile img={PurchaseLogo}>Purchase</Tile>
         <Tile img={Refinance_2Logo}>Refinance</Tile>
         <Tile img={DevelopmentLogo}>Development</Tile>
-        <Tile img={SMSFLogo}>SMSF</Tile>
+        <Tile img={SMSFLogo} tooltip="Self Managed Super Fund Lending">
+          SMSF
+        </Tile>
       </TilesContainer>
     </StepContainer>
   )

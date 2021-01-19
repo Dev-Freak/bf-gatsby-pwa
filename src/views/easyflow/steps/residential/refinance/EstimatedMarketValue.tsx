@@ -41,13 +41,14 @@ const EstimatedMarketValue: React.FC = () => {
 
       <div className="flex items-center justify-center">
         <NumberFormat
-          prefix={"$"}
+          prefix="$"
+          placeholder="$0"
+          inputMode="numeric"
+          decimalSeparator="."
+          thousandSeparator=","
           value={amount}
           customInput={Input}
-          inputMode="numeric"
           getInputRef={inputRef}
-          thousandSeparator={"."}
-          decimalSeparator={","}
           onChange={e => setAmount(e.target.value)}
           onBlur={handleOnBlur}
         />

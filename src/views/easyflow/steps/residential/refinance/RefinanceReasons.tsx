@@ -8,6 +8,7 @@ import TitleWithTooltip from "../../../../../components/Shared/TitleWithTooltip"
 import Description from "../../../../../components/Shared/Description"
 import StepHeader from "../../../../../components/DynamicStepper/StepHeader"
 import StepContainer from "../../../../../components/DynamicStepper/StepContainer"
+import Tooltip from "../../../../../components/Tooltip"
 
 import {
   BetterRateLogo,
@@ -40,8 +41,18 @@ const RefinanceReasons: React.FC = () => {
         onTileClick={(data: DataType) => boundSelectAndNext(data)}
       >
         <Tile img={BetterRateLogo}>Better Rate</Tile>
-        <Tile img={ConsolidateLogo}>Consolidate Debt</Tile>
-        <Tile img={EquityReleaseLogo}>Equity Release</Tile>
+        <Tile
+          img={ConsolidateLogo}
+          tooltip="Example: Credit Cards, Personal Loans, Car loans into 1 loan"
+        >
+          Consolidate Debt
+        </Tile>
+        <Tile
+          img={EquityReleaseLogo}
+          tooltip="Money released from the equity within your home"
+        >
+          Equity Release
+        </Tile>
       </TilesContainer>
     </StepContainer>
   )

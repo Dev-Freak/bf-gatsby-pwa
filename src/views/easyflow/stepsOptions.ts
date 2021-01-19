@@ -1,5 +1,5 @@
 export enum PathOptions {
-  Asset_Financial,
+  Asset_Finance,
   Residential,
   Commercial,
   Other_Financial_Enquiries,
