@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <StateProvider>
         <div
           style={{
@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
           <main className="w-full">{children}</main>
         </div>
       </StateProvider>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }
