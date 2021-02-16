@@ -62,7 +62,7 @@ const SummaryItem: React.FC<SummaryItemProps> = ({
   }
 
   return (
-    <div className="pb-4">
+    <div>
       <SubTitle>{formatKey(itemTitle)}</SubTitle>
       {typeof value === "string" ? (
         <Value>{formatKey(value)}</Value>

@@ -69,7 +69,7 @@ const ContactForm: React.FC<Props> = ({ stateProps, methods }) => {
   }, [formState.isValid])
 
   return (
-    <form className="flex flex-col w-6/12 space-y-8 justify-center">
+    <form className="flex flex-col w-6/12 space-y-6 justify-center">
       <StepHeader>
         <Title>Fill The Form</Title>
       </StepHeader>
@@ -150,7 +150,7 @@ const ContactForm: React.FC<Props> = ({ stateProps, methods }) => {
 
       <div className="flex flex-col my-5 space-y-5 max-w-lg">
         <Lable isRequired={true}>Urgency of finance (In Days)</Lable>
-        <div className="flex max-w-lg">
+        <div className="flex w-9/12 max-w-lg m-auto">
           <CustomSlider
             defaultValue={isNaN(urgencyFormatted) ? undefined : urgencyFormatted}
             onSliderChange={(values: ReadonlyArray<number>) =>
