@@ -204,7 +204,6 @@ const CustomSlider: React.FC<SliderProps> = ({ defaultValue, onSliderChange }) =
       values={defaultValueFormatted}
       onChange={onChange}
       className="relative w-full"
-      rootStyle={{ minWidth: "500px" }}
     >
       <Rail>{({ getRailProps }) => <SliderRail getRailProps={getRailProps} />}</Rail>
       <Handles>

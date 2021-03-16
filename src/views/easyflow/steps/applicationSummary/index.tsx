@@ -71,9 +71,9 @@ const ApplicationSummary: React.FC = () => {
         isDisabled: !(isFormValid && urgency),
       }}
     >
-      <div className="flex flex-col flex-no-wrap space-y-7 w-full lg:flex-row lg:flex-wrap justify-center">
-        <div className="flex flex-col lg:flex-row items-start justify-center space-x-5 w-full">
-          {path && path !== "Other_Financial_Enquiries" && <Summary />}
+      <div className="flex flex-col w-full sm:flex-row">
+        {path && path !== "Other_Financial_Enquiries" && <Summary />}
+        <div className="flex flex-1 flex-col items-center justify-center w-full space-y-10">
           <ContactForm
             stateProps={{ fullName, emailAddress, phoneNumber, urgency }}
             methods={{
@@ -82,9 +82,6 @@ const ApplicationSummary: React.FC = () => {
               setEnquiryDetailsValue: boundSetEnquiryDetailsValue,
             }}
           />
-        </div>
-
-        <div className="flex items-center justify-center w-full">
           <EnquiryDetails />
         </div>
       </div>
