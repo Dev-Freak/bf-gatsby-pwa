@@ -15,16 +15,16 @@ const AppFlow: React.FC = () => {
       console.log("crossOriginConnection")
 
       let event: any = null
-      window.addEventListener("message", evnt => {
+      window.addEventListener("message", (e): any => {
         console.log("EventListener::message")
-        if (evnt.origin !== "https://borgfinancial.com.au/" || evnt.data !== "CORS")
-          return
+        console.log(e)
+        if (e.origin !== "https://borgfinancial.com.au/" || e.data !== "CORS") return
 
-        event = evnt
+        event = e
       })
-
       window.addEventListener("resize", () => {
         console.log("EventListener::resize")
+
         event.source.postMessage(
           {
             height: window.innerHeight,
