@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
 
-import StateProvider from "../../store/AppStore"
+import StoreProvider from "../../store"
 import Welcome from "../../views/easyflow/steps/Welcome"
 
 // Residential
@@ -30,9 +30,9 @@ export default {
 } as Meta
 
 const Template: Story<StepperProps> = args => (
-  <StateProvider>
+  <StoreProvider>
     <Stepper {...args} />
-  </StateProvider>
+  </StoreProvider>
 )
 
 export const Residential = Template.bind({})

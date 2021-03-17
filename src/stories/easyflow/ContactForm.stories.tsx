@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
 
-import StateProvider from "../../store/AppStore"
+import StoreProvider from "../../store"
 import ContactForm from "../../views/easyflow/steps/applicationSummary"
 
 export default {
@@ -10,9 +10,9 @@ export default {
 } as Meta
 
 const Template: Story = args => (
-  <StateProvider>
+  <StoreProvider>
     <ContactForm {...args} />
-  </StateProvider>
+  </StoreProvider>
 )
 
 export const Default = Template.bind({})

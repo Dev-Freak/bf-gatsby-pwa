@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import Welcome from "../../views/easyflow/steps/Welcome"
-import StateProvider from "../../store/AppStore"
+import StoreProvider from "../../store"
 
 export default {
   title: "EasyFlow Steps/Welcome",
@@ -9,9 +9,9 @@ export default {
 }
 
 const Template = (args: any) => (
-  <StateProvider>
+  <StoreProvider>
     <Welcome {...args} />
-  </StateProvider>
+  </StoreProvider>
 )
 
 export const Default = Template.bind({})

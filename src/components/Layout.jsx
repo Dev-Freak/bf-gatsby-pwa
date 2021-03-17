@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import StateProvider from "../store/AppStore"
+import StoreProvider from "../store"
 import useScreenSize from "../hooks/useScreenSize"
 
 import "./layout.css"
@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   const { height } = useScreenSize()
 
   return (
-    <StateProvider>
+    <StoreProvider>
       <div
         style={{
           maxWidth: 1430,
@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
       >
         <main className="w-full">{children}</main>
       </div>
-    </StateProvider>
+    </StoreProvider>
   )
 }
 

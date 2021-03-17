@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { ActionMethods, ValueType } from "../../store/actions"
-import { Store } from "../../store/AppStore"
+import { Store } from "../../store"
 
 export type DataType = ValueType
 export type QuantityType = number

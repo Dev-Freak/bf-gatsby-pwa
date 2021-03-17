@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import IncomeType from "../../views/easyflow/steps/assetFinancial/IncomeType"
-import StateProvider from "../../store/AppStore"
+import StoreProvider from "../../store"
 
 export default {
   title: "EasyFlow Steps/IncomeType",
@@ -9,9 +9,9 @@ export default {
 }
 
 const Template = (args: any) => (
-  <StateProvider>
+  <StoreProvider>
     <IncomeType {...args} />
-  </StateProvider>
+  </StoreProvider>
 )
 
 export const Default = Template.bind({})

@@ -2,7 +2,7 @@ import * as React from "react"
 import { Story, Meta } from "@storybook/react/types-6-0"
 
 import Tile, { TileProps } from "../../components/Tile"
-import StateProvider from "../../store/AppStore"
+import StoreProvider from "../../store"
 
 const Logo = require("../../images/icons/Icon1.svg")
 

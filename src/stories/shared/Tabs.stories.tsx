@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react/types-6-0"
 
 import ApplicantsIncomeTabs from "../../views/easyflow/steps/residential/applicantsIncome/ApplicantsIncomeTabs"
 
-import StateProvider from "../../store/AppStore"
+import StoreProvider from "../../store"
 
 export default {
   title: "Shared/ApplicantsIncomeTabs",
@@ -12,9 +12,9 @@ export default {
 
 const Template: Story = args => {
   return (
-    <StateProvider>
+    <StoreProvider>
       <ApplicantsIncomeTabs {...args} />
-    </StateProvider>
+    </StoreProvider>
   )
 }
 

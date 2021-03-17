@@ -70,8 +70,9 @@
     "./src/**/*.ts",
     "./src/**/*.tsx",
     "./functions/**/*.ts",
-    "src/utils/__tests__/stringFormatter.js"
-  ] /* The files TypeScript should type check */,
+    "src/utils/__tests__/strngFormatter.js",
+    "src/store/index.jsx"
+  ]                                           /* The files TypeScript should type check */,
   "exclude": [
     "node_modules",
     "build",
@@ -79,5 +80,5 @@
     "src/**/*.jsx",
     "functions/*.js",
     "functions/*.jsx"
-  ] /* The files to not type check */
+]                                             /* The files to not type check */
 }
