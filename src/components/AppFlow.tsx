@@ -12,8 +12,11 @@ const AppFlow: React.FC = () => {
 
   React.useEffect(() => {
     const crossOriginConnection = () => {
+      console.log("crossOriginConnection")
+
       let event: any = null
       window.addEventListener("message", evnt => {
+        console.log("EventListener::message")
         if (evnt.origin !== "https://borgfinancial.com.au/" || evnt.data !== "CORS")
           return
 
@@ -21,6 +24,7 @@ const AppFlow: React.FC = () => {
       })
 
       window.addEventListener("resize", () => {
+        console.log("EventListener::resize")
         event.source.postMessage(
           {
             height: window.innerHeight,
