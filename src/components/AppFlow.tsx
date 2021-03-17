@@ -22,7 +22,9 @@ const AppFlow: React.FC = () => {
 
         event = e
       })
-      window.addEventListener("resize", () => {
+
+      const main = document.getElementsByTagName("main")[0]
+      main.onresize = () => {
         console.log("EventListener::resize")
 
         event.source.postMessage(
@@ -32,7 +34,7 @@ const AppFlow: React.FC = () => {
           },
           event.origin
         )
-      })
+      }
     }
 
     crossOriginConnection()
