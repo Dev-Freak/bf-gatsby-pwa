@@ -4,6 +4,7 @@ const usePostMessage = () => {
   const originEvent = React.useRef<any | undefined>(null)
 
   const sendMessage = () => {
+    console.log(originEvent.current)
     console.log(
       `window.innerHeight: ${window.innerHeight}, window.innerWidth: ${window.innerWidth}`
     )
@@ -27,7 +28,7 @@ const usePostMessage = () => {
           console.log("EventListener::message")
           console.log(event)
           if (
-            event.origin !== "https://borgfinancial.com.au/" ||
+            event.origin.startsWith("https://borgfinancial.com.au") ||
             event.data !== "CORS"
           )
             return
