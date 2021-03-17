@@ -8,7 +8,7 @@ const usePostMessage = () => {
       `window.innerHeight: ${window.innerHeight}, window.innerWidth: ${window.innerWidth}`
     )
 
-    originEvent.current?.source?.postMessage(
+    originEvent.current?.source[0]?.postMessage(
       {
         height: window.innerHeight,
         width: window.innerWidth,
