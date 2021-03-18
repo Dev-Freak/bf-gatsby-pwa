@@ -35,8 +35,12 @@ const ApplicationSummary: React.FC = () => {
   const { sendMessage } = React.useContext(PostMessageContext)
 
   React.useEffect(() => {
-    const stepContainer = document.getElementById("step-container")
-    sendMessage(stepContainer)
+    const stepContainer: any = document.getElementById("step-container")
+
+    sendMessage({
+      height: stepContainer.offsetHeight,
+      width: stepContainer.offsetWidth,
+    })
   }, [])
 
   const [isFormValid, setIsFormValid] = React.useState(false)
