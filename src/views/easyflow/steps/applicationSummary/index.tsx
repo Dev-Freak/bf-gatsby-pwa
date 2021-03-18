@@ -9,7 +9,6 @@ import StepContainer from "../../../../components/DynamicStepper/StepContainer"
 import { fetchAPI } from "../../../../utils/fetchUtils"
 
 import useStore from "../../../../hooks/useStore"
-import { PostMessageContext } from "../../../../components/AppFlow"
 
 type BodyType = {
   firstName: string
@@ -31,17 +30,6 @@ const ApplicationSummary: React.FC = () => {
     boundSetEnquiryDetailsValue,
     boundFinishEasyFlow,
   } = useStore()
-
-  const { sendMessage } = React.useContext(PostMessageContext)
-
-  React.useEffect(() => {
-    const stepContainer: any = document.getElementById("step-container")
-
-    sendMessage({
-      height: stepContainer.offsetHeight,
-      width: stepContainer.offsetWidth,
-    })
-  }, [])
 
   const [isFormValid, setIsFormValid] = React.useState(false)
   const { urgency } = enquiryDetails

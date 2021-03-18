@@ -4,12 +4,25 @@ import StepButtons from "./StepButtons"
 import BackButton, { BackButtonProps } from "./BackButton"
 import NextButton, { NextButtonProps } from "./NextButton"
 
+import { PostMessageContext } from "../AppFlow"
+
 type Props = {
   back?: BackButtonProps | true
   next?: NextButtonProps | true
 }
 
 const StepContainer: React.FC<Props> = ({ children, back, next }) => {
+  const { sendMessage } = React.useContext(PostMessageContext)
+
+  React.useEffect(() => {
+    const stepContainer: any = document.getElementById("step-container")
+
+    sendMessage({
+      height: stepContainer.offsetHeight,
+      width: stepContainer.offsetWidth,
+    })
+  }, [])
+
   return (
     <div
       id="step-container"
