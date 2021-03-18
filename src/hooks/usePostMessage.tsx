@@ -1,9 +1,30 @@
 import * as React from "react"
+import _ from "lodash"
 
-const usePostMessage = () => {
+const usePostMessage = (url: String) => {
   const originEvent = React.useRef<any | undefined>(null)
 
-  const sendMessage = () => {
+  React.useEffect(() => {
+    const crossOriginConnection = () => {
+      console.log("crossOriginConnection")
+
+      window.addEventListener(
+        "message",
+        (event: any) => {
+          console.log("EventListener::message")
+          console.log(event)
+          if (!event.origin.startsWith(url) || event.data !== "CORS") return
+
+          originEvent.current = _.cloneDeep(event)
+        },
+        false
+      )
+    }
+
+    if (originEvent.current === null) crossOriginConnection()
+  }, [])
+
+  const sendMessage = React.useCallback(() => {
     console.log(originEvent.current)
     console.log(
       `window.innerHeight: ${window.innerHeight}, window.innerWidth: ${window.innerWidth}`
@@ -16,31 +37,7 @@ const usePostMessage = () => {
       },
       originEvent.current.origin
     )
-  }
-
-  React.useEffect(() => {
-    const crossOriginConnection = () => {
-      console.log("crossOriginConnection")
-
-      window.addEventListener(
-        "message",
-        (event: any) => {
-          console.log("EventListener::message")
-          console.log(event)
-          if (
-            event.origin.startsWith("https://borgfinancial.com.au") ||
-            event.data !== "CORS"
-          )
-            return
-
-          originEvent.current = event
-        },
-        false
-      )
-    }
-
-    if (originEvent.current === null) crossOriginConnection()
-  }, [])
+  }, [originEvent.current])
 
   return { sendMessage }
 }

@@ -13,7 +13,7 @@ const AppFlow: React.FC = () => {
     state: { isEasyFlowFinished, isFactFindInterested, isFactFindFinished },
   } = useStore()
 
-  const { sendMessage } = usePostMessage()
+  const { sendMessage } = usePostMessage("https://borgfinancial.com.au")
 
   return (
     <React.Fragment>
