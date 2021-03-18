@@ -2,7 +2,7 @@ import * as React from "react"
 import _ from "lodash"
 
 const usePostMessage = (url: String) => {
-  const originEvent = React.useRef<any | undefined>(null)
+  const [originEvent, setOriginEvent] = React.useState<any | undefined>(null)
 
   React.useEffect(() => {
     const crossOriginConnection = () => {
@@ -15,29 +15,29 @@ const usePostMessage = (url: String) => {
           console.log(event)
           if (!event.origin.startsWith(url) || event.data !== "CORS") return
 
-          originEvent.current = _.cloneDeep(event)
+          setOriginEvent(event)
         },
         false
       )
     }
 
-    if (originEvent.current === null) crossOriginConnection()
+    if (originEvent === null) crossOriginConnection()
   }, [])
 
   const sendMessage = React.useCallback(() => {
-    console.log(originEvent.current)
+    console.log(originEvent)
     console.log(
       `window.innerHeight: ${window.innerHeight}, window.innerWidth: ${window.innerWidth}`
     )
 
-    originEvent.current?.source[0]?.postMessage(
+    originEvent?.source[0]?.postMessage(
       {
         height: window.innerHeight,
         width: window.innerWidth,
       },
-      originEvent.current.origin
+      originEvent.origin
     )
-  }, [originEvent.current])
+  }, [originEvent])
 
   return { sendMessage }
 }
