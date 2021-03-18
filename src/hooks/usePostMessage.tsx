@@ -26,15 +26,16 @@ const usePostMessage = (url: String) => {
 
   const sendMessage = React.useCallback(
     container => {
+      console.log(container)
       console.log(originEvent)
       console.log(
-        `container.innerHeight: ${container.innerHeight}, container.innerWidth: ${container.innerWidth}`
+        `container.offsetHeight: ${container.offsetHeight}, container.offsetWidth: ${container.offsetWidth}`
       )
 
-      originEvent?.source[0]?.postMessage(
+      originEvent?.source?.postMessage(
         {
-          height: container.innerHeight,
-          width: container.innerWidth,
+          height: container.offsetHeight,
+          width: container.offsetWidth,
         },
         originEvent.origin
       )
