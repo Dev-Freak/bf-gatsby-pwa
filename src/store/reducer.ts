@@ -83,7 +83,7 @@ export const reducer = (state: State, action: ActionType) => {
   const path = payload?.keyName
   const shallowerPath = path?.split("[]")[0]
 
-  console.log(action)
+  // console.log(action)
 
   switch (type) {
     case Actions.EASY_FLOW_SELECT_TILE:

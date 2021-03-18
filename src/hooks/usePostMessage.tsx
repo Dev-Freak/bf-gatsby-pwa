@@ -1,6 +1,4 @@
 import * as React from "react"
-import _ from "lodash"
-import { Message } from "semantic-ui-react"
 
 const usePostMessage = (url: String) => {
   const [originEvent, setOriginEvent] = React.useState<any | undefined>(null)
