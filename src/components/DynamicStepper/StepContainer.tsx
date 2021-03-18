@@ -11,7 +11,10 @@ type Props = {
 
 const StepContainer: React.FC<Props> = ({ children, back, next }) => {
   return (
-    <div className="max-w-4xl w-10/12 flex flex-col justify-center items-center space-y-10">
+    <div
+      id="step-container"
+      className="max-w-4xl w-10/12 flex flex-col justify-center items-center space-y-10"
+    >
       {children}
 
       {(next || back) && (

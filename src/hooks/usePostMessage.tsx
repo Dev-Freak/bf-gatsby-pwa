@@ -24,20 +24,23 @@ const usePostMessage = (url: String) => {
     if (originEvent === null) crossOriginConnection()
   }, [])
 
-  const sendMessage = React.useCallback(() => {
-    console.log(originEvent)
-    console.log(
-      `window.innerHeight: ${window.innerHeight}, window.innerWidth: ${window.innerWidth}`
-    )
+  const sendMessage = React.useCallback(
+    container => {
+      console.log(originEvent)
+      console.log(
+        `container.innerHeight: ${container.innerHeight}, container.innerWidth: ${container.innerWidth}`
+      )
 
-    originEvent?.source[0]?.postMessage(
-      {
-        height: window.innerHeight,
-        width: window.innerWidth,
-      },
-      originEvent.origin
-    )
-  }, [originEvent])
+      originEvent?.source[0]?.postMessage(
+        {
+          height: container.innerHeight,
+          width: container.innerWidth,
+        },
+        originEvent.origin
+      )
+    },
+    [originEvent]
+  )
 
   return { sendMessage }
 }

@@ -6,7 +6,9 @@ import usePostMessage from "../hooks/usePostMessage"
 import EasyFlow from "../views/easyflow"
 import FinishEasyFlow from "./FinishEasyFlow"
 
-export const PostMessageContext = React.createContext({ sendMessage: () => {} })
+export const PostMessageContext = React.createContext({
+  sendMessage: (container: any) => {},
+})
 
 const AppFlow: React.FC = () => {
   const {
