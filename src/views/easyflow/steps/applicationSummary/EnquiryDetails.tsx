@@ -14,7 +14,7 @@ const EnquiryDetails: React.FC = () => {
   } = useStore()
 
   return (
-    <div className="flex flex-col space-y-6 w-full">
+    <div className="flex flex-col space-y-6 w-full max-w-sm">
       <div className="flex flex-col my-5">
         <Lable>Notes</Lable>
         <textarea

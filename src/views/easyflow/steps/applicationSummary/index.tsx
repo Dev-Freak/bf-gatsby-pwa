@@ -71,7 +71,7 @@ const ApplicationSummary: React.FC = () => {
         isDisabled: !(isFormValid && urgency),
       }}
     >
-      <div className="flex flex-col w-full sm:flex-row">
+      <div className="flex flex-col w-full max-w-3xl sm:flex-row">
         {path && path !== "Other_Financial_Enquiries" && <Summary />}
         <div className="flex flex-1 flex-col items-center justify-center w-full space-y-10">
           <ContactForm

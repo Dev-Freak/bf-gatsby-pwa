@@ -69,7 +69,7 @@ const ContactForm: React.FC<Props> = ({ stateProps, methods }) => {
   }, [formState.isValid])
 
   return (
-    <form className="flex flex-col justify-center space-y-6 w-full">
+    <form className="flex flex-col max-w-sm space-y-6 w-full">
       <StepHeader>
         <Title>Fill The Form</Title>
       </StepHeader>
