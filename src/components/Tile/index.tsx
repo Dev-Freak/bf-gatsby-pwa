@@ -27,7 +27,6 @@ const Tile: React.FC<TileProps> = ({
 
   React.useEffect(() => {
     if (!isFirstRender && isSelected !== selected) {
-      console.log({ keyName, value: children })
       const timeOut = setTimeout(() => {
         onSelect?.({ keyName, value: children })
       }, 300)
