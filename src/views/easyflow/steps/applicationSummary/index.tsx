@@ -66,7 +66,7 @@ const ApplicationSummary: React.FC = () => {
     <StepContainer
       back
       next={{
-        label: "Proceed to finish",
+        label: "Finish",
         onClick: finishEasyFlow,
         isDisabled: !(isFormValid && urgency),
       }}

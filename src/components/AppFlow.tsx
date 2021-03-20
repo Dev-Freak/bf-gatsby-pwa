@@ -4,7 +4,7 @@ import useStore from "../hooks/useStore"
 import usePostMessage from "../hooks/usePostMessage"
 
 import EasyFlow from "../views/easyflow"
-import FinishEasyFlow from "./FinishEasyFlow"
+import FinishProcess from "./FinishProcess"
 
 export const PostMessageContext = React.createContext({
   sendMessage: (container: any) => {},
@@ -19,10 +19,11 @@ const AppFlow: React.FC = () => {
 
   return (
     <React.Fragment>
-      {isFactFindFinished && "Fact Find Finished"}
-      {isEasyFlowFinished && !isFactFindInterested && <FinishEasyFlow />}
-      {isFactFindInterested && !isFactFindFinished && "Fact Find"}
-      {!isEasyFlowFinished && !isFactFindInterested && !isFactFindFinished && (
+      {/* isFactFindFinished && "Fact Find Finished" */}
+      {/* isEasyFlowFinished && !isFactFindInterested && <FinishEasyFlow /> */}
+      {/* isFactFindInterested && !isFactFindFinished && "Fact Find" */}
+      {isEasyFlowFinished && <FinishProcess />}
+      {!isEasyFlowFinished && (
         <PostMessageContext.Provider value={{ sendMessage }}>
           <EasyFlow />
         </PostMessageContext.Provider>
