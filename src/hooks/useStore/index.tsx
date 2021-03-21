@@ -55,6 +55,8 @@ const useStore = () => {
 
   const boundFinishFactFind = () => dispatch(ActionMethods.finishEasyFlow())
 
+  const boundResetApp = () => dispatch(ActionMethods.resetApp())
+
   return {
     state,
     boundSelectTile,
@@ -73,6 +75,7 @@ const useStore = () => {
     boundStartFactFind,
     boundFinishEasyFlow,
     boundFinishFactFind,
+    boundResetApp,
   }
 }
 

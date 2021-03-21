@@ -37,6 +37,8 @@ export const Actions = {
   EASY_FLOW_FINISH: "EASY_FLOW_FINISH",
   FACT_FIND_FINISH: "FACT_FIND_FINISH",
   FACT_FIND_INTERESTED: "FACT_FIND_INTERESTED",
+
+  RESET: 'RESET'
 }
 
 // Action Creators
@@ -131,6 +133,10 @@ const finishFactFind = () => ({
   type: Actions.FACT_FIND_FINISH,
 })
 
+const resetApp = () => ({
+  type: Actions.RESET
+})
+
 export const ActionMethods = {
   goNext,
   goBack,
@@ -151,4 +157,5 @@ export const ActionMethods = {
   finishEasyFlow,
   startFactFind,
   finishFactFind,
+  resetApp
 }

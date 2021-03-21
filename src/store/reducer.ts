@@ -263,6 +263,9 @@ export const reducer = (state: State, action: ActionType) => {
     case Actions.FACT_FIND_FINISH:
       return { ...state, isFactFindFinished: true }
 
+    case Actions.RESET:
+      return { ...initialState }
+
     default:
       return state
   }

@@ -1,11 +1,17 @@
 import * as React from "react"
-import Title from "./Shared/Title"
-
-import { ReportSVG } from "../utils/icons"
 
 import { PostMessageContext } from "./AppFlow"
+import Title from "./Shared/Title"
+import StepButtons from "./DynamicStepper/StepButtons"
+import { PrimaryButton } from "./Buttons"
+
+import useStore from "../hooks/useStore"
+
+import { ReportSVG } from "../utils/icons"
+import { ArrowRepeat } from "@styled-icons/bootstrap/ArrowRepeat"
 
 const FinishEasyFlow: React.FC = () => {
+  const { boundResetApp } = useStore()
   const { sendMessage } = React.useContext(PostMessageContext)
 
   React.useEffect(() => {
@@ -24,6 +30,12 @@ const FinishEasyFlow: React.FC = () => {
           The selected information has been sent to our team for reviewing. One of
           our team members should contact you shorly.
         </p>
+
+        <StepButtons>
+          <PrimaryButton label={"RESET"} onClick={() => boundResetApp()}>
+            <ArrowRepeat />
+          </PrimaryButton>
+        </StepButtons>
       </div>
       <div className="flex flex-1 order-first lg:order-last">
         <img src={ReportSVG} alt="Report SVG" />
