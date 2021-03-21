@@ -19,15 +19,13 @@ const AppFlow: React.FC = () => {
 
   return (
     <React.Fragment>
-      {/* isFactFindFinished && "Fact Find Finished" */}
-      {/* isEasyFlowFinished && !isFactFindInterested && <FinishEasyFlow /> */}
-      {/* isFactFindInterested && !isFactFindFinished && "Fact Find" */}
-      {isEasyFlowFinished && <FinishProcess />}
-      {!isEasyFlowFinished && (
-        <PostMessageContext.Provider value={{ sendMessage }}>
-          <EasyFlow />
-        </PostMessageContext.Provider>
-      )}
+      <PostMessageContext.Provider value={{ sendMessage }}>
+        {/* isFactFindFinished && "Fact Find Finished" */}
+        {/* isEasyFlowFinished && !isFactFindInterested && <FinishEasyFlow /> */}
+        {/* isFactFindInterested && !isFactFindFinished && "Fact Find" */}
+        {isEasyFlowFinished && <FinishProcess />}
+        {!isEasyFlowFinished && <EasyFlow />}
+      </PostMessageContext.Provider>
     </React.Fragment>
   )
 }
