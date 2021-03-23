@@ -31,6 +31,7 @@ const ApplicationSummary: React.FC = () => {
     boundFinishEasyFlow,
   } = useStore()
 
+  const [isPostingData, setIsPostingData] = React.useState(false)
   const [isFormValid, setIsFormValid] = React.useState(false)
   const { urgency } = enquiryDetails
   const { path } = easyFlow
@@ -51,15 +52,23 @@ const ApplicationSummary: React.FC = () => {
   }
 
   const finishEasyFlow = async () => {
+    setIsPostingData(true)
+
     const data = getBodyData()
 
-    //console.log(JSON.stringify(data))
+    console.log(data)
 
-    const response = await fetchAPI("server", data)
-
-    //console.log(response)
-
-    boundFinishEasyFlow()
+    await fetchAPI("server", data)
+      .then(data => {
+        console.log(data)
+      })
+      .catch(e => {
+        console.log(e)
+      })
+      .finally(() => {
+        setIsPostingData(false)
+        boundFinishEasyFlow()
+      })
   }
 
   return (
@@ -71,7 +80,16 @@ const ApplicationSummary: React.FC = () => {
         isDisabled: !(isFormValid && urgency),
       }}
     >
-      <div className="flex flex-col w-full max-w-3xl sm:flex-row">
+      <div
+        className={`flex flex-col w-full max-w-3xl sm:flex-row ${
+          isPostingData ? "opacity-50" : "opacity-100"
+        }`}
+      >
+        {isPostingData && (
+          <div className="absolute top-0 right-0 h-screen w-screen z-50 flex justify-center items-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+          </div>
+        )}
         {path && path !== "Other_Financial_Enquiries" && <Summary />}
         <div className="flex flex-1 flex-col items-center justify-center w-full space-y-10">
           <ContactForm
