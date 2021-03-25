@@ -56,17 +56,12 @@ const ApplicationSummary: React.FC = () => {
 
     const data = getBodyData()
 
-    console.log(data)
-
     await fetchAPI("server", data)
-      .then(data => {
-        console.log(data)
-      })
+      .then(() => setIsPostingData(false))
       .catch(e => {
         console.log(e)
       })
       .finally(() => {
-        setIsPostingData(false)
         boundFinishEasyFlow()
       })
   }
