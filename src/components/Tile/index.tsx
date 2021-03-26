@@ -55,6 +55,7 @@ const Tile: React.FC<TileProps> = ({
           src={img}
           alt="Logo"
           className={`object-cover w-10 h-10 md:w-12 md:h-12 ${svgStyles}`}
+          style={{ width: "fit-content", height: "fit-content", maxWidth: "48px" }}
         />
         <TileLabel className={textStyles}>{children.replace(/[_]/g, " ")}</TileLabel>
       </TileContent>

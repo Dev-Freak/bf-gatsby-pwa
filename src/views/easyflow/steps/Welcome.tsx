@@ -8,7 +8,7 @@ import StepContainer from "../../../components/DynamicStepper/StepContainer"
 import { PathOptions } from "../stepsOptions"
 
 import {
-  FastCar2Logo,
+  FastCar1Logo,
   CommercialLogo,
   ResidentialLogo,
   OtherLogo,
@@ -21,24 +21,8 @@ const Welcome: React.FC = () => {
     state: {
       easyFlow: { path },
     },
-    //boundSelectTile,
-    //boundMutateAndNext,
     boundSelectMutateAndNext,
   } = useStore()
-
-  /* const [tileSelection, setTileSelection] = React.useState<DataType>(false)
-
-  React.useEffect(() => {
-    //boundSelectTile(tileSelection)
-  }, [tileSelection])
-
-  React.useEffect(() => {
-    const timeOut = setTimeout(() => {
-      boundSelectMutateAndNext(tileSelection)
-    }, 200)
-
-    return () => clearTimeout(timeOut)
-  }, [path]) */
 
   return (
     <StepContainer>
@@ -54,7 +38,7 @@ const Welcome: React.FC = () => {
         stepValue={path}
         onTileClick={(data: DataType) => boundSelectMutateAndNext(data)}
       >
-        <Tile img={FastCar2Logo}>{PathOptions[0]}</Tile>
+        <Tile img={FastCar1Logo}>{PathOptions[0]}</Tile>
         <Tile img={ResidentialLogo}>{PathOptions[1]}</Tile>
         <Tile img={CommercialLogo}>{PathOptions[2]}</Tile>
         <Tile img={OtherLogo}>{PathOptions[3]}</Tile>

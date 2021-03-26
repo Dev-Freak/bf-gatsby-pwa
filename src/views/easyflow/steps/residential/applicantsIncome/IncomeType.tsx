@@ -37,7 +37,7 @@ const IncomeType: React.FC<IncomeTypeProps> = ({ keyName }) => {
         Pension Centrelink
       </TileWithCheckBox>
       <TileWithCheckBox img={SelfEmployedLogo}>Self Employed</TileWithCheckBox>
-      <TileWithCheckBox img={AssetsFinancialLogo}>Contract</TileWithCheckBox>
+      <TileWithCheckBox img={AssetsFinancialLogo}>Contractor</TileWithCheckBox>
     </TilesContainer>
   )
 }

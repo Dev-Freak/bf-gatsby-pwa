@@ -10,10 +10,10 @@ import StepHeader from "../../../../../components/DynamicStepper/StepHeader"
 import StepContainer from "../../../../../components/DynamicStepper/StepContainer"
 
 import {
-  OneApplicantLogo,
-  TwoApplicantLogo,
-  ThreeApplicantLogo,
-  FourApplicantLogo,
+  Property1Logo,
+  Property2Logo,
+  Property3Logo,
+  Property4Logo,
 } from "../../../../../utils/icons"
 
 const PropertiesQuantity: React.FC = () => {
@@ -41,10 +41,10 @@ const PropertiesQuantity: React.FC = () => {
         stepValue={properties_qty}
         onTileClick={(data: DataType) => boundSelectAndNext(data)}
       >
-        <Tile img={OneApplicantLogo}>1</Tile>
-        <Tile img={TwoApplicantLogo}>2</Tile>
-        <Tile img={ThreeApplicantLogo}>3</Tile>
-        <Tile img={FourApplicantLogo}>4+</Tile>
+        <Tile img={Property1Logo}>1</Tile>
+        <Tile img={Property2Logo}>2</Tile>
+        <Tile img={Property3Logo}>3</Tile>
+        <Tile img={Property4Logo}>4+</Tile>
       </TilesContainer>
     </StepContainer>
   )
