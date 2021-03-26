@@ -10,6 +10,7 @@ export enum IncomeOptions {
   Sole_Trader,
   Company,
   Trust,
+  Contract
 }
 
 export enum ApplicationOptions {

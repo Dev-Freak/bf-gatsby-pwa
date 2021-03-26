@@ -8,6 +8,7 @@ import {
   PayslipLogo,
   PensionCentrelinkLogo,
   SelfEmployedLogo,
+  AssetsFinancialLogo,
 } from "../../../../../utils/icons"
 
 import useStore, { DataType } from "../../../../../hooks/useStore"
@@ -32,12 +33,11 @@ const IncomeType: React.FC<IncomeTypeProps> = ({ keyName }) => {
       onTileClick={(data: DataType) => boundSetApplicantData(data)}
     >
       <TileWithCheckBox img={PayslipLogo}>PAYG Employed (Payslip)</TileWithCheckBox>
-
       <TileWithCheckBox img={PensionCentrelinkLogo}>
         Pension Centrelink
       </TileWithCheckBox>
-
       <TileWithCheckBox img={SelfEmployedLogo}>Self Employed</TileWithCheckBox>
+      <TileWithCheckBox img={AssetsFinancialLogo}>Contract</TileWithCheckBox>
     </TilesContainer>
   )
 }

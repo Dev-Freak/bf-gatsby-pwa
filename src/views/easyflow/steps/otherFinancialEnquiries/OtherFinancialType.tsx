@@ -8,10 +8,10 @@ import StepHeader from "../../../../components/DynamicStepper/StepHeader"
 import StepContainer from "../../../../components/DynamicStepper/StepContainer"
 
 import {
-  PurchaseLogo,
-  Refinance_2Logo,
-  DevelopmentLogo,
-  SMSFLogo,
+  FinancialPlanningLogo,
+  AccountingLogo,
+  ConveyancingLogo,
+  InsuranceLogo,
 } from "../../../../utils/icons"
 
 import useStore, { DataType } from "../../../../hooks/useStore"
@@ -37,10 +37,12 @@ const OtherFinancialType: React.FC = () => {
         stepValue={additional_services}
         onTileClick={(data: DataType) => boundToggleTile(data)}
       >
-        <TileWithCheckBox img={PurchaseLogo}>Financial Planning</TileWithCheckBox>
-        <TileWithCheckBox img={Refinance_2Logo}>Accounting</TileWithCheckBox>
-        <TileWithCheckBox img={DevelopmentLogo}>Conveyancing</TileWithCheckBox>
-        <TileWithCheckBox img={SMSFLogo}>Insurances</TileWithCheckBox>
+        <TileWithCheckBox img={FinancialPlanningLogo}>
+          Financial Planning
+        </TileWithCheckBox>
+        <TileWithCheckBox img={AccountingLogo}>Accounting</TileWithCheckBox>
+        <TileWithCheckBox img={ConveyancingLogo}>Conveyancing</TileWithCheckBox>
+        <TileWithCheckBox img={InsuranceLogo}>Insurances</TileWithCheckBox>
       </TilesContainer>
     </StepContainer>
   )

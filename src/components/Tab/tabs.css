@@ -6,14 +6,9 @@
 
 .tabs > .menu > a {
   display: flex;
-  width: 45%;
   margin-right: 10px;
   text-align: center;
   align-items: center;
-}
-
-.tabs > .menu a:first-child,
-.tabs > .menu a:nth-child(2) {
   margin-bottom: 5px;
 }
 

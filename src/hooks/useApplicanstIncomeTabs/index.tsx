@@ -22,9 +22,10 @@ const useApplicanstIncomeTabs = () => {
       const selfEmployment = _.get(applicant, "self_employment_type", false)
 
       if (income?.length > 0) {
-        if (income.find(i => i.includes("PAYG"))) isValid = employment ? true : false
-        if (income.find(i => i.includes("Self")))
-          isValid = selfEmployment ? true : false
+        if (income.some((item: any) => item.includes("PAYG")) && !employment)
+          return false
+        if (income.some((item: any) => item.includes("Self")) && !selfEmployment)
+          return false
       } else {
         isValid = false
       }
@@ -38,7 +39,7 @@ const useApplicanstIncomeTabs = () => {
   }
 
   const tabs = applicants?.map(
-    (applicant: object, index: number) =>
+    (applicant: any, index: number) =>
       ({
         label: POSSIBLE_APPLICANTS[index],
         step: (
@@ -57,7 +58,10 @@ const useApplicanstIncomeTabs = () => {
     const income = applicants[activeTab]?.income_type
     if (income === null || income === undefined || income.length === 0) {
       isDisabled = true
-    } else if (income.length === 1 && income[0].includes("Pension")) {
+    } else if (
+      income.length === 1 &&
+      (income[0].includes("Pension") || income[0].includes("Contract"))
+    ) {
       isDisabled = true
     } else if (section === 1 && !isSectionsValid()) {
       isDisabled = true
@@ -67,7 +71,7 @@ const useApplicanstIncomeTabs = () => {
   }
 
   const canStepBack = section === 0
-  const canStepNext = isSectionsValid()
+  const canStepNext = section === 1 && isSectionsValid()
   const isNextStepDisabled = isNextButtonDisabled() && !isSectionsValid()
 
   return {

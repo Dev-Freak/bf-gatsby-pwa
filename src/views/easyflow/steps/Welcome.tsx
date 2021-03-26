@@ -1,5 +1,4 @@
 import * as React from "react"
-
 import Tile from "../../../components/Tile"
 import TilesContainer from "../../../components/Shared/TilesContainer"
 import Title from "../../../components/Shared/Title"
@@ -9,7 +8,7 @@ import StepContainer from "../../../components/DynamicStepper/StepContainer"
 import { PathOptions } from "../stepsOptions"
 
 import {
-  AssetsFinancialLogo,
+  FastCar2Logo,
   CommercialLogo,
   ResidentialLogo,
   OtherLogo,
@@ -55,7 +54,7 @@ const Welcome: React.FC = () => {
         stepValue={path}
         onTileClick={(data: DataType) => boundSelectMutateAndNext(data)}
       >
-        <Tile img={AssetsFinancialLogo}>{PathOptions[0]}</Tile>
+        <Tile img={FastCar2Logo}>{PathOptions[0]}</Tile>
         <Tile img={ResidentialLogo}>{PathOptions[1]}</Tile>
         <Tile img={CommercialLogo}>{PathOptions[2]}</Tile>
         <Tile img={OtherLogo}>{PathOptions[3]}</Tile>

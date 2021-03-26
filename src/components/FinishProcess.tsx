@@ -24,7 +24,7 @@ const FinishEasyFlow: React.FC = () => {
         <Title>You're all set!</Title>
 
         <p>
-          Thank you for applying through our Financial Flow.
+          Thank you for applying through our Borg Financial finance flow.
           <br />
           <br />
           The selected information has been sent to our team for reviewing. One of

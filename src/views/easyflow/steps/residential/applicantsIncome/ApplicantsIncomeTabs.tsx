@@ -20,6 +20,10 @@ const ApplicantsIncomeTabs: React.FC = () => {
     boundSetInnerStep,
   } = useApplicantsIncomeTabs()
 
+  React.useEffect(() => {
+    boundSetTab(0)
+  }, [])
+
   return (
     /*
       canStepBack and canStepNext work as a boolean to set default behaviour

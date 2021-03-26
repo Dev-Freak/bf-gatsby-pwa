@@ -1,12 +1,12 @@
 // EasyFlow Steps' icons
 
-// COMMERCIAL
-// Welcome
+// WELCOME
 import CommercialLogo from "../images/icons/Icon1.svg"
 import OtherLogo from "../images/icons/Icon42.svg"
 import ResidentialLogo from "../images/icons/Icon8.svg"
 import AssetsFinancialLogo from "../images/icons/Icon39.svg"
 
+// RESIDENTIAL
 // Applicants Quantity
 import OneApplicantLogo from "../images/icons/Icon34.svg"
 import TwoApplicantLogo from "../images/icons/Icon31.svg"
@@ -23,6 +23,12 @@ import RetirementLogo from "../images/icons/Icon24.svg"
 import BetterRateLogo from "../images/icons/Icon27.svg"
 import ConsolidateLogo from "../images/icons/Icon14.svg"
 import EquityReleaseLogo from "../images/icons/Icon9.svg"
+
+// Properties
+import Property1Logo from "../images/icons/Property1.svg"
+import Property2Logo from "../images/icons/Property2.svg"
+import Property3Logo from "../images/icons/Property3.svg"
+import Property4Logo from "../images/icons/Property4.svg"
 
 // Project Type
 import EstablishedLogo from "../images/icons/Icon5.svg"
@@ -71,16 +77,25 @@ import DANotAppliedLogo from "../images/icons/Icon42.svg"
 import DAPendingLogo from "../images/icons/Icon41.svg"
 import DAApprovedLogo from "../images/icons/Icon40.svg"
 
-// REST
-import PropertyPriceBalanceLogo from "../images/icons/Icon11.svg"
-import FactoryLogo from "../images/icons/Icon19.svg"
-
-// DUPLICATE NAMESLogo => A better use case must be given to these
-import VehiclePurchase_2Logo from "../images/icons/Icon29.svg"
+// Other Financial Steps
+import FinancialPlanningLogo from "../images/icons/FinancialPlanning.svg"
+import AccountingLogo from "../images/icons/Accounting.svg"
+import ConveyancingLogo from "../images/icons/Conveyancing.svg"
+import InsuranceLogo from "../images/icons/Insurance.svg"
 
 // REPORT ICONS
 import ReportSVG from "../images/svgs/report.svg"
 import ScreenSVG from "../images/svgs/screen.svg"
+
+// REST
+import PropertyPriceBalanceLogo from "../images/icons/Icon11.svg"
+import FactoryLogo from "../images/icons/Icon19.svg"
+import HouseAndLandLogo from "../images/icons/HouseAndLand.svg"
+import FastCar1Logo from "../images/icons/FastCar1.svg"
+import FastCar2Logo from "../images/icons/FastCar2.svg"
+
+// DUPLICATE NAMESLogo => A better use case must be given to these
+import VehiclePurchase_2Logo from "../images/icons/Icon29.svg"
 
 export {
   CommercialLogo,
@@ -130,4 +145,15 @@ export {
   VehiclePurchase_2Logo,
   ReportSVG,
   ScreenSVG,
+  Property1Logo,
+  Property2Logo,
+  Property3Logo,
+  Property4Logo,
+  FinancialPlanningLogo,
+  AccountingLogo,
+  ConveyancingLogo,
+  InsuranceLogo,
+  HouseAndLandLogo,
+  FastCar1Logo,
+  FastCar2Logo,
 }
