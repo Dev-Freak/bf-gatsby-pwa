@@ -39,6 +39,9 @@ import ReverseMortgageLogo from "../images/icons/Icon30.svg"
 
 // Construction Type
 import LandLogo from "../images/icons/Icon23.svg"
+import DualOccupancy1Logo from "../images/icons/DualOccupancy1.svg"
+import DualOccupancy2Logo from "../images/icons/DualOccupancy2.svg"
+import KnockDownRebuildLogo from "../images/icons/KnockDownRebuild.svg"
 
 // Applicant Income Type
 import PayslipLogo from "../images/icons/Icon20.svg"
@@ -141,6 +144,9 @@ export {
   ConsolidateLogo,
   FactoryLogo,
   LandLogo,
+  DualOccupancy1Logo,
+  DualOccupancy2Logo,
+  KnockDownRebuildLogo,
   BetterRateLogo,
   VehiclePurchase_2Logo,
   ReportSVG,

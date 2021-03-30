@@ -13,19 +13,26 @@ type Props = {
 
 const StepContainer: React.FC<Props> = ({ children, back, next }) => {
   const { sendMessage } = React.useContext(PostMessageContext)
+  const containerRef = React.useRef<any>(null)
 
   React.useEffect(() => {
-    const stepContainer: any = document.getElementById("step-container")
+    if (containerRef.current !== null) {
+      console.log("sendMessage", {
+        height: containerRef.current?.offsetHeight,
+        width: containerRef.current?.offsetWidth,
+      })
 
-    sendMessage({
-      height: stepContainer.offsetHeight,
-      width: stepContainer.offsetWidth,
-    })
+      sendMessage({
+        height: containerRef.current?.offsetHeight,
+        width: containerRef.current?.offsetWidth,
+      })
+    }
   }, [])
 
   return (
     <div
       id="step-container"
+      ref={containerRef}
       className="max-w-4xl w-full flex flex-col items-center space-y-10 sm:w-10/12"
     >
       {children}
