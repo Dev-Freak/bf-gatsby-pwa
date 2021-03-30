@@ -26,13 +26,15 @@ const ApplicantsIncomeTabs: React.FC = () => {
 
   return (
     /*
-      canStepBack and canStepNext work as a boolean to set default behaviour
-      if any of them is true, the default button's onClick function will take place
-      otherwise, the onClick event will be binded to the Store action
+      canStepBack and canStepNext work as a boolean to set custom behaviour.
+      If any of them is true, the default button's onClick function will take place,
+      otherwise, the Store's action will be binded to the onClick event
     */
 
     <StepContainer
-      back={{ onClick: canStepBack ? undefined : () => boundSetInnerStep(0) }}
+      back={{
+        onClick: canStepBack ? undefined : () => boundSetInnerStep(0),
+      }}
       next={{
         onClick: canStepNext ? undefined : () => boundSetInnerStep(1),
         isDisabled: isNextStepDisabled,

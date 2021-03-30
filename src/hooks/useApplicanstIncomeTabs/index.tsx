@@ -8,12 +8,15 @@ import { TabProps } from "../../components/Tab/Tabs"
 
 import { POSSIBLE_APPLICANTS } from "../../utils/constants"
 
+import { PostMessageContext } from "../../components/AppFlow"
+
 const useApplicanstIncomeTabs = () => {
   const { state, boundSetTab, boundSetInnerStep } = useStore()
+  const { sendMessage } = React.useContext(PostMessageContext)
   const { applicants } = state?.easyFlow
   const { activeTab, section } = state?.tabs
 
-  const isSectionsValid = () => {
+  const areSectionsValid = () => {
     let isValid = true
 
     for (const applicant of applicants) {
@@ -53,26 +56,37 @@ const useApplicanstIncomeTabs = () => {
   )
 
   const isNextButtonDisabled = () => {
-    let isDisabled = false
-
     const income = applicants[activeTab]?.income_type
     if (income === null || income === undefined || income.length === 0) {
-      isDisabled = true
+      return true
     } else if (
       income.length === 1 &&
       (income[0].includes("Pension") || income[0].includes("Contract"))
     ) {
-      isDisabled = true
-    } else if (section === 1 && !isSectionsValid()) {
-      isDisabled = true
+      return true
+    } else if (section === 1 && !areSectionsValid()) {
+      return true
     }
 
-    return isDisabled
+    return false
   }
 
+  const extendMessage = () => {
+    const containerRef = document.getElementById("step-container")
+
+    sendMessage({
+      height: containerRef?.offsetHeight,
+      width: containerRef?.offsetWidth,
+    })
+  }
+
+  React.useEffect(() => {
+    extendMessage()
+  }, [activeTab, section])
+
   const canStepBack = section === 0
-  const canStepNext = section === 1 && isSectionsValid()
-  const isNextStepDisabled = isNextButtonDisabled() && !isSectionsValid()
+  const canStepNext = section === 1 && areSectionsValid()
+  const isNextStepDisabled = isNextButtonDisabled() && !areSectionsValid()
 
   return {
     tabs,

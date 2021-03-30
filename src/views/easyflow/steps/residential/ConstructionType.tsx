@@ -9,7 +9,6 @@ import StepContainer from "../../../../components/DynamicStepper/StepContainer"
 
 import {
   DualOccupancy1Logo,
-  DualOccupancy2Logo,
   KnockDownRebuildLogo,
   HouseAndLandLogo,
 } from "../../../../utils/icons"
@@ -38,7 +37,7 @@ const CommercialType: React.FC = () => {
         stepValue={construction_type}
         onTileClick={(data: DataType) => boundSelectAndNext(data)}
       >
-        <Tile img={DualOccupancy2Logo}>Dual Occupancy</Tile>
+        <Tile img={DualOccupancy1Logo}>Dual Occupancy</Tile>
         <Tile img={KnockDownRebuildLogo}>Construction Only</Tile>
         <Tile img={HouseAndLandLogo}>House and Land</Tile>
       </TilesContainer>

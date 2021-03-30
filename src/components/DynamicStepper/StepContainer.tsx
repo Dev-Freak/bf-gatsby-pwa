@@ -16,18 +16,11 @@ const StepContainer: React.FC<Props> = ({ children, back, next }) => {
   const containerRef = React.useRef<any>(null)
 
   React.useEffect(() => {
-    if (containerRef.current !== null) {
-      console.log("sendMessage", {
-        height: containerRef.current?.offsetHeight,
-        width: containerRef.current?.offsetWidth,
-      })
-
-      sendMessage({
-        height: containerRef.current?.offsetHeight,
-        width: containerRef.current?.offsetWidth,
-      })
-    }
-  }, [])
+    sendMessage({
+      height: containerRef.current?.offsetHeight,
+      width: containerRef.current?.offsetWidth,
+    })
+  }, [containerRef.current])
 
   return (
     <div

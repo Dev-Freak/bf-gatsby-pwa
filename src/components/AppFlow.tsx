@@ -12,7 +12,7 @@ export const PostMessageContext = React.createContext({
 
 const AppFlow: React.FC = () => {
   const {
-    state: { isEasyFlowFinished, isFactFindInterested, isFactFindFinished },
+    state: { isEasyFlowFinished /*, isFactFindInterested, isFactFindFinished */ },
   } = useStore()
 
   const { sendMessage } = usePostMessage("https://borgfinancial.com.au")
