@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
           minHeight: (height ?? 850) * 0.75,
           padding: `0 1.0875rem 1.45rem`,
         }}
-        className="flex mt-10 mx-auto h-full items-center justify-center"
+        className="flex mx-auto mt-10 h-full items-center justify-center"
       >
         <main className="w-full">{children}</main>
       </div>

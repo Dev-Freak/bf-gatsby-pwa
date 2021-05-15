@@ -10,6 +10,7 @@ const usePostMessage = (url: String) => {
         (event: any) => {
           if (!event.origin.startsWith(url) || event.data !== "CORS") return
 
+          console.log("EventListener SET")
           setOriginEvent(event)
         },
         false
@@ -21,6 +22,7 @@ const usePostMessage = (url: String) => {
 
   const sendMessage = React.useCallback(
     message => {
+      console.log("Message SENT")
       originEvent?.source?.postMessage(message, originEvent.origin)
     },
     [originEvent]
