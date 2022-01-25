@@ -34,7 +34,7 @@ const SimpleProgressBar: React.FC<SimpleProgressBarProps> = ({
   }
 
   return (
-    <div className="flex items-center justify-center m-auto h-full py-2 px-4 w-10/12 md:px-10">
+    <div className="flex items-center justify-center m-auto h-full py-2 px-0 w-full md:px-0">
       <div className="flex flex-1 items-justify justify-center flex-no-wrap">
         {nodesToRender.map((node, index) => {
           return index % 2 === 0

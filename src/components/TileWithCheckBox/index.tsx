@@ -45,7 +45,7 @@ const TileWithCheckBox: React.FC<TileWithCheckBoxProps> = ({
 
   return (
     <div
-      className={`tile toggleable relative h-36 w-36 shadow-md rounded-lg md:w-40 md:h-40 my-2 md:my-0 ${selectedStyles} ${disabledStyles}`}
+      className={`tile toggleable relative h-36 w-36 shadow-md rounded-lg md:w-40 md:h-40 my-2  ${selectedStyles} ${disabledStyles}`}
       onClick={() => !disabled && handleToggleTile()}
     >
       <CheckBox

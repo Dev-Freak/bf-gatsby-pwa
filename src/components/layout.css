@@ -6,13 +6,13 @@
 
 @layer utilities {
   html {
-    overflow-y: hidden;
+    overflow-y: auto;
   }
 
   body {
     font-family: "Poppins", "sans-serif";
-  }
-
+    overflow-x: hidden;
+}
   .text-footer {
     color: #606060;
   }
@@ -47,4 +47,19 @@
   input.input::placeholder {
     color: rgba(18, 18, 18, 0.4);
   }
+  .invisible
+  {
+    z-index: 9;
+  }
+  img.object-cover.w-10.h-10.md\:w-12.md\:h-12.tile-idle {
+    height: 40px !important;
+    object-fit: contain;
+}
+/* section.absolute.flex.items-center.justify-center.px-6.mx-3.mt-20.mb-8.top-0.alert-enter-done {
+  width: 20%;
+} */
+.congrates-div
+{
+  width: 20%;
+}
 }

@@ -68,7 +68,7 @@ const TilesContainer: React.FC<TilesContainerType> = ({
   return isMobile ? (
     components
   ) : (
-    <div className="w-full flex flex-wrap justify-around space-y-1 md:justify-center md:space-x-5">
+    <div className="w-full flex justify-evenly space-y-2 md:justify-space md:space-x-2">
       {components}
     </div>
   )

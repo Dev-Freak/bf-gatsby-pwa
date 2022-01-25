@@ -86,7 +86,7 @@ const ApplicationSummary: React.FC = () => {
           </div>
         )}
         {path && path !== "Other_Financial_Enquiries" && <Summary />}
-        <div className="flex flex-1 flex-col items-center justify-center w-full space-y-10">
+        <div className="flex flex-1 flex-col  justify-center w-full space-y-10 mt-6 md:mt-0 sm:mt-0">
           <ContactForm
             stateProps={{ fullName, emailAddress, phoneNumber, urgency }}
             methods={{

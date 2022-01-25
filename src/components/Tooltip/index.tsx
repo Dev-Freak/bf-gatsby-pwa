@@ -22,7 +22,7 @@ const Tooltip: React.FC<TooltipProps> = ({ children }) => {
             - Use the previous hooks to determine the css for the width of the hideable component as well as the position to render it
          */}
 
-        <div className="invisible absolute opacity-0 top-0 left-0 mt-6 p-4 w-auto bg-brand rounded-lg shadow-xl transition duration-1000 ease-in-out transform group-hover:visible group-hover:opacity-100">
+        <div className="invisible absolute opacity-0 top-0 left-0 mt-0 p-4 w-auto bg-brand rounded-lg shadow-xl transition duration-1000 ease-in-out transform group-hover:visible group-hover:opacity-100">
           <p className="text-center text-white">{children}</p>
         </div>
       </div>

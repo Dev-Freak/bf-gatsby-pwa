@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 20px;
+  padding: 5px 31px;
 }
 
 .tabs > .menu > a {
@@ -24,10 +25,24 @@
 
 .tabs > .tab .tile {
   margin-top: 0;
-}
-
+  margin: 1%;
+} 
 @media (min-width: 540px) {
   .tabs > .menu {
     flex-wrap: nowrap;
   }
+}
+@media (max-width: 768px) {
+  .w-36 {
+    width: 9rem;
+    margin: 1%;
+  }
+.tabsclass
+{
+  width: 90%;
+}
+}
+
+.tabs.flex-col.tabsclass {
+  width: 100%;
 }
