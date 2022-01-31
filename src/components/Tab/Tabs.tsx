@@ -36,7 +36,7 @@ const Tabs: React.FC<TabsProps> = ({ steps, defaultActiveIndex, onTabChange }) =
           e: React.MouseEvent<HTMLDivElement, MouseEvent>,
           { activeIndex }
         ) => onTabChange(activeIndex)}
-        className={"tabs flex-col"}
+        className={"tabs flex-col tabsclass"}
       />
     </TabsContainer>
   )

@@ -13,10 +13,10 @@ type AlertType = {
 const Alert: React.FC<AlertType> = ({ title, content, isOpen, onClose }) => {
   return (
     <CSSTransition in={isOpen} timeout={300} classNames="alert" unmountOnExit>
-      <section className="absolute flex items-center justify-center px-6 mx-3 mt-20 mb-8 top-0">
+      <section className="absolute flex items-center justify-center px-6 mx-3 mt-20 mb-8 top-0 congrates-div">
         <div
           className="flex items-center bg-white shadow-xl border rounded-md mt-6 px-6 mx-8"
-          style={{ width: "24rem" }}
+          style={{ width: "22rem" }}
         >
           <div className="mr-6 bg-green-500 rounded px-4 py-2  text-center -ml-3">
             <svg

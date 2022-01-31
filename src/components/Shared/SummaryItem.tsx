@@ -27,7 +27,7 @@ const SummaryItem: React.FC<SummaryItemProps> = ({
           return (
             <div className="pb-5" key={itemKey}>
               <Value>{formatKey(itemKey)}</Value>
-              <div className="px-6">
+              <div className="px-0">
                 {Object.keys(subItemFirstLevel).map(
                   (subItemFirstLevelKey: any, index: number) => {
                     const subItemSecondLevel: Array<string> | string =

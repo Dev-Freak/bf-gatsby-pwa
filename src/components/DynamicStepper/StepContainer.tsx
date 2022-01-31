@@ -26,7 +26,7 @@ const StepContainer: React.FC<Props> = ({ children, back, next }) => {
     <div
       id="step-container"
       ref={containerRef}
-      className="max-w-4xl w-full flex flex-col items-center space-y-10 sm:w-10/12"
+      className="max-w-4xl w-full flex flex-col items-center space-y-10 sm:w-12/12"
     >
       {children}
 
