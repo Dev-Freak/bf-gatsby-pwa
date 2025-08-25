@@ -4,34 +4,26 @@ import { Actions, ActionType } from "./actions"
 import { objRemoveEmptyOrNull } from "../utils/trimObject"
 import { initialStep, mutateSteps } from "../views/easyflow/stepsManager"
 
-export interface Tabs {
-  activeTab: number,
+export type Tabs = {
+  activeTab: number
   section: number
 }
 
-export interface Applicant {
+export type Applicant = {}
 
-}
-
-export interface EasyFlow {
+export type EasyFlow = {
   applicants: Array<Applicant>
 }
 
-export interface EasyFlowSteps {
+export type EasyFlowSteps = {
   steps: Array<JSX.Element>
 }
 
-export interface FactFind {
+export type FactFind = {}
 
-}
+export type ContactInfo = {}
 
-export interface ContactInfo {
-
-}
-
-export interface EnquiryDetails {
-
-}
+export type EnquiryDetails = {}
 
 /*
     !!!IMPORTANT!!!
@@ -41,18 +33,17 @@ export interface EnquiryDetails {
     Remember... This will break the actions that modify its value and also the components that consume it
 */
 export type State = {
-  currentStep: number,
-  tabs: Tabs,
-  easyFlow: EasyFlow,
-  easyFlowSteps: EasyFlowSteps,
-  factFind: FactFind,
-  contactInfo: ContactInfo,
-  enquiryDetails: EnquiryDetails,
-  isEasyFlowFinished: true | false,
-  isFactFindInterested: true | false,
-  isFactFindFinished: true | false,
+  currentStep: number
+  tabs: Tabs
+  easyFlow: EasyFlow
+  easyFlowSteps: EasyFlowSteps
+  factFind: FactFind
+  contactInfo: ContactInfo
+  enquiryDetails: EnquiryDetails
+  isEasyFlowFinished: true | false
+  isFactFindInterested: true | false
+  isFactFindFinished: true | false
 }
-
 
 export const initialState: State = {
   currentStep: 0,
@@ -61,7 +52,7 @@ export const initialState: State = {
     section: 0,
   },
   easyFlow: {
-    applicants: []
+    applicants: [],
   },
   easyFlowSteps: {
     steps: initialStep,
