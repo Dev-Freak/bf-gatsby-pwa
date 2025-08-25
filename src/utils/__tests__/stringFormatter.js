@@ -18,8 +18,8 @@ describe("StringFormatter", () => {
   })
 
   it("Formats a number to a currency value. (Ej: '5213548' ==> '$5,213,548.00')", () => {
-    const formattedFirstValue = formatCurrency("321654")
-    const formattedSecondValue = formatCurrency("1321")
+    const formattedFirstValue = formatCurrency(321654)
+    const formattedSecondValue = formatCurrency(1321)
 
     expect(formattedFirstValue).toEqual("A$321,654.00")
     expect(formattedSecondValue).toEqual("A$1,321.00")

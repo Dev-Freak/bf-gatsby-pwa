@@ -80,7 +80,7 @@ export const reducer = (state: State, action: ActionType) => {
     case Actions.EASY_FLOW_SELECT_TILE:
       return {
         ...state,
-        easyFlow: { ...state.easyFlow, [payload.keyName]: payload.value },
+        easyFlow: { ...state.easyFlow, [payload?.keyName]: payload?.value },
       }
 
     case Actions.EASY_FLOW_GO_NEXT:
@@ -187,14 +187,14 @@ export const reducer = (state: State, action: ActionType) => {
     case Actions.EASY_FLOW_SELECT_TILE_NEXT:
       return {
         ...state,
-        easyFlow: { ...state.easyFlow, [payload.keyName]: payload.value },
+        easyFlow: { ...state.easyFlow, [payload?.keyName]: payload?.value },
         currentStep: state.currentStep + 1,
       }
 
     case Actions.EASY_FLOW_SELECT_MUTATE_NEXT:
       return {
         ...state,
-        easyFlow: { ...state.easyFlow, [payload.keyName]: payload.value },
+        easyFlow: { ...state.easyFlow, [payload?.keyName]: payload?.value },
         easyFlowSteps: {
           steps: mutateSteps(
             payload.keyName,
@@ -233,7 +233,7 @@ export const reducer = (state: State, action: ActionType) => {
     case Actions.CONTACT_FORM_SET_VALUE:
       return {
         ...state,
-        contactInfo: { ...state.contactInfo, [payload.keyName]: payload.value },
+        contactInfo: { ...state.contactInfo, [payload?.keyName]: payload?.value },
       }
 
     case Actions.ENQUIRY_DETAILS_SET_VALUE:
