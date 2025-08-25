@@ -1,3 +1,6 @@
+# VSCode
+.vscode
+
 # Logs
 logs
 *.log
@@ -70,3 +73,6 @@ yarn-error.log
 
 # Local Netlify folder
 .netlify
+
+# Storybook generated files
+storybook-static
