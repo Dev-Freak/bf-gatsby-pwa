@@ -7,7 +7,7 @@ import InputContainer from "./InputContainer"
 export type InputElementProps = {
   lable: string
   type?: "input" | "ddl"
-  options?: InputType
+  options: InputType
   required?: true | false
 }
 
@@ -23,9 +23,7 @@ const InputElement: React.FC<InputElementProps> = ({
       {type === "input" ? (
         <Input {...options} />
       ) : (
-        {
-          /* <DropDownInput {...options} /> */
-        }
+        <div>{/*<DropDownInput {...options} />*/}</div>
       )}
     </InputContainer>
   )

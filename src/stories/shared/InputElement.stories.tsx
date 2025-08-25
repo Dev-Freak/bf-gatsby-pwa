@@ -17,7 +17,11 @@ export const Default = Template.bind({})
 Default.args = {
   lable: "Full name",
   required: true,
+  type: "input",
   options: {
     placeholder: "Enter full name",
+    name: "fullName",
+    ref: React.createRef(),
+    type: "input",
   },
 }

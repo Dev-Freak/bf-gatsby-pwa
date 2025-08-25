@@ -1,7 +1,7 @@
 import * as React from "react"
 
 export interface InputErrorProps {
-  children: string | undefined
+  children?: string
 }
 
 const InputError: React.FC<InputErrorProps> = ({ children }) => {

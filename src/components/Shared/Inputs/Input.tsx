@@ -9,11 +9,11 @@ export type InputType = {
 }
 
 const Input: React.FC<InputType> = React.forwardRef<HTMLInputElement, InputType>(
-  ({ type, ...rest }, ref) => (
+  ({ type, ref, ...rest }, forwardedRef) => (
     <input
       className="input border border-black p-3 font-sm"
       type={type ?? "text"}
-      ref={ref}
+      ref={forwardedRef}
       {...rest}
     />
   )
