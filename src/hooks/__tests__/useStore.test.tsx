@@ -19,32 +19,60 @@ describe("useStore Hook", () => {
 
   beforeEach(() => {
     mockDispatch = jest.fn()
-    mockState = { ...initialState }(
-      // Reset the mock implementation
-      useStore as jest.Mock
-    ).mockReturnValue({
+    mockState = { ...initialState }
+    ;(useStore as jest.Mock).mockReturnValue({
       state: mockState,
       dispatch: mockDispatch,
-      boundSetTab: jest.fn(),
-      boundSetInnerStep: jest.fn(),
-      boundGoNext: jest.fn(),
-      boundGoBack: jest.fn(),
-      boundSelectTile: jest.fn(),
-      boundSelectTileAndNext: jest.fn(),
-      boundSetPathValue: jest.fn(),
-      boundSetPathValueAndNext: jest.fn(),
-      boundMutateSteps: jest.fn(),
-      boundSelectTileMutateAndNext: jest.fn(),
-      boundMutateStepsAndNext: jest.fn(),
-      boundSetPathValueMutateAndNext: jest.fn(),
-      boundSetApplicantsQuantity: jest.fn(),
-      boundSetApplicantData: jest.fn(),
-      boundSetContactValue: jest.fn(),
-      boundSetEnquiryDetailsValue: jest.fn(),
-      boundFinishEasyFlow: jest.fn(),
-      boundStartFactFind: jest.fn(),
-      boundFinishFactFind: jest.fn(),
-      boundResetApp: jest.fn(),
+      boundSetTab: jest.fn(value => mockDispatch(ActionMethods.setTab(value))),
+      boundSetInnerStep: jest.fn(value =>
+        mockDispatch(ActionMethods.setInnerStep(value))
+      ),
+      boundGoNext: jest.fn(() => mockDispatch(ActionMethods.goNext())),
+      boundGoBack: jest.fn(() => mockDispatch(ActionMethods.goBack())),
+      boundSelectTile: jest.fn(payload =>
+        mockDispatch(ActionMethods.selectTile(payload))
+      ),
+      boundSelectTileAndNext: jest.fn(payload =>
+        mockDispatch(ActionMethods.selectTileAndNext(payload))
+      ),
+      boundSetPathValue: jest.fn(payload =>
+        mockDispatch(ActionMethods.setPathValue(payload))
+      ),
+      boundSetPathValueAndNext: jest.fn(payload =>
+        mockDispatch(ActionMethods.setPathValueAndNext(payload))
+      ),
+      boundMutateSteps: jest.fn(payload =>
+        mockDispatch(ActionMethods.mutateSteps(payload))
+      ),
+      boundSelectTileMutateAndNext: jest.fn(payload =>
+        mockDispatch(ActionMethods.selectTileMutateAndNext(payload))
+      ),
+      boundMutateStepsAndNext: jest.fn(payload =>
+        mockDispatch(ActionMethods.mutateStepsAndNext(payload))
+      ),
+      boundSetPathValueMutateAndNext: jest.fn(payload =>
+        mockDispatch(ActionMethods.setPathValueMutateAndNext(payload))
+      ),
+      boundSetApplicantsQuantity: jest.fn(value =>
+        mockDispatch(ActionMethods.setApplicantsQuantity(value))
+      ),
+      boundSetApplicantData: jest.fn(payload =>
+        mockDispatch(ActionMethods.setApplicantData(payload))
+      ),
+      boundSetContactValue: jest.fn(payload =>
+        mockDispatch(ActionMethods.setContactValue(payload))
+      ),
+      boundSetEnquiryDetailsValue: jest.fn(payload =>
+        mockDispatch(ActionMethods.setEnquiryDetailsValue(payload))
+      ),
+      boundFinishEasyFlow: jest.fn(() =>
+        mockDispatch(ActionMethods.finishEasyFlow())
+      ),
+      boundStartFactFind: jest.fn(() => mockDispatch(ActionMethods.startFactFind())),
+      boundFinishFactFind: jest.fn(() =>
+        mockDispatch(ActionMethods.finishFactFind())
+      ),
+      boundResetApp: jest.fn(() => mockDispatch(ActionMethods.resetApp())),
     })
   })
 
@@ -58,8 +86,60 @@ describe("useStore Hook", () => {
     it("should return current step", () => {
       mockState.currentStep = 3
       ;(useStore as jest.Mock).mockReturnValue({
-        ...useStore(),
         state: mockState,
+        dispatch: mockDispatch,
+        boundSetTab: jest.fn(value => mockDispatch(ActionMethods.setTab(value))),
+        boundSetInnerStep: jest.fn(value =>
+          mockDispatch(ActionMethods.setInnerStep(value))
+        ),
+        boundGoNext: jest.fn(() => mockDispatch(ActionMethods.goNext())),
+        boundGoBack: jest.fn(() => mockDispatch(ActionMethods.goBack())),
+        boundSelectTile: jest.fn(payload =>
+          mockDispatch(ActionMethods.selectTile(payload))
+        ),
+        boundSelectTileAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.selectTileAndNext(payload))
+        ),
+        boundSetPathValue: jest.fn(payload =>
+          mockDispatch(ActionMethods.setPathValue(payload))
+        ),
+        boundSetPathValueAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.setPathValueAndNext(payload))
+        ),
+        boundMutateSteps: jest.fn(payload =>
+          mockDispatch(ActionMethods.mutateSteps(payload))
+        ),
+        boundSelectTileMutateAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.selectTileMutateAndNext(payload))
+        ),
+        boundMutateStepsAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.mutateStepsAndNext(payload))
+        ),
+        boundSetPathValueMutateAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.setPathValueMutateAndNext(payload))
+        ),
+        boundSetApplicantsQuantity: jest.fn(value =>
+          mockDispatch(ActionMethods.setApplicantsQuantity(value))
+        ),
+        boundSetApplicantData: jest.fn(payload =>
+          mockDispatch(ActionMethods.setApplicantData(payload))
+        ),
+        boundSetContactValue: jest.fn(payload =>
+          mockDispatch(ActionMethods.setContactValue(payload))
+        ),
+        boundSetEnquiryDetailsValue: jest.fn(payload =>
+          mockDispatch(ActionMethods.setEnquiryDetailsValue(payload))
+        ),
+        boundFinishEasyFlow: jest.fn(() =>
+          mockDispatch(ActionMethods.finishEasyFlow())
+        ),
+        boundStartFactFind: jest.fn(() =>
+          mockDispatch(ActionMethods.startFactFind())
+        ),
+        boundFinishFactFind: jest.fn(() =>
+          mockDispatch(ActionMethods.finishFactFind())
+        ),
+        boundResetApp: jest.fn(() => mockDispatch(ActionMethods.resetApp())),
       })
 
       const { result } = renderHook(() => useStore())
@@ -74,8 +154,60 @@ describe("useStore Hook", () => {
         applicants: [{ income_type: ["PAYG"] }],
       }
       ;(useStore as jest.Mock).mockReturnValue({
-        ...useStore(),
         state: mockState,
+        dispatch: mockDispatch,
+        boundSetTab: jest.fn(value => mockDispatch(ActionMethods.setTab(value))),
+        boundSetInnerStep: jest.fn(value =>
+          mockDispatch(ActionMethods.setInnerStep(value))
+        ),
+        boundGoNext: jest.fn(() => mockDispatch(ActionMethods.goNext())),
+        boundGoBack: jest.fn(() => mockDispatch(ActionMethods.goBack())),
+        boundSelectTile: jest.fn(payload =>
+          mockDispatch(ActionMethods.selectTile(payload))
+        ),
+        boundSelectTileAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.selectTileAndNext(payload))
+        ),
+        boundSetPathValue: jest.fn(payload =>
+          mockDispatch(ActionMethods.setPathValue(payload))
+        ),
+        boundSetPathValueAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.setPathValueAndNext(payload))
+        ),
+        boundMutateSteps: jest.fn(payload =>
+          mockDispatch(ActionMethods.mutateSteps(payload))
+        ),
+        boundSelectTileMutateAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.selectTileMutateAndNext(payload))
+        ),
+        boundMutateStepsAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.mutateStepsAndNext(payload))
+        ),
+        boundSetPathValueMutateAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.setPathValueMutateAndNext(payload))
+        ),
+        boundSetApplicantsQuantity: jest.fn(value =>
+          mockDispatch(ActionMethods.setApplicantsQuantity(value))
+        ),
+        boundSetApplicantData: jest.fn(payload =>
+          mockDispatch(ActionMethods.setApplicantData(payload))
+        ),
+        boundSetContactValue: jest.fn(payload =>
+          mockDispatch(ActionMethods.setContactValue(payload))
+        ),
+        boundSetEnquiryDetailsValue: jest.fn(payload =>
+          mockDispatch(ActionMethods.setEnquiryDetailsValue(payload))
+        ),
+        boundFinishEasyFlow: jest.fn(() =>
+          mockDispatch(ActionMethods.finishEasyFlow())
+        ),
+        boundStartFactFind: jest.fn(() =>
+          mockDispatch(ActionMethods.startFactFind())
+        ),
+        boundFinishFactFind: jest.fn(() =>
+          mockDispatch(ActionMethods.finishFactFind())
+        ),
+        boundResetApp: jest.fn(() => mockDispatch(ActionMethods.resetApp())),
       })
 
       const { result } = renderHook(() => useStore())
@@ -90,8 +222,60 @@ describe("useStore Hook", () => {
         section: 1,
       }
       ;(useStore as jest.Mock).mockReturnValue({
-        ...useStore(),
         state: mockState,
+        dispatch: mockDispatch,
+        boundSetTab: jest.fn(value => mockDispatch(ActionMethods.setTab(value))),
+        boundSetInnerStep: jest.fn(value =>
+          mockDispatch(ActionMethods.setInnerStep(value))
+        ),
+        boundGoNext: jest.fn(() => mockDispatch(ActionMethods.goNext())),
+        boundGoBack: jest.fn(() => mockDispatch(ActionMethods.goBack())),
+        boundSelectTile: jest.fn(payload =>
+          mockDispatch(ActionMethods.selectTile(payload))
+        ),
+        boundSelectTileAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.selectTileAndNext(payload))
+        ),
+        boundSetPathValue: jest.fn(payload =>
+          mockDispatch(ActionMethods.setPathValue(payload))
+        ),
+        boundSetPathValueAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.setPathValueAndNext(payload))
+        ),
+        boundMutateSteps: jest.fn(payload =>
+          mockDispatch(ActionMethods.mutateSteps(payload))
+        ),
+        boundSelectTileMutateAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.selectTileMutateAndNext(payload))
+        ),
+        boundMutateStepsAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.mutateStepsAndNext(payload))
+        ),
+        boundSetPathValueMutateAndNext: jest.fn(payload =>
+          mockDispatch(ActionMethods.setPathValueMutateAndNext(payload))
+        ),
+        boundSetApplicantsQuantity: jest.fn(value =>
+          mockDispatch(ActionMethods.setApplicantsQuantity(value))
+        ),
+        boundSetApplicantData: jest.fn(payload =>
+          mockDispatch(ActionMethods.setApplicantData(payload))
+        ),
+        boundSetContactValue: jest.fn(payload =>
+          mockDispatch(ActionMethods.setContactValue(payload))
+        ),
+        boundSetEnquiryDetailsValue: jest.fn(payload =>
+          mockDispatch(ActionMethods.setEnquiryDetailsValue(payload))
+        ),
+        boundFinishEasyFlow: jest.fn(() =>
+          mockDispatch(ActionMethods.finishEasyFlow())
+        ),
+        boundStartFactFind: jest.fn(() =>
+          mockDispatch(ActionMethods.startFactFind())
+        ),
+        boundFinishFactFind: jest.fn(() =>
+          mockDispatch(ActionMethods.finishFactFind())
+        ),
+        boundResetApp: jest.fn(() => mockDispatch(ActionMethods.resetApp())),
       })
 
       const { result } = renderHook(() => useStore())
