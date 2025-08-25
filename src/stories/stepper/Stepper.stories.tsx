@@ -19,8 +19,6 @@ import IncomeType from "../../views/easyflow/steps/assetFinancial/IncomeType"
 
 // Commercial
 import CommercialType from "../../views/easyflow/steps/commercial/CommercialType"
-import ComProjectType from "../../views/easyflow/steps/commercial/ProjectType"
-import DevelopmentType from "../../views/easyflow/steps/commercial/DevelopmentType"
 
 import Stepper, { StepperProps } from "../../components/DynamicStepper/Stepper"
 
@@ -60,5 +58,5 @@ AssetsFinancial.args = {
 
 export const Commercial = Template.bind({})
 Commercial.args = {
-  steps: [<Welcome />, <CommercialType />, <ComProjectType />, <DevelopmentType />],
+  steps: [<Welcome />, <CommercialType />],
 }
